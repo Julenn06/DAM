@@ -1,0 +1,224 @@
+package vista;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import modelo.Mensajes;
+
+public class Main extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+
+	// Base de datos en memoria dinámica
+	ArrayList<Mensajes> listaMensajes = new ArrayList<>();
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Main frame = new Main();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	public Main() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 800, 600);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+
+		// 1. CARGAR MENSAJE: Lee el archivo "users.txt" y mete todo lo que encuentre en
+		// el ArrayList (memoria)
+		JButton cargarMensaje = new JButton("Cargar Mensaje");
+		cargarMensaje.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listaMensajes.clear(); // Limpiamos la memoria actual para no duplicar si se pulsa varias veces
+
+				try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
+					String linea;
+					Mensajes m = null;
+
+					while ((linea = reader.readLine()) != null) {
+						linea = linea.trim();
+
+						// Si empezamos un nuevo bloque o hay datos, inicializamos el objeto
+						if (m == null && !linea.startsWith("***")) {
+							m = new Mensajes();
+						}
+
+						if (linea.startsWith("fecha: ")) {
+							m.setFecha(linea.replace("fecha: ", ""));
+						} else if (linea.startsWith("hora: ")) {
+							m.setHora(linea.replace("hora: ", ""));
+						} else if (linea.startsWith("para: ")) {
+							m.setUserRecibir(linea.replace("para: ", ""));
+						} else if (linea.startsWith("de: ")) {
+							m.setUserEnviar(linea.replace("de: ", ""));
+						} else if (linea.startsWith("asunto: ")) {
+							m.setAsunto(linea.replace("asunto: ", ""));
+						} else if (linea.startsWith("contenido: ")) {
+							m.setContenido(linea.replace("contenido: ", ""));
+						} else if (linea.startsWith("***")) {
+							// Cuando llegamos a los asteriscos, guardamos el mensaje procesado en el
+							// ArrayList
+							if (m != null) {
+								listaMensajes.add(m);
+								m = null; // Reseteamos para el siguiente mensaje
+							}
+						}
+					}
+					JOptionPane.showMessageDialog(null, "¡Éxito! Se han cargado " + listaMensajes.size()
+							+ " mensajes desde users.txt a la memoria.");
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null,
+							"Error al cargar el archivo o archivo no encontrado: " + ex.getMessage());
+				}
+			}
+		});
+		cargarMensaje.setBounds(180, 82, 140, 93);
+		contentPane.add(cargarMensaje);
+
+		// 2. GUARDAR MENSAJES: Coge todo lo que esté en memoria y lo vuelca al txt
+		// (sobrescribiendo)
+		JButton guardarMensajes = new JButton("Guardar Mensajes");
+		guardarMensajes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (listaMensajes.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "La memoria está vacía. No hay nada que guardar.");
+					return;
+				}
+
+				try (BufferedWriter writer = new BufferedWriter(new FileWriter("users.txt", false))) {
+					for (Mensajes m : listaMensajes) {
+						writer.write("fecha: " + m.getFecha() + "\n" + "hora: " + m.getHora() + "\n" + "para: "
+								+ m.getUserRecibir() + "\n" + "de: " + m.getUserEnviar() + "\n" + "asunto: "
+								+ m.getAsunto() + "\n" + "contenido: " + m.getContenido() + "\n"
+								+ "*************************************");
+						writer.newLine();
+					}
+					JOptionPane.showMessageDialog(null, "Se han exportado los mensajes de la memoria a users.txt.");
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Error al guardar el archivo: " + ex.getMessage());
+				}
+			}
+		});
+		guardarMensajes.setBounds(527, 82, 140, 93);
+		contentPane.add(guardarMensajes);
+
+		// 3. AÑADIR MENSAJE: Abre el formulario gráfico para escribir y lo añade
+		// DIRECTO al archivo .txt (No toca memoria)
+		JButton añadirMensaje = new JButton("Añadir Mensaje");
+		añadirMensaje.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JPanel panelDatos = new JPanel();
+				panelDatos.setLayout(new GridLayout(4, 2));
+
+				panelDatos.add(new JLabel("Quien manda:"));
+				JTextField txtQuienManda = new JTextField(10);
+				panelDatos.add(txtQuienManda);
+
+				panelDatos.add(new JLabel("Quien recibe:"));
+				JTextField txtQuienRecibe = new JTextField(10);
+				panelDatos.add(txtQuienRecibe);
+
+				panelDatos.add(new JLabel("asunto:"));
+				JTextField txtAsunto = new JTextField(10);
+				panelDatos.add(txtAsunto);
+
+				panelDatos.add(new JLabel("contenido:"));
+				JTextField txtContenido = new JTextField(10);
+				panelDatos.add(txtContenido);
+
+				int result = JOptionPane.showConfirmDialog(null, panelDatos, "Introduce tus datos",
+						JOptionPane.OK_CANCEL_OPTION);
+
+				if (result == JOptionPane.OK_OPTION) {
+					LocalDate fechaAhora = LocalDate.now();
+					LocalTime horaAhora = LocalTime.now();
+
+					DateTimeFormatter formateadorFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+					DateTimeFormatter formateadorHora = DateTimeFormatter.ofPattern("HH:mm:ss:SS");
+
+					String fechaFormateada = fechaAhora.format(formateadorFecha);
+					String horaFormateada = horaAhora.format(formateadorHora);
+
+					// Escritura directa al txt (No toca 'listaMensajes')
+					try (BufferedWriter writer = new BufferedWriter(new FileWriter("users.txt", true))) {
+						writer.write("fecha: " + fechaFormateada + "\n" + "hora: " + horaFormateada + "\n" + "para: "
+								+ txtQuienRecibe.getText() + "\n" + "de: " + txtQuienManda.getText() + "\n" + "asunto: "
+								+ txtAsunto.getText() + "\n" + "contenido: " + txtContenido.getText() + "\n"
+								+ "*************************************");
+						writer.newLine();
+						JOptionPane.showMessageDialog(null,
+								"Mensaje añadido DIRECTAMENTE al fichero users.txt (No está en memoria).");
+					} catch (Exception ex) {
+						JOptionPane.showMessageDialog(null, "Error al añadir al fichero: " + ex.getMessage());
+					}
+				}
+			}
+		});
+		añadirMensaje.setBounds(180, 315, 140, 93);
+		contentPane.add(añadirMensaje);
+
+		// 4. IMPRIMIR MENSAJE: Genera el JTable basándose estrictamente en lo que haya
+		// en memoria (listaMensajes)
+		JButton imprimirMensaje = new JButton("Imprimir Mensaje");
+		imprimirMensaje.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mostrarTablaMensajes();
+			}
+		});
+		imprimirMensaje.setBounds(527, 315, 140, 93);
+		contentPane.add(imprimirMensaje);
+	}
+
+	public void mostrarTablaMensajes() {
+		JFrame ventanaTabla = new JFrame("Mensajes en Memoria");
+		ventanaTabla.setSize(600, 400);
+		ventanaTabla.setLocationRelativeTo(this);
+
+		String[] columnas = { "Fecha", "Hora", "De", "Para", "Asunto", "Contenido" };
+		DefaultTableModel modeloTabla = new DefaultTableModel(columnas, 0);
+
+		for (Mensajes m : listaMensajes) {
+			Object[] fila = { m.getFecha(), m.getHora(), m.getUserEnviar(), m.getUserRecibir(), m.getAsunto(),
+					m.getContenido() };
+			modeloTabla.addRow(fila);
+		}
+
+		JTable tabla = new JTable(modeloTabla);
+		JScrollPane scrollPane = new JScrollPane(tabla);
+
+		ventanaTabla.getContentPane().add(scrollPane, BorderLayout.CENTER);
+		ventanaTabla.setVisible(true);
+	}
+}

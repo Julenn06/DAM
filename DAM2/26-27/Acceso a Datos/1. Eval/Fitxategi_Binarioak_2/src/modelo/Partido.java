@@ -25,7 +25,6 @@ public class Partido implements Serializable {
 		this.fecha = fecha;
 	}
 
-	// Getters y Setters
 	public String getEquipoLocal() {
 		return equipoLocal;
 	}

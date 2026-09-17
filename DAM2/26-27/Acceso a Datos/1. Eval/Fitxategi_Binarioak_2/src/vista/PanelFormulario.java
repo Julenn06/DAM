@@ -16,12 +16,9 @@ public class PanelFormulario extends JPanel {
 	private JButton btnAñadir, btnCargar, btnGuardar;
 
 	public PanelFormulario() {
-		// Usamos BorderLayout para separar los campos del formulario de los botones de
-		// acción
 		setLayout(new BorderLayout(10, 10));
 		setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-		// Subpanel exclusivo para la cuadrícula de datos (6 filas x 2 columnas)
 		JPanel panelCampos = new JPanel(new GridLayout(6, 2, 8, 8));
 
 		panelCampos.add(new JLabel("Equipo Local:"));
@@ -48,23 +45,19 @@ public class PanelFormulario extends JPanel {
 		txtFecha = new JTextField();
 		panelCampos.add(txtFecha);
 
-		// Componentes de control
 		btnAñadir = new JButton("Añadir");
 		btnCargar = new JButton("Cargar");
 		btnGuardar = new JButton("Guardar");
 
-		// Subpanel horizontal para albergar todos los botones alineados
 		JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 5));
 		panelBotones.add(btnAñadir);
 		panelBotones.add(btnCargar);
 		panelBotones.add(btnGuardar);
 
-		// Añadimos las zonas al contenedor principal de la vista del formulario
 		add(panelCampos, BorderLayout.CENTER);
 		add(panelBotones, BorderLayout.SOUTH);
 	}
 
-	// Getters de los componentes para el Controlador
 	public JButton getBtnAñadir() {
 		return btnAñadir;
 	}

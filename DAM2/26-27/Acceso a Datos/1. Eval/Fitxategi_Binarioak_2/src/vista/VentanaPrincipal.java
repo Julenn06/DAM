@@ -24,7 +24,6 @@ public class VentanaPrincipal extends JFrame {
 		panelTabla = new PanelTabla();
 		panelEstadisticas = new PanelEstadisticas();
 
-		// Distribución según requerimientos del diagrama
 		add(panelFormulario, BorderLayout.NORTH);
 		add(panelTabla, BorderLayout.CENTER);
 		add(panelEstadisticas, BorderLayout.SOUTH);

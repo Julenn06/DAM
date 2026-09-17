@@ -40,10 +40,9 @@ public class Controlador {
 		String lugar = form.getLugar();
 		String fecha = form.getFecha();
 
-		// 1. Validaciones requeridas por la especificación
 		String regexAlfa = "^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,20}$";
 		String regexGoles = "^\\d{1,2}$";
-		String regexFecha = "^\\d{2}/\\d{2}/\\d{2}$"; // Formato estricto dd/MM/yy
+		String regexFecha = "^\\d{2}/\\d{2}/\\d{2}$";
 
 		if (!local.matches(regexAlfa) || !visitante.matches(regexAlfa) || !lugar.matches(regexAlfa)) {
 			mostrarError("Los campos de texto deben ser alfanuméricos (1 a 20 caracteres).");
@@ -58,7 +57,6 @@ public class Controlador {
 			return;
 		}
 
-		// 2. Procesamiento e Inserción
 		int golesL = Integer.parseInt(golesLStr);
 		int golesV = Integer.parseInt(golesVStr);
 
@@ -76,7 +74,6 @@ public class Controlador {
 
 			refrescarPantalla();
 
-			// Construcción del diálogo combinado de éxito
 			StringBuilder sb = new StringBuilder(
 					"Los partidos han sido cargados correctamente desde Resultados.dat.\n\n");
 			if (estAux != null) {
@@ -90,8 +87,6 @@ public class Controlador {
 			JOptionPane.showMessageDialog(vista, sb.toString(), "Carga completa", JOptionPane.INFORMATION_MESSAGE);
 
 		} catch (Exception ex) {
-			// Si no existen ficheros aún, se omite el error silenciosamente tal como
-			// estipula la guía
 			refrescarPantalla();
 		}
 	}

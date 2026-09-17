@@ -15,7 +15,7 @@ public class PanelEstadisticas extends JPanel {
 
 	public PanelEstadisticas() {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
-		setBackground(new Color(200, 230, 201)); // Tono verde claro corporativo
+		setBackground(new Color(200, 230, 201));
 		lblResumen = new JLabel("Estadísticas en memoria — 0 partidos — 0-0 goles totales (local-visitante)");
 		add(lblResumen);
 	}

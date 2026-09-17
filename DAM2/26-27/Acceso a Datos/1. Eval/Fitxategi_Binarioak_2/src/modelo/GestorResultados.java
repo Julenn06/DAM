@@ -31,7 +31,6 @@ public class GestorResultados {
 		this.listaPartidos = lista;
 	}
 
-	// Calcula estadísticas al vuelo desde memoria
 	public Estadisticas calcularEstadisticas() {
 		int golesLocal = 0;
 		int golesVisitante = 0;
@@ -42,14 +41,11 @@ public class GestorResultados {
 		return new Estadisticas(listaPartidos.size(), golesLocal, golesVisitante);
 	}
 
-	// Guarda simultáneamente ambos archivos binarios
 	public void guardarArchivos() throws IOException {
-		// 1. Guardar Resultados.dat (ObjectOutputStream)
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_RESULTADOS))) {
 			oos.writeObject(listaPartidos);
 		}
 
-		// 2. Guardar Estadisticas.dat (DataOutputStream)
 		Estadisticas est = calcularEstadisticas();
 		try (DataOutputStream dos = new DataOutputStream(new FileOutputStream(FILE_ESTADISTICAS))) {
 			dos.writeInt(est.getNumeroPartidos());
@@ -58,7 +54,6 @@ public class GestorResultados {
 		}
 	}
 
-	// Carga los partidos serializados de Resultados.dat
 	@SuppressWarnings("unchecked")
 	public void cargarResultados() throws IOException, ClassNotFoundException {
 		File file = new File(FILE_RESULTADOS);
@@ -69,8 +64,6 @@ public class GestorResultados {
 		}
 	}
 
-	// Lee los datos primitivos de Estadisticas.dat (Modo comprobación auxiliar
-	// requerido)
 	public Estadisticas cargarEstadisticasAuxiliar() throws IOException {
 		File file = new File(FILE_ESTADISTICAS);
 		if (file.exists()) {

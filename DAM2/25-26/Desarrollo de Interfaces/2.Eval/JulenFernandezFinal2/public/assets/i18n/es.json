@@ -1,0 +1,35 @@
+{
+  "login": {
+    "title": "Iniciar Sesión",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "login": "Entrar",
+    "error_invalid": "Usuario o contraseña incorrectos"
+  },
+  "header": {
+
+    "logout": "Cerrar Sesión"
+  },
+  "person": {
+    "title": "Tabla de libros",
+    "search_titulo": "Buscar autor",
+    "placeholder_titulo": "Ej. gabriel",
+    "clear_filters": "Limpiar filtros",
+    "create": "Crear persona",
+    "create_button": "Crear",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "modal_save_button": "Guardar",
+    "modal_cancel_button": "Cancelar",
+    "table": {
+      "id": "ID",
+      "name": "Autor",
+      "age": "Año",
+      "titulo": "Titulo",
+      "genero": "Genero",
+      "no_results": "No hay libros que coincidan con los filtros."
+    }
+  }
+}

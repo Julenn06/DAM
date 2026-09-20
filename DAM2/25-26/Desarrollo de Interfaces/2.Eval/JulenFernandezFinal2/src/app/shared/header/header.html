@@ -1,0 +1,29 @@
+@if (authService.isLoggedIn()) {
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle btn btn-link text-decoration-none" type="button" id="navbarDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            {{ languageService.getCurrentLanguage() | uppercase }}
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li><button type="button" class="dropdown-item" (click)="changeLanguage('es')">ES</button></li>
+            <li><button type="button" class="dropdown-item" (click)="changeLanguage('eu')">EU</button></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()" style="cursor: pointer;">{{ 'header.logout' | translate }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+}

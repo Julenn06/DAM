@@ -1,0 +1,34 @@
+{
+  "login": {
+    "title": "Saioa Hasi",
+    "username": "Erabiltzailea",
+    "password": "Pasahitza",
+    "login": "Sartu",
+    "error_invalid": "Erabiltzaile edo pasahitz okerra"
+  },
+  "header": {
+    "logout": "Saioa Itxi"
+  },
+  "person": {
+    "title": "Liburuen taula",
+    "search_titulo": "egilea bilatu",
+    "placeholder_titulo": "Adib. gabriel",
+    "clear_filters": "Iragazkiak garbitu",
+    "create": "Pertsona sortu",
+    "create_button": "Sortu",
+    "edit": "Editatu",
+    "delete": "Ezabatu",
+    "save": "Gorde",
+    "cancel": "Utzi",
+    "modal_save_button": "Gorde",
+    "modal_cancel_button": "Utzi",
+    "table": {
+      "id": "ID",
+      "name": "Autorea",
+      "age": "Urtea",
+      "titulo": "Izenburua",
+      "genero": "Generoa",
+      "no_results": "Iragazkiekin ez da libururik aurkitu."
+    }
+  }
+}

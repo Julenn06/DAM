@@ -1,0 +1,60 @@
+{
+  "login": {
+    "title": "Iniciar Sesión",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "login": "Entrar",
+    "error_invalid": "Usuario o contraseña incorrectos"
+  },
+  "header": {
+    "tabla": "Tabla",
+    "mapa": "Mapa",
+    "logout": "Cerrar Sesión"
+  },
+  "tabla": {
+    "title": "Tabla de Pueblos",
+    "provincia": "Provincia",
+    "nombre": "Nombre",
+    "habitantes": "Habitantes",
+    "superficie": "Superficie",
+    "acciones": "Acciones",
+    "crear": "Crear Pueblo",
+    "editar": "Editar",
+    "eliminar": "Eliminar",
+    "filtrar_provincia": "Filtrar por provincia",
+    "filtrar_habitantes": "Filtrar por habitantes (mayor que)",
+    "todos": "Todos"
+  },
+  "person": {
+    "title": "Tabla de personas",
+    "filter_age": "Mostrar solo mayores de",
+    "search_name": "Buscar nombre",
+    "search_email": "Buscar email",
+    "placeholder_age": "Ej. 30",
+    "placeholder_name": "Ej. Ana",
+    "placeholder_email": "Ej. ejemplo@dominio.com",
+    "clear_filters": "Limpiar filtros",
+    "create": "Crear persona",
+    "create_button": "Crear",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "edit_modal": "Editar en ventana",
+    "modal_title": "Editar persona",
+    "modal_save_button": "Guardar",
+    "modal_cancel_button": "Cancelar",
+    "create_modal": "Crear en ventana",
+    "table": {
+      "id": "ID",
+      "name": "Nombre",
+      "age": "Edad",
+      "email": "Email",
+      "interests": "Intereses",
+      "no_results": "No hay personas que coincidan con los filtros."
+    }
+  },
+  "mapa": {
+    "title": "Mapa de Pueblos"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "login": {
+    "title": "Saioa Hasi",
+    "username": "Erabiltzailea",
+    "password": "Pasahitza",
+    "login": "Sartu",
+    "error_invalid": "Erabiltzaile edo pasahitz okerra"
+  },
+  "header": {
+    "tabla": "Taula",
+    "mapa": "Mapa",
+    "logout": "Saioa Itxi"
+  },
+  "tabla": {
+    "title": "Herrien Taula",
+    "provincia": "Probintzia",
+    "nombre": "Izena",
+    "habitantes": "Biztanleak",
+    "superficie": "Azalera",
+    "acciones": "Ekintzak",
+    "crear": "Herria Sortu",
+    "editar": "Editatu",
+    "eliminar": "Ezabatu",
+    "filtrar_provincia": "Probintziaren arabera iragazi",
+    "filtrar_habitantes": "Biztanleen arabera iragazi (handiagoa baino)",
+    "todos": "Guztiak"
+  },
+  "person": {
+    "title": "Pertsonen taula",
+    "filter_age": "Adinetik gora bakarrik erakutsi",
+    "search_name": "Izena bilatu",
+    "search_email": "Email-a bilatu",
+    "placeholder_age": "Adib. 30",
+    "placeholder_name": "Adib. Ana",
+    "placeholder_email": "Adib. adibidea@domena.com",
+    "clear_filters": "Iragazkiak garbitu",
+    "create": "Pertsona sortu",
+    "create_button": "Sortu",
+    "edit": "Editatu",
+    "delete": "Ezabatu",
+    "save": "Gorde",
+    "cancel": "Utzi",
+    "edit_modal": "Leihoan editatu",
+    "modal_title": "Pertsona editatu",
+    "modal_save_button": "Gorde",
+    "modal_cancel_button": "Utzi",
+    "create_modal": "Leihoan sortu",
+    "table": {
+      "id": "ID",
+      "name": "Izena",
+      "age": "Adina",
+      "email": "Email",
+      "interests": "Interesak",
+      "no_results": "Iragazkiekin ez da pertsonarik aurkitu."
+    }
+  },
+  "mapa": {
+    "title": "Herrien Mapa"
+  }
+}

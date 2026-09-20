@@ -1,0 +1,17 @@
+{
+  "login": {
+    "title": "Saioa Hasi",
+    "username": "Erabiltzailea",
+    "password": "Pasahitza",
+    "login": "Sartu"
+  },
+  "header": {
+    "tabla": "Taula",
+    "mapa": "Mapa",
+    "logout": "Saioa Itxi"
+  },
+  "tabla": {
+    "title": "Pertsonen taula",
+    "nombre": "Izrna"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "login": {
+    "title": "Iniciar Sesión",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "login": "Entrar"
+  },
+  "header": {
+    "tabla": "Tabla",
+    "mapa": "Mapa",
+    "logout": "Cerrar Sesión"
+  },
+  "tabla": {
+    "title": "Tabla de Personas",
+    "nombre": "Nombre"
+  }
+}

@@ -1,0 +1,140 @@
+<div class="container-fluid mt-4">
+  <div class="card shadow-sm">
+    <div class="card-header bg-light">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="mb-0">{{ 'person.title' | translate }}</h2>
+        <button class="btn btn-sm btn-primary" (click)="abrirModalCrear(createDialog)">
+          <i class="bi bi-plus-lg"></i> {{ 'person.create_button' | translate }}
+        </button>
+      </div>
+    </div>
+    <div class="card-body">
+      <!-- ========== SECCIÓN DE FILTROS ========== -->
+      <div class="row g-3 mb-4">
+        <!-- Filtro de edad -->
+        <div class="col-lg-3">
+          <label for="filtroEdad" class="form-label fw-5">{{ 'person.filter_age' | translate }}</label>
+          <input type="number" id="filtroEdad" class="form-control" [(ngModel)]="edadMinima"
+            (ngModelChange)="filtrarPersonas()" placeholder="{{ 'person.placeholder_age' | translate }}">
+        </div>
+        <!-- Filtro de nombre -->
+        <div class="col-lg-3">
+          <label for="textoBusquedaNombre" class="form-label fw-5">{{ 'person.search_name' | translate }}</label>
+          <input type="text" id="textoBusquedaNombre" class="form-control" [(ngModel)]="textoBusquedaNombre"
+            (ngModelChange)="filtrarPersonas()" placeholder="{{ 'person.placeholder_name' | translate }}">
+        </div>
+        <!-- Filtro de email -->
+        <div class="col-lg-3">
+          <label for="textoBusquedaEmail" class="form-label fw-5">{{ 'person.search_email' | translate }}</label>
+          <input type="text" id="textoBusquedaEmail" class="form-control" [(ngModel)]="textoBusquedaEmail"
+            (ngModelChange)="filtrarPersonas()" placeholder="{{ 'person.placeholder_email' | translate }}">
+        </div>
+        <!-- Botón para limpiar todos los filtros -->
+        <div class="col-lg-3 d-flex align-items-end">
+          <button class="btn btn-outline-secondary w-100" (click)="limpiarFiltros()">
+            <i class="bi bi-arrow-counterclockwise"></i> {{ 'person.clear_filters' | translate }}
+          </button>
+        </div>
+      </div>
+
+      <!-- ========== TABLA DE PERSONAS ========== -->
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th>{{ 'person.table.id' | translate }}</th>
+              <th>{{ 'person.table.name' | translate }}</th>
+              <th class="text-end">{{ 'person.table.age' | translate }}</th>
+              <th>{{ 'person.table.email' | translate }}</th>
+              <th>{{ 'person.table.interests' | translate }}</th>
+              <th class="text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (persona of personasFiltradas; track persona.id) {
+            <tr>
+              <td>{{ persona.id }}</td>
+              <td>{{ persona.nombre }}</td>
+              <td class="text-end">{{ persona.edad }}</td>
+              <td>{{ persona.email }}</td>
+              <td>{{ persona.intereses }}</td>
+              <td class="text-center">
+                <!-- Botón editar (abre modal) -->
+                <button class="btn btn-sm btn-outline-primary me-2" (click)="abrirModalEditar(persona, editDialog)">
+                  <i class="bi bi-pencil-fill"></i> {{ 'person.edit' | translate }}
+                </button>
+                <!-- Botón eliminar -->
+                <button class="btn btn-sm btn-outline-danger" (click)="eliminarPersona(persona.id)">
+                  <i class="bi bi-trash-fill"></i> {{ 'person.delete' | translate }}
+                </button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <!-- Mensaje si no hay resultados tras aplicar filtros -->
+      @if (!personasFiltradas.length) {
+      <p class="text-muted mb-0">{{ 'person.table.no_results' | translate }}</p>
+      }
+    </div>
+  </div>
+  
+  <!-- ========== MODAL PARA EDITAR PERSONA ========== -->
+  <dialog #editDialog>
+    @if (personaEnModal) {
+    <form (ngSubmit)="guardarDesdeModal(editDialog)">
+      <h5>{{ 'person.modal_title' | translate }}</h5>
+      <div class="mb-2">
+        <label class="form-label">{{ 'person.table.name' | translate }}</label>
+        <input class="form-control" [(ngModel)]="personaEnModal!.nombre" name="modalNombre">
+      </div>
+      <div class="mb-2">
+        <label class="form-label">{{ 'person.table.age' | translate }}</label>
+        <input type="number" class="form-control" [(ngModel)]="personaEnModal!.edad" name="modalEdad">
+      </div>
+      <div class="mb-2">
+        <label class="form-label">{{ 'person.table.email' | translate }}</label>
+        <input type="email" class="form-control" [(ngModel)]="personaEnModal!.email" name="modalEmail">
+      </div>
+      <div class="mb-2">
+        <label class="form-label">{{ 'person.table.interests' | translate }}</label>
+        <input class="form-control" [(ngModel)]="personaEnModal!.intereses" name="modalIntereses">
+      </div>
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-secondary me-2" (click)="cerrarModal(editDialog)">{{ 'person.modal_cancel_button' | translate }}</button>
+        <button type="submit" class="btn btn-primary">{{ 'person.modal_save_button' | translate }}</button>
+      </div>
+    </form>
+    }
+  </dialog>
+
+  <!-- ========== MODAL PARA CREAR NUEVA PERSONA ========== -->
+  <dialog #createDialog>
+    @if (personaNuevaEnModal) {
+    <form (ngSubmit)="guardarDesdeModalCrear(createDialog)">
+      <h5>{{ 'person.create' | translate }}</h5>
+      <div class="mb-2">
+        <label class="form-label">{{ 'person.table.name' | translate }}</label>
+        <input class="form-control" [(ngModel)]="personaNuevaEnModal!.nombre" name="createNombre">
+      </div>
+      <div class="mb-2">
+        <label class="form-label">{{ 'person.table.age' | translate }}</label>
+        <input type="number" class="form-control" [(ngModel)]="personaNuevaEnModal!.edad" name="createEdad">
+      </div>
+      <div class="mb-2">
+        <label class="form-label">{{ 'person.table.email' | translate }}</label>
+        <input type="email" class="form-control" [(ngModel)]="personaNuevaEnModal!.email" name="createEmail">
+      </div>
+      <div class="mb-2">
+        <label class="form-label">{{ 'person.table.interests' | translate }}</label>
+        <input class="form-control" [(ngModel)]="personaNuevaEnModal!.intereses" name="createIntereses">
+      </div>
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-secondary me-2" (click)="cerrarModalCrear(createDialog)">{{ 'person.modal_cancel_button' | translate }}</button>
+        <button type="submit" class="btn btn-primary">{{ 'person.create_button' | translate }}</button>
+      </div>
+    </form>
+    }
+  </dialog>
+</div>

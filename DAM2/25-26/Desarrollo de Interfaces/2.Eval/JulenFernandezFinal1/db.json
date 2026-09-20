@@ -1,0 +1,58 @@
+{  
+  "users": [
+      {
+        "id": "1",
+        "usuario": "admin",
+        "contra": "admin"
+      },
+      {
+        "id": "2",
+        "usuario": "user",
+        "contra": "user"
+      }
+    ],
+  "personas": [
+    {
+      "id": "1",
+      "nombre": "Ana Perez",
+      "edad": "28",
+      "email": "ana.perez@example.com",
+      "intereses": "lectura, viajes, fotografia"
+    },
+    {
+      "id": "2",
+      "nombre": "Carlos Gomez",
+      "edad": "35",
+      "email": "carlos.gomez@example.com",
+      "intereses": "viajes, cine, programacion"
+    },
+    {
+      "id": "3",
+      "nombre": "Lucia Ramirez",
+      "edad": "22",
+      "email": "lucia.ramirez@example.com",
+      "intereses": "musica, arte, ajedrez, lectura"
+    },
+    {
+      "id": "4",
+      "nombre": "Javier Torres",
+      "edad": "40",
+      "email": "javier.torres@example.com",
+      "intereses": "ajedrez"
+    },
+    {
+      "id": "5",
+      "nombre": "Sofia Martinez",
+      "edad": "31",
+      "email": "sofia.martinez@example.com",
+      "intereses": "viajes, escritura, series, musica"
+    },
+    {
+      "id": "6",
+      "nombre": "Juan Pardo",
+      "edad": "40",
+      "email": "juan.pardo@example.com",
+      "intereses": ""
+    }
+  ]
+}

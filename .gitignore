@@ -1,50 +1,72 @@
-
-# Archivos sensibles
+# =========================================================================
+# ARCHIVOS SENSIBLES Y CREDENCIALES (¡Seguridad!)
+# =========================================================================
 serviceAccountKey.json
 google-service.json
+.env
+.env.*
+*.pem
+*.key
 
-# Salidas compiladas
-dist/
-tmp/
-out-tsc/
-bazel-out/
-
-# Node.js
+# =========================================================================
+# NODE.JS & HERRAMIENTAS DE CONSTRUCCIÓN (Angular, Bazel, etc.)
+# =========================================================================
 node_modules/
-npm-debug.log
-yarn-error.log
+/dist/
+/tmp/
+/out-tsc/
+/bazel-out/
+/.angular/cache/
+/.sass-cache/
+*.cache
+coverage/
+__screenshots__/
 
-# IDEs y editores
+# Logs de error y depuración
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+testem.log
+libpeerconnection.log
+
+# =========================================================================
+# IDEs Y EDITORES DE CÓDIGO
+# =========================================================================
 .idea/
 .project
 .classpath
+.c9/
+.settings/
+.history/
+*.launch
+*.sublime-workspace
 bin/
 target/
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
 
 # Visual Studio Code
-.vs/*
-.vscode/*
+# (Se eliminan los asteriscos de las carpetas para que Git las ignore correctamente)
+.vs/
+.vscode/
+
+# Permitir explícitamente configuraciones compartidas de VS Code
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
 
-# Misceláneos
-.angular/cache/
-.sass-cache/
-*.cache
-connect.lock
-coverage/
-libpeerconnection.log
-testem.log
-typings/
-__screenshots__/
-
-# Archivos del sistema
+# =========================================================================
+# ARCHIVOS DEL SISTEMA OPERATIVO
+# =========================================================================
 .DS_Store
+.DS_Store?
+._*
 Thumbs.db
+desktop.ini
+
+# =========================================================================
+# MISCELÁNEOS
+# =========================================================================
+connect.lock
+typings/

@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="text-center">Iniciar Sesión</h3>
+        </div>
+        <div class="card-body">
+          <!-- Eliminamos [formGroup] y #ngForm, usando un formulario clásico -->
+          <form (submit)="$event.preventDefault()">
+            
+            <div class="form-group">
+              <label for="username">Usuario (Correo electrónico)</label>
+              <!-- Usamos una referencia local nativa #userInput -->
+              <input type="text" id="username" #userInput class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Contraseña</label>
+              <!-- Usamos una referencia local nativa #passwordInput -->
+              <input type="password" id="password" #passwordInput class="form-control" required>
+            </div>
+
+            <!-- Enviamos los valores nativos de los inputs directamente al hacer clic -->
+            <button type="button" class="btn btn-primary btn-block mt-3" 
+                    (click)="onSubmit(userInput.value, passwordInput.value)">
+              Ingresar
+            </button>
+
+            @if (error) {
+              <div class="alert alert-danger mt-3">{{ error }}</div>
+            }
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

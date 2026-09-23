@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Permite que la aplicación abra sockets de red (fundamental para conectarse a localhost/127.0.0.1) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Permite acceder a información sobre las redes Wi-Fi (útil para verificar si el Wi-Fi está activo) -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- Permite ver el estado de todas las conexiones de red (saber si estás conectado o no) -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Requerido en versiones modernas de Android para descubrir servicios en la red local mediante mDNS (como el servicio ADB) -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+
+    <!-- Permite que tu servicio de terminal siga corriendo en segundo plano sin que Android lo destruya -->
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE"
+        tools:ignore="ForegroundServicesPolicy" />
+
+    <!-- A partir de Android 14, debes especificar el tipo de servicio (en tu caso, un servicio de datos o sistema) -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <queries>
+        <!-- Indica al sistema operativo que vas a interactuar con servicios de red mDNS específicos -->
+        <intent>
+            <action android:name="android.net.nsd.NSD_SERVICE" />
+        </intent>
+    </queries>
+
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ADB">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

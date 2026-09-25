@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_ver_historico"
+        android:icon="@drawable/ic_info"
+        android:title="📈 Histórico Acumulado"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_ver_desglose"
+        android:icon="@drawable/ic_info"
+        android:title="Ver Desglose IRPF Semana"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_borrar_semana"
+        android:icon="@drawable/ic_delete"
+        android:title="Vaciar Semana Actual"
+        app:showAsAction="never" />
+</menu>

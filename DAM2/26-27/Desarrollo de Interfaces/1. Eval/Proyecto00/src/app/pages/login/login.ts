@@ -2,26 +2,21 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
+  imports: [],
   selector: 'app-login',
+  styleUrl: './login.css',
   templateUrl: './login.html',
-  standalone: true,
-  imports: [] // Completamente vacío para evitar errores estáticos del compilador
 })
-export class LoginComponent {
-  private router = inject(Router);
-  error = '';
+export class Login {
 
-  // Aquí está la función que acepta los 2 argumentos que le envía el HTML
-  onSubmit(usernameVal: string, passwordVal: string) {
-    if (!usernameVal || !passwordVal) {
-      this.error = "Por favor, rellena todos los campos";
-      return;
-    }
+  private router = inject(Router)
 
-    if (usernameVal === "julen@gmail.com" && passwordVal === "12345") {
-        this.router.navigate(['/person']);
-    } else {
-        this.error = "Credenciales incorrectas";
-    }
+  onSubmit(username: string, age: number) {
+    if (!username.trim() || age == 0)
+      alert("completa los datos")
+    else if (age < 18)
+      alert("tienes que ser mayor de edad")
+    else
+      this.router.navigate(['/home'])
   }
 }

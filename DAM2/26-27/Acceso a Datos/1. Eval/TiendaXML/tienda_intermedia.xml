@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tienda>
+    <nombre>Nuestra Tierra</nombre>
+    <territorio>Euskal Herria</territorio>
+    <actividad>Venta de Productos Locales</actividad>
+
+    <dptos>
+        <dpto id="s1">
+            <nombre>Panadería</nombre>
+            <responsable>Jon Garai</responsable>
+        </dpto>
+        <dpto id="s2">
+            <nombre>Carnicería</nombre>
+            <responsable>Miren Garate</responsable>
+        </dpto>
+        <dpto id="s3">
+            <nombre>Limpieza</nombre>
+            <responsable>Edurne Urra</responsable>
+        </dpto>
+        <dpto id="s4">
+            <nombre>Frutas y Verduras</nombre>
+            <responsable>Iker Zabala</responsable>
+        </dpto>
+    </dptos>
+
+    <productos>
+        <producto id="p1" venta="s1" categoria="pan">
+            <nombre>Baguette</nombre>
+            <precio>1.20</precio>
+            <stock>40</stock>
+        </producto>
+        <producto id="p2" venta="s2" categoria="carne">
+            <nombre>Chuleta de Cerdo</nombre>
+            <precio>4.35</precio>
+            <stock>15</stock>
+        </producto>
+        <producto id="p3" venta="s3" categoria="limpieza">
+            <nombre>Limpiador suelos</nombre>
+            <precio>1.25</precio>
+            <stock>25</stock>
+        </producto>
+        <producto id="p4" venta="s4" categoria="fruta">
+            <nombre>Naranjas</nombre>
+            <precio>1.20</precio>
+            <stock>18</stock>
+        </producto>
+        <producto id="p5" venta="s4" categoria="verdura">
+            <nombre>Lechuga</nombre>
+            <precio>0.95</precio>
+            <stock>10</stock>
+        </producto>
+        <producto id="p6" venta="s2" categoria="carne">
+            <nombre>Chorizo</nombre>
+            <precio>5.50</precio>
+            <stock>22</stock>
+        </producto>
+    </productos>
+
+    <ventas>
+        <venta id="S1" fecha="2013-03-10" responsable="Jon Garai">
+            <producto>p1</producto>
+            <cantidad>3</cantidad>
+        </venta>
+        <venta id="S2" fecha="2013-04-02" responsable="Miren Garate">
+            <producto>p2</producto>
+            <cantidad>5</cantidad>
+        </venta>
+        <venta id="S3" fecha="2013-05-05" responsable="Edurne Urra">
+            <producto>p3</producto>
+            <cantidad>6</cantidad>
+        </venta>
+        <venta id="S4" fecha="2013-05-06" responsable="Iker Zabala">
+            <producto>p4</producto>
+            <cantidad>3</cantidad>
+        </venta>
+        <venta id="S5" fecha="2013-05-07" responsable="Iker Zabala">
+            <producto>p5</producto>
+            <cantidad>8</cantidad>
+        </venta>
+        <venta id="S6" fecha="2013-06-01" responsable="Miren Garate">
+            <producto>p6</producto>
+            <cantidad>4</cantidad>
+        </venta>
+    </ventas>
+</tienda>

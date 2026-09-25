@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_light"
+    android:forceDarkAllowed="false"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -252,6 +253,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginTop="10dp"
+                app:cardBackgroundColor="@color/surface_card"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
                 app:strokeColor="#E0E0E0"

@@ -260,14 +260,7 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Explicación de reglas -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="ℹ️ Explicación del cálculo:\n• Base x2: Cada socio aporta el doble de su cuota mensual (ej: 20€ -> 40€).\n• Bonus Semanal: 5 socios (+50€), 7 socios (+100€), 10 socios (+140€), y a partir de 10 por cada 3 extra (+50€).\n• Retención IRPF: Se deduce el 21,48% del Total Bruto acumulado en la semana."
-        android:textColor="@color/text_sub"
-        android:textSize="12sp" />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCerrarBreakdown"

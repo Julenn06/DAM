@@ -47,8 +47,12 @@ class IrpfBreakdownBottomSheetDialog(
         binding.tvBreakdownBonusValue.text =
             String.format(Locale.getDefault(), "+%.2f €", resumen.bonusSemanal)
 
-        binding.tvBreakdownBonusLabel.text =
+        val bonusLabel = if (resumen.esBonoRegaloAplicado) {
+            "3. Bonus semanal (${resumen.totalSociosHechos} hechos) 🎁 Bono de regalo"
+        } else {
             "3. Bonus semanal por socios (${resumen.totalSociosHechos} hechos)"
+        }
+        binding.tvBreakdownBonusLabel.text = bonusLabel
 
         binding.tvBreakdownBruto.text =
             String.format(Locale.getDefault(), "%.2f €", resumen.totalBruto)

@@ -15,6 +15,12 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/action_export_import"
+        android:icon="@drawable/ic_export"
+        android:title="💾 Exportar / Importar Datos"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/action_borrar_semana"
         android:icon="@drawable/ic_delete"
         android:title="Vaciar Semana Actual"

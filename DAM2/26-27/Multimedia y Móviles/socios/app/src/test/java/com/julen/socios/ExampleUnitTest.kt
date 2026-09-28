@@ -1,8 +1,10 @@
 package com.julen.socios
 
+import com.julen.socios.model.BonoRegaloInfo
 import com.julen.socios.model.Socio
 import com.julen.socios.util.CalculoComisiones
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class ExampleUnitTest {
@@ -97,5 +99,29 @@ class ExampleUnitTest {
         assertEquals(15, global.totalSociosHechosAcumulado)
         assertEquals(169.692, global.totalIrpfRetenidoAcumulado, 0.001)
         assertEquals(620.308, global.totalNetoAcumulado, 0.001)
+    }
+
+    @Test
+    fun testBonoRegaloCalculation() {
+        // 8 socios hechos de 20€ -> Normal bonus is 100€
+        val socios = List(8) {
+            Socio(colaboracion = 20.0, hecho = true, diaSemanaId = 1, semanaKey = "2025-W09")
+        }
+
+        // Grant 10-socio bonus level (140€) as gift
+        val bonoInfo = BonoRegaloInfo(
+            semanaKey = "2025-W09",
+            activo = true,
+            esMontoFijo = true,
+            monto = 140.0,
+            nota = "Regalo jefa"
+        )
+
+        val resumen = CalculoComisiones.calcularResumenSemana(socios, bonoInfo)
+
+        assertTrue(resumen.esBonoRegaloAplicado)
+        assertEquals(140.0, resumen.bonusSemanal, 0.001)
+        assertEquals(100.0, resumen.bonusAutomatico, 0.001)
+        assertEquals(40.0, resumen.montoBonoRegaloExtra, 0.001)
     }
 }

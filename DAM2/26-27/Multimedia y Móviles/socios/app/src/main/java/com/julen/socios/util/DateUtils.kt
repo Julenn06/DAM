@@ -52,6 +52,14 @@ object DateUtils {
     }
 
     /**
+     * Retorna el texto legible del rango de fechas a partir de la clave semanaKey (ej. "2025-W09").
+     */
+    fun getRangoSemanaTextoFromKey(semanaKey: String): String {
+        val offset = getWeekOffsetFromKey(semanaKey)
+        return getRangoSemanaTexto(offset)
+    }
+
+    /**
      * Retorna el ID del día actual (1=Lunes..5=Viernes).
      * Si es sábado o domingo, mapea por defecto al Lunes o Viernes.
      */

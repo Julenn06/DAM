@@ -43,6 +43,12 @@ class SocioRepository(context: Context) {
         socioDao.insertSocio(SocioEntity.fromSocio(socio))
     }
 
+    fun importSocios(socios: List<Socio>): Int = runBlocking(Dispatchers.IO) {
+        val entities = socios.map { SocioEntity.fromSocio(it) }
+        socioDao.insertSocios(entities)
+        entities.size
+    }
+
     fun updateSocio(socio: Socio) = runBlocking(Dispatchers.IO) {
         socioDao.updateSocio(SocioEntity.fromSocio(socio))
     }

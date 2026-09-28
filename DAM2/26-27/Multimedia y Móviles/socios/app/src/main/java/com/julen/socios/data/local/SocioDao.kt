@@ -30,6 +30,9 @@ interface SocioDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSocio(socio: SocioEntity)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertSocios(socios: List<SocioEntity>)
+
     @Update
     suspend fun updateSocio(socio: SocioEntity)
 

@@ -1,5 +1,6 @@
 package com.julen.socios.util
 
+import com.julen.socios.model.BonoRegaloInfo
 import com.julen.socios.model.Socio
 
 object CalculoComisiones {
@@ -55,7 +56,11 @@ object CalculoComisiones {
         val totalSociosHechos: Int,
         val sumaColaboracionesBase: Double, // Suma de cuotas
         val gananciasBaseX2: Double,        // Suma de cuotas x2
-        val bonusSemanal: Double,           // Bonus acumulado por socios
+        val bonusSemanal: Double,           // Bonus total acumulado (automático o ajustado)
+        val bonusAutomatico: Double = 0.0,  // Bonus automático sin ajuste
+        val esBonoRegaloAplicado: Boolean = false,
+        val montoBonoRegaloExtra: Double = 0.0,
+        val bonoRegaloNota: String = "",
         val totalBruto: Double,             // Base x2 + Bonus
         val retencionIrpf: Double,          // Bruto * 0.2148
         val totalNeto: Double,              // Bruto - Retención IRPF
@@ -78,15 +83,29 @@ object CalculoComisiones {
         val semanasHistoricas: List<SemanaHistoricaItem>
     )
 
-    fun calcularResumenSemana(socios: List<Socio>): ResumenCalculo {
+    fun calcularResumenSemana(
+        socios: List<Socio>,
+        bonoRegalo: BonoRegaloInfo? = null
+    ): ResumenCalculo {
         val hechos = socios.filter { it.hecho }
         val countHechos = hechos.size
         val countTotal = socios.size
 
         val sumaCuotas = hechos.sumOf { it.colaboracion }
         val baseX2 = sumaCuotas * 2.0
-        val bonus = calcularBonusSemanal(countHechos)
-        val bruto = baseX2 + bonus
+        val bonusAuto = calcularBonusSemanal(countHechos)
+
+        var bonusFinal = bonusAuto
+        var esRegaloAplicado = false
+        var extraRegalo = 0.0
+
+        if (bonoRegalo != null && bonoRegalo.activo) {
+            esRegaloAplicado = true
+            bonusFinal = bonoRegalo.monto
+            extraRegalo = (bonusFinal - bonusAuto).coerceAtLeast(0.0)
+        }
+
+        val bruto = baseX2 + bonusFinal
         val irpf = bruto * IRPF_PORCENTAJE
         val neto = bruto - irpf
 
@@ -98,7 +117,11 @@ object CalculoComisiones {
             totalSociosHechos = countHechos,
             sumaColaboracionesBase = sumaCuotas,
             gananciasBaseX2 = baseX2,
-            bonusSemanal = bonus,
+            bonusSemanal = bonusFinal,
+            bonusAutomatico = bonusAuto,
+            esBonoRegaloAplicado = esRegaloAplicado,
+            montoBonoRegaloExtra = extraRegalo,
+            bonoRegaloNota = bonoRegalo?.nota.orEmpty(),
             totalBruto = bruto,
             retencionIrpf = irpf,
             totalNeto = neto,
@@ -111,7 +134,10 @@ object CalculoComisiones {
     /**
      * Calcula el total acumulado de IRPF retenido, Neto ganado y Bonus en TODAS las semanas registradas.
      */
-    fun calcularResumenHistoricoGlobal(todosLosSocios: List<Socio>): ResumenHistoricoGlobal {
+    fun calcularResumenHistoricoGlobal(
+        todosLosSocios: List<Socio>,
+        bonosRegaloMap: Map<String, BonoRegaloInfo> = emptyMap()
+    ): ResumenHistoricoGlobal {
         val sociosPorSemana = todosLosSocios.groupBy { it.semanaKey }
 
         var totalIrpf = 0.0
@@ -122,12 +148,13 @@ object CalculoComisiones {
 
         val itemsSemanas = mutableListOf<SemanaHistoricaItem>()
 
-        // Ordenar semanas de la más reciente a la más antigua
-        val semanasOrdenadas = sociosPorSemana.keys.sortedDescending()
+        // Combinar todas las semanas presentes en socios O en bonosRegaloMap
+        val todasLasSemanas = (sociosPorSemana.keys + bonosRegaloMap.keys).distinct().sortedDescending()
 
-        for (semanaKey in semanasOrdenadas) {
+        for (semanaKey in todasLasSemanas) {
             val sociosDeSemana = sociosPorSemana[semanaKey] ?: emptyList()
-            val resumenSemana = calcularResumenSemana(sociosDeSemana)
+            val bonoInfo = bonosRegaloMap[semanaKey]
+            val resumenSemana = calcularResumenSemana(sociosDeSemana, bonoInfo)
 
             totalIrpf += resumenSemana.retencionIrpf
             totalNeto += resumenSemana.totalNeto

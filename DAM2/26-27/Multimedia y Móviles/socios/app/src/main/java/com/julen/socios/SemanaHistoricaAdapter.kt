@@ -29,8 +29,13 @@ class SemanaHistoricaAdapter(
             val r = item.resumenSemana
 
             binding.tvSemanaItemTitulo.text = "Semana ${item.semanaKey}"
-            binding.tvSemanaItemSociosCount.text =
+            
+            val bonusText = if (r.esBonoRegaloAplicado) {
+                "${r.totalSociosHechos} socios hechos (+${r.bonusSemanal.toInt()}€ bonus 🎁)"
+            } else {
                 "${r.totalSociosHechos} socios hechos (+${r.bonusSemanal.toInt()}€ bonus)"
+            }
+            binding.tvSemanaItemSociosCount.text = bonusText
 
             binding.tvSemanaItemNeto.text = String.format(Locale.getDefault(), "+%.2f €", r.totalNeto)
             binding.tvSemanaItemIrpf.text = String.format(Locale.getDefault(), "IRPF: -%.2f €", r.retencionIrpf)

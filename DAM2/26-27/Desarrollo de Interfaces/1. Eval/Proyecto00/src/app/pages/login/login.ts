@@ -1,22 +1,37 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { PersonService } from '../../services/users.service';
 
 @Component({
-  imports: [],
   selector: 'app-login',
-  styleUrl: './login.css',
   templateUrl: './login.html',
+  styleUrl: './login.css'
 })
 export class Login {
+  private router = inject(Router);
+  private personService = inject(PersonService);
 
-  private router = inject(Router)
+  errorMessage: string = '';
 
-  onSubmit(username: string, age: number) {
-    if (!username.trim() || age == 0)
-      alert("completa los datos")
-    else if (age < 18)
-      alert("tienes que ser mayor de edad")
-    else
-      this.router.navigate(['/home'])
+  onSubmit(username: string, password: string | number) {
+    this.errorMessage = '';
+
+    this.personService.getUsers().subscribe({
+      next: (usuarios) => {
+        const usuarioValido = usuarios.find(u =>
+          String(u.usuario) === String(username) && String(u.contra) === String(password)
+        );
+
+        if (usuarioValido) {
+          localStorage.setItem('currentUser', JSON.stringify(usuarioValido));
+          this.router.navigate(['/home']);
+        } else {
+          this.errorMessage = 'Usuario o contraseña incorrectos';
+        }
+      },
+      error: () => {
+        this.errorMessage = 'Error de conexión con el servidor.';
+      }
+    });
   }
 }

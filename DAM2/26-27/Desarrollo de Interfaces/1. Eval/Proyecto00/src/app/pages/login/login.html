@@ -1,5 +1,6 @@
 <form>
   <input type="text" #username placeholder="username">
-  <input type="number" #age placeholder="age" min="0" value="0">
-  <button type="button" (click)="onSubmit(username.value, +age.value)">Send</button>
+  <input type="text" #password placeholder="password">
+
+  <button type="button" (click)="onSubmit(username.value, password.value)">Send</button>
 </form>

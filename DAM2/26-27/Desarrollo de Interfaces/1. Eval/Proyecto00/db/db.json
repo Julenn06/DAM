@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "usuario": "user",
+      "contra": "user"
+    },
+    {
+      "usuario": "user",
+      "contra": "12345"
+    }
+  ]
+}

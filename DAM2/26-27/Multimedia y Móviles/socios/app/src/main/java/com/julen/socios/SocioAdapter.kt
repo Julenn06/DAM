@@ -1,8 +1,10 @@
 package com.julen.socios
 
+import android.animation.ValueAnimator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -11,6 +13,7 @@ import com.julen.socios.databinding.ItemSocioBinding
 import com.julen.socios.model.DiaSemana
 import com.julen.socios.model.Socio
 import com.julen.socios.util.CalculoComisiones
+import com.julen.socios.util.HapticUtils
 import java.util.Locale
 
 class SocioAdapter(
@@ -66,31 +69,43 @@ class SocioAdapter(
             binding.switchHecho.setOnCheckedChangeListener(null)
             binding.switchHecho.isChecked = socio.hecho
 
-            if (socio.hecho) {
+            val targetColor = if (socio.hecho) {
                 binding.tvEstadoTexto.text = "✓ Socio Conseguido (+${baseX2.toInt()}€ base)"
-                binding.tvEstadoTexto.setTextColor(ContextCompat.getColor(context, R.color.primary))
+                ContextCompat.getColor(context, R.color.primary)
             } else {
                 binding.tvEstadoTexto.text = "⏳ No Hecho (Pendiente)"
-                binding.tvEstadoTexto.setTextColor(
-                    ContextCompat.getColor(
-                        context,
-                        R.color.orange_pending
-                    )
-                )
+                ContextCompat.getColor(context, R.color.orange_pending)
             }
 
+            animateTextColor(binding.tvEstadoTexto, targetColor)
+
             // Listeners
-            binding.switchHecho.setOnCheckedChangeListener { _, _ ->
+            binding.switchHecho.setOnClickListener { view ->
+                HapticUtils.performToggle(view)
                 onToggleHecho(socio)
             }
 
-            binding.btnEditar.setOnClickListener {
+            binding.btnEditar.setOnClickListener { view ->
+                HapticUtils.performClick(view)
                 onEdit(socio)
             }
 
-            binding.btnEliminar.setOnClickListener {
+            binding.btnEliminar.setOnClickListener { view ->
+                HapticUtils.performClick(view)
                 onDelete(socio)
             }
+        }
+
+        private fun animateTextColor(textView: TextView, targetColor: Int) {
+            val currentColor = textView.currentTextColor
+            if (currentColor == targetColor) return
+
+            val animator = ValueAnimator.ofArgb(currentColor, targetColor)
+            animator.duration = 300L
+            animator.addUpdateListener { anim ->
+                textView.setTextColor(anim.animatedValue as Int)
+            }
+            animator.start()
         }
     }
 

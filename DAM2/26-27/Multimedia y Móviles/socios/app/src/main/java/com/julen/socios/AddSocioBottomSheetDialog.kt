@@ -1,13 +1,19 @@
 package com.julen.socios
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.julen.socios.databinding.BottomSheetAddSocioBinding
 import com.julen.socios.model.Socio
+import com.julen.socios.util.CalculoComisiones
+import com.julen.socios.util.HapticUtils
+import java.util.Locale
 
 class AddSocioBottomSheetDialog(
     private val semanaKey: String,
@@ -31,35 +37,88 @@ class AddSocioBottomSheetDialog(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupCuotaChips()
+        setupListeners()
 
         if (socioToEdit != null) {
-            binding.tvTitleBottomSheet.text = "Editar Socio"
+            binding.tvTitleBottomSheet.text = "Editar Registro de Socio"
+            binding.btnGuardarSocio.text = "Actualizar Socio"
+            binding.btnGuardarSocio.setIconResource(R.drawable.ic_edit)
+
             binding.switchSocioHechoAdd.isChecked = socioToEdit.hecho
             binding.etNombreSocio.setText(socioToEdit.nombreSocio)
             binding.etNotas.setText(socioToEdit.notas)
             selectCuota(socioToEdit.colaboracion)
             selectDia(socioToEdit.diaSemanaId)
         } else {
+            binding.tvTitleBottomSheet.text = "Añadir Nuevo Socio"
+            binding.btnGuardarSocio.text = "Guardar Socio"
+            binding.btnGuardarSocio.setIconResource(R.drawable.ic_add)
             selectDia(defaultDiaId)
         }
 
-        binding.btnCancelarAdd.setOnClickListener {
+        updateLivePreview()
+
+        binding.btnCancelarAdd.setOnClickListener { viewClick ->
+            HapticUtils.performClick(viewClick)
             dismiss()
         }
 
-        binding.btnGuardarSocio.setOnClickListener {
+        binding.btnGuardarSocio.setOnClickListener { viewClick ->
+            HapticUtils.performConfirm(viewClick)
             saveSocio()
         }
     }
 
-    private fun setupCuotaChips() {
+    private fun setupListeners() {
         binding.chipGroupCuotas.setOnCheckedStateChangeListener { _, checkedIds ->
+            HapticUtils.performClick(binding.chipGroupCuotas)
             if (checkedIds.contains(R.id.chipOtro)) {
                 binding.tilCustomAmount.visibility = View.VISIBLE
             } else {
                 binding.tilCustomAmount.visibility = View.GONE
             }
+            updateLivePreview()
+        }
+
+        binding.chipGroupDias.setOnCheckedStateChangeListener { _, _ ->
+            HapticUtils.performClick(binding.chipGroupDias)
+        }
+
+        binding.switchSocioHechoAdd.setOnCheckedChangeListener { viewSwitch, _ ->
+            HapticUtils.performToggle(viewSwitch)
+            updateLivePreview()
+        }
+
+        binding.etCustomAmount.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                updateLivePreview()
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        })
+    }
+
+    private fun updateLivePreview() {
+        val cuota = getSelectedCuota() ?: 0.0
+        val baseX2 = CalculoComisiones.calcularBaseX2(cuota)
+        val isHecho = binding.switchSocioHechoAdd.isChecked
+
+        binding.tvPreviewBaseX2.text = String.format(
+            Locale.getDefault(),
+            "+%.2f € (Cuota %.0f€ x2)",
+            baseX2,
+            cuota
+        )
+
+        val context = requireContext()
+        if (isHecho) {
+            binding.tvPreviewEstadoBadge.text = "✓ Conseguido"
+            binding.tvPreviewEstadoBadge.setTextColor(ContextCompat.getColor(context, R.color.primary))
+            binding.tvPreviewEstadoBadge.backgroundTintList = ContextCompat.getColorStateList(context, R.color.bg_light)
+        } else {
+            binding.tvPreviewEstadoBadge.text = "⏳ Pendiente"
+            binding.tvPreviewEstadoBadge.setTextColor(ContextCompat.getColor(context, R.color.orange_pending))
+            binding.tvPreviewEstadoBadge.backgroundTintList = ContextCompat.getColorStateList(context, R.color.bg_light)
         }
     }
 
@@ -122,8 +181,7 @@ class AddSocioBottomSheetDialog(
     private fun saveSocio() {
         val cuota = getSelectedCuota()
         if (cuota == null || cuota <= 0) {
-            Toast.makeText(context, "Por favor introduce un importe válido", Toast.LENGTH_SHORT)
-                .show()
+            Toast.makeText(context, "Por favor introduce un importe de colaboración válido", Toast.LENGTH_SHORT).show()
             return
         }
 

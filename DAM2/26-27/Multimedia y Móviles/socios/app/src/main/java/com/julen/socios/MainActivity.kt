@@ -2,9 +2,12 @@ package com.julen.socios
 
 import android.net.Uri
 import android.os.Bundle
+import android.view.GestureDetector
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
+import android.view.animation.OvershootInterpolator
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -13,18 +16,23 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.julen.socios.data.BonoRegaloRepository
 import com.julen.socios.data.SocioRepository
 import com.julen.socios.databinding.ActivityMainBinding
 import com.julen.socios.model.DiaSemana
 import com.julen.socios.model.Socio
+import com.julen.socios.util.AnimationExtensions
 import com.julen.socios.util.CalculoComisiones
 import com.julen.socios.util.DateUtils
 import com.julen.socios.util.ExportUtils
+import com.julen.socios.util.HapticUtils
+import com.julen.socios.util.NumberAnimators
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import kotlin.math.abs
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,8 +41,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var bonoRegaloRepository: BonoRegaloRepository
     private lateinit var adapter: SocioAdapter
 
+    private lateinit var gestureDetector: GestureDetector
+
     private var weekOffset = 0
     private var selectedDiaFiltroId: Int? = null // null = Todos, 1=Lunes..5=Viernes
+    private var previousBonusAmount: Int = -1
 
     // --- ACTIVATION / EXPORT & IMPORT LAUNCHERS ---
     private var pendingExportType: String? = null
@@ -50,33 +61,16 @@ class MainActivity : AppCompatActivity() {
                     when (pendingExportType) {
                         "pdf" -> {
                             val semanaKey = DateUtils.getSemanaKey(weekOffset)
-                            val bonoInfo =
-                                if (pendingExportTitle != "Histórico Global") bonoRegaloRepository.getBonoRegalo(
-                                    semanaKey
-                                ) else null
-                            ExportUtils.exportToPdf(
-                                pendingExportSocios,
-                                pendingExportTitle,
-                                outputStream,
-                                bonoInfo
-                            )
+                            val bonoInfo = if (pendingExportTitle != "Histórico Global") bonoRegaloRepository.getBonoRegalo(semanaKey) else null
+                            ExportUtils.exportToPdf(pendingExportSocios, pendingExportTitle, outputStream, bonoInfo)
                         }
-
                         "csv" -> ExportUtils.exportToCsv(pendingExportSocios, outputStream)
                         "json" -> ExportUtils.exportToJson(pendingExportSocios, outputStream)
                     }
                 }
-                Snackbar.make(
-                    binding.root,
-                    "¡Archivo guardado correctamente!",
-                    Snackbar.LENGTH_LONG
-                ).show()
+                Snackbar.make(binding.root, "¡Archivo guardado correctamente!", Snackbar.LENGTH_LONG).show()
             } catch (e: Exception) {
-                Snackbar.make(
-                    binding.root,
-                    "Error al guardar el archivo: ${e.message}",
-                    Snackbar.LENGTH_LONG
-                ).show()
+                Snackbar.make(binding.root, "Error al guardar el archivo: ${e.message}", Snackbar.LENGTH_LONG).show()
             }
         }
     }
@@ -90,26 +84,14 @@ class MainActivity : AppCompatActivity() {
                     val sociosImportados = ExportUtils.importFromJson(inputStream)
                     if (sociosImportados.isNotEmpty()) {
                         val count = repository.importSocios(sociosImportados)
-                        Snackbar.make(
-                            binding.root,
-                            "✓ Se han importado $count socios correctamente",
-                            Snackbar.LENGTH_LONG
-                        ).show()
+                        Snackbar.make(binding.root, "✓ Se han importado $count socios correctamente", Snackbar.LENGTH_LONG).show()
                         refreshUi()
                     } else {
-                        Snackbar.make(
-                            binding.root,
-                            "El archivo JSON no contiene socios válidos",
-                            Snackbar.LENGTH_LONG
-                        ).show()
+                        Snackbar.make(binding.root, "El archivo JSON no contiene socios válidos", Snackbar.LENGTH_LONG).show()
                     }
                 }
             } catch (e: Exception) {
-                Snackbar.make(
-                    binding.root,
-                    "Error al importar JSON: ${e.message}",
-                    Snackbar.LENGTH_LONG
-                ).show()
+                Snackbar.make(binding.root, "Error al importar JSON: ${e.message}", Snackbar.LENGTH_LONG).show()
             }
         }
     }
@@ -123,26 +105,14 @@ class MainActivity : AppCompatActivity() {
                     val sociosImportados = ExportUtils.importFromCsv(inputStream)
                     if (sociosImportados.isNotEmpty()) {
                         val count = repository.importSocios(sociosImportados)
-                        Snackbar.make(
-                            binding.root,
-                            "✓ Se han importado $count socios correctamente",
-                            Snackbar.LENGTH_LONG
-                        ).show()
+                        Snackbar.make(binding.root, "✓ Se han importado $count socios correctamente", Snackbar.LENGTH_LONG).show()
                         refreshUi()
                     } else {
-                        Snackbar.make(
-                            binding.root,
-                            "El archivo CSV no contiene socios válidos",
-                            Snackbar.LENGTH_LONG
-                        ).show()
+                        Snackbar.make(binding.root, "El archivo CSV no contiene socios válidos", Snackbar.LENGTH_LONG).show()
                     }
                 }
             } catch (e: Exception) {
-                Snackbar.make(
-                    binding.root,
-                    "Error al importar CSV: ${e.message}",
-                    Snackbar.LENGTH_LONG
-                ).show()
+                Snackbar.make(binding.root, "Error al importar CSV: ${e.message}", Snackbar.LENGTH_LONG).show()
             }
         }
     }
@@ -170,16 +140,95 @@ class MainActivity : AppCompatActivity() {
         setupDayFilterChips()
         setupFab()
         setupHeaderClickListeners()
+        setupGestureDetector()
+
+        // Micro-animaciones táctiles en elementos principales
+        AnimationExtensions.setupPressScaleAnimation(binding.fabAddSocio)
+        AnimationExtensions.setupPressScaleAnimation(binding.containerBonusHeader)
+        AnimationExtensions.setupPressScaleAnimation(binding.btnVerDesglose)
 
         refreshUi()
+    }
+
+    private fun setupGestureDetector() {
+        gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
+            private val swipeThreshold = 80
+            private val swipeVelocityThreshold = 80
+
+            override fun onFling(
+                e1: MotionEvent?,
+                e2: MotionEvent,
+                velocityX: Float,
+                velocityY: Float
+            ): Boolean {
+                if (e1 == null) return false
+                val diffX = e2.x - e1.x
+                val diffY = e2.y - e1.y
+
+                // Asegurar que el gesto es un deslizamiento horizontal claro y no scroll vertical
+                if (abs(diffX) > abs(diffY) * 1.3f) {
+                    if (abs(diffX) > swipeThreshold && abs(velocityX) > swipeVelocityThreshold) {
+                        if (diffX < 0) {
+                            // Deslizar izquierda -> Ir a la semana siguiente
+                            HapticUtils.performClick(binding.btnSemanaSiguiente)
+                            resetDayFilterToTodos()
+                            weekOffset++
+                            refreshUi()
+                        } else {
+                            // Deslizar derecha -> Ir a la semana anterior
+                            HapticUtils.performClick(binding.btnSemanaAnterior)
+                            resetDayFilterToTodos()
+                            weekOffset--
+                            refreshUi()
+                        }
+                        return true
+                    }
+                }
+                return false
+            }
+        })
+    }
+
+    private var isTouchStartedOnDayChips = false
+
+    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
+        if (ev.actionMasked == MotionEvent.ACTION_DOWN) {
+            isTouchStartedOnDayChips = isTouchInsideView(binding.scrollDiasFiltro, ev)
+        }
+
+        if (!isTouchStartedOnDayChips) {
+            gestureDetector.onTouchEvent(ev)
+        }
+
+        if (ev.actionMasked == MotionEvent.ACTION_UP || ev.actionMasked == MotionEvent.ACTION_CANCEL) {
+            isTouchStartedOnDayChips = false
+        }
+
+        return super.dispatchTouchEvent(ev)
+    }
+
+    private fun isTouchInsideView(view: View, ev: MotionEvent): Boolean {
+        if (view.visibility != View.VISIBLE) return false
+        val location = IntArray(2)
+        view.getLocationOnScreen(location)
+        val x = location[0]
+        val y = location[1]
+        val width = view.width
+        val height = view.height
+
+        return ev.rawX >= x && ev.rawX <= (x + width) && ev.rawY >= y && ev.rawY <= (y + height)
+    }
+
+    private fun resetDayFilterToTodos() {
+        selectedDiaFiltroId = null
+        binding.chipFiltroTodos.isChecked = true
     }
 
     private fun setupRecyclerView() {
         adapter = SocioAdapter(
             onToggleHecho = { socio ->
                 val nuevoEstado = repository.toggleSocioHecho(socio.id)
-                val msg =
-                    if (nuevoEstado) "✓ Socio marcado como HECHO" else "⏳ Socio marcado como NO HECHO"
+                val msg = if (nuevoEstado) "✓ Socio marcado como HECHO" else "⏳ Socio marcado como NO HECHO"
                 Snackbar.make(binding.root, msg, Snackbar.LENGTH_SHORT).show()
                 refreshUi()
             },
@@ -192,27 +241,61 @@ class MainActivity : AppCompatActivity() {
         )
         binding.rvSocios.layoutManager = LinearLayoutManager(this)
         binding.rvSocios.adapter = adapter
+
+        // Ocultar / Encojer el botón flotante al hacer scroll hacia abajo para no tapar contenido
+        binding.rvSocios.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 8 && binding.fabAddSocio.isExtended) {
+                    binding.fabAddSocio.shrink()
+                } else if (dy < -8 && !binding.fabAddSocio.isExtended) {
+                    binding.fabAddSocio.extend()
+                }
+            }
+        })
     }
 
     private fun setupWeekNavigation() {
         binding.btnSemanaAnterior.setOnClickListener {
+            resetDayFilterToTodos()
             weekOffset--
             refreshUi()
         }
 
         binding.btnSemanaSiguiente.setOnClickListener {
+            resetDayFilterToTodos()
             weekOffset++
             refreshUi()
         }
 
-        binding.btnHoy.setOnClickListener {
+        val onHoyClick = View.OnClickListener {
+            resetDayFilterToTodos()
             weekOffset = 0
             refreshUi()
         }
+
+        binding.btnHoyLeft.setOnClickListener(onHoyClick)
+        binding.btnHoyRight.setOnClickListener(onHoyClick)
     }
 
     private fun setupDayFilterChips() {
-        binding.chipGroupDiasFiltro.setOnCheckedStateChangeListener { _, checkedIds ->
+        binding.chipGroupDiasFiltro.setOnCheckedStateChangeListener { chipGroup, checkedIds ->
+            HapticUtils.performClick(chipGroup)
+            val checkedChipId = checkedIds.firstOrNull()
+            if (checkedChipId != null) {
+                val chip = chipGroup.findViewById<View>(checkedChipId)
+                chip?.animate()
+                    ?.scaleX(1.08f)
+                    ?.scaleY(1.08f)
+                    ?.setDuration(100)
+                    ?.withEndAction {
+                        chip.animate()
+                            ?.scaleX(1.0f)
+                            ?.scaleY(1.0f)
+                            ?.setDuration(100)
+                            ?.start()
+                    }
+                    ?.start()
+            }
             selectedDiaFiltroId = when {
                 checkedIds.contains(R.id.chipFiltroLun) -> 1
                 checkedIds.contains(R.id.chipFiltroMar) -> 2
@@ -254,11 +337,7 @@ class MainActivity : AppCompatActivity() {
             onSave = { socio ->
                 if (socioToEdit == null) {
                     repository.addSocio(socio)
-                    Snackbar.make(
-                        binding.root,
-                        "¡Socio registrado con éxito!",
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                    Snackbar.make(binding.root, "¡Socio registrado con éxito!", Snackbar.LENGTH_SHORT).show()
                 } else {
                     repository.updateSocio(socio)
                     Snackbar.make(binding.root, "Socio actualizado", Snackbar.LENGTH_SHORT).show()
@@ -296,12 +375,12 @@ class MainActivity : AppCompatActivity() {
     private fun mostrarHistoricoGlobal() {
         val todosLosSocios = repository.getAllSocios()
         val bonosMap = bonoRegaloRepository.getAllBonosRegalo()
-        val resumenGlobal =
-            CalculoComisiones.calcularResumenHistoricoGlobal(todosLosSocios, bonosMap)
+        val resumenGlobal = CalculoComisiones.calcularResumenHistoricoGlobal(todosLosSocios, bonosMap)
 
         val dialog = HistoricoGlobalBottomSheetDialog(
             resumenGlobal = resumenGlobal,
             onSelectSemana = { semanaKey ->
+                resetDayFilterToTodos()
                 weekOffset = DateUtils.getWeekOffsetFromKey(semanaKey)
                 refreshUi()
             }
@@ -324,11 +403,7 @@ class MainActivity : AppCompatActivity() {
             },
             onDelete = {
                 bonoRegaloRepository.deleteBonoRegalo(semanaKey)
-                Snackbar.make(
-                    binding.root,
-                    "Bonus restablecido a automático",
-                    Snackbar.LENGTH_SHORT
-                ).show()
+                Snackbar.make(binding.root, "Bonus restablecido a automático", Snackbar.LENGTH_SHORT).show()
                 refreshUi()
             }
         )
@@ -339,8 +414,7 @@ class MainActivity : AppCompatActivity() {
         val semanaKeyActiva = DateUtils.getSemanaKey(weekOffset)
         val todosLosSocios = repository.getAllSocios()
         val bonosMap = bonoRegaloRepository.getAllBonosRegalo()
-        val todasLasSemanasKeys =
-            (todosLosSocios.map { it.semanaKey } + bonosMap.keys).distinct().sortedDescending()
+        val todasLasSemanasKeys = (todosLosSocios.map { it.semanaKey } + bonosMap.keys).distinct().sortedDescending()
 
         val dialog = ExportImportBottomSheetDialog(
             semanaKeyActiva = semanaKeyActiva,
@@ -375,7 +449,6 @@ class MainActivity : AppCompatActivity() {
                 val bono = bonoRegaloRepository.getBonoRegalo(semanaKeyActiva)
                 Triple(sociosSemana, rango, bono)
             }
-
             is ExportScope.SemanasEspecificas -> {
                 val keys = scope.semanaKeys
                 val sociosFiltrados = allSocios.filter { it.semanaKey in keys }
@@ -384,22 +457,16 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     "${keys.size} semanas seleccionadas"
                 }
-                val bono =
-                    if (keys.size == 1) bonoRegaloRepository.getBonoRegalo(keys.first()) else null
+                val bono = if (keys.size == 1) bonoRegaloRepository.getBonoRegalo(keys.first()) else null
                 Triple(sociosFiltrados, tituloTexto, bono)
             }
-
             is ExportScope.HistoricoGlobal -> {
                 Triple(allSocios, "Histórico Global", null)
             }
         }
 
         if (socios.isEmpty()) {
-            Snackbar.make(
-                binding.root,
-                "No hay socios para exportar en el rango seleccionado",
-                Snackbar.LENGTH_LONG
-            ).show()
+            Snackbar.make(binding.root, "No hay socios para exportar en el rango seleccionado", Snackbar.LENGTH_LONG).show()
             return
         }
 
@@ -421,19 +488,14 @@ class MainActivity : AppCompatActivity() {
                         }
                         ExportUtils.shareFile(this, file, mime, "Compartir reporte $tipo")
                     } else {
-                        Snackbar.make(
-                            binding.root,
-                            "Error al generar archivo temporal",
-                            Snackbar.LENGTH_LONG
-                        ).show()
+                        Snackbar.make(binding.root, "Error al generar archivo temporal", Snackbar.LENGTH_LONG).show()
                     }
                 } else {
                     pendingExportType = tipo
                     pendingExportSocios = socios
                     pendingExportTitle = titulo
 
-                    val timestamp =
-                        SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+                    val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
                     val defaultFileName = "socios_${semanaKeyActiva}_$timestamp.$tipo"
                     createDocumentLauncher.launch(defaultFileName)
                 }
@@ -449,26 +511,30 @@ class MainActivity : AppCompatActivity() {
 
         // Rango de fechas
         binding.tvRangoSemana.text = DateUtils.getRangoSemanaTexto(weekOffset)
-        binding.tvSemanaSubtitulo.text =
-            if (weekOffset == 0) "Semana actual (Lunes a Viernes)" else "Semana $semanaKey"
-        binding.btnHoy.visibility = if (weekOffset != 0) View.VISIBLE else View.GONE
+        binding.tvSemanaSubtitulo.text = if (weekOffset == 0) "Semana actual (Lunes a Viernes)" else "Semana $semanaKey"
+
+        // Posicionamiento inteligente del botón Hoy (Izquierda para semanas futuras, Derecha para semanas pasadas)
+        if (weekOffset < 0) {
+            binding.btnHoyLeft.visibility = View.GONE
+            binding.btnHoyRight.visibility = View.VISIBLE
+        } else if (weekOffset > 0) {
+            binding.btnHoyLeft.visibility = View.VISIBLE
+            binding.btnHoyRight.visibility = View.GONE
+        } else {
+            binding.btnHoyLeft.visibility = View.GONE
+            binding.btnHoyRight.visibility = View.GONE
+        }
 
         // Cálculos generales de la semana
-        val resumenSemana =
-            CalculoComisiones.calcularResumenSemana(todosSociosSemana, bonoInfoSemana)
+        val resumenSemana = CalculoComisiones.calcularResumenSemana(todosSociosSemana, bonoInfoSemana)
 
-        // Actualizar Card Financiera de la semana
-        binding.tvNetoHeader.text =
-            String.format(Locale.getDefault(), "%.2f €", resumenSemana.totalNeto)
-        binding.tvBaseHeader.text =
-            String.format(Locale.getDefault(), "+%.0f €", resumenSemana.gananciasBaseX2)
-        binding.tvBonusHeader.text =
-            String.format(Locale.getDefault(), "+%.0f €", resumenSemana.bonusSemanal)
-        binding.tvIrpfHeader.text =
-            String.format(Locale.getDefault(), "-%.2f €", resumenSemana.retencionIrpf)
+        // Actualizar Card Financiera con Animaciones de Conteo de Números (Count-up Animators)
+        NumberAnimators.animateCurrency(binding.tvNetoHeader, resumenSemana.totalNeto, prefix = "")
+        NumberAnimators.animateCurrency(binding.tvBaseHeader, resumenSemana.gananciasBaseX2, prefix = "+", decimals = 0)
+        NumberAnimators.animateCurrency(binding.tvBonusHeader, resumenSemana.bonusSemanal, prefix = "+", decimals = 0)
+        NumberAnimators.animateCurrency(binding.tvIrpfHeader, resumenSemana.retencionIrpf, prefix = "-")
 
-        binding.tvBonusHeaderLabel.text =
-            if (resumenSemana.esBonoRegaloAplicado) "Bonus (Manual) ✏️" else "Bonus Socios ✏️"
+        binding.tvBonusHeaderLabel.text = if (resumenSemana.esBonoRegaloAplicado) "Bonus (Manual) ✏️" else "Bonus Socios ✏️"
 
         // Actualizar Card de Bonus
         val bonusActual = resumenSemana.bonusSemanal.toInt()
@@ -479,17 +545,32 @@ class MainActivity : AppCompatActivity() {
         binding.tvBonusTitle.text = "🏆 Bonus Nivel: +$bonusActual € ($hechosCount socios hechos)"
         binding.tvBonusProgressCount.text = "$hechosCount / $metaSocios socios"
 
-        val progressPercent =
-            ((hechosCount.toFloat() / metaSocios.toFloat()) * 100).toInt().coerceAtMost(100)
-        binding.progressBonus.progress = progressPercent
+        // Animación de pulso elástico cuando se incrementa el bonus
+        if (previousBonusAmount in 0 until bonusActual) {
+            binding.tvBonusTitle.animate()
+                .scaleX(1.12f)
+                .scaleY(1.12f)
+                .setDuration(200)
+                .setInterpolator(OvershootInterpolator(2.5f))
+                .withEndAction {
+                    binding.tvBonusTitle.animate()
+                        .scaleX(1.0f)
+                        .scaleY(1.0f)
+                        .setDuration(150)
+                        .start()
+                }
+                .start()
+        }
+        previousBonusAmount = bonusActual
+
+        val progressPercent = ((hechosCount.toFloat() / metaSocios.toFloat()) * 100).toInt().coerceAtMost(100)
+        AnimationExtensions.animateProgressSmooth(binding.progressBonus, progressPercent)
 
         if (resumenSemana.sociosFaltantesParaSiguienteMeta > 0) {
             val faltan = resumenSemana.sociosFaltantesParaSiguienteMeta
-            binding.tvBonusSiguienteMeta.text =
-                "¡Haz $faltan ${if (faltan == 1) "socio más" else "socios más"} para alcanzar el Bonus de +$metaBonus €!"
+            binding.tvBonusSiguienteMeta.text = "¡Haz $faltan ${if (faltan == 1) "socio más" else "socios más"} para alcanzar el Bonus de +$metaBonus €!"
         } else {
-            binding.tvBonusSiguienteMeta.text =
-                "¡Enhorabuena! Has alcanzado el nivel de bonus máximo para este tramo."
+            binding.tvBonusSiguienteMeta.text = "¡Enhorabuena! Has alcanzado el nivel de bonus máximo para este tramo."
         }
 
         // Actualizar contadores de los Chips de Filtro por Día
@@ -514,7 +595,7 @@ class MainActivity : AppCompatActivity() {
             todosSociosSemana
         }
 
-        // Actualizar Lista y Empty State
+        // Actualizar Lista y Empty State de forma nativa e instantánea
         adapter.submitList(listaFiltrada)
 
         if (listaFiltrada.isEmpty()) {
@@ -527,8 +608,7 @@ class MainActivity : AppCompatActivity() {
 
         // Título de la lista
         val diaNombre = selectedDiaFiltroId?.let { DiaSemana.fromId(it).nombreCompleto }
-        binding.tvListaTitulo.text =
-            if (diaNombre != null) "Socios del $diaNombre" else "Socios de la semana"
+        binding.tvListaTitulo.text = if (diaNombre != null) "Socios del $diaNombre" else "Socios de la semana"
 
         val hechosFiltrados = listaFiltrada.count { it.hecho }
         binding.tvListaResumenDia.text = "$hechosFiltrados hechos / ${listaFiltrada.size} reg."
@@ -545,22 +625,18 @@ class MainActivity : AppCompatActivity() {
                 mostrarHistoricoGlobal()
                 true
             }
-
             R.id.action_ver_desglose -> {
                 mostrarDesgloseIrpf()
                 true
             }
-
             R.id.action_export_import -> {
                 mostrarDialogoExportImport()
                 true
             }
-
             R.id.action_borrar_semana -> {
                 confirmarBorrarSemana()
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }

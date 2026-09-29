@@ -113,7 +113,11 @@ class BonoRegaloBottomSheetDialog(
 
         val monto = getSelectedMonto()
         if (monto == null || monto < 0) {
-            Toast.makeText(context, "Por favor selecciona o introduce un importe de bonus", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                "Por favor selecciona o introduce un importe de bonus",
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
 

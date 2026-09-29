@@ -70,8 +70,7 @@ object CalculoComisiones {
     )
 
     data class SemanaHistoricaItem(
-        val semanaKey: String,
-        val resumenSemana: ResumenCalculo
+        val semanaKey: String, val resumenSemana: ResumenCalculo
     )
 
     data class ResumenHistoricoGlobal(
@@ -84,8 +83,7 @@ object CalculoComisiones {
     )
 
     fun calcularResumenSemana(
-        socios: List<Socio>,
-        bonoRegalo: BonoRegaloInfo? = null
+        socios: List<Socio>, bonoRegalo: BonoRegaloInfo? = null
     ): ResumenCalculo {
         val hechos = socios.filter { it.hecho }
         val countHechos = hechos.size
@@ -135,8 +133,7 @@ object CalculoComisiones {
      * Calcula el total acumulado de IRPF retenido, Neto ganado y Bonus en TODAS las semanas registradas.
      */
     fun calcularResumenHistoricoGlobal(
-        todosLosSocios: List<Socio>,
-        bonosRegaloMap: Map<String, BonoRegaloInfo> = emptyMap()
+        todosLosSocios: List<Socio>, bonosRegaloMap: Map<String, BonoRegaloInfo> = emptyMap()
     ): ResumenHistoricoGlobal {
         val sociosPorSemana = todosLosSocios.groupBy { it.semanaKey }
 
@@ -149,7 +146,8 @@ object CalculoComisiones {
         val itemsSemanas = mutableListOf<SemanaHistoricaItem>()
 
         // Combinar todas las semanas presentes en socios O en bonosRegaloMap
-        val todasLasSemanas = (sociosPorSemana.keys + bonosRegaloMap.keys).distinct().sortedDescending()
+        val todasLasSemanas =
+            (sociosPorSemana.keys + bonosRegaloMap.keys).distinct().sortedDescending()
 
         for (semanaKey in todasLasSemanas) {
             val sociosDeSemana = sociosPorSemana[semanaKey] ?: emptyList()
@@ -164,8 +162,7 @@ object CalculoComisiones {
 
             itemsSemanas.add(
                 SemanaHistoricaItem(
-                    semanaKey = semanaKey,
-                    resumenSemana = resumenSemana
+                    semanaKey = semanaKey, resumenSemana = resumenSemana
                 )
             )
         }

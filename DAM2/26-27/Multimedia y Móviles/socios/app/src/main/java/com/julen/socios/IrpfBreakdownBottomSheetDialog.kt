@@ -32,8 +32,10 @@ class IrpfBreakdownBottomSheetDialog(
         binding.tvBreakdownRangoSemana.text = rangoSemanaTexto
 
         // Formatos de moneda
-        binding.tvBreakdownNetoBig.text = String.format(Locale.getDefault(), "%.2f €", resumen.totalNeto)
-        binding.tvBreakdownNetoSmall.text = String.format(Locale.getDefault(), "%.2f €", resumen.totalNeto)
+        binding.tvBreakdownNetoBig.text =
+            String.format(Locale.getDefault(), "%.2f €", resumen.totalNeto)
+        binding.tvBreakdownNetoSmall.text =
+            String.format(Locale.getDefault(), "%.2f €", resumen.totalNeto)
 
         binding.tvBreakdownSociosCount.text =
             "Basado en ${resumen.totalSociosHechos} socios hechos (${resumen.totalSociosRegistrados} registrados)"

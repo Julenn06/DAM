@@ -5,21 +5,11 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface SocioDao {
     @Query("SELECT * FROM socios ORDER BY timestamp DESC")
-    fun getAllSociosFlow(): Flow<List<SocioEntity>>
-
-    @Query("SELECT * FROM socios ORDER BY timestamp DESC")
     suspend fun getAllSocios(): List<SocioEntity>
-
-    @Query("SELECT * FROM socios WHERE semanaKey = :semanaKey ORDER BY timestamp DESC")
-    fun getSociosPorSemanaFlow(semanaKey: String): Flow<List<SocioEntity>>
-
-    @Query("SELECT * FROM socios WHERE semanaKey = :semanaKey AND diaSemanaId = :diaId ORDER BY timestamp DESC")
-    fun getSociosPorDiaFlow(semanaKey: String, diaId: Int): Flow<List<SocioEntity>>
 
     @Query("SELECT * FROM socios WHERE semanaKey = :semanaKey ORDER BY timestamp DESC")
     suspend fun getSociosPorSemana(semanaKey: String): List<SocioEntity>

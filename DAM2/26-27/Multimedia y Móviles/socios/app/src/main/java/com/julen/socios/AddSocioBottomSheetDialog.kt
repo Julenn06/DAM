@@ -122,7 +122,8 @@ class AddSocioBottomSheetDialog(
     private fun saveSocio() {
         val cuota = getSelectedCuota()
         if (cuota == null || cuota <= 0) {
-            Toast.makeText(context, "Por favor introduce un importe válido", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Por favor introduce un importe válido", Toast.LENGTH_SHORT)
+                .show()
             return
         }
 

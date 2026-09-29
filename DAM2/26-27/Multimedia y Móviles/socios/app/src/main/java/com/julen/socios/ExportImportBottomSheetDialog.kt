@@ -99,18 +99,26 @@ class ExportImportBottomSheetDialog(
 
     private fun updateBotonSemanasTexto() {
         val count = selectedSemanasKeys.size
-        binding.btnElegirSemanas.text = if (count == 0) {
-            "📅 Pulsar para seleccionar semanas..."
-        } else if (count == 1) {
-            "📅 1 semana seleccionada (${selectedSemanasKeys.first()})"
-        } else {
-            "📅 $count semanas seleccionadas"
+        binding.btnElegirSemanas.text = when (count) {
+            0 -> {
+                "📅 Pulsar para seleccionar semanas..."
+            }
+            1 -> {
+                "📅 1 semana seleccionada (${selectedSemanasKeys.first()})"
+            }
+            else -> {
+                "📅 $count semanas seleccionadas"
+            }
         }
     }
 
     private fun mostrarDialogoSeleccionarSemanas() {
         if (todasLasSemanasKeys.isEmpty()) {
-            Toast.makeText(context, "No hay semanas registradas para seleccionar", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                "No hay semanas registradas para seleccionar",
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
 
@@ -150,6 +158,7 @@ class ExportImportBottomSheetDialog(
                     ExportScope.SemanasEspecificas(selectedSemanasKeys)
                 }
             }
+
             binding.chipAlcanceHistorico.isChecked -> ExportScope.HistoricoGlobal
             else -> ExportScope.SemanaActiva
         }

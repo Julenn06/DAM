@@ -261,7 +261,6 @@
     </com.google.android.material.card.MaterialCardView>
 
 
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCerrarBreakdown"
         android:layout_width="match_parent"

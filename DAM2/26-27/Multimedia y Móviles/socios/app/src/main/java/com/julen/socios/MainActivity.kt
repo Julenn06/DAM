@@ -50,16 +50,33 @@ class MainActivity : AppCompatActivity() {
                     when (pendingExportType) {
                         "pdf" -> {
                             val semanaKey = DateUtils.getSemanaKey(weekOffset)
-                            val bonoInfo = if (pendingExportTitle != "Histórico Global") bonoRegaloRepository.getBonoRegalo(semanaKey) else null
-                            ExportUtils.exportToPdf(this, pendingExportSocios, pendingExportTitle, outputStream, bonoInfo)
+                            val bonoInfo =
+                                if (pendingExportTitle != "Histórico Global") bonoRegaloRepository.getBonoRegalo(
+                                    semanaKey
+                                ) else null
+                            ExportUtils.exportToPdf(
+                                pendingExportSocios,
+                                pendingExportTitle,
+                                outputStream,
+                                bonoInfo
+                            )
                         }
+
                         "csv" -> ExportUtils.exportToCsv(pendingExportSocios, outputStream)
                         "json" -> ExportUtils.exportToJson(pendingExportSocios, outputStream)
                     }
                 }
-                Snackbar.make(binding.root, "¡Archivo guardado correctamente!", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(
+                    binding.root,
+                    "¡Archivo guardado correctamente!",
+                    Snackbar.LENGTH_LONG
+                ).show()
             } catch (e: Exception) {
-                Snackbar.make(binding.root, "Error al guardar el archivo: ${e.message}", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(
+                    binding.root,
+                    "Error al guardar el archivo: ${e.message}",
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
         }
     }
@@ -73,14 +90,26 @@ class MainActivity : AppCompatActivity() {
                     val sociosImportados = ExportUtils.importFromJson(inputStream)
                     if (sociosImportados.isNotEmpty()) {
                         val count = repository.importSocios(sociosImportados)
-                        Snackbar.make(binding.root, "✓ Se han importado $count socios correctamente", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(
+                            binding.root,
+                            "✓ Se han importado $count socios correctamente",
+                            Snackbar.LENGTH_LONG
+                        ).show()
                         refreshUi()
                     } else {
-                        Snackbar.make(binding.root, "El archivo JSON no contiene socios válidos", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(
+                            binding.root,
+                            "El archivo JSON no contiene socios válidos",
+                            Snackbar.LENGTH_LONG
+                        ).show()
                     }
                 }
             } catch (e: Exception) {
-                Snackbar.make(binding.root, "Error al importar JSON: ${e.message}", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(
+                    binding.root,
+                    "Error al importar JSON: ${e.message}",
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
         }
     }
@@ -94,14 +123,26 @@ class MainActivity : AppCompatActivity() {
                     val sociosImportados = ExportUtils.importFromCsv(inputStream)
                     if (sociosImportados.isNotEmpty()) {
                         val count = repository.importSocios(sociosImportados)
-                        Snackbar.make(binding.root, "✓ Se han importado $count socios correctamente", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(
+                            binding.root,
+                            "✓ Se han importado $count socios correctamente",
+                            Snackbar.LENGTH_LONG
+                        ).show()
                         refreshUi()
                     } else {
-                        Snackbar.make(binding.root, "El archivo CSV no contiene socios válidos", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(
+                            binding.root,
+                            "El archivo CSV no contiene socios válidos",
+                            Snackbar.LENGTH_LONG
+                        ).show()
                     }
                 }
             } catch (e: Exception) {
-                Snackbar.make(binding.root, "Error al importar CSV: ${e.message}", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(
+                    binding.root,
+                    "Error al importar CSV: ${e.message}",
+                    Snackbar.LENGTH_LONG
+                ).show()
             }
         }
     }
@@ -137,7 +178,8 @@ class MainActivity : AppCompatActivity() {
         adapter = SocioAdapter(
             onToggleHecho = { socio ->
                 val nuevoEstado = repository.toggleSocioHecho(socio.id)
-                val msg = if (nuevoEstado) "✓ Socio marcado como HECHO" else "⏳ Socio marcado como NO HECHO"
+                val msg =
+                    if (nuevoEstado) "✓ Socio marcado como HECHO" else "⏳ Socio marcado como NO HECHO"
                 Snackbar.make(binding.root, msg, Snackbar.LENGTH_SHORT).show()
                 refreshUi()
             },
@@ -212,7 +254,11 @@ class MainActivity : AppCompatActivity() {
             onSave = { socio ->
                 if (socioToEdit == null) {
                     repository.addSocio(socio)
-                    Snackbar.make(binding.root, "¡Socio registrado con éxito!", Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(
+                        binding.root,
+                        "¡Socio registrado con éxito!",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
                 } else {
                     repository.updateSocio(socio)
                     Snackbar.make(binding.root, "Socio actualizado", Snackbar.LENGTH_SHORT).show()
@@ -250,7 +296,8 @@ class MainActivity : AppCompatActivity() {
     private fun mostrarHistoricoGlobal() {
         val todosLosSocios = repository.getAllSocios()
         val bonosMap = bonoRegaloRepository.getAllBonosRegalo()
-        val resumenGlobal = CalculoComisiones.calcularResumenHistoricoGlobal(todosLosSocios, bonosMap)
+        val resumenGlobal =
+            CalculoComisiones.calcularResumenHistoricoGlobal(todosLosSocios, bonosMap)
 
         val dialog = HistoricoGlobalBottomSheetDialog(
             resumenGlobal = resumenGlobal,
@@ -277,7 +324,11 @@ class MainActivity : AppCompatActivity() {
             },
             onDelete = {
                 bonoRegaloRepository.deleteBonoRegalo(semanaKey)
-                Snackbar.make(binding.root, "Bonus restablecido a automático", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    binding.root,
+                    "Bonus restablecido a automático",
+                    Snackbar.LENGTH_SHORT
+                ).show()
                 refreshUi()
             }
         )
@@ -288,7 +339,8 @@ class MainActivity : AppCompatActivity() {
         val semanaKeyActiva = DateUtils.getSemanaKey(weekOffset)
         val todosLosSocios = repository.getAllSocios()
         val bonosMap = bonoRegaloRepository.getAllBonosRegalo()
-        val todasLasSemanasKeys = (todosLosSocios.map { it.semanaKey } + bonosMap.keys).distinct().sortedDescending()
+        val todasLasSemanasKeys =
+            (todosLosSocios.map { it.semanaKey } + bonosMap.keys).distinct().sortedDescending()
 
         val dialog = ExportImportBottomSheetDialog(
             semanaKeyActiva = semanaKeyActiva,
@@ -323,6 +375,7 @@ class MainActivity : AppCompatActivity() {
                 val bono = bonoRegaloRepository.getBonoRegalo(semanaKeyActiva)
                 Triple(sociosSemana, rango, bono)
             }
+
             is ExportScope.SemanasEspecificas -> {
                 val keys = scope.semanaKeys
                 val sociosFiltrados = allSocios.filter { it.semanaKey in keys }
@@ -331,16 +384,22 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     "${keys.size} semanas seleccionadas"
                 }
-                val bono = if (keys.size == 1) bonoRegaloRepository.getBonoRegalo(keys.first()) else null
+                val bono =
+                    if (keys.size == 1) bonoRegaloRepository.getBonoRegalo(keys.first()) else null
                 Triple(sociosFiltrados, tituloTexto, bono)
             }
+
             is ExportScope.HistoricoGlobal -> {
                 Triple(allSocios, "Histórico Global", null)
             }
         }
 
         if (socios.isEmpty()) {
-            Snackbar.make(binding.root, "No hay socios para exportar en el rango seleccionado", Snackbar.LENGTH_LONG).show()
+            Snackbar.make(
+                binding.root,
+                "No hay socios para exportar en el rango seleccionado",
+                Snackbar.LENGTH_LONG
+            ).show()
             return
         }
 
@@ -362,14 +421,19 @@ class MainActivity : AppCompatActivity() {
                         }
                         ExportUtils.shareFile(this, file, mime, "Compartir reporte $tipo")
                     } else {
-                        Snackbar.make(binding.root, "Error al generar archivo temporal", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(
+                            binding.root,
+                            "Error al generar archivo temporal",
+                            Snackbar.LENGTH_LONG
+                        ).show()
                     }
                 } else {
                     pendingExportType = tipo
                     pendingExportSocios = socios
                     pendingExportTitle = titulo
 
-                    val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+                    val timestamp =
+                        SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
                     val defaultFileName = "socios_${semanaKeyActiva}_$timestamp.$tipo"
                     createDocumentLauncher.launch(defaultFileName)
                 }
@@ -385,19 +449,26 @@ class MainActivity : AppCompatActivity() {
 
         // Rango de fechas
         binding.tvRangoSemana.text = DateUtils.getRangoSemanaTexto(weekOffset)
-        binding.tvSemanaSubtitulo.text = if (weekOffset == 0) "Semana actual (Lunes a Viernes)" else "Semana $semanaKey"
+        binding.tvSemanaSubtitulo.text =
+            if (weekOffset == 0) "Semana actual (Lunes a Viernes)" else "Semana $semanaKey"
         binding.btnHoy.visibility = if (weekOffset != 0) View.VISIBLE else View.GONE
 
         // Cálculos generales de la semana
-        val resumenSemana = CalculoComisiones.calcularResumenSemana(todosSociosSemana, bonoInfoSemana)
+        val resumenSemana =
+            CalculoComisiones.calcularResumenSemana(todosSociosSemana, bonoInfoSemana)
 
         // Actualizar Card Financiera de la semana
-        binding.tvNetoHeader.text = String.format(Locale.getDefault(), "%.2f €", resumenSemana.totalNeto)
-        binding.tvBaseHeader.text = String.format(Locale.getDefault(), "+%.0f €", resumenSemana.gananciasBaseX2)
-        binding.tvBonusHeader.text = String.format(Locale.getDefault(), "+%.0f €", resumenSemana.bonusSemanal)
-        binding.tvIrpfHeader.text = String.format(Locale.getDefault(), "-%.2f €", resumenSemana.retencionIrpf)
+        binding.tvNetoHeader.text =
+            String.format(Locale.getDefault(), "%.2f €", resumenSemana.totalNeto)
+        binding.tvBaseHeader.text =
+            String.format(Locale.getDefault(), "+%.0f €", resumenSemana.gananciasBaseX2)
+        binding.tvBonusHeader.text =
+            String.format(Locale.getDefault(), "+%.0f €", resumenSemana.bonusSemanal)
+        binding.tvIrpfHeader.text =
+            String.format(Locale.getDefault(), "-%.2f €", resumenSemana.retencionIrpf)
 
-        binding.tvBonusHeaderLabel.text = if (resumenSemana.esBonoRegaloAplicado) "Bonus (Manual) ✏️" else "Bonus Socios ✏️"
+        binding.tvBonusHeaderLabel.text =
+            if (resumenSemana.esBonoRegaloAplicado) "Bonus (Manual) ✏️" else "Bonus Socios ✏️"
 
         // Actualizar Card de Bonus
         val bonusActual = resumenSemana.bonusSemanal.toInt()
@@ -408,14 +479,17 @@ class MainActivity : AppCompatActivity() {
         binding.tvBonusTitle.text = "🏆 Bonus Nivel: +$bonusActual € ($hechosCount socios hechos)"
         binding.tvBonusProgressCount.text = "$hechosCount / $metaSocios socios"
 
-        val progressPercent = ((hechosCount.toFloat() / metaSocios.toFloat()) * 100).toInt().coerceAtMost(100)
+        val progressPercent =
+            ((hechosCount.toFloat() / metaSocios.toFloat()) * 100).toInt().coerceAtMost(100)
         binding.progressBonus.progress = progressPercent
 
         if (resumenSemana.sociosFaltantesParaSiguienteMeta > 0) {
             val faltan = resumenSemana.sociosFaltantesParaSiguienteMeta
-            binding.tvBonusSiguienteMeta.text = "¡Haz $faltan ${if (faltan == 1) "socio más" else "socios más"} para alcanzar el Bonus de +$metaBonus €!"
+            binding.tvBonusSiguienteMeta.text =
+                "¡Haz $faltan ${if (faltan == 1) "socio más" else "socios más"} para alcanzar el Bonus de +$metaBonus €!"
         } else {
-            binding.tvBonusSiguienteMeta.text = "¡Enhorabuena! Has alcanzado el nivel de bonus máximo para este tramo."
+            binding.tvBonusSiguienteMeta.text =
+                "¡Enhorabuena! Has alcanzado el nivel de bonus máximo para este tramo."
         }
 
         // Actualizar contadores de los Chips de Filtro por Día
@@ -453,7 +527,8 @@ class MainActivity : AppCompatActivity() {
 
         // Título de la lista
         val diaNombre = selectedDiaFiltroId?.let { DiaSemana.fromId(it).nombreCompleto }
-        binding.tvListaTitulo.text = if (diaNombre != null) "Socios del $diaNombre" else "Socios de la semana"
+        binding.tvListaTitulo.text =
+            if (diaNombre != null) "Socios del $diaNombre" else "Socios de la semana"
 
         val hechosFiltrados = listaFiltrada.count { it.hecho }
         binding.tvListaResumenDia.text = "$hechosFiltrados hechos / ${listaFiltrada.size} reg."
@@ -470,18 +545,22 @@ class MainActivity : AppCompatActivity() {
                 mostrarHistoricoGlobal()
                 true
             }
+
             R.id.action_ver_desglose -> {
                 mostrarDesgloseIrpf()
                 true
             }
+
             R.id.action_export_import -> {
                 mostrarDialogoExportImport()
                 true
             }
+
             R.id.action_borrar_semana -> {
                 confirmarBorrarSemana()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

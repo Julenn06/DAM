@@ -14,7 +14,7 @@ class BonoRegaloRepository(context: Context) {
         return if (json != null) {
             try {
                 gson.fromJson(json, BonoRegaloInfo::class.java)
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 BonoRegaloInfo(semanaKey = semanaKey)
             }
         } else {

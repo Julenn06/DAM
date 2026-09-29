@@ -109,8 +109,8 @@
                     android:layout_marginTop="4dp"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    tools:textColor="#2E7D32"
-                    tools:text="✓ Socio Hecho (+40€ suma)" />
+                    tools:text="✓ Socio Hecho (+40€ suma)"
+                    tools:textColor="#2E7D32" />
             </LinearLayout>
         </LinearLayout>
 

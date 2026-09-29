@@ -25,6 +25,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.UUID
+import androidx.core.graphics.toColorInt
 
 object ExportUtils {
 
@@ -40,7 +41,9 @@ object ExportUtils {
 
     fun exportToJsonFile(context: Context, socios: List<Socio>): File? {
         return try {
-            val fileName = "socios_export_${SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())}.json"
+            val fileName = "socios_export_${
+                SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+            }.json"
             val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), fileName)
             file.parentFile?.mkdirs()
             FileOutputStream(file).use { out ->
@@ -77,7 +80,9 @@ object ExportUtils {
 
     fun exportToCsvFile(context: Context, socios: List<Socio>): File? {
         return try {
-            val fileName = "socios_export_${SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())}.csv"
+            val fileName = "socios_export_${
+                SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+            }.csv"
             val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), fileName)
             file.parentFile?.mkdirs()
             FileOutputStream(file).use { out ->
@@ -107,14 +112,17 @@ object ExportUtils {
             val tokens = parseCsvLine(line)
             if (tokens.size >= 5) {
                 try {
-                    val id = if (tokens.getOrNull(0).isNull0rBlank()) UUID.randomUUID().toString() else tokens[0]
+                    val id = if (tokens.getOrNull(0).isNull0rBlank()) UUID.randomUUID()
+                        .toString() else tokens[0]
                     val colaboracion = tokens.getOrNull(1)?.toDoubleOrNull() ?: 0.0
-                    val hecho = tokens.getOrNull(2)?.toBooleanStrictOrNull() ?: (tokens.getOrNull(2) == "1")
+                    val hecho =
+                        tokens.getOrNull(2)?.toBooleanStrictOrNull() ?: (tokens.getOrNull(2) == "1")
                     val diaSemanaId = tokens.getOrNull(3)?.toIntOrNull() ?: 1
                     val semanaKey = tokens.getOrNull(4) ?: DateUtils.getSemanaKey(0)
                     val nombreSocio = tokens.getOrNull(5) ?: ""
                     val notas = tokens.getOrNull(6) ?: ""
-                    val timestamp = tokens.getOrNull(7)?.toLongOrNull() ?: System.currentTimeMillis()
+                    val timestamp =
+                        tokens.getOrNull(7)?.toLongOrNull() ?: System.currentTimeMillis()
 
                     socios.add(
                         Socio(
@@ -180,7 +188,6 @@ object ExportUtils {
     // ==========================================
 
     fun exportToPdf(
-        context: Context,
         socios: List<Socio>,
         titulo: String,
         outputStream: OutputStream,
@@ -201,7 +208,7 @@ object ExportUtils {
 
         // --- DIBUJAR ENCABEZADO PRINCIPAL ---
         val headerPaint = Paint().apply {
-            color = Color.parseColor("#0D47A1") // Dark Blue
+            color = "#0D47A1".toColorInt() // Dark Blue
             style = Paint.Style.FILL
         }
         canvas.drawRect(0f, 0f, pageWidth.toFloat(), 85f, headerPaint)
@@ -214,18 +221,18 @@ object ExportUtils {
 
         paint.textSize = 12f
         paint.isFakeBoldText = false
-        paint.color = Color.parseColor("#E3F2FD")
+        paint.color = "#E3F2FD".toColorInt()
         canvas.drawText("Periodo: $titulo  •  Generado: $fechaReporte", 30f, 65f, paint)
 
         // --- TARJETAS KPI RESUMEN ---
         var y = 105f
 
         val kpiBgPaint = Paint().apply {
-            color = Color.parseColor("#F4F6F9")
+            color = "#F4F6F9".toColorInt()
             style = Paint.Style.FILL
         }
         val kpiBorderPaint = Paint().apply {
-            color = Color.parseColor("#E0E0E0")
+            color = "#E0E0E0".toColorInt()
             style = Paint.Style.STROKE
             strokeWidth = 1f
         }
@@ -236,11 +243,28 @@ object ExportUtils {
         val gap = 11f
 
         data class KpiData(val label: String, val value: String, val colorHex: String)
+
         val kpis = listOf(
-            KpiData("Socios Hechos", "${resumen.totalSociosHechos} / ${resumen.totalSociosRegistrados}", "#1565C0"),
-            KpiData("Base (Cuotas x2)", String.format(Locale.getDefault(), "%.2f €", resumen.gananciasBaseX2), "#2E7D32"),
-            KpiData("Bonus Semanal", String.format(Locale.getDefault(), "%.2f €", resumen.bonusSemanal), "#F57F17"),
-            KpiData("Ganancia Neta", String.format(Locale.getDefault(), "%.2f €", resumen.totalNeto), "#0D47A1")
+            KpiData(
+                "Socios Hechos",
+                "${resumen.totalSociosHechos} / ${resumen.totalSociosRegistrados}",
+                "#1565C0"
+            ),
+            KpiData(
+                "Base (Cuotas x2)",
+                String.format(Locale.getDefault(), "%.2f €", resumen.gananciasBaseX2),
+                "#2E7D32"
+            ),
+            KpiData(
+                "Bonus Semanal",
+                String.format(Locale.getDefault(), "%.2f €", resumen.bonusSemanal),
+                "#F57F17"
+            ),
+            KpiData(
+                "Ganancia Neta",
+                String.format(Locale.getDefault(), "%.2f €", resumen.totalNeto),
+                "#0D47A1"
+            )
         )
 
         for (idx in kpis.indices) {
@@ -249,12 +273,12 @@ object ExportUtils {
             canvas.drawRoundRect(rect, 8f, 8f, kpiBgPaint)
             canvas.drawRoundRect(rect, 8f, 8f, kpiBorderPaint)
 
-            paint.color = Color.parseColor("#616161")
+            paint.color = "#616161".toColorInt()
             paint.textSize = 10f
             paint.isFakeBoldText = false
             canvas.drawText(kpis[idx].label, left + 10f, y + 20f, paint)
 
-            paint.color = Color.parseColor(kpis[idx].colorHex)
+            paint.color = kpis[idx].colorHex.toColorInt()
             paint.textSize = 13f
             paint.isFakeBoldText = true
             canvas.drawText(kpis[idx].value, left + 10f, y + 42f, paint)
@@ -265,10 +289,15 @@ object ExportUtils {
         // --- FUNCIÓN CABECERA DE TABLA ---
         fun drawTableHeader(c: Canvas, currentY: Float): Float {
             val tableHeaderPaint = Paint().apply {
-                color = Color.parseColor("#1565C0")
+                color = "#1565C0".toColorInt()
                 style = Paint.Style.FILL
             }
-            c.drawRoundRect(RectF(30f, currentY, pageWidth - 30f, currentY + 26f), 4f, 4f, tableHeaderPaint)
+            c.drawRoundRect(
+                RectF(30f, currentY, pageWidth - 30f, currentY + 26f),
+                4f,
+                4f,
+                tableHeaderPaint
+            )
 
             paint.color = Color.WHITE
             paint.textSize = 11f
@@ -287,9 +316,13 @@ object ExportUtils {
         y = drawTableHeader(canvas, y)
 
         // --- FILAS DE LA TABLA ---
-        val rowBgEven = Paint().apply { color = Color.parseColor("#FFFFFF"); style = Paint.Style.FILL }
-        val rowBgOdd = Paint().apply { color = Color.parseColor("#F8FAFC"); style = Paint.Style.FILL }
-        val rowBorder = Paint().apply { color = Color.parseColor("#E2E8F0"); style = Paint.Style.STROKE; strokeWidth = 0.8f }
+        val rowBgEven =
+            Paint().apply { color = "#FFFFFF".toColorInt(); style = Paint.Style.FILL }
+        val rowBgOdd =
+            Paint().apply { color = "#F8FAFC".toColorInt(); style = Paint.Style.FILL }
+        val rowBorder = Paint().apply {
+            color = "#E2E8F0".toColorInt(); style = Paint.Style.STROKE; strokeWidth = 0.8f
+        }
 
         val rowHeight = 22f
 
@@ -317,31 +350,38 @@ object ExportUtils {
 
             paint.textSize = 10f
             paint.isFakeBoldText = false
-            paint.color = Color.parseColor("#1E293B")
+            paint.color = "#1E293B".toColorInt()
 
             val nombreText = socio.nombreSocio.ifBlank { "Socio ${socio.colaboracion.toInt()}€" }
-            val nombreCorto = if (nombreText.length > 25) nombreText.substring(0, 23) + "..." else nombreText
+            val nombreCorto =
+                if (nombreText.length > 25) nombreText.substring(0, 23) + "..." else nombreText
             canvas.drawText(nombreCorto, 40f, y + 15f, paint)
 
             paint.isFakeBoldText = true
-            canvas.drawText(String.format(Locale.getDefault(), "%.0f €", socio.colaboracion), 220f, y + 15f, paint)
+            canvas.drawText(
+                String.format(Locale.getDefault(), "%.0f €", socio.colaboracion),
+                220f,
+                y + 15f,
+                paint
+            )
             paint.isFakeBoldText = false
 
             val diaNombre = DiaSemana.fromId(socio.diaSemanaId).nombreCorto
             canvas.drawText(diaNombre, 285f, y + 15f, paint)
 
             if (socio.hecho) {
-                paint.color = Color.parseColor("#2E7D32")
+                paint.color = "#2E7D32".toColorInt()
                 canvas.drawText("✓ Hecho", 350f, y + 15f, paint)
             } else {
-                paint.color = Color.parseColor("#C62828")
+                paint.color = "#C62828".toColorInt()
                 canvas.drawText("⏳ Pendiente", 350f, y + 15f, paint)
             }
 
-            paint.color = Color.parseColor("#64748B")
+            paint.color = "#64748B".toColorInt()
             canvas.drawText(socio.semanaKey, 420f, y + 15f, paint)
 
-            val notasText = if (socio.notas.length > 15) socio.notas.substring(0, 13) + "..." else socio.notas
+            val notasText =
+                if (socio.notas.length > 15) socio.notas.substring(0, 13) + "..." else socio.notas
             canvas.drawText(notasText, 480f, y + 15f, paint)
 
             y += rowHeight
@@ -357,7 +397,7 @@ object ExportUtils {
 
     private fun drawFooter(canvas: Canvas, pageNum: Int, pageWidth: Int, pageHeight: Int) {
         val paint = Paint().apply {
-            color = Color.parseColor("#94A3B8")
+            color = "#94A3B8".toColorInt()
             textSize = 9f
             isAntiAlias = true
         }
@@ -373,11 +413,13 @@ object ExportUtils {
         bonoRegalo: BonoRegaloInfo? = null
     ): File? {
         return try {
-            val fileName = "socios_report_${SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())}.pdf"
+            val fileName = "socios_report_${
+                SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+            }.pdf"
             val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), fileName)
             file.parentFile?.mkdirs()
             FileOutputStream(file).use { out ->
-                exportToPdf(context, socios, titulo, out, bonoRegalo)
+                exportToPdf(socios, titulo, out, bonoRegalo)
             }
             file
         } catch (e: Exception) {

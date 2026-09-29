@@ -35,7 +35,8 @@ class SocioAdapter(
             val context = binding.root.context
 
             // Importes
-            val colaboracionFormatted = String.format(Locale.getDefault(), "%.0f €", socio.colaboracion)
+            val colaboracionFormatted =
+                String.format(Locale.getDefault(), "%.0f €", socio.colaboracion)
             val baseX2 = CalculoComisiones.calcularBaseX2(socio.colaboracion)
             val baseX2Formatted = String.format(Locale.getDefault(), "+%.0f € base", baseX2)
 
@@ -70,7 +71,12 @@ class SocioAdapter(
                 binding.tvEstadoTexto.setTextColor(ContextCompat.getColor(context, R.color.primary))
             } else {
                 binding.tvEstadoTexto.text = "⏳ No Hecho (Pendiente)"
-                binding.tvEstadoTexto.setTextColor(ContextCompat.getColor(context, R.color.orange_pending))
+                binding.tvEstadoTexto.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.orange_pending
+                    )
+                )
             }
 
             // Listeners

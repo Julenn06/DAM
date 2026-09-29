@@ -6,30 +6,10 @@ import com.julen.socios.data.local.SocioDao
 import com.julen.socios.data.local.SocioEntity
 import com.julen.socios.model.Socio
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 
 class SocioRepository(context: Context) {
     private val socioDao: SocioDao = AppDatabase.getDatabase(context).socioDao()
-
-    fun getAllSociosFlow(): Flow<List<Socio>> {
-        return socioDao.getAllSociosFlow().map { entities ->
-            entities.map { it.toSocio() }
-        }
-    }
-
-    fun getSociosPorSemanaFlow(semanaKey: String): Flow<List<Socio>> {
-        return socioDao.getSociosPorSemanaFlow(semanaKey).map { entities ->
-            entities.map { it.toSocio() }
-        }
-    }
-
-    fun getSociosPorDiaFlow(semanaKey: String, diaId: Int): Flow<List<Socio>> {
-        return socioDao.getSociosPorDiaFlow(semanaKey, diaId).map { entities ->
-            entities.map { it.toSocio() }
-        }
-    }
 
     fun getAllSocios(): List<Socio> = runBlocking(Dispatchers.IO) {
         socioDao.getAllSocios().map { it.toSocio() }

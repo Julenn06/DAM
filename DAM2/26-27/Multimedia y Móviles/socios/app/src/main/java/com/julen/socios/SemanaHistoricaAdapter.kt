@@ -11,10 +11,13 @@ import java.util.Locale
 
 class SemanaHistoricaAdapter(
     private val onSelectSemana: (String) -> Unit
-) : ListAdapter<CalculoComisiones.SemanaHistoricaItem, SemanaHistoricaAdapter.SemanaViewHolder>(SemanaDiffCallback()) {
+) : ListAdapter<CalculoComisiones.SemanaHistoricaItem, SemanaHistoricaAdapter.SemanaViewHolder>(
+    SemanaDiffCallback()
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SemanaViewHolder {
-        val binding = ItemSemanaHistoricaBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemSemanaHistoricaBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SemanaViewHolder(binding)
     }
 
@@ -29,7 +32,7 @@ class SemanaHistoricaAdapter(
             val r = item.resumenSemana
 
             binding.tvSemanaItemTitulo.text = "Semana ${item.semanaKey}"
-            
+
             val bonusText = if (r.esBonoRegaloAplicado) {
                 "${r.totalSociosHechos} socios hechos (+${r.bonusSemanal.toInt()}€ bonus 🎁)"
             } else {
@@ -37,8 +40,10 @@ class SemanaHistoricaAdapter(
             }
             binding.tvSemanaItemSociosCount.text = bonusText
 
-            binding.tvSemanaItemNeto.text = String.format(Locale.getDefault(), "+%.2f €", r.totalNeto)
-            binding.tvSemanaItemIrpf.text = String.format(Locale.getDefault(), "IRPF: -%.2f €", r.retencionIrpf)
+            binding.tvSemanaItemNeto.text =
+                String.format(Locale.getDefault(), "+%.2f €", r.totalNeto)
+            binding.tvSemanaItemIrpf.text =
+                String.format(Locale.getDefault(), "IRPF: -%.2f €", r.retencionIrpf)
 
             binding.root.setOnClickListener {
                 onSelectSemana(item.semanaKey)

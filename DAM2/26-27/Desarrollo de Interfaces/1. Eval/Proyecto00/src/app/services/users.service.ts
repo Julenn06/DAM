@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Person } from '../models/person.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class PersonService {
   private http = inject(HttpClient);
   private apiUrl = 'http://localhost:3000/users';
   private sessionKey = 'currentUser';
+  private router = inject(Router)
 
   login(credentials: Person): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl).pipe(
@@ -28,6 +30,7 @@ export class PersonService {
 
   logout(): void {
     localStorage.removeItem(this.sessionKey);
+    this.router.navigate(['/login'])
   }
 
   isLoggedIn(): boolean {

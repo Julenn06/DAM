@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { PersonService } from '../../services/users.service';
 
 @Component({
   imports: [],
@@ -6,4 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './home.css',
   templateUrl: './home.html',
 })
-export class Home {}
+export class Home {
+
+  private personService = inject(PersonService)
+
+  onSubmit() {
+    this.personService.logout() 
+  }
+
+}

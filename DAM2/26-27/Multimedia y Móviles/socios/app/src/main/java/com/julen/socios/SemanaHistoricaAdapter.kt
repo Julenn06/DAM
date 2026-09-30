@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.julen.socios.databinding.ItemSemanaHistoricaBinding
 import com.julen.socios.util.CalculoComisiones
-import java.util.Locale
+import com.julen.socios.util.toCurrencyString
 
 class SemanaHistoricaAdapter(
     private val onSelectSemana: (String) -> Unit
@@ -29,9 +29,11 @@ class SemanaHistoricaAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: CalculoComisiones.SemanaHistoricaItem) {
+            val context = binding.root.context
             val r = item.resumenSemana
 
-            binding.tvSemanaItemTitulo.text = "Semana ${item.semanaKey}"
+            binding.tvSemanaItemTitulo.text =
+                context.getString(R.string.title_week_format, item.semanaKey)
 
             val bonusText = if (r.esBonoRegaloAplicado) {
                 "${r.totalSociosHechos} socios hechos (+${r.bonusSemanal.toInt()}€ bonus 🎁)"
@@ -40,10 +42,10 @@ class SemanaHistoricaAdapter(
             }
             binding.tvSemanaItemSociosCount.text = bonusText
 
-            binding.tvSemanaItemNeto.text =
-                String.format(Locale.getDefault(), "+%.2f €", r.totalNeto)
-            binding.tvSemanaItemIrpf.text =
-                String.format(Locale.getDefault(), "IRPF: -%.2f €", r.retencionIrpf)
+            binding.tvSemanaItemNeto.text = r.totalNeto.toCurrencyString(prefix = "+")
+            binding.tvSemanaItemIrpf.text = context.getString(
+                R.string.irpf_amount_format, r.retencionIrpf.toCurrencyString(prefix = "-")
+            )
 
             binding.root.setOnClickListener {
                 onSelectSemana(item.semanaKey)

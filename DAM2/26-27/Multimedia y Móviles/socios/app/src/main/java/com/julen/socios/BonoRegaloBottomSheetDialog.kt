@@ -20,9 +20,7 @@ class BonoRegaloBottomSheetDialog(
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = BottomSheetBonoRegaloBinding.inflate(inflater, container, false)
         return binding.root
@@ -114,9 +112,7 @@ class BonoRegaloBottomSheetDialog(
         val monto = getSelectedMonto()
         if (monto == null || monto < 0) {
             Toast.makeText(
-                context,
-                "Por favor selecciona o introduce un importe de bonus",
-                Toast.LENGTH_SHORT
+                context, "Por favor selecciona o introduce un importe de bonus", Toast.LENGTH_SHORT
             ).show()
             return
         }

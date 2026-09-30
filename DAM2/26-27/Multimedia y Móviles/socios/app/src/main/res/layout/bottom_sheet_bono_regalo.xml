@@ -27,7 +27,7 @@
         <ImageView
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@drawable/ic_edit"
+            android:src="@drawable/ic_gift"
             app:tint="@color/primary" />
 
         <LinearLayout

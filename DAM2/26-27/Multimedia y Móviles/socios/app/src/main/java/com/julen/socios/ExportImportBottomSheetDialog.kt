@@ -32,9 +32,7 @@ class ExportImportBottomSheetDialog(
     private val selectedSemanasKeys = mutableSetOf<String>()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = BottomSheetExportImportBinding.inflate(inflater, container, false)
         return binding.root
@@ -103,9 +101,11 @@ class ExportImportBottomSheetDialog(
             0 -> {
                 "📅 Pulsar para seleccionar semanas..."
             }
+
             1 -> {
                 "📅 1 semana seleccionada (${selectedSemanasKeys.first()})"
             }
+
             else -> {
                 "📅 $count semanas seleccionadas"
             }
@@ -115,9 +115,7 @@ class ExportImportBottomSheetDialog(
     private fun mostrarDialogoSeleccionarSemanas() {
         if (todasLasSemanasKeys.isEmpty()) {
             Toast.makeText(
-                context,
-                "No hay semanas registradas para seleccionar",
-                Toast.LENGTH_SHORT
+                context, "No hay semanas registradas para seleccionar", Toast.LENGTH_SHORT
             ).show()
             return
         }
@@ -131,8 +129,7 @@ class ExportImportBottomSheetDialog(
             selectedSemanasKeys.contains(todasLasSemanasKeys[i])
         }
 
-        AlertDialog.Builder(requireContext())
-            .setTitle("Seleccionar semanas a exportar")
+        AlertDialog.Builder(requireContext()).setTitle("Seleccionar semanas a exportar")
             .setMultiChoiceItems(itemsText, checkedItems) { _, which, isChecked ->
                 val key = todasLasSemanasKeys[which]
                 if (isChecked) {
@@ -141,12 +138,9 @@ class ExportImportBottomSheetDialog(
                     selectedSemanasKeys.remove(key)
                 }
                 updateBotonSemanasTexto()
-            }
-            .setPositiveButton("Aceptar") { _, _ ->
+            }.setPositiveButton("Aceptar") { _, _ ->
                 updateBotonSemanasTexto()
-            }
-            .setNegativeButton("Cancelar", null)
-            .show()
+            }.setNegativeButton("Cancelar", null).show()
     }
 
     private fun getCurrentExportScope(): ExportScope {

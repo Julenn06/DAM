@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface SocioDao {
@@ -13,6 +14,9 @@ interface SocioDao {
 
     @Query("SELECT * FROM socios WHERE semanaKey = :semanaKey ORDER BY timestamp DESC")
     suspend fun getSociosPorSemana(semanaKey: String): List<SocioEntity>
+
+    @Query("SELECT * FROM socios WHERE semanaKey = :semanaKey ORDER BY timestamp DESC")
+    fun getSociosPorSemanaFlow(semanaKey: String): Flow<List<SocioEntity>>
 
     @Query("SELECT * FROM socios WHERE id = :socioId LIMIT 1")
     suspend fun getSocioById(socioId: String): SocioEntity?

@@ -14,7 +14,7 @@ import com.julen.socios.model.DiaSemana
 import com.julen.socios.model.Socio
 import com.julen.socios.util.CalculoComisiones
 import com.julen.socios.util.HapticUtils
-import java.util.Locale
+import com.julen.socios.util.toFormattedEuros
 
 class SocioAdapter(
     private val onToggleHecho: (Socio) -> Unit,
@@ -31,17 +31,23 @@ class SocioAdapter(
         holder.bind(getItem(position))
     }
 
+    override fun onViewRecycled(holder: SocioViewHolder) {
+        super.onViewRecycled(holder)
+        holder.cancelAnimation()
+    }
+
     inner class SocioViewHolder(private val binding: ItemSocioBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        private var textColorAnimator: ValueAnimator? = null
 
         fun bind(socio: Socio) {
             val context = binding.root.context
 
             // Importes
-            val colaboracionFormatted =
-                String.format(Locale.getDefault(), "%.0f €", socio.colaboracion)
+            val colaboracionFormatted = socio.colaboracion.toFormattedEuros(0)
             val baseX2 = CalculoComisiones.calcularBaseX2(socio.colaboracion)
-            val baseX2Formatted = String.format(Locale.getDefault(), "+%.0f € base", baseX2)
+            val baseX2Formatted = context.getString(R.string.socio_base_format, baseX2.toInt())
 
             binding.tvColaboracionAmount.text = colaboracionFormatted
             binding.tvBaseX2Amount.text = baseX2Formatted
@@ -54,13 +60,14 @@ class SocioAdapter(
             if (socio.nombreSocio.isNotBlank()) {
                 binding.tvNombreSocio.text = socio.nombreSocio
             } else {
-                binding.tvNombreSocio.text = "Socio ${socio.colaboracion.toInt()}€"
+                binding.tvNombreSocio.text =
+                    context.getString(R.string.socio_default_name, socio.colaboracion.toInt())
             }
 
             // Notas
             if (socio.notas.isNotBlank()) {
                 binding.tvNotas.visibility = View.VISIBLE
-                binding.tvNotas.text = "Nota: ${socio.notas}"
+                binding.tvNotas.text = context.getString(R.string.socio_note_format, socio.notas)
             } else {
                 binding.tvNotas.visibility = View.GONE
             }
@@ -70,10 +77,11 @@ class SocioAdapter(
             binding.switchHecho.isChecked = socio.hecho
 
             val targetColor = if (socio.hecho) {
-                binding.tvEstadoTexto.text = "✓ Socio Conseguido (+${baseX2.toInt()}€ base)"
+                binding.tvEstadoTexto.text =
+                    context.getString(R.string.socio_status_conseguido, baseX2.toInt())
                 ContextCompat.getColor(context, R.color.primary)
             } else {
-                binding.tvEstadoTexto.text = "⏳ No Hecho (Pendiente)"
+                binding.tvEstadoTexto.text = context.getString(R.string.socio_status_pendiente)
                 ContextCompat.getColor(context, R.color.orange_pending)
             }
 
@@ -97,6 +105,7 @@ class SocioAdapter(
         }
 
         private fun animateTextColor(textView: TextView, targetColor: Int) {
+            textColorAnimator?.cancel()
             val currentColor = textView.currentTextColor
             if (currentColor == targetColor) return
 
@@ -105,7 +114,13 @@ class SocioAdapter(
             animator.addUpdateListener { anim ->
                 textView.setTextColor(anim.animatedValue as Int)
             }
+            textColorAnimator = animator
             animator.start()
+        }
+
+        fun cancelAnimation() {
+            textColorAnimator?.cancel()
+            textColorAnimator = null
         }
     }
 

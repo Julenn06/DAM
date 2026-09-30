@@ -99,7 +99,11 @@ object CalculoComisiones {
 
         if (bonoRegalo != null && bonoRegalo.activo) {
             esRegaloAplicado = true
-            bonusFinal = bonoRegalo.monto
+            bonusFinal = if (bonoRegalo.esMontoFijo) {
+                bonoRegalo.monto
+            } else {
+                bonusAuto + bonoRegalo.monto
+            }
             extraRegalo = (bonusFinal - bonusAuto).coerceAtLeast(0.0)
         }
 

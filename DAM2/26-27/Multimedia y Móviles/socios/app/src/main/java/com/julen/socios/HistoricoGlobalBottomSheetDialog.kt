@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.julen.socios.databinding.BottomSheetHistoricoGlobalBinding
 import com.julen.socios.util.CalculoComisiones
-import java.util.Locale
+import com.julen.socios.util.toCurrencyString
 
 class HistoricoGlobalBottomSheetDialog(
     private val resumenGlobal: CalculoComisiones.ResumenHistoricoGlobal,
@@ -29,15 +29,18 @@ class HistoricoGlobalBottomSheetDialog(
         super.onViewCreated(view, savedInstanceState)
 
         val countSemanas = resumenGlobal.semanasHistoricas.size
-        binding.tvGlobalSemanasCount.text =
-            "Acumulado en $countSemanas ${if (countSemanas == 1) "semana registrada" else "semanas registradas"}"
+        binding.tvGlobalSemanasCount.text = if (countSemanas == 1) {
+            getString(R.string.global_history_count_singular)
+        } else {
+            getString(R.string.global_history_count_plural, countSemanas)
+        }
 
         binding.tvGlobalIrpfTotal.text =
-            String.format(Locale.getDefault(), "-%.2f €", resumenGlobal.totalIrpfRetenidoAcumulado)
+            resumenGlobal.totalIrpfRetenidoAcumulado.toCurrencyString(prefix = "-")
         binding.tvGlobalNetoTotal.text =
-            String.format(Locale.getDefault(), "+%.2f €", resumenGlobal.totalNetoAcumulado)
+            resumenGlobal.totalNetoAcumulado.toCurrencyString(prefix = "+")
         binding.tvGlobalBonusTotal.text =
-            String.format(Locale.getDefault(), "+%.2f €", resumenGlobal.totalBonusAcumulado)
+            resumenGlobal.totalBonusAcumulado.toCurrencyString(prefix = "+")
 
         // Adapter para la lista de semanas
         val adapter = SemanaHistoricaAdapter { semanaKey ->

@@ -22,7 +22,34 @@ object DateUtils {
      * Calcula el offset de semana respecto a la semana actual a partir de la clave semanaKey.
      */
     fun getWeekOffsetFromKey(semanaKey: String): Int {
-        for (offset in -200..200) {
+        try {
+            val currentKey = getSemanaKey(0)
+            if (semanaKey == currentKey) return 0
+
+            val parts = semanaKey.split("-W")
+            if (parts.size == 2) {
+                val targetYear = parts[0].toInt()
+                val targetWeek = parts[1].toInt()
+
+                val nowCal = Calendar.getInstance()
+                nowCal.firstDayOfWeek = Calendar.MONDAY
+
+                val currentYear = nowCal.get(Calendar.YEAR)
+                val currentWeek = nowCal.get(Calendar.WEEK_OF_YEAR)
+                val estimatedOffset = (targetYear - currentYear) * 52 + (targetWeek - currentWeek)
+
+                // Refinar en un entorno cercano (+/- 5 semanas)
+                for (offset in (estimatedOffset - 5)..(estimatedOffset + 5)) {
+                    if (getSemanaKey(offset) == semanaKey) {
+                        return offset
+                    }
+                }
+            }
+        } catch (_: Exception) {
+        }
+
+        // Búsqueda de respaldo ampliada a 10 años
+        for (offset in -520..520) {
             if (getSemanaKey(offset) == semanaKey) {
                 return offset
             }

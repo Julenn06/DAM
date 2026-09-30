@@ -10,6 +10,7 @@ import android.graphics.pdf.PdfDocument
 import android.net.Uri
 import android.os.Environment
 import androidx.core.content.FileProvider
+import androidx.core.graphics.toColorInt
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import com.julen.socios.model.BonoRegaloInfo
@@ -25,9 +26,11 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.UUID
-import androidx.core.graphics.toColorInt
 
 object ExportUtils {
+
+    private const val PAGE_WIDTH = 595 // A4 width in points
+    private const val PAGE_HEIGHT = 842 // A4 height in points
 
     // ==========================================
     // EXPORT & IMPORT JSON
@@ -102,7 +105,6 @@ object ExportUtils {
 
         if (lines.isEmpty()) return emptyList()
 
-        // Skip header if present
         val startIndex = if (lines.first().startsWith("ID", ignoreCase = true)) 1 else 0
 
         for (i in startIndex until lines.size) {
@@ -112,7 +114,7 @@ object ExportUtils {
             val tokens = parseCsvLine(line)
             if (tokens.size >= 5) {
                 try {
-                    val id = if (tokens.getOrNull(0).isNull0rBlank()) UUID.randomUUID()
+                    val id = if (tokens.getOrNull(0).isNullOrBlank()) UUID.randomUUID()
                         .toString() else tokens[0]
                     val colaboracion = tokens.getOrNull(1)?.toDoubleOrNull() ?: 0.0
                     val hecho =
@@ -179,10 +181,6 @@ object ExportUtils {
         return result
     }
 
-    private fun String?.isNull0rBlank(): Boolean {
-        return this == null || this.trim().isEmpty()
-    }
-
     // ==========================================
     // EXPORT PDF WITH PROFESSIONAL DESIGN
     // ==========================================
@@ -194,11 +192,9 @@ object ExportUtils {
         bonoRegalo: BonoRegaloInfo? = null
     ) {
         val pdfDocument = PdfDocument()
-        val pageWidth = 595 // A4 width in points
-        val pageHeight = 842 // A4 height in points
 
         var pageNum = 1
-        var pageInfo = PdfDocument.PageInfo.Builder(pageWidth, pageHeight, pageNum).create()
+        var pageInfo = PdfDocument.PageInfo.Builder(PAGE_WIDTH, PAGE_HEIGHT, pageNum).create()
         var page = pdfDocument.startPage(pageInfo)
         var canvas: Canvas = page.canvas
 
@@ -211,7 +207,7 @@ object ExportUtils {
             color = "#0D47A1".toColorInt() // Dark Blue
             style = Paint.Style.FILL
         }
-        canvas.drawRect(0f, 0f, pageWidth.toFloat(), 85f, headerPaint)
+        canvas.drawRect(0f, 0f, PAGE_WIDTH.toFloat(), 85f, headerPaint)
 
         // Texto Encabezado
         paint.color = Color.WHITE
@@ -249,18 +245,15 @@ object ExportUtils {
                 "Socios Hechos",
                 "${resumen.totalSociosHechos} / ${resumen.totalSociosRegistrados}",
                 "#1565C0"
-            ),
-            KpiData(
+            ), KpiData(
                 "Base (Cuotas x2)",
                 String.format(Locale.getDefault(), "%.2f €", resumen.gananciasBaseX2),
                 "#2E7D32"
-            ),
-            KpiData(
+            ), KpiData(
                 "Bonus Semanal",
                 String.format(Locale.getDefault(), "%.2f €", resumen.bonusSemanal),
                 "#F57F17"
-            ),
-            KpiData(
+            ), KpiData(
                 "Ganancia Neta",
                 String.format(Locale.getDefault(), "%.2f €", resumen.totalNeto),
                 "#0D47A1"
@@ -293,7 +286,7 @@ object ExportUtils {
                 style = Paint.Style.FILL
             }
             c.drawRoundRect(
-                RectF(30f, currentY, pageWidth - 30f, currentY + 26f),
+                RectF(30f, currentY, PAGE_WIDTH.toFloat() - 30f, currentY + 26f),
                 4f,
                 4f,
                 tableHeaderPaint
@@ -316,10 +309,8 @@ object ExportUtils {
         y = drawTableHeader(canvas, y)
 
         // --- FILAS DE LA TABLA ---
-        val rowBgEven =
-            Paint().apply { color = "#FFFFFF".toColorInt(); style = Paint.Style.FILL }
-        val rowBgOdd =
-            Paint().apply { color = "#F8FAFC".toColorInt(); style = Paint.Style.FILL }
+        val rowBgEven = Paint().apply { color = "#FFFFFF".toColorInt(); style = Paint.Style.FILL }
+        val rowBgOdd = Paint().apply { color = "#F8FAFC".toColorInt(); style = Paint.Style.FILL }
         val rowBorder = Paint().apply {
             color = "#E2E8F0".toColorInt(); style = Paint.Style.STROKE; strokeWidth = 0.8f
         }
@@ -327,14 +318,12 @@ object ExportUtils {
         val rowHeight = 22f
 
         for (index in socios.indices) {
-            // Verificar fin de página
-            if (y > pageHeight - 60f) {
-                // Pie de página antes de cerrar
-                drawFooter(canvas, pageNum, pageWidth, pageHeight)
+            if (y > PAGE_HEIGHT.toFloat() - 60f) {
+                drawFooter(canvas, pageNum)
                 pdfDocument.finishPage(page)
 
                 pageNum++
-                pageInfo = PdfDocument.PageInfo.Builder(pageWidth, pageHeight, pageNum).create()
+                pageInfo = PdfDocument.PageInfo.Builder(PAGE_WIDTH, PAGE_HEIGHT, pageNum).create()
                 page = pdfDocument.startPage(pageInfo)
                 canvas = page.canvas
 
@@ -345,8 +334,8 @@ object ExportUtils {
             val socio = socios[index]
             val bgPaint = if (index % 2 == 0) rowBgEven else rowBgOdd
 
-            canvas.drawRect(30f, y, pageWidth - 30f, y + rowHeight, bgPaint)
-            canvas.drawRect(30f, y, pageWidth - 30f, y + rowHeight, rowBorder)
+            canvas.drawRect(30f, y, PAGE_WIDTH.toFloat() - 30f, y + rowHeight, bgPaint)
+            canvas.drawRect(30f, y, PAGE_WIDTH.toFloat() - 30f, y + rowHeight, rowBorder)
 
             paint.textSize = 10f
             paint.isFakeBoldText = false
@@ -387,30 +376,36 @@ object ExportUtils {
             y += rowHeight
         }
 
-        // Pie de página final
-        drawFooter(canvas, pageNum, pageWidth, pageHeight)
+        drawFooter(canvas, pageNum)
         pdfDocument.finishPage(page)
 
         pdfDocument.writeTo(outputStream)
         pdfDocument.close()
     }
 
-    private fun drawFooter(canvas: Canvas, pageNum: Int, pageWidth: Int, pageHeight: Int) {
+    private fun drawFooter(canvas: Canvas, pageNum: Int) {
         val paint = Paint().apply {
             color = "#94A3B8".toColorInt()
             textSize = 9f
             isAntiAlias = true
         }
-        canvas.drawLine(30f, pageHeight - 35f, pageWidth - 30f, pageHeight - 35f, paint)
-        canvas.drawText("Gestión de Socios • Documento Oficial", 30f, pageHeight - 20f, paint)
-        canvas.drawText("Página $pageNum", pageWidth - 70f, pageHeight - 20f, paint)
+        canvas.drawLine(
+            30f,
+            PAGE_HEIGHT.toFloat() - 35f,
+            PAGE_WIDTH.toFloat() - 30f,
+            PAGE_HEIGHT.toFloat() - 35f,
+            paint
+        )
+        canvas.drawText(
+            "Gestión de Socios • Documento Oficial", 30f, PAGE_HEIGHT.toFloat() - 20f, paint
+        )
+        canvas.drawText(
+            "Página $pageNum", PAGE_WIDTH.toFloat() - 70f, PAGE_HEIGHT.toFloat() - 20f, paint
+        )
     }
 
     fun exportToPdfFile(
-        context: Context,
-        socios: List<Socio>,
-        titulo: String,
-        bonoRegalo: BonoRegaloInfo? = null
+        context: Context, socios: List<Socio>, titulo: String, bonoRegalo: BonoRegaloInfo? = null
     ): File? {
         return try {
             val fileName = "socios_report_${
@@ -435,9 +430,7 @@ object ExportUtils {
     fun shareFile(context: Context, file: File, mimeType: String, title: String) {
         try {
             val uri: Uri = FileProvider.getUriForFile(
-                context,
-                "${context.packageName}.fileprovider",
-                file
+                context, "${context.packageName}.fileprovider", file
             )
             val intent = Intent(Intent.ACTION_SEND).apply {
                 type = mimeType

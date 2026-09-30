@@ -3,6 +3,9 @@ package com.julen.socios
 import com.julen.socios.model.BonoRegaloInfo
 import com.julen.socios.model.Socio
 import com.julen.socios.util.CalculoComisiones
+import com.julen.socios.util.DateUtils
+import com.julen.socios.util.toCurrencyString
+import com.julen.socios.util.toFormattedEuros
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -123,5 +126,24 @@ class ExampleUnitTest {
         assertEquals(140.0, resumen.bonusSemanal, 0.001)
         assertEquals(100.0, resumen.bonusAutomatico, 0.001)
         assertEquals(40.0, resumen.montoBonoRegaloExtra, 0.001)
+    }
+
+    @Test
+    fun testDateUtilsWeekOffsetCalculation() {
+        val currentKey = DateUtils.getSemanaKey(0)
+        assertEquals(0, DateUtils.getWeekOffsetFromKey(currentKey))
+
+        val prevKey = DateUtils.getSemanaKey(-2)
+        assertEquals(-2, DateUtils.getWeekOffsetFromKey(prevKey))
+
+        val nextKey = DateUtils.getSemanaKey(5)
+        assertEquals(5, DateUtils.getWeekOffsetFromKey(nextKey))
+    }
+
+    @Test
+    fun testNumberExtensionsFormatting() {
+        val amount = 123.456
+        assertEquals("123,46 €", amount.toFormattedEuros())
+        assertEquals("+123,46 €", amount.toCurrencyString(prefix = "+"))
     }
 }

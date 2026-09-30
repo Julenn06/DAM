@@ -6,8 +6,7 @@ import com.julen.socios.model.Socio
 
 @Entity(tableName = "socios")
 data class SocioEntity(
-    @PrimaryKey
-    val id: String,
+    @PrimaryKey val id: String,
     val colaboracion: Double,
     val hecho: Boolean,
     val diaSemanaId: Int,

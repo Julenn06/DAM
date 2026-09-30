@@ -46,6 +46,7 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
 ### 📚 [DAM1](DAM1) (Primer Curso)
 
 #### [Base de datos](DAM1/Base%20de%20datos/) 📊
+
 - **MySQL**
   - **Fundamentos SQL**
     - SELECT, INSERT, UPDATE, DELETE
@@ -69,6 +70,7 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
     - Reporting y análisis
 
 #### [Entornos de Desarrollo](DAM1/Entornos%20de%20Desarrollo/) 🛠️
+
 - **Metodologías de Desarrollo**
   - Scrum y Agile
   - Kanban
@@ -100,13 +102,13 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Métricas de calidad
 
 #### [Lenguaje de Marcas](DAM1/Lenguaje%20de%20Marcas/) 🌐
+
 - **HTML5 Avanzado**
   - Semántica HTML5
   - APIs del navegador
   - WebStorage
   - Multimedia y Canvas
   - Web Components
-  
 - **CSS3 y Diseño Web**
   - Flexbox y Grid
   - Animaciones y transiciones
@@ -114,7 +116,6 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Variables CSS
   - Sass/SCSS
   - Bootstrap
-  
 - **JavaScript Moderno**
   - ES6+ Features
   - DOM Manipulation
@@ -122,20 +123,17 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Promesas y Async/Await
   - APIs REST
   - LocalStorage
-  
 - **Frameworks Frontend**
   - Introducción a Angular
   - Componentes básicos
   - Servicios y DI
   - Routing
-  
 - **Tecnologías de Datos**
   - XML Processing
   - JSON Handling
   - AJAX
   - Fetch API
   - WebSockets
-  
 - **Herramientas de Desarrollo**
   - XAMPP Stack
   - Chrome DevTools
@@ -144,47 +142,42 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Git integration
 
 #### [Programación](DAM1/Programación/) 💻
+
 - **Fundamentos de Java**
   - Tipos de datos y variables
   - Control de flujo
   - Arrays y colecciones
   - Excepciones
   - Entrada/Salida
-  
 - **Programación Orientada a Objetos**
   - Clases y objetos
   - Herencia y polimorfismo
   - Interfaces y clases abstractas
   - Encapsulamiento
   - Paquetes y módulos
-  
 - **Estructuras de Datos**
   - Listas enlazadas
   - Árboles y grafos
   - Pilas y colas
   - HashMaps
   - Algoritmos de ordenación
-  
 - **Desarrollo de GUI**
   - WindowBuilder
   - Swing components
   - Eventos y listeners
   - Layouts
   - Diálogos y menús
-  
 - **Acceso a Datos**
   - JDBC
   - File I/O
   - XML processing
   - Serialización
-  
 - **Patrones de Diseño**
   - Singleton
   - Factory
   - Observer
   - MVC
   - DAO
-  
 - **Testing y Debugging**
   - JUnit
   - Debugging en IDE
@@ -193,35 +186,32 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
 
 ### 🚀 [DAM2](DAM2) (Segundo Curso)
 
-#### [Acceso a Datos](DAM2/Acceso%20a%20Datos/) 📂
+#### [Acceso a Datos](DAM2/25-26/Acceso%20a%20Datos/) 📂
+
 - **Manipulación XML**
   - DOM parsing
   - SAX parsing
   - XPATH queries
   - XSLT transformaciones
   - Validación XML Schema
-  
 - **Bases de Datos NoSQL**
   - Firebase Realtime Database
   - Firebase Authentication
   - Cloud Firestore
   - MongoDB basics
   - Redis caching
-  
 - **Persistencia de Datos**
   - JPA/Hibernate
   - Entity relationships
   - CRUD operations
   - Transacciones
   - Query optimization
-  
 - **Ficheros y Serialización**
   - Ficheros binarios
   - Serialización de objetos
   - NIO.2 API
   - Streams avanzados
   - Compresión de datos
-  
 - **APIs y Servicios Web**
   - REST APIs
   - GraphQL basics
@@ -229,7 +219,8 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - JWT authentication
   - API documentation
 
-#### [Desarrollo de Interfaces](DAM2/Desarrollo%20de%20Interfaces/) 🎨
+#### [Desarrollo de Interfaces](DAM2/25-26/Desarrollo%20de%20Interfaces/) 🎨
+
 - **Angular Avanzado**
   - Componentes y servicios
   - Routing y navegación
@@ -237,7 +228,6 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Interceptores HTTP
   - Guards y resolvers
   - Testing con Jasmine
-  
 - **Heroes App Project**
   - Arquitectura completa
   - CRUD operations
@@ -245,7 +235,6 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Lazy loading
   - Optimización
   - Deployment
-  
 - **Diseño UI/UX**
   - Material Design
   - CSS Grid/Flexbox
@@ -253,14 +242,12 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Mobile-first approach
   - Accesibilidad
   - Dark/Light themes
-  
 - **Testing y Quality**
   - Unit testing
   - E2E con Cypress
   - Performance testing
   - CI/CD pipelines
   - Code quality
-  
 - **Herramientas Avanzadas**
   - Angular CLI
   - DevTools
@@ -269,6 +256,7 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - SEO optimization
 
 #### [LINQ & .NET](DAM2/LINQ/) 🔷
+
 - **C# Avanzado**
   - Generics
   - Delegates y eventos
@@ -276,7 +264,6 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Extension methods
   - Reflection
   - Memory management
-  
 - **LINQ Fundamentals**
   - LINQ to Objects
   - LINQ to SQL
@@ -284,7 +271,6 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Expression trees
   - Custom providers
   - Performance optimization
-  
 - **Entity Framework Core**
   - Code-first approach
   - Migrations
@@ -292,7 +278,6 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Complex queries
   - Performance tuning
   - Lazy loading
-  
 - **ASP.NET Core**
   - MVC pattern
   - Web API development
@@ -300,7 +285,6 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Dependency Injection
   - Configuration
   - Security
-  
 - **API Documentation**
   - Swagger/OpenAPI
   - API versioning
@@ -309,7 +293,8 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Response caching
   - API testing
 
-#### [Multimedia y Móviles](DAM2/Multimedia%20y%20Móviles/) 📱
+#### [Multimedia y Móviles](DAM2/25-26/Multimedia%20y%20Móviles/) 📱
+
 - **Desarrollo Android**
   - Activities y Fragments
   - Lifecycle management
@@ -317,7 +302,6 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Material Design
   - Navigation components
   - ViewModel y LiveData
-  
 - **Gestión de Datos**
   - Room Database
   - SharedPreferences
@@ -325,7 +309,6 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Network calls
   - File storage
   - Data binding
-  
 - **Multimedia**
   - Camera API
   - Media playback
@@ -333,7 +316,6 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Audio handling
   - Video streaming
   - Animations
-  
 - **UX/UI Móvil**
   - Layouts responsivos
   - Gestures
@@ -341,7 +323,6 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Temas y estilos
   - Accesibilidad
   - Localización
-  
 - **Características Avanzadas**
   - Background tasks
   - Push notifications
@@ -350,7 +331,8 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Firebase integration
   - App publishing
 
-#### [Procesos y Servicios](DAM2/Procesos%20y%20Servicios/) 🔄
+#### [Procesos y Servicios](DAM2/25-26/Procesos%20y%20Servicios/) 🔄
+
 - **Programación Multiproceso**
   - Threads y procesos
   - Sincronización
@@ -358,7 +340,6 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Thread pools
   - Concurrent collections
   - Dead lock prevention
-  
 - **Servicios en Red**
   - Sockets TCP/UDP
   - Protocolos de red
@@ -366,7 +347,6 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - FTP/SMTP
   - SSL/TLS
   - Network security
-  
 - **Comunicación entre Procesos**
   - IPC mechanisms
   - Message queues
@@ -374,7 +354,6 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Named pipes
   - RPC
   - WebSockets
-  
 - **Aplicaciones Distribuidas**
   - Microservicios
   - Load balancing
@@ -382,7 +361,6 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Circuit breakers
   - Monitoring
   - Logging
-  
 - **Cloud Integration**
   - Docker basics
   - Cloud deployment
@@ -391,7 +369,8 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Service mesh
   - Kubernetes intro
 
-#### [Sistemas Informáticos](DAM2/Sistemas%20Informaticos/) 🖥️
+#### [Sistemas Informáticos](DAM2/25-26/Sistemas%20Informaticos/) 🖥️
+
 - **Sistemas Operativos**
   - Administración de Windows Server
   - Linux básico y avanzado
@@ -421,33 +400,30 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
 ## 🛠 Tecnologías Principales
 
 ### Lenguajes de Programación 📝
+
 - **Java** ☕
   - Core Java 8+
   - Collections Framework
   - Streams API
   - Threading
   - JavaFX
-  
 - **C#** 🔷
   - .NET Core
   - LINQ
   - Async Programming
   - Generics
   - Entity Framework
-  
 - **JavaScript/TypeScript** 🟨
   - ES6+
   - TypeScript
   - Async/Await
   - DOM API
   - Web APIs
-  
 - **Python** 🐍
   - Basic syntax
   - Data structures
   - File handling
   - Libraries usage
-  
 - **SQL** 📊
   - DDL/DML
   - Joins
@@ -456,27 +432,25 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Optimization
 
 ### Frameworks & Libraries 🏗️
+
 - **Angular** 🅰️
   - Components
   - Services
   - Routing
   - State Management
   - Material Design
-  
 - **.NET Core** 🔷
   - ASP.NET Core
   - Web API
   - Entity Framework
   - Identity
   - SignalR
-  
 - **Spring Boot** 🍃
   - Core
   - MVC
   - Data JPA
   - Security
   - Testing
-  
 - **Node.js** 💚
   - Express
   - NPM
@@ -484,18 +458,17 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - API development
 
 ### Bases de Datos 💾
+
 - **MySQL** 🐬
   - Design
   - Administration
   - Optimization
   - Backup/Restore
-  
 - **Firebase** 🔥
   - Realtime Database
   - Authentication
   - Cloud Functions
   - Hosting
-  
 - **MongoDB** 🍃
   - CRUD Operations
   - Aggregation
@@ -503,24 +476,22 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Replication
 
 ### Herramientas de Desarrollo 🔧
+
 - **Control de Versiones**
   - Git 📚
   - GitHub
   - GitFlow
   - Pull Requests
-  
 - **IDEs**
   - VS Code 💻
   - Eclipse 🌑
   - Visual Studio 🎨
   - IntelliJ IDEA
-  
 - **Herramientas de Build**
   - Maven
   - Gradle
   - npm
   - NuGet
-  
 - **Testing**
   - JUnit
   - NUnit
@@ -530,6 +501,7 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
 ## 💡 Proyectos Destacados
 
 ### 🏆 Proyectos Erronka
+
 - **Descripción**: Series de proyectos integradores que combinan múltiples tecnologías
 - **Tecnologías**: Java, SQL, Angular, Spring Boot
 - **Características**:
@@ -537,8 +509,9 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Integración continua
   - Testing automatizado
   - Documentación completa
-  
+
 ### 🦸‍♂️ Heroes App
+
 - **Stack Tecnológico**:
   - Frontend: Angular 15+
   - Backend: Node.js/Express
@@ -551,8 +524,9 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Lazy loading
   - Testing unitario
   - Deployment automatizado
-  
+
 ### 📱 Portfolio de Apps Android
+
 - **Aplicaciones**:
   - Gestores de tareas
   - Reproductores multimedia
@@ -564,8 +538,9 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - MVVM pattern
   - Local storage
   - APIs REST
-  
+
 ### 🌐 Proyectos Web Full-Stack
+
 - **Tecnologías Frontend**:
   - Angular/React
   - TypeScript

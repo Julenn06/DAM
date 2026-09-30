@@ -255,7 +255,7 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - PWA features
   - SEO optimization
 
-#### [LINQ & .NET](DAM2/LINQ/) 🔷
+#### [LINQ & .NET](DAM2/25-26/LINQ/) 🔷
 
 - **C# Avanzado**
   - Generics
@@ -369,7 +369,7 @@ Este repositorio representa una compilación exhaustiva de todo el trabajo reali
   - Service mesh
   - Kubernetes intro
 
-#### [Sistemas Informáticos](DAM2/25-26/Sistemas%20Informaticos/) 🖥️
+#### [Sistemas Informáticos](DAM2/25-26/ Sistemas%20Informaticos/) 🖥️
 
 - **Sistemas Operativos**
   - Administración de Windows Server

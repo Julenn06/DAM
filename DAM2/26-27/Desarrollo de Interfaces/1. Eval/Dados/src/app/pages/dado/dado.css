@@ -1,0 +1,47 @@
+.pantalla-completa {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  gap: 30px;
+  background-color: #f0f2f5;
+  font-family: sans-serif;
+}
+
+.contenedor-dados {
+  display: flex;
+  gap: 20px;
+}
+
+.dado {
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-radius: 12px;
+  padding: 0;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.dado-rojo {
+  background-color: #ff4d4d;
+}
+.dado-verde {
+  background-color: #2ecc71;
+}
+.dado-azul {
+  background-color: #3498db;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  color: white;
+  background-color: #2c3e50;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

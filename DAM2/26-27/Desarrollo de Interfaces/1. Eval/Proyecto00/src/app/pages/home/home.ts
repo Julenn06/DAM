@@ -8,11 +8,14 @@ import { PersonService } from '../../services/users.service';
   templateUrl: './home.html',
 })
 export class Home {
-
-  private personService = inject(PersonService)
+  private personService = inject(PersonService);
 
   onSubmit() {
-    this.personService.logout() 
+    this.personService.logout();
   }
 
+  sumarNumeros(n1: number, n2: number, r1: HTMLInputElement) {
+    const resultado = n1 + n2;
+    r1.value = resultado.toString();
+  }
 }

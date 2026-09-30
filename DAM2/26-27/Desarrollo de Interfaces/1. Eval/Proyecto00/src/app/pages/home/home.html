@@ -1,3 +1,8 @@
 <p>home works!</p>
 
 <button type="button" (click)="onSubmit()">Logout</button>
+
+<input type="number" placeholder="primer numero" #n1 />
+<input type="number" placeholder="segundo numero" #n2 />
+<input type="number" placeholder="resultado suma" #r1 id="resultado" readonly />
+<button type="button" (click)="sumarNumeros(+n1.value, +n2.value, r1)">Sumar</button>

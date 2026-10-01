@@ -144,10 +144,18 @@ class MainViewModel(
         }
     }
 
-    fun importSocios(socios: List<Socio>) {
+    fun importBackup(socios: List<Socio>, bonosRegalo: List<BonoRegaloInfo>) {
         viewModelScope.launch {
-            val count = socioRepository.importSocios(socios)
-            _messageEvent.value = "✓ Se han importado $count socios correctamente"
+            val countSocios = if (socios.isNotEmpty()) socioRepository.importSocios(socios) else 0
+            bonosRegalo.forEach { bono ->
+                bonoRegaloRepository.saveBonoRegalo(bono)
+            }
+            val countBonos = bonosRegalo.size
+            _messageEvent.value = if (countBonos > 0) {
+                "✓ Se han importado $countSocios socios y $countBonos bonos de regalo"
+            } else {
+                "✓ Se han importado $countSocios socios correctamente"
+            }
         }
     }
 

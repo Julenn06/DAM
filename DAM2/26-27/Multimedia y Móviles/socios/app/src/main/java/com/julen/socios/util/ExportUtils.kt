@@ -13,6 +13,8 @@ import androidx.core.content.FileProvider
 import androidx.core.graphics.toColorInt
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import com.julen.socios.model.BackupData
+import com.julen.socios.model.BackupImportResult
 import com.julen.socios.model.BonoRegaloInfo
 import com.julen.socios.model.DiaSemana
 import com.julen.socios.model.Socio
@@ -33,16 +35,30 @@ object ExportUtils {
     private const val PAGE_HEIGHT = 842 // A4 height in points
 
     // ==========================================
-    // EXPORT & IMPORT JSON
+    // EXPORT & IMPORT JSON (INCLUYE SOCIOS Y BONOS)
     // ==========================================
 
-    fun exportToJson(socios: List<Socio>, outputStream: OutputStream) {
+    fun exportToJson(
+        socios: List<Socio>,
+        bonosRegalo: List<BonoRegaloInfo>,
+        outputStream: OutputStream
+    ) {
+        val backupData = BackupData(
+            version = 1,
+            timestamp = System.currentTimeMillis(),
+            socios = socios,
+            bonosRegalo = bonosRegalo
+        )
         val gson = GsonBuilder().setPrettyPrinting().create()
-        val jsonString = gson.toJson(socios)
+        val jsonString = gson.toJson(backupData)
         outputStream.write(jsonString.toByteArray(Charsets.UTF_8))
     }
 
-    fun exportToJsonFile(context: Context, socios: List<Socio>): File? {
+    fun exportToJsonFile(
+        context: Context,
+        socios: List<Socio>,
+        bonosRegalo: List<BonoRegaloInfo>
+    ): File? {
         return try {
             val fileName = "socios_export_${
                 SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
@@ -50,7 +66,7 @@ object ExportUtils {
             val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), fileName)
             file.parentFile?.mkdirs()
             FileOutputStream(file).use { out ->
-                exportToJson(socios, out)
+                exportToJson(socios, bonosRegalo, out)
             }
             file
         } catch (e: Exception) {
@@ -59,29 +75,73 @@ object ExportUtils {
         }
     }
 
-    fun importFromJson(inputStream: InputStream): List<Socio> {
+    fun importFromJson(inputStream: InputStream): BackupImportResult {
         val jsonString = inputStream.bufferedReader().use { it.readText() }
         val gson = GsonBuilder().create()
-        val listType = object : TypeToken<List<Socio>>() {}.type
-        return gson.fromJson(jsonString, listType) ?: emptyList()
+
+        // 1. Intentar cargar como BackupData completo (socios + bonos)
+        try {
+            val backupData = gson.fromJson(jsonString, BackupData::class.java)
+            if (backupData != null && (backupData.socios.isNotEmpty() || backupData.bonosRegalo.isNotEmpty())) {
+                return BackupImportResult(
+                    socios = backupData.socios,
+                    bonosRegalo = backupData.bonosRegalo
+                )
+            }
+        } catch (e: Exception) {
+            // Ignorar y probar formato antiguo de lista
+        }
+
+        // 2. Fallback: Deserializar como List<Socio> de versiones anteriores
+        try {
+            val listType = object : TypeToken<List<Socio>>() {}.type
+            val sociosList: List<Socio>? = gson.fromJson(jsonString, listType)
+            if (sociosList != null) {
+                return BackupImportResult(socios = sociosList, bonosRegalo = emptyList())
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        return BackupImportResult()
     }
 
     // ==========================================
-    // EXPORT & IMPORT CSV
+    // EXPORT & IMPORT CSV (INCLUYE SOCIOS Y BONOS)
     // ==========================================
 
-    fun exportToCsv(socios: List<Socio>, outputStream: OutputStream) {
+    fun exportToCsv(
+        socios: List<Socio>,
+        bonosRegalo: List<BonoRegaloInfo>,
+        outputStream: OutputStream
+    ) {
         outputStream.bufferedWriter(Charsets.UTF_8).use { out ->
+            // Sección 1: Socios
+            out.write("# SOCIOS\n")
             out.write("ID,Colaboracion,Hecho,DiaSemanaId,SemanaKey,NombreSocio,Notas,Timestamp\n")
             for (s in socios) {
                 val nombreEscaped = escapeCsvField(s.nombreSocio)
                 val notasEscaped = escapeCsvField(s.notas)
                 out.write("${s.id},${s.colaboracion},${s.hecho},${s.diaSemanaId},${s.semanaKey},$nombreEscaped,$notasEscaped,${s.timestamp}\n")
             }
+
+            // Sección 2: Bonos Regalo / Ajustes Manuales
+            if (bonosRegalo.isNotEmpty()) {
+                out.write("# BONOS_REGALO\n")
+                out.write("SemanaKey,Activo,EsMontoFijo,Monto,Nota\n")
+                for (b in bonosRegalo) {
+                    val notaEscaped = escapeCsvField(b.nota)
+                    out.write("${b.semanaKey},${b.activo},${b.esMontoFijo},${b.monto},$notaEscaped\n")
+                }
+            }
         }
     }
 
-    fun exportToCsvFile(context: Context, socios: List<Socio>): File? {
+    fun exportToCsvFile(
+        context: Context,
+        socios: List<Socio>,
+        bonosRegalo: List<BonoRegaloInfo>
+    ): File? {
         return try {
             val fileName = "socios_export_${
                 SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
@@ -89,7 +149,7 @@ object ExportUtils {
             val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), fileName)
             file.parentFile?.mkdirs()
             FileOutputStream(file).use { out ->
-                exportToCsv(socios, out)
+                exportToCsv(socios, bonosRegalo, out)
             }
             file
         } catch (e: Exception) {
@@ -98,33 +158,49 @@ object ExportUtils {
         }
     }
 
-    fun importFromCsv(inputStream: InputStream): List<Socio> {
+    fun importFromCsv(inputStream: InputStream): BackupImportResult {
         val socios = mutableListOf<Socio>()
+        val bonosRegalo = mutableListOf<BonoRegaloInfo>()
+
         val reader = BufferedReader(InputStreamReader(inputStream, Charsets.UTF_8))
         val lines = reader.readLines()
 
-        if (lines.isEmpty()) return emptyList()
+        if (lines.isEmpty()) return BackupImportResult()
 
-        val startIndex = if (lines.first().startsWith("ID", ignoreCase = true)) 1 else 0
+        var currentSection = "SOCIOS"
 
-        for (i in startIndex until lines.size) {
-            val line = lines[i].trim()
-            if (line.isBlank()) continue
+        for (line in lines) {
+            val trimmed = line.trim()
+            if (trimmed.isBlank()) continue
 
-            val tokens = parseCsvLine(line)
-            if (tokens.size >= 5) {
+            if (trimmed.startsWith("# SOCIOS", ignoreCase = true)) {
+                currentSection = "SOCIOS"
+                continue
+            }
+            if (trimmed.startsWith("# BONOS_REGALO", ignoreCase = true)) {
+                currentSection = "BONOS_REGALO"
+                continue
+            }
+
+            // Saltar cabeceras
+            if (trimmed.startsWith("ID,Colaboracion", ignoreCase = true) ||
+                trimmed.startsWith("SemanaKey,Activo", ignoreCase = true)
+            ) {
+                continue
+            }
+
+            val tokens = parseCsvLine(trimmed)
+
+            if (currentSection == "SOCIOS" && tokens.size >= 5) {
                 try {
-                    val id = if (tokens.getOrNull(0).isNullOrBlank()) UUID.randomUUID()
-                        .toString() else tokens[0]
+                    val id = if (tokens.getOrNull(0).isNullOrBlank()) UUID.randomUUID().toString() else tokens[0]
                     val colaboracion = tokens.getOrNull(1)?.toDoubleOrNull() ?: 0.0
-                    val hecho =
-                        tokens.getOrNull(2)?.toBooleanStrictOrNull() ?: (tokens.getOrNull(2) == "1")
+                    val hecho = tokens.getOrNull(2)?.toBooleanStrictOrNull() ?: (tokens.getOrNull(2) == "1")
                     val diaSemanaId = tokens.getOrNull(3)?.toIntOrNull() ?: 1
                     val semanaKey = tokens.getOrNull(4) ?: DateUtils.getSemanaKey(0)
                     val nombreSocio = tokens.getOrNull(5) ?: ""
                     val notas = tokens.getOrNull(6) ?: ""
-                    val timestamp =
-                        tokens.getOrNull(7)?.toLongOrNull() ?: System.currentTimeMillis()
+                    val timestamp = tokens.getOrNull(7)?.toLongOrNull() ?: System.currentTimeMillis()
 
                     socios.add(
                         Socio(
@@ -141,9 +217,30 @@ object ExportUtils {
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
+            } else if (currentSection == "BONOS_REGALO" && tokens.size >= 4) {
+                try {
+                    val semanaKey = tokens[0]
+                    val activo = tokens.getOrNull(1)?.toBooleanStrictOrNull() ?: true
+                    val esMontoFijo = tokens.getOrNull(2)?.toBooleanStrictOrNull() ?: true
+                    val monto = tokens.getOrNull(3)?.toDoubleOrNull() ?: 0.0
+                    val nota = tokens.getOrNull(4) ?: "Ajustado a mano"
+
+                    bonosRegalo.add(
+                        BonoRegaloInfo(
+                            semanaKey = semanaKey,
+                            activo = activo,
+                            esMontoFijo = esMontoFijo,
+                            monto = monto,
+                            nota = nota
+                        )
+                    )
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
         }
-        return socios
+
+        return BackupImportResult(socios = socios, bonosRegalo = bonosRegalo)
     }
 
     private fun escapeCsvField(field: String): String {
@@ -240,6 +337,8 @@ object ExportUtils {
 
         data class KpiData(val label: String, val value: String, val colorHex: String)
 
+        val bonusLabel = if (resumen.esBonoRegaloAplicado) "Bonus (Manual)" else "Bonus Semanal"
+
         val kpis = listOf(
             KpiData(
                 "Socios Hechos",
@@ -250,7 +349,7 @@ object ExportUtils {
                 String.format(Locale.getDefault(), "%.2f €", resumen.gananciasBaseX2),
                 "#2E7D32"
             ), KpiData(
-                "Bonus Semanal",
+                bonusLabel,
                 String.format(Locale.getDefault(), "%.2f €", resumen.bonusSemanal),
                 "#F57F17"
             ), KpiData(

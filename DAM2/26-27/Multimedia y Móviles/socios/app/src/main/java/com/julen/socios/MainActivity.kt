@@ -34,11 +34,11 @@ import com.julen.socios.util.DateUtils
 import com.julen.socios.util.ExportUtils
 import com.julen.socios.util.HapticUtils
 import com.julen.socios.util.NumberAnimators
-import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import kotlin.math.abs
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
     // --- EXPORT & IMPORT LAUNCHERS ---
     private var pendingExportType: String? = null
     private var pendingExportSocios: List<Socio> = emptyList()
+    private var pendingExportBonos: List<BonoRegaloInfo> = emptyList()
     private var pendingExportTitle: String = ""
 
     private val createDocumentLauncher = registerForActivityResult(
@@ -78,8 +79,8 @@ class MainActivity : AppCompatActivity() {
                                 )
                             }
 
-                            "csv" -> ExportUtils.exportToCsv(pendingExportSocios, outputStream)
-                            "json" -> ExportUtils.exportToJson(pendingExportSocios, outputStream)
+                            "csv" -> ExportUtils.exportToCsv(pendingExportSocios, pendingExportBonos, outputStream)
+                            "json" -> ExportUtils.exportToJson(pendingExportSocios, pendingExportBonos, outputStream)
                         }
                     }
                     Snackbar.make(
@@ -103,13 +104,13 @@ class MainActivity : AppCompatActivity() {
             lifecycleScope.launch {
                 try {
                     contentResolver.openInputStream(uri)?.use { inputStream ->
-                        val sociosImportados = ExportUtils.importFromJson(inputStream)
-                        if (sociosImportados.isNotEmpty()) {
-                            viewModel.importSocios(sociosImportados)
+                        val result = ExportUtils.importFromJson(inputStream)
+                        if (result.socios.isNotEmpty() || result.bonosRegalo.isNotEmpty()) {
+                            viewModel.importBackup(result.socios, result.bonosRegalo)
                         } else {
                             Snackbar.make(
                                 binding.root,
-                                "El archivo JSON no contiene socios válidos",
+                                "El archivo JSON no contiene datos válidos",
                                 Snackbar.LENGTH_LONG
                             ).show()
                         }
@@ -130,13 +131,13 @@ class MainActivity : AppCompatActivity() {
             lifecycleScope.launch {
                 try {
                     contentResolver.openInputStream(uri)?.use { inputStream ->
-                        val sociosImportados = ExportUtils.importFromCsv(inputStream)
-                        if (sociosImportados.isNotEmpty()) {
-                            viewModel.importSocios(sociosImportados)
+                        val result = ExportUtils.importFromCsv(inputStream)
+                        if (result.socios.isNotEmpty() || result.bonosRegalo.isNotEmpty()) {
+                            viewModel.importBackup(result.socios, result.bonosRegalo)
                         } else {
                             Snackbar.make(
                                 binding.root,
-                                "El archivo CSV no contiene socios válidos",
+                                "El archivo CSV no contiene datos válidos",
                                 Snackbar.LENGTH_LONG
                             ).show()
                         }
@@ -181,28 +182,19 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { state ->
-                    renderUi(state)
+                    renderUiState(state)
                 }
             }
         }
     }
 
-    private fun renderUi(state: MainUiState) {
-        // Mostrar mensajes Snackbars reactivamente
-        state.messageEvent?.let { msg ->
-            Snackbar.make(binding.root, msg, Snackbar.LENGTH_SHORT).show()
-            viewModel.clearMessageEvent()
-        }
-
-        // Rango de fechas
+    private fun renderUiState(state: MainUiState) {
+        // Rango de fechas y subtítulo
         binding.tvRangoSemana.text = state.rangoTexto
-        binding.tvSemanaSubtitulo.text = if (state.weekOffset == 0) {
-            getString(R.string.subtitle_current_week)
-        } else {
-            getString(R.string.title_week_format, state.semanaKey)
-        }
+        binding.tvSemanaSubtitulo.text =
+            if (state.weekOffset == 0) "Semana actual (Lunes a Viernes)" else "Semana ${state.semanaKey}"
 
-        // Botón Hoy
+        // Botón Hoy dinámico
         if (state.weekOffset < 0) {
             binding.btnHoyLeft.visibility = View.GONE
             binding.btnHoyRight.visibility = View.VISIBLE
@@ -214,7 +206,7 @@ class MainActivity : AppCompatActivity() {
             binding.btnHoyRight.visibility = View.GONE
         }
 
-        // Cálculos generales
+        // Totales financieros
         val resumen = state.resumenSemana
         if (resumen != null) {
             NumberAnimators.animateCurrency(binding.tvNetoHeader, resumen.totalNeto, prefix = "")
@@ -228,11 +220,8 @@ class MainActivity : AppCompatActivity() {
                 binding.tvIrpfHeader, resumen.retencionIrpf, prefix = "-"
             )
 
-            binding.tvBonusHeaderLabel.text = if (resumen.esBonoRegaloAplicado) {
-                getString(R.string.label_bonus_manual)
-            } else {
-                getString(R.string.label_bonus_auto)
-            }
+            binding.tvBonusHeaderLabel.text =
+                if (resumen.esBonoRegaloAplicado) "Bonus (Manual) ✏️" else "Bonus Socios ✏️"
 
             val bonusActual = resumen.bonusSemanal.toInt()
             val hechosCount = resumen.totalSociosHechos
@@ -240,9 +229,8 @@ class MainActivity : AppCompatActivity() {
             val metaBonus = resumen.siguienteMetaBonus.toInt()
 
             binding.tvBonusTitle.text =
-                getString(R.string.bonus_level_title, bonusActual, hechosCount)
-            binding.tvBonusProgressCount.text =
-                getString(R.string.bonus_progress_format, hechosCount, metaSocios)
+                "🏆 Bonus Nivel: +$bonusActual € ($hechosCount socios hechos)"
+            binding.tvBonusProgressCount.text = "$hechosCount / $metaSocios socios"
 
             if (previousBonusAmount in 0 until bonusActual) {
                 binding.tvBonusTitle.animate().scaleX(1.12f).scaleY(1.12f).setDuration(200)
@@ -259,17 +247,15 @@ class MainActivity : AppCompatActivity() {
 
             if (resumen.sociosFaltantesParaSiguienteMeta > 0) {
                 val faltan = resumen.sociosFaltantesParaSiguienteMeta
-                binding.tvBonusSiguienteMeta.text = if (faltan == 1) {
-                    getString(R.string.bonus_next_goal_singular, metaBonus)
-                } else {
-                    getString(R.string.bonus_next_goal_plural, faltan, metaBonus)
-                }
+                binding.tvBonusSiguienteMeta.text =
+                    "¡Haz $faltan ${if (faltan == 1) "socio más" else "socios más"} para alcanzar el Bonus de +$metaBonus €!"
             } else {
-                binding.tvBonusSiguienteMeta.text = getString(R.string.bonus_max_goal_reached)
+                binding.tvBonusSiguienteMeta.text =
+                    "¡Enhorabuena! Has alcanzado el nivel de bonus máximo para este tramo."
             }
         }
 
-        // Chips de Filtro por Día
+        // Chips de filtro por día
         val countLun = state.todosSociosSemana.count { it.diaSemanaId == 1 }
         val countMar = state.todosSociosSemana.count { it.diaSemanaId == 2 }
         val countMie = state.todosSociosSemana.count { it.diaSemanaId == 3 }
@@ -277,19 +263,14 @@ class MainActivity : AppCompatActivity() {
         val countVie = state.todosSociosSemana.count { it.diaSemanaId == 5 }
         val countTodos = state.todosSociosSemana.size
 
-        binding.chipFiltroTodos.text = getString(R.string.chip_todos_format, countTodos)
-        binding.chipFiltroLun.text =
-            getString(R.string.chip_day_format, getString(R.string.day_lunes).take(3), countLun)
-        binding.chipFiltroMar.text =
-            getString(R.string.chip_day_format, getString(R.string.day_martes).take(3), countMar)
-        binding.chipFiltroMie.text =
-            getString(R.string.chip_day_format, getString(R.string.day_miercoles).take(3), countMie)
-        binding.chipFiltroJue.text =
-            getString(R.string.chip_day_format, getString(R.string.day_jueves).take(3), countJue)
-        binding.chipFiltroVie.text =
-            getString(R.string.chip_day_format, getString(R.string.day_viernes).take(3), countVie)
+        binding.chipFiltroTodos.text = "Todos ($countTodos)"
+        binding.chipFiltroLun.text = "Lun ($countLun)"
+        binding.chipFiltroMar.text = "Mar ($countMar)"
+        binding.chipFiltroMie.text = "Mié ($countMie)"
+        binding.chipFiltroJue.text = "Jue ($countJue)"
+        binding.chipFiltroVie.text = "Vie ($countVie)"
 
-        // Lista y Empty State
+        // Lista de socios
         adapter.submitList(state.sociosFiltrados)
 
         if (state.sociosFiltrados.isEmpty()) {
@@ -301,15 +282,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         val diaNombre = state.selectedDiaFiltroId?.let { DiaSemana.fromId(it).nombreCompleto }
-        binding.tvListaTitulo.text = if (diaNombre != null) {
-            getString(R.string.title_socios_day_format, diaNombre)
-        } else {
-            getString(R.string.title_socios_week)
-        }
+        binding.tvListaTitulo.text =
+            if (diaNombre != null) "Socios del $diaNombre" else "Socios de la semana"
 
         val hechosFiltrados = state.sociosFiltrados.count { it.hecho }
         binding.tvListaResumenDia.text =
-            getString(R.string.list_summary_day_format, hechosFiltrados, state.sociosFiltrados.size)
+            "$hechosFiltrados hechos / ${state.sociosFiltrados.size} reg."
+
+        // Mostrar mensajes
+        state.messageEvent?.let { message ->
+            Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+            viewModel.clearMessageEvent()
+        }
     }
 
     private fun setupGestureDetector() {
@@ -555,12 +539,14 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val state = viewModel.uiState.value
             val allSocios = viewModel.getAllSocios()
+            val allBonosMap = viewModel.getAllBonosRegalo()
 
-            val (socios, titulo, bonoInfoForPdf) = when (scope) {
+            val (socios, titulo, bonoInfoForPdf, bonosInScope) = when (scope) {
                 is ExportScope.SemanaActiva -> {
                     val sociosSemana = viewModel.getSociosPorSemana(state.semanaKey)
                     val bono = viewModel.getBonoRegalo(state.semanaKey)
-                    Triple(sociosSemana, state.rangoTexto, bono)
+                    val listBonos = listOfNotNull(bono).filter { it.activo }
+                    Tuple4(sociosSemana, state.rangoTexto, bono, listBonos)
                 }
 
                 is ExportScope.SemanasEspecificas -> {
@@ -572,11 +558,13 @@ class MainActivity : AppCompatActivity() {
                         "${keys.size} semanas seleccionadas"
                     }
                     val bono = if (keys.size == 1) viewModel.getBonoRegalo(keys.first()) else null
-                    Triple(sociosFiltrados, tituloTexto, bono)
+                    val listBonos = keys.mapNotNull { allBonosMap[it] }.filter { it.activo }
+                    Tuple4(sociosFiltrados, tituloTexto, bono, listBonos)
                 }
 
                 is ExportScope.HistoricoGlobal -> {
-                    Triple(allSocios, "Histórico Global", null)
+                    val listBonos = allBonosMap.values.filter { it.activo }
+                    Tuple4(allSocios, "Histórico Global", null, listBonos)
                 }
             }
 
@@ -600,8 +588,8 @@ class MainActivity : AppCompatActivity() {
                                     this@MainActivity, socios, titulo, bonoInfoForPdf
                                 )
 
-                                "csv" -> ExportUtils.exportToCsvFile(this@MainActivity, socios)
-                                else -> ExportUtils.exportToJsonFile(this@MainActivity, socios)
+                                "csv" -> ExportUtils.exportToCsvFile(this@MainActivity, socios, bonosInScope)
+                                else -> ExportUtils.exportToJsonFile(this@MainActivity, socios, bonosInScope)
                             }
                             if (file != null) {
                                 val mime = when (tipo) {
@@ -623,6 +611,7 @@ class MainActivity : AppCompatActivity() {
                     } else {
                         pendingExportType = tipo
                         pendingExportSocios = socios
+                        pendingExportBonos = bonosInScope
                         pendingExportTitle = titulo
 
                         val timestamp =
@@ -630,9 +619,13 @@ class MainActivity : AppCompatActivity() {
                         val defaultFileName = "socios_${state.semanaKey}_$timestamp.$tipo"
                         createDocumentLauncher.launch(defaultFileName)
                     }
-                }.setNegativeButton(getString(R.string.action_cancel), null).show()
+                }
+                .setNegativeButton("Cancelar", null)
+                .show()
         }
     }
+
+    private data class Tuple4<A, B, C, D>(val a: A, val b: B, val c: C, val d: D)
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -667,10 +660,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun confirmarBorrarSemana() {
         val state = viewModel.uiState.value
-        AlertDialog.Builder(this).setTitle(getString(R.string.dialog_clear_week_title))
-            .setMessage(getString(R.string.dialog_clear_week_msg, state.semanaKey))
-            .setPositiveButton(getString(R.string.action_delete)) { _, _ ->
+        AlertDialog.Builder(this).setTitle("Limpiar semana")
+            .setMessage("¿Deseas borrar todos los socios de la semana ${state.semanaKey}?")
+            .setPositiveButton("Borrar") { _, _ ->
                 viewModel.clearSemana(state.semanaKey)
-            }.setNegativeButton(getString(R.string.action_cancel), null).show()
+            }.setNegativeButton("Cancelar", null).show()
     }
 }

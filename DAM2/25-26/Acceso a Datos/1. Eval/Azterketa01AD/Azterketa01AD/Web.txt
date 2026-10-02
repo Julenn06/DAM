@@ -1,6 +1,0 @@
-ISBN		IZENA		YEAR
--------------------------------
-X22		Learning XML
-Z46		XQuery
--------------------------------
-Total liburuak: 2

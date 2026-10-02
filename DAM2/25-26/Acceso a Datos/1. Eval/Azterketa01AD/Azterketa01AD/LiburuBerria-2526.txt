@@ -1,8 +1,0 @@
-category:COOKINGJULENN
-isbn:B63
-title:Pirritx eta Porrotx sukaldeanJULEEEEEEEENN
-lang:eu
-author:Marimotots
-year:2008
-price:12.50
-date:25-09-2024

@@ -34,10 +34,10 @@ public class Ariketa03 {
 		haria1.start();
 		haria2.start();
 
-		System.out.println("[Main] Hariak abiarazi dira (Thread heredatuz). Jarraipena hasten...");
+		System.out.println("Hariak abiarazi dira (Thread heredatuz). Jarraipena hasten...");
 
 		while (haria1.isAlive() || haria2.isAlive()) {
-			System.out.println("[Main] Hariak lanean ari dira oraindik...");
+			System.out.println("Hariak lanean ari dira oraindik...");
 
 			try {
 				Thread.sleep(1000);
@@ -46,6 +46,6 @@ public class Ariketa03 {
 			}
 		}
 
-		System.out.println("[Main] Bi hariak amaitu dira. Begiztatik irten naiz. AGUR!");
+		System.out.println("Bi hariak amaitu dira. Begiztatik irten naiz. AGUR!");
 	}
 }

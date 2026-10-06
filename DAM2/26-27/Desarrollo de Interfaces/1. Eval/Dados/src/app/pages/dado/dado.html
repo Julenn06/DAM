@@ -1,8 +1,8 @@
 <div class="pantalla-completa">
   <div class="contenedor-dados">
-    <input type="text" readonly #dado1 class="dado dado-rojo" />
-    <input type="text" readonly #dado2 class="dado dado-verde" />
-    <input type="text" readonly #dado3 class="dado dado-azul" />
+    <input type="text" readonly #dado1 class="dado dado-rojo" value="0" />
+    <input type="text" readonly #dado2 class="dado dado-verde" value="0" />
+    <input type="text" readonly #dado3 class="dado dado-azul" value="0" />
   </div>
 
   <button type="button" (click)="numeroDado(dado1, dado2, dado3)">Lanzar dados</button>

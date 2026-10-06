@@ -11,6 +11,13 @@ export class Dado {
     dado1.value = this.generarNumero().toString();
     dado2.value = this.generarNumero().toString();
     dado3.value = this.generarNumero().toString();
+
+    if (
+      dado1.value.toString() == '6' &&
+      dado2.value.toString() == '6' &&
+      dado3.value.toString() == '6'
+    )
+      alert('ganador');
   }
 
   generarNumero(): Number {

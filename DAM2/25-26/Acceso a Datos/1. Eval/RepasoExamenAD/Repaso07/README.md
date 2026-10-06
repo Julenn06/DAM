@@ -7,12 +7,14 @@ Sistema completo de gestión de biblioteca que demuestra el manejo avanzado de X
 ## 🎯 Características Principales
 
 ### 📊 Estructura XML Compleja
+
 - **5 niveles de anidación**: biblioteca → autores → libros → capítulos/reseñas → contenido
 - **Múltiples relaciones**: Autores con múltiples libros, libros con múltiples capítulos y reseñas
 - **Datos ricos**: 5 autores, 9 libros, múltiples premios, capítulos y reseñas
 - **Información detallada**: Biografías, premios, valoraciones, stock, precios
 
 ### 🏗️ Arquitectura MVC Perfecta
+
 ```
 Repaso07/
 ├── biblioteca.xml          # XML con datos complejos anidados
@@ -24,6 +26,7 @@ Repaso07/
 ```
 
 ### 🎨 Modelos (8 clases)
+
 1. **Biblioteca** - Información de la biblioteca
 2. **Autor** - Escritores con biografía y premios
 3. **Premio** - Galardones recibidos por autores
@@ -36,12 +39,14 @@ Repaso07/
 ### 🎮 Controladores (5 clases)
 
 #### 1. **XMLController** (Core)
+
 - Carga y parsea el documento XML completo
 - Navegación por nodos DOM con múltiples niveles
 - Búsqueda eficiente por IDs
 - Métodos auxiliares para extraer contenido
 
 #### 2. **AutorController**
+
 - Listar todos los autores
 - Ver detalles completos (biografía, premios, obras)
 - Buscar por nombre, nacionalidad, género literario
@@ -49,6 +54,7 @@ Repaso07/
 - Estadísticas de autores
 
 #### 3. **LibroController**
+
 - Catálogo completo de libros
 - Ficha detallada (capítulos, reseñas, valoraciones)
 - Búsqueda por: título, ISBN, categoría, editorial
@@ -58,6 +64,7 @@ Repaso07/
 - Cálculo de inventario
 
 #### 4. **SocioController**
+
 - Gestión de socios
 - Historial de préstamos por socio
 - Búsqueda por nombre, DNI, tipo
@@ -65,6 +72,7 @@ Repaso07/
 - Estadísticas de socios
 
 #### 5. **EstadisticasController**
+
 - Resumen general completo
 - Distribución por categorías
 - Distribución por nacionalidades
@@ -77,6 +85,7 @@ Repaso07/
 ## 🔍 Operaciones Avanzadas XML
 
 ### Parsing Multinivel
+
 ```java
 // Navegar 4 niveles: biblioteca → autores → autor → libros → libro
 NodeList autoresNodes = document.getElementsByTagName("autor");
@@ -90,12 +99,14 @@ for (cada autor) {
 ```
 
 ### Manejo de Atributos y Elementos
+
 - **Atributos**: `id`, `numero`
 - **Elementos de texto**: nombres, títulos, descripciones
 - **Elementos anidados**: premios, capítulos, reseñas
 - **Listas dinámicas**: colecciones de objetos relacionados
 
 ### Transformaciones
+
 - Conversión XML → Objetos Java (DOM to POJO)
 - Preservación de relaciones padre-hijo
 - Agregación de datos relacionales
@@ -103,6 +114,7 @@ for (cada autor) {
 ## 📊 Ejemplo de Datos
 
 ### Estructura de un Autor
+
 ```xml
 <autor id="A001">
     <nombre>Gabriel García Márquez</nombre>
@@ -137,6 +149,7 @@ for (cada autor) {
 ## 🎯 Menús Interactivos
 
 ### Menú Principal
+
 1. 📖 Gestión de Autores (6 opciones)
 2. 📚 Gestión de Libros (12 opciones)
 3. 👥 Gestión de Socios (6 opciones)
@@ -148,12 +161,14 @@ for (cada autor) {
 ## 🚀 Compilación y Ejecución
 
 ### Compilar
+
 ```bash
 cd Repaso07
 mvn clean compile
 ```
 
 ### Ejecutar
+
 ```bash
 mvn exec:java
 ```
@@ -161,6 +176,7 @@ mvn exec:java
 ## 💡 Conceptos Demostrados
 
 ### XML Avanzado
+
 - ✅ **Parsing DOM**: DocumentBuilder, Document, Element
 - ✅ **Navegación multinivel**: getElementsByTagName recursivo
 - ✅ **Atributos**: getAttribute()
@@ -169,6 +185,7 @@ mvn exec:java
 - ✅ **Transformación**: DOM a objetos Java
 
 ### Java Moderno (Java 21)
+
 - ✅ **Stream API**: filter, map, collect, sorted
 - ✅ **Lambdas**: expresiones para filtrado
 - ✅ **Method references**: comparadores
@@ -176,6 +193,7 @@ mvn exec:java
 - ✅ **String formatting**: printf, format
 
 ### Patrones de Diseño
+
 - ✅ **MVC**: Separación perfecta de responsabilidades
 - ✅ **Controller Pattern**: Lógica de negocio separada
 - ✅ **POJO**: Objetos simples sin lógica
@@ -183,6 +201,7 @@ mvn exec:java
 - ✅ **Aggregation**: Listas de objetos relacionados
 
 ### Buenas Prácticas
+
 - ✅ **No static methods**: Diseño orientado a objetos
 - ✅ **Encapsulación**: Getters y setters
 - ✅ **Separación de concerns**: Un controlador por entidad
@@ -201,6 +220,7 @@ mvn exec:java
 ## 🎓 Objetivos de Aprendizaje
 
 Este proyecto demuestra:
+
 1. Parsing completo de XML con DOM
 2. Manejo de estructuras jerárquicas complejas
 3. Navegación por múltiples niveles de anidación

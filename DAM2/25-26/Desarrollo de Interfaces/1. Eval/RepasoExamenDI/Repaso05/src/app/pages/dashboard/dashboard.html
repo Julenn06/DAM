@@ -1,6 +1,9 @@
 <div class="container">
   <h1>🎵 Ultra Complete Music Database Demo 🎵</h1>
-  <p>Esta aplicación demuestra más de 70 formas diferentes de interactuar con db.json usando json-server</p>
+  <p>
+    Esta aplicación demuestra más de 70 formas diferentes de interactuar con db.json usando
+    json-server
+  </p>
 
   <!-- Estadísticas Generales -->
   <section class="stats-section">
@@ -24,24 +27,26 @@
       </div>
       <div class="stat-card">
         <h3>Duración Total</h3>
-        <p>{{ duracionTotal | number:'1.1-1' }} min</p>
+        <p>{{ duracionTotal | number: '1.1-1' }} min</p>
       </div>
       <div class="stat-card">
         <h3>Canción Más Larga</h3>
         @if (cancionMasLarga) {
-        <p>{{ cancionMasLarga.titulo }} ({{ cancionMasLarga.duracion }} min)</p>
+          <p>{{ cancionMasLarga.titulo }} ({{ cancionMasLarga.duracion }} min)</p>
         }
       </div>
       <div class="stat-card">
         <h3>Canción Más Corta</h3>
         @if (cancionMasCorta) {
-        <p>{{ cancionMasCorta.titulo }} ({{ cancionMasCorta.duracion }} min)</p>
+          <p>{{ cancionMasCorta.titulo }} ({{ cancionMasCorta.duracion }} min)</p>
         }
       </div>
       <div class="stat-card">
         <h3>Artista con Más Álbumes</h3>
         @if (artistaMasAlbumes.artista) {
-        <p>{{ artistaMasAlbumes.artista.nombre }} ({{ artistaMasAlbumes.numeroAlbumes }} álbumes)</p>
+          <p>
+            {{ artistaMasAlbumes.artista.nombre }} ({{ artistaMasAlbumes.numeroAlbumes }} álbumes)
+          </p>
         }
       </div>
     </div>
@@ -55,18 +60,26 @@
     <div class="form-card">
       <h3>Crear Nuevo Artista</h3>
       <form (ngSubmit)="crearArtista()">
-        <input [(ngModel)]="nuevoArtista.nombre" name="nombre" placeholder="Nombre" required>
-        <input [(ngModel)]="nuevoArtista.genero" name="genero" placeholder="Género" required>
-        <input [(ngModel)]="nuevoArtista.pais" name="pais" placeholder="País" required>
-        <input [(ngModel)]="nuevoArtista.anioFormacion" name="anio" type="number" placeholder="Año formación" required>
-        <label><input [(ngModel)]="nuevoArtista.activo" name="activo" type="checkbox"> Activo</label>
+        <input [(ngModel)]="nuevoArtista.nombre" name="nombre" placeholder="Nombre" required />
+        <input [(ngModel)]="nuevoArtista.genero" name="genero" placeholder="Género" required />
+        <input [(ngModel)]="nuevoArtista.pais" name="pais" placeholder="País" required />
+        <input
+          [(ngModel)]="nuevoArtista.anioFormacion"
+          name="anio"
+          type="number"
+          placeholder="Año formación"
+          required
+        />
+        <label
+          ><input [(ngModel)]="nuevoArtista.activo" name="activo" type="checkbox" /> Activo</label
+        >
         <button type="submit">Crear Artista</button>
       </form>
     </div>
 
     <!-- Filtros -->
     <div class="filters">
-      <input [(ngModel)]="busquedaArtista" placeholder="Buscar artista...">
+      <input [(ngModel)]="busquedaArtista" placeholder="Buscar artista..." />
       <select [(ngModel)]="filtroGenero">
         <option value="">Todos los géneros</option>
         <option value="Rock">Rock</option>
@@ -83,14 +96,16 @@
     <!-- Lista de Artistas -->
     <div class="data-list">
       @for (artista of getArtistasFiltrados(); track artista.id) {
-      <div class="data-item">
-        <div class="item-content">
-          <h4>{{ artista.nombre }}</h4>
-          <p>{{ artista.genero }} • {{ artista.pais }} • {{ artista.anioFormacion }}</p>
-          <span class="status" [class.active]="artista.activo">{{ artista.activo ? 'Activo' : 'Inactivo' }}</span>
+        <div class="data-item">
+          <div class="item-content">
+            <h4>{{ artista.nombre }}</h4>
+            <p>{{ artista.genero }} • {{ artista.pais }} • {{ artista.anioFormacion }}</p>
+            <span class="status" [class.active]="artista.activo">{{
+              artista.activo ? 'Activo' : 'Inactivo'
+            }}</span>
+          </div>
+          <button (click)="eliminarArtista(artista.id)" class="delete-btn">Eliminar</button>
         </div>
-        <button (click)="eliminarArtista(artista.id)" class="delete-btn">Eliminar</button>
-      </div>
       }
     </div>
   </section>
@@ -103,37 +118,43 @@
     <div class="form-card">
       <h3>Crear Nuevo Álbum</h3>
       <form (ngSubmit)="crearAlbum()">
-        <input [(ngModel)]="nuevoAlbum.titulo" name="titulo" placeholder="Título" required>
+        <input [(ngModel)]="nuevoAlbum.titulo" name="titulo" placeholder="Título" required />
         <select [(ngModel)]="nuevoAlbum.artistaId" name="artistaId" required>
           <option value="">Seleccionar Artista</option>
           @for (artista of artistas; track artista.id) {
-          <option [value]="artista.id">{{ artista.nombre }}</option>
+            <option [value]="artista.id">{{ artista.nombre }}</option>
           }
         </select>
-        <input [(ngModel)]="nuevoAlbum.anio" name="anio" type="number" placeholder="Año" required>
-        <input [(ngModel)]="nuevoAlbum.genero" name="genero" placeholder="Género" required>
-        <input [(ngModel)]="nuevoAlbum.duracionTotal" name="duracion" type="number" step="0.01"
-          placeholder="Duración total" required>
+        <input [(ngModel)]="nuevoAlbum.anio" name="anio" type="number" placeholder="Año" required />
+        <input [(ngModel)]="nuevoAlbum.genero" name="genero" placeholder="Género" required />
+        <input
+          [(ngModel)]="nuevoAlbum.duracionTotal"
+          name="duracion"
+          type="number"
+          step="0.01"
+          placeholder="Duración total"
+          required
+        />
         <button type="submit">Crear Álbum</button>
       </form>
     </div>
 
     <!-- Buscar Álbumes -->
     <div class="filters">
-      <input [(ngModel)]="busquedaAlbum" placeholder="Buscar álbum...">
+      <input [(ngModel)]="busquedaAlbum" placeholder="Buscar álbum..." />
     </div>
 
     <!-- Lista de Álbumes -->
     <div class="data-list">
       @for (album of getAlbumesFiltrados(); track album.id) {
-      <div class="data-item">
-        <div class="item-content">
-          <h4>{{ album.titulo }}</h4>
-          <p>{{ getArtistaNombre(album.artistaId) }} • {{ album.genero }} • {{ album.anio }}</p>
-          <p>Duración: {{ album.duracionTotal }} min</p>
+        <div class="data-item">
+          <div class="item-content">
+            <h4>{{ album.titulo }}</h4>
+            <p>{{ getArtistaNombre(album.artistaId) }} • {{ album.genero }} • {{ album.anio }}</p>
+            <p>Duración: {{ album.duracionTotal }} min</p>
+          </div>
+          <button (click)="eliminarAlbum(album.id)" class="delete-btn">Eliminar</button>
         </div>
-        <button (click)="eliminarAlbum(album.id)" class="delete-btn">Eliminar</button>
-      </div>
       }
     </div>
   </section>
@@ -146,42 +167,48 @@
     <div class="form-card">
       <h3>Crear Nueva Canción</h3>
       <form (ngSubmit)="crearCancion()">
-        <input [(ngModel)]="nuevaCancion.titulo" name="titulo" placeholder="Título" required>
+        <input [(ngModel)]="nuevaCancion.titulo" name="titulo" placeholder="Título" required />
         <select [(ngModel)]="nuevaCancion.albumId" name="albumId" required>
           <option value="">Seleccionar Álbum</option>
           @for (album of albumes; track album.id) {
-          <option [value]="album.id">{{ album.titulo }}</option>
+            <option [value]="album.id">{{ album.titulo }}</option>
           }
         </select>
         <select [(ngModel)]="nuevaCancion.artistaId" name="artistaId" required>
           <option value="">Seleccionar Artista</option>
           @for (artista of artistas; track artista.id) {
-          <option [value]="artista.id">{{ artista.nombre }}</option>
+            <option [value]="artista.id">{{ artista.nombre }}</option>
           }
         </select>
-        <input [(ngModel)]="nuevaCancion.duracion" name="duracion" type="number" step="0.01" placeholder="Duración"
-          required>
-        <input [(ngModel)]="nuevaCancion.genero" name="genero" placeholder="Género" required>
+        <input
+          [(ngModel)]="nuevaCancion.duracion"
+          name="duracion"
+          type="number"
+          step="0.01"
+          placeholder="Duración"
+          required
+        />
+        <input [(ngModel)]="nuevaCancion.genero" name="genero" placeholder="Género" required />
         <button type="submit">Crear Canción</button>
       </form>
     </div>
 
     <!-- Buscar Canciones -->
     <div class="filters">
-      <input [(ngModel)]="busquedaCancion" placeholder="Buscar canción...">
+      <input [(ngModel)]="busquedaCancion" placeholder="Buscar canción..." />
     </div>
 
     <!-- Lista de Canciones -->
     <div class="data-list">
       @for (cancion of getCancionesFiltradas(); track cancion.id) {
-      <div class="data-item">
-        <div class="item-content">
-          <h4>{{ cancion.titulo }}</h4>
-          <p>{{ getAlbumNombre(cancion.albumId) }} • {{ getArtistaNombre(cancion.artistaId) }}</p>
-          <p>{{ cancion.genero }} • {{ cancion.duracion }} min</p>
+        <div class="data-item">
+          <div class="item-content">
+            <h4>{{ cancion.titulo }}</h4>
+            <p>{{ getAlbumNombre(cancion.albumId) }} • {{ getArtistaNombre(cancion.artistaId) }}</p>
+            <p>{{ cancion.genero }} • {{ cancion.duracion }} min</p>
+          </div>
+          <button (click)="eliminarCancion(cancion.id)" class="delete-btn">Eliminar</button>
         </div>
-        <button (click)="eliminarCancion(cancion.id)" class="delete-btn">Eliminar</button>
-      </div>
       }
     </div>
   </section>
@@ -194,8 +221,13 @@
     <div class="form-card">
       <h3>Crear Nueva Playlist</h3>
       <form (ngSubmit)="crearPlaylist()">
-        <input [(ngModel)]="nuevaPlaylist.nombre" name="nombre" placeholder="Nombre" required>
-        <input [(ngModel)]="nuevaPlaylist.descripcion" name="descripcion" placeholder="Descripción" required>
+        <input [(ngModel)]="nuevaPlaylist.nombre" name="nombre" placeholder="Nombre" required />
+        <input
+          [(ngModel)]="nuevaPlaylist.descripcion"
+          name="descripcion"
+          placeholder="Descripción"
+          required
+        />
         <button type="submit">Crear Playlist</button>
       </form>
     </div>
@@ -203,19 +235,19 @@
     <!-- Lista de Playlists -->
     <div class="data-list">
       @for (playlist of playlists; track playlist.id) {
-      <div class="data-item">
-        <div class="item-content">
-          <h4>{{ playlist.nombre }}</h4>
-          <p>{{ playlist.descripcion }}</p>
-          <p>{{ playlist.cancionIds.length }} canciones</p>
-          <div class="playlist-songs">
-            @for (cancion of getCancionesDePlaylist(playlist); track cancion.id) {
-            <small>{{ cancion.titulo }} •</small>
-            }
+        <div class="data-item">
+          <div class="item-content">
+            <h4>{{ playlist.nombre }}</h4>
+            <p>{{ playlist.descripcion }}</p>
+            <p>{{ playlist.cancionIds.length }} canciones</p>
+            <div class="playlist-songs">
+              @for (cancion of getCancionesDePlaylist(playlist); track cancion.id) {
+                <small>{{ cancion.titulo }} •</small>
+              }
+            </div>
           </div>
+          <button (click)="eliminarPlaylist(playlist.id)" class="delete-btn">Eliminar</button>
         </div>
-        <button (click)="eliminarPlaylist(playlist.id)" class="delete-btn">Eliminar</button>
-      </div>
       }
     </div>
   </section>
@@ -229,7 +261,7 @@
         <h3>Canciones por Género</h3>
         <ul>
           @for (item of estadisticasPorGenero | keyvalue; track item.key) {
-          <li>{{ item.key }}: {{ item.value }}</li>
+            <li>{{ item.key }}: {{ item.value }}</li>
           }
         </ul>
       </div>
@@ -238,7 +270,7 @@
         <h3>Promedio Duración por Género</h3>
         <ul>
           @for (item of promedioDuracionPorGenero | keyvalue; track item.key) {
-          <li>{{ item.key }}: {{ item.value | number:'1.1-1' }} min</li>
+            <li>{{ item.key }}: {{ item.value | number: '1.1-1' }} min</li>
           }
         </ul>
       </div>
@@ -247,7 +279,7 @@
         <h3>Artistas por País</h3>
         <ul>
           @for (item of distribucionPorPais | keyvalue; track item.key) {
-          <li>{{ item.key }}: {{ item.value }}</li>
+            <li>{{ item.key }}: {{ item.value }}</li>
           }
         </ul>
       </div>
@@ -256,7 +288,7 @@
         <h3>Álbumes por Década</h3>
         <ul>
           @for (item of albumesPorDecada | keyvalue; track item.key) {
-          <li>{{ item.key }}s: {{ item.value }}</li>
+            <li>{{ item.key }}s: {{ item.value }}</li>
           }
         </ul>
       </div>

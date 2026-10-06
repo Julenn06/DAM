@@ -1,46 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="js/script.js"></script>
-</head>
+  </head>
 
-<body>
-    <p onmouseover="koloreaAldatu()" onmouseout="koloreaAldatu2()">Lorem ipsum dolor sit amet, consectetuer adipiscing
-        elit. Aenean commodo ligula
-        eget dolor. Aenean massa. Cum
-        sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
-        nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel,
-        aliquet nec, vulputate eget, arcu.</p>
+  <body>
+    <p onmouseover="koloreaAldatu()" onmouseout="koloreaAldatu2()">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+      ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
+      dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
+      nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+      Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+    </p>
 
+    <p
+      id="p2"
+      onmouseover="koloreaAldatu3('red')"
+      onmouseout="koloreaAldatu3('black')"
+    >
+      In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam
+      dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+      Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean
+      leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+    </p>
 
-    <p id="p2" onmouseover="koloreaAldatu3('red')" onmouseout="koloreaAldatu3('black')">In enim justo, rhoncus ut,
-        imperdiet a,
-        venenatis
-        vitae, justo. Nullam dictum
-        felis
-        eu pede mollis pretium.
-        Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo
-        ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+    <p
+      onmouseover="koloreaAldatu4(this, 'red')"
+      onmouseout="koloreaAldatu4(this, 'black')"
+    >
+      Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus
+      viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.
+      Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam
+      eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus,
+      sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
+    </p>
 
-
-    <p onmouseover="koloreaAldatu4(this, 'red')" onmouseout="koloreaAldatu4(this, 'black')">Aliquam lorem ante, dapibus
-        in, viverra
-        quis, feugiat a, tellus.
-        Phasellus viverra nulla ut metus varius laoreet.
-        Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget
-        dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet
-        adipiscing sem neque sed ipsum.</p>
-
-
-    <p onmouseover="this.style.color = 'red';" onmouseout="this.style.color = 'black';"> Nam quam nunc, blandit vel,
-        luctus pulvinar, hendrerit id, lorem.
-        Maecenas nec odio et ante tincidunt tempus.
-        Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus
-        tincidunt.</p>
-</body>
-
+    <p
+      onmouseover="this.style.color = 'red'"
+      onmouseout="this.style.color = 'black'"
+    >
+      Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas
+      nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis
+      faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus
+      tincidunt.
+    </p>
+  </body>
 </html>

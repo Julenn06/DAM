@@ -1,304 +1,293 @@
 /*===============INDEX=======================*/
 
 * {
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-size: 2em;
-    font-family: sans-serif;
-    background-color: whitesmoke;
+  font-size: 2em;
+  font-family: sans-serif;
+  background-color: whitesmoke;
 }
 
 #izenburua {
-    text-align: center;
+  text-align: center;
 }
 
 .dropdown {
-    display: inline-block;
-    position: relative;
+  display: inline-block;
+  position: relative;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    left: 0;
-    width: 0;
-    overflow: hidden;
-    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
-    transition: width 0.3s ease;
-
+  display: none;
+  position: absolute;
+  left: 0;
+  width: 0;
+  overflow: hidden;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+  transition: width 0.3s ease;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
-    width: 200px;
-
+  display: block;
+  width: 200px;
 }
 
 .dropdown-content a {
-    display: block;
-    color: #000000;
-    text-decoration: none;
-    padding: 10px;
-    transition: background-color 0.3s, color 0.3s;
+  display: block;
+  color: #000000;
+  text-decoration: none;
+  padding: 10px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .dropdown-content a:hover,
 .dropdown-content a:focus {
-    text-decoration: underline;
-    color: #FFFFFF;
-    background-color: #00A4BD;
-    outline: 2px solid #00A4BD;
+  text-decoration: underline;
+  color: #ffffff;
+  background-color: #00a4bd;
+  outline: 2px solid #00a4bd;
 }
 
 .h2 {
-    margin-top: 100px;
-    font-size: 20px;
-    display: flex;
-    border-style: solid;
-    border-color: darkblue;
-    border-width: 5px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    height: 300px;
-    align-items: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 20px;
+  margin-top: 100px;
+  font-size: 20px;
+  display: flex;
+  border-style: solid;
+  border-color: darkblue;
+  border-width: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  height: 300px;
+  align-items: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 20px;
 }
 
 a {
-    text-decoration: none;
-    color: black;
-    display: block;
-    padding: 5px;
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding: 5px;
 }
 
 body {
-    font-family: 'Century Gothic';
-    background-color: #c1f0fa;
+  font-family: "Century Gothic";
+  background-color: #c1f0fa;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 /*==================GEHIEN SALDUTA========================*/
 
 .tituloa {
-    width: 100%;
-    background: #3FAF59;
-    height: 100px;
-    display: flex;
-    align-items: center;
+  width: 100%;
+  background: #3faf59;
+  height: 100px;
+  display: flex;
+  align-items: center;
 }
 
 .tituloa h1 {
-    color: #fff;
-    font-size: 34px;
-    font-weight: 200;
-    text-align: center;
-    flex-grow: 1;
+  color: #fff;
+  font-size: 34px;
+  font-weight: 200;
+  text-align: center;
+  flex-grow: 1;
 }
 
 .tituloa img {
-    width: 150px;
-    max-height: 150px;
-    object-fit: contain;
+  width: 150px;
+  max-height: 150px;
+  object-fit: contain;
 }
 
 .nabigazioa {
-    width: 100%;
-    background: #1C1C1C;
+  width: 100%;
+  background: #1c1c1c;
 
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .menu {
-    width: 1000px;
-    display: flex;
-    flex-wrap: wrap;
-    height: 90px;
+  width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 90px;
 }
 
 .menu li {
-    flex-basis: 0;
-    flex-grow: 1;
-    border-right: 1px solid #363636;
-    position: relative;
+  flex-basis: 0;
+  flex-grow: 1;
+  border-right: 1px solid #363636;
+  position: relative;
 }
 
 .menu .lehehengo-item {
-    border-left: 1px solid #363636;
+  border-left: 1px solid #363636;
 }
 
 .menu li a {
-    display: flex;
-    flex-direction: column;
-    font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
 }
 
 .menu .irudiak {
-    position: absolute;
-    bottom: 0;
-    right: 30px;
-    width: 0%;
-    z-index: 20;
+  position: absolute;
+  bottom: 0;
+  right: 30px;
+  width: 0%;
+  z-index: 20;
 }
 
 .menu li a .text-item {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-    top: 0%;
-    position: absolute;
-    z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  top: 0%;
+  position: absolute;
+  z-index: 10;
 }
 
 .menu li a .testuadesplegatu {
-    position: absolute;
-    top: 0%;
-    width: 100%;
-    height: 100%;
-    background: #1C1C1C;
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  background: #1c1c1c;
 }
 
 .menu li:hover .testuadesplegatu,
 .menu li:hover .text-item {
-    top: 100%;
-    height: 115%;
+  top: 100%;
+  height: 115%;
 }
 
 .menu li:hover .irudiak {
-    width: 100%;
-    right: 0px;
+  width: 100%;
+  right: 0px;
 }
 
-
 .gehiensaldutak {
-    display: flex;
-    flex-wrap: wrap;
-    width: 50%;
-    margin: auto;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  margin: auto;
+  justify-content: space-between;
 }
 
 .card {
-    margin-top: 100px;
-    position: relative;
-    width: 325px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  margin-top: 100px;
+  position: relative;
+  width: 325px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card img {
-    width: 100%;
-    border-radius: 8px;
-    transition: opacity 0.4s ease-in-out;
+  width: 100%;
+  border-radius: 8px;
+  transition: opacity 0.4s ease-in-out;
 }
 
 .text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 8px;
-    height: 100%;
-    display: flex;
-    padding-left: 10px;
-    background-color: rgba(28, 28, 28, 0.8);
-    color: #fff;
-    opacity: 0;
-    width: 100%;
-    transition: all 0.4s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 8px;
+  height: 100%;
+  display: flex;
+  padding-left: 10px;
+  background-color: rgba(28, 28, 28, 0.8);
+  color: #fff;
+  opacity: 0;
+  width: 100%;
+  transition: all 0.4s ease-in-out;
 }
 
 .card:hover .text {
-    opacity: 1;
+  opacity: 1;
 }
 
 /*==================SARE-SOZIALAK========================*/
 .sare-sozialak {
-    margin-top: 260px;
-    font-size: 20px;
-    display: flex;
-    border-style: solid;
-    border-color: darkblue;
-    border-width: 5px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    height: 100px;
-    align-items: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 20px;
+  margin-top: 260px;
+  font-size: 20px;
+  display: flex;
+  border-style: solid;
+  border-color: darkblue;
+  border-width: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  height: 100px;
+  align-items: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 20px;
 }
 
 .sare-sozialak img {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 .cc {
-    font-size: 15px;
+  font-size: 15px;
 }
-
-
-
-
-
-
-
-
-
 
 /*0=======================NON-GAUDE================================*/
 
 .mapak {
-    margin-top: 100px;
-    position: relative;
-    width: 325px;
-    /* Ancho para dos tarjetas por fila, ajusta el espacio */
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    /* Centrar verticalmente */
-    justify-content: center;
-    /* Centrar horizontalmente */
-    /* Moverlo a la izquierda */
-    /* Ajustar a la altura de la tarjeta */
+  margin-top: 100px;
+  position: relative;
+  width: 325px;
+  /* Ancho para dos tarjetas por fila, ajusta el espacio */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  /* Centrar verticalmente */
+  justify-content: center;
+  /* Centrar horizontalmente */
+  /* Moverlo a la izquierda */
+  /* Ajustar a la altura de la tarjeta */
 
-    /* Oculto inicialmente */
-    width: 100%;
+  /* Oculto inicialmente */
+  width: 100%;
 }
 
 .main-mapak {
-    text-align: center;
+  text-align: center;
 }
 
 .mapa-testua {
-    top: 10px;
+  top: 10px;
 }
 
 .mapa-irudiak {
-    text-align: center;
-    margin: 40px;
-
+  text-align: center;
+  margin: 40px;
 }

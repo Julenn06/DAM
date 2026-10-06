@@ -10,7 +10,7 @@ export interface ApiResponse<T = any> {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
   private readonly baseUrl = 'http://localhost:64498/api/MetodosService'; // URL exacta del controlador
@@ -24,43 +24,33 @@ export class ApiService {
 
   postEcho(nombre: string): Observable<string> {
     return this.http.post<string>(`${this.baseUrl}/echo`, JSON.stringify(nombre), {
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
     });
   }
 
   // === MÉTODOS MATEMÁTICOS ===
   sumar(a: number, b: number): Observable<ApiResponse> {
-    const params = new HttpParams()
-      .set('a', a.toString())
-      .set('b', b.toString());
+    const params = new HttpParams().set('a', a.toString()).set('b', b.toString());
     return this.http.get<ApiResponse>(`${this.baseUrl}/sumar`, { params });
   }
 
   restar(a: number, b: number): Observable<ApiResponse> {
-    const params = new HttpParams()
-      .set('a', a.toString())
-      .set('b', b.toString());
+    const params = new HttpParams().set('a', a.toString()).set('b', b.toString());
     return this.http.get<ApiResponse>(`${this.baseUrl}/restar`, { params });
   }
 
   multiplicar(a: number, b: number): Observable<ApiResponse> {
-    const params = new HttpParams()
-      .set('a', a.toString())
-      .set('b', b.toString());
+    const params = new HttpParams().set('a', a.toString()).set('b', b.toString());
     return this.http.get<ApiResponse>(`${this.baseUrl}/multiplicar`, { params });
   }
 
   dividir(a: number, b: number): Observable<ApiResponse> {
-    const params = new HttpParams()
-      .set('a', a.toString())
-      .set('b', b.toString());
+    const params = new HttpParams().set('a', a.toString()).set('b', b.toString());
     return this.http.get<ApiResponse>(`${this.baseUrl}/dividir`, { params });
   }
 
   potencia(a: number, b: number): Observable<ApiResponse> {
-    const params = new HttpParams()
-      .set('a', a.toString())
-      .set('b', b.toString());
+    const params = new HttpParams().set('a', a.toString()).set('b', b.toString());
     return this.http.get<ApiResponse>(`${this.baseUrl}/potencia`, { params });
   }
 

@@ -1,31 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="eu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Hasierako Orria</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Hasierako Orria</title>
-</head>
+  <body>
+    <form action="menua.php" method="post" id="hasieraForm" name="hasieraForm">
+      <label for="izena">Izena</label>
+      <input type="text" id="izena" name="izena" required />
+      <label for="abizena">Abizena</label>
+      <input type="text" id="abizena" name="abizena" required />
+      <input type="submit" value="Sartu" />
+    </form>
 
-<body>
-  <form action="menua.php" method="post" id="hasieraForm" name="hasieraForm">
-    <label for="izena">Izena</label>
-    <input type="text" id="izena" name="izena" required>
-    <label for="abizena">Abizena</label>
-    <input type="text" id="abizena" name="abizena" required>
-    <input type="submit" value="Sartu">
-  </form>
-
-  <script>
-    document.getElementById("hasieraForm").addEventListener("submit", function (event) {
-      event.preventDefault();
-      let izena = document.getElementById("izena").value;
-      let abizena = document.getElementById("abizena").value;
-      window.alert("Kaixo, " + izena + "  " + abizena + ". Ongi Etorri Aplikaziora");
-      document.getElementById("hasieraForm").submit();
-    });
-  </script>
-</body>
-
+    <script>
+      document
+        .getElementById("hasieraForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          let izena = document.getElementById("izena").value;
+          let abizena = document.getElementById("abizena").value;
+          window.alert(
+            "Kaixo, " + izena + "  " + abizena + ". Ongi Etorri Aplikaziora",
+          );
+          document.getElementById("hasieraForm").submit();
+        });
+    </script>
+  </body>
 </html>

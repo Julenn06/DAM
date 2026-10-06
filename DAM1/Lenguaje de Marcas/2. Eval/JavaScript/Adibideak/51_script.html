@@ -1,21 +1,23 @@
-<!DOCTYPE html> 
-<html lang="eu"> 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Gertaera baten ondoren</title>
-</head>
-<body>
+<!doctype html>
+<html lang="eu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Gertaera baten ondoren</title>
+  </head>
+  <body>
     <h1>Javascript lantzen</h1>
     <p><span id="nireelementua">Sagua gainetik mugitu</span></p>
     <script>
       var kontatu = 0;
       function komunikatu_kontatu() {
         kontatu = kontatu + 1;
-        alert( kontatu + ' aldiz mugitu duzu sagua gainetik.');
-      } 
-      document.getElementById('nireelementua').addEventListener('mouseenter', komunikatu_kontatu);
+        alert(kontatu + " aldiz mugitu duzu sagua gainetik.");
+      }
+      document
+        .getElementById("nireelementua")
+        .addEventListener("mouseenter", komunikatu_kontatu);
     </script>
-</body>
+  </body>
 </html>

@@ -1,6 +1,7 @@
 # 📱 Guía Básica de Android con Kotlin
 
 ## 📚 Índice
+
 1. [Conceptos Fundamentales](#-conceptos-fundamentales)
 2. [ViewBinding - Acceder a las Vistas](#-viewbinding---acceder-a-las-vistas)
 3. [Listeners - Botones y Eventos](#-listeners---botones-y-eventos)
@@ -17,6 +18,7 @@
 ## 🎯 Conceptos Fundamentales
 
 ### ¿Qué es una Activity?
+
 Una **Activity** es una pantalla de tu app. Cada pantalla = 1 Activity.
 
 ```kotlin
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 ```
 
 ### ¿Qué es un Layout XML?
+
 Un archivo XML que define cómo se ve tu pantalla (botones, textos, etc.).
 
 ```xml
@@ -43,9 +46,11 @@ Un archivo XML que define cómo se ve tu pantalla (botones, textos, etc.).
 ## 🔗 ViewBinding - Acceder a las Vistas
 
 ### ¿Qué es ViewBinding?
+
 Es la forma moderna de acceder a las vistas del XML desde Kotlin. **NO uses findViewById**.
 
 ### Paso 1: Habilitar ViewBinding
+
 En `build.gradle.kts` (del módulo app):
 
 ```kotlin
@@ -62,16 +67,16 @@ android {
 class AddUserActivity : AppCompatActivity() {
     // 1. Declarar variable de binding (lateinit = se inicializa después)
     private lateinit var binding: ActivityAddUserBinding
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
+
         // 2. Inflar el binding (conectar con el XML)
         binding = ActivityAddUserBinding.inflate(layoutInflater)
-        
+
         // 3. Setear como contenido de la Activity
         setContentView(binding.root)
-        
+
         // 4. Ahora puedes acceder a las vistas:
         binding.btnSave.text = "Guardar Usuario"
     }
@@ -102,6 +107,7 @@ binding.btnSave.setOnClickListener(object : View.OnClickListener {
 ```
 
 **Ejemplo del Proyecto** (MainActivity.kt):
+
 ```kotlin
 // Botón para ir a añadir usuario
 binding.btnAddUser.setOnClickListener {
@@ -119,6 +125,7 @@ binding.btnBack.setOnClickListener {
 ```
 
 **Ejemplo del Proyecto** (AddUserActivity.kt):
+
 ```kotlin
 binding.btnBack.setOnClickListener {
     finish() // Vuelve a la pantalla anterior
@@ -149,47 +156,48 @@ binding.etNombre.setText("Juan")
 fun validarFormulario(): Boolean {
     val nombre = binding.etNombre.text.toString()
     val edadTexto = binding.etEdad.text.toString()
-    
+
     // Validar que no esté vacío
     if (nombre.isBlank()) {
         binding.tilNombre.error = "El nombre es obligatorio"
         return false
     }
-    
+
     // Validar número
     val edad = edadTexto.toIntOrNull()
     if (edad == null || edad <= 0) {
         binding.tilEdad.error = "Edad inválida"
         return false
     }
-    
+
     // Limpiar errores
     binding.tilNombre.error = null
     binding.tilEdad.error = null
-    
+
     return true
 }
 ```
 
 **Ejemplo del Proyecto** (AddUserActivity.kt):
+
 ```kotlin
 binding.btnSave.setOnClickListener {
     // Leer valores
     val nombre = binding.etNombre.text.toString().trim()
     val edadStr = binding.etEdad.text.toString().trim()
-    
+
     // Validar
     if (nombre.isBlank()) {
         Toast.makeText(this, "El nombre no puede estar vacío", Toast.LENGTH_SHORT).show()
         return@setOnClickListener
     }
-    
+
     val edad = edadStr.toIntOrNull()
     if (edad == null || edad <= 0) {
         Toast.makeText(this, "La edad debe ser un número válido", Toast.LENGTH_SHORT).show()
         return@setOnClickListener
     }
-    
+
     // Crear usuario
     val user = User(nombre, edad)
 }
@@ -200,9 +208,11 @@ binding.btnSave.setOnClickListener {
 ## 📋 RecyclerView - Listas
 
 ### ¿Qué es RecyclerView?
+
 Es una lista eficiente que **reutiliza** las vistas. Ideal para listas largas.
 
 ### Componentes Necesarios
+
 1. **RecyclerView** en el XML
 2. **Adapter** (gestiona los datos)
 3. **ViewHolder** (cachea las vistas)
@@ -235,25 +245,25 @@ Es una lista eficiente que **reutiliza** las vistas. Ideal para listas largas.
 class UserAdapter(
     private val onUserClick: (User, String) -> Unit
 ) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
-    
+
     // Lista de datos
     private val users = mutableListOf<Pair<String, User>>()
-    
+
     // ViewHolder: cachea las vistas
-    inner class UserViewHolder(private val binding: ItemUserBinding) 
+    inner class UserViewHolder(private val binding: ItemUserBinding)
         : RecyclerView.ViewHolder(binding.root) {
-        
+
         fun bind(userId: String, user: User) {
             binding.tvNombre.text = user.nombre
             binding.tvEdad.text = "Edad: ${user.edad}"
-            
+
             // Click en el item
             binding.root.setOnClickListener {
                 onUserClick(user, userId)
             }
         }
     }
-    
+
     // Crear ViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val binding = ItemUserBinding.inflate(
@@ -261,16 +271,16 @@ class UserAdapter(
         )
         return UserViewHolder(binding)
     }
-    
+
     // Bindear datos
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val (userId, user) = users[position]
         holder.bind(userId, user)
     }
-    
+
     // Tamaño de la lista
     override fun getItemCount(): Int = users.size
-    
+
     // Actualizar datos
     fun submitList(newUsers: List<Pair<String, User>>) {
         users.clear()
@@ -289,19 +299,19 @@ private lateinit var userAdapter: UserAdapter
 // 2. Configurar en onCreate
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    
+
     // Crear adapter con lambda para clics
     userAdapter = UserAdapter { user, userId ->
         // Qué hacer cuando se hace clic
         Toast.makeText(this, "Clic en ${user.nombre}", Toast.LENGTH_SHORT).show()
     }
-    
+
     // Configurar RecyclerView
     binding.recyclerView.apply {
         layoutManager = LinearLayoutManager(this@MainActivity)
         adapter = userAdapter
     }
-    
+
     // Cargar datos
     cargarUsuarios()
 }
@@ -317,6 +327,7 @@ fun cargarUsuarios() {
 ```
 
 **Ejemplo del Proyecto** (UserListActivity.kt):
+
 ```kotlin
 // Configurar adapter
 userAdapter = UserAdapter { user, userId ->
@@ -339,6 +350,7 @@ binding.recyclerView.apply {
 ## 🔥 Firestore - Base de Datos
 
 ### ¿Qué es Firestore?
+
 Base de datos en la nube de Firebase. Estructura: **Colecciones → Documentos → Campos**.
 
 ```
@@ -356,7 +368,7 @@ usuarios (colección)
 ```kotlin
 class FirestoreManager {
     private val db = FirebaseFirestore.getInstance()
-    
+
     // ...métodos aquí
 }
 ```
@@ -379,6 +391,7 @@ fun addDocument(collection: String, data: Map<String, Any>, onResult: (String?) 
 ```
 
 **Uso en la Activity**:
+
 ```kotlin
 val user = User("Juan", 25)
 val data = mapOf(
@@ -396,17 +409,18 @@ firestore.addDocument("usuarios", data) { userId ->
 ```
 
 **Ejemplo del Proyecto** (AddUserActivity.kt):
+
 ```kotlin
 binding.btnSave.setOnClickListener {
     val nombre = binding.etNombre.text.toString().trim()
     val edad = binding.etEdad.text.toString().toIntOrNull() ?: 0
-    
+
     val user = User(nombre, edad)
     val userData = mapOf(
         "nombre" to user.nombre,
         "edad" to user.edad
     )
-    
+
     // FIRESTORE: Guardar en Firestore
     firestore.addDocument("usuarios", userData) { userId ->
         if (userId != null) {
@@ -443,22 +457,23 @@ fun getCollection(collection: String, onResult: (List<Map<String, Any>>) -> Unit
 ```
 
 **Uso en la Activity**:
+
 ```kotlin
 fun cargarUsuarios() {
     binding.progressBar.visibility = View.VISIBLE
-    
+
     firestore.getCollection("usuarios") { documents ->
         binding.progressBar.visibility = View.GONE
-        
+
         // Transformar a lista de usuarios
         val usuarios = documents.mapNotNull { doc ->
             val userId = doc["__id__"] as? String ?: return@mapNotNull null
             val nombre = doc["nombre"] as? String ?: return@mapNotNull null
             val edad = (doc["edad"] as? Long)?.toInt() ?: return@mapNotNull null
-            
+
             Pair(userId, User(nombre, edad))
         }
-        
+
         // Mostrar en RecyclerView
         userAdapter.submitList(usuarios)
     }
@@ -466,28 +481,29 @@ fun cargarUsuarios() {
 ```
 
 **Ejemplo del Proyecto** (UserListActivity.kt):
+
 ```kotlin
 private fun loadUsers() {
     binding.progressBar.visibility = View.VISIBLE
-    
+
     // FIRESTORE: Obtener todos los usuarios
     firestore.getCollection("usuarios") { documents ->
         binding.progressBar.visibility = View.GONE
-        
+
         if (documents.isEmpty()) {
             binding.tvEmpty.visibility = View.VISIBLE
         } else {
             binding.tvEmpty.visibility = View.GONE
-            
+
             // LISTOF: Transformar mapas a objetos User
             val users = documents.mapNotNull { doc ->
                 val userId = doc["__id__"] as? String ?: return@mapNotNull null
                 val nombre = doc["nombre"] as? String ?: return@mapNotNull null
                 val edad = (doc["edad"] as? Long)?.toInt() ?: return@mapNotNull null
-                
+
                 Pair(userId, User(nombre, edad))
             }
-            
+
             userAdapter.submitList(users)
         }
     }
@@ -511,17 +527,18 @@ fun updateDocument(collection: String, docId: String, data: Map<String, Any>, on
 ```
 
 **Uso en la Activity**:
+
 ```kotlin
 binding.btnUpdate.setOnClickListener {
     val userId = currentUserId ?: return@setOnClickListener
     val nombre = binding.etNombre.text.toString()
     val edad = binding.etEdad.text.toString().toIntOrNull() ?: 0
-    
+
     val updates = mapOf(
         "nombre" to nombre,
         "edad" to edad
     )
-    
+
     firestore.updateDocument("usuarios", userId, updates) { success ->
         if (success) {
             Toast.makeText(this, "Usuario actualizado", Toast.LENGTH_SHORT).show()
@@ -549,10 +566,11 @@ fun deleteDocument(collection: String, docId: String, onResult: (Boolean) -> Uni
 ```
 
 **Uso en la Activity**:
+
 ```kotlin
 binding.btnDelete.setOnClickListener {
     val userId = currentUserId ?: return@setOnClickListener
-    
+
     // Mostrar confirmación
     AlertDialog.Builder(this)
         .setTitle("Confirmar")
@@ -575,6 +593,7 @@ binding.btnDelete.setOnClickListener {
 ## 💾 DataStore - Guardar Preferencias
 
 ### ¿Qué es DataStore?
+
 Reemplazo moderno de SharedPreferences. Guarda datos clave-valor localmente.
 
 ### Configurar DataStore
@@ -589,14 +608,14 @@ class PreferencesManager(private val context: Context) {
         val USER_NAME = stringPreferencesKey("user_name")
         val IS_LOGGED_IN = booleanPreferencesKey("is_logged_in")
     }
-    
+
     // Guardar valor
     suspend fun saveUserName(name: String) {
         context.dataStore.edit { preferences ->
             preferences[PreferencesKeys.USER_NAME] = name
         }
     }
-    
+
     // Leer valor como Flow (observable)
     fun getUserName(): Flow<String> {
         return context.dataStore.data.map { preferences ->
@@ -611,17 +630,17 @@ class PreferencesManager(private val context: Context) {
 ```kotlin
 class MainActivity : AppCompatActivity() {
     private lateinit var preferencesManager: PreferencesManager
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
+
         preferencesManager = PreferencesManager(this)
-        
+
         // Guardar dato
         lifecycleScope.launch {
             preferencesManager.saveUserName("Juan")
         }
-        
+
         // Observar cambios
         lifecycleScope.launch {
             preferencesManager.getUserName().collect { name ->
@@ -633,6 +652,7 @@ class MainActivity : AppCompatActivity() {
 ```
 
 **Ejemplo del Proyecto** (FavoritesManager.kt):
+
 ```kotlin
 // DataStore para favoritos
 private val Context.favoritesDataStore by preferencesDataStore(name = "favorites_preferences")
@@ -641,7 +661,7 @@ class FavoritesManager(private val context: Context) {
     private object Keys {
         val FAVORITE_IDS = stringSetPreferencesKey("favorite_ids")
     }
-    
+
     // Añadir favorito
     suspend fun addFavorite(userId: String) {
         context.favoritesDataStore.edit { preferences ->
@@ -649,7 +669,7 @@ class FavoritesManager(private val context: Context) {
             preferences[Keys.FAVORITE_IDS] = currentFavorites + userId
         }
     }
-    
+
     // Remover favorito
     suspend fun removeFavorite(userId: String) {
         context.favoritesDataStore.edit { preferences ->
@@ -657,7 +677,7 @@ class FavoritesManager(private val context: Context) {
             preferences[Keys.FAVORITE_IDS] = currentFavorites - userId
         }
     }
-    
+
     // Observar favoritos
     fun getFavorites(): Flow<Set<String>> {
         return context.favoritesDataStore.data.map { preferences ->
@@ -672,6 +692,7 @@ class FavoritesManager(private val context: Context) {
 ## ⚡ Corrutinas - Operaciones Asíncronas
 
 ### ¿Qué son las Corrutinas?
+
 Forma moderna de hacer tareas en segundo plano (red, base de datos, etc.) **sin bloquear la UI**.
 
 ### Conceptos Básicos
@@ -681,13 +702,14 @@ Forma moderna de hacer tareas en segundo plano (red, base de datos, etc.) **sin 
 lifecycleScope.launch {
     // Código asíncrono aquí
     val result = fetchDataFromInternet()
-    
+
     // Actualizar UI (automáticamente en el hilo principal)
     binding.tvResult.text = result
 }
 ```
 
 ### Suspend Functions
+
 Funciones que pueden suspenderse (pausarse) sin bloquear.
 
 ```kotlin
@@ -703,11 +725,11 @@ suspend fun fetchDataFromInternet(): String {
 binding.btnLoad.setOnClickListener {
     // Mostrar loading
     binding.progressBar.visibility = View.VISIBLE
-    
+
     lifecycleScope.launch {
         // Operación en segundo plano
         val data = fetchDataFromInternet()
-        
+
         // Ocultar loading y mostrar resultado
         binding.progressBar.visibility = View.GONE
         binding.tvData.text = data
@@ -716,16 +738,17 @@ binding.btnLoad.setOnClickListener {
 ```
 
 **Ejemplo del Proyecto** (EditUserActivity.kt):
+
 ```kotlin
 // Click en botón de favorito
 binding.btnFavorite.setOnClickListener {
     lifecycleScope.launch {
         // Operación asíncrona de DataStore
         favoritesManager.toggleFavorite(userId)
-        
+
         // Verificar nuevo estado
         val isFav = favoritesManager.isFavorite(userId)
-        
+
         // Actualizar UI
         Toast.makeText(
             this@EditUserActivity,
@@ -741,7 +764,7 @@ binding.btnFavorite.setOnClickListener {
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    
+
     // Observar cambios en favoritos
     lifecycleScope.launch {
         favoritesManager.getFavorites().collect { favoriteIds ->
@@ -757,6 +780,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 ## 🔗 Lambdas - Funciones como Parámetros
 
 ### ¿Qué es una Lambda?
+
 Una **función anónima** que puedes pasar como parámetro.
 
 ### Sintaxis Básica
@@ -805,6 +829,7 @@ binding.btnSave.setOnClickListener {
 ```
 
 **Ejemplo del Proyecto** (UserAdapter.kt):
+
 ```kotlin
 // Adapter que recibe lambdas
 class UserAdapter(
@@ -813,16 +838,16 @@ class UserAdapter(
     // Lambda opcional para favoritos
     private val onFavoriteClick: ((String) -> Unit)? = null
 ) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
-    
-    inner class UserViewHolder(private val binding: ItemUserBinding) 
+
+    inner class UserViewHolder(private val binding: ItemUserBinding)
         : RecyclerView.ViewHolder(binding.root) {
-        
+
         fun bind(userId: String, user: User) {
             // Ejecutar lambda cuando se hace clic
             binding.root.setOnClickListener {
                 onUserClick(user, userId) // Invocar lambda
             }
-            
+
             // Lambda de favorito (si existe)
             binding.btnFavorite.setOnClickListener {
                 onFavoriteClick?.invoke(userId) // ?. = solo si no es null
@@ -833,6 +858,7 @@ class UserAdapter(
 ```
 
 **Uso del Adapter**:
+
 ```kotlin
 userAdapter = UserAdapter(
     // Lambda 1: Qué hacer al clic en usuario
@@ -849,12 +875,13 @@ userAdapter = UserAdapter(
 ```
 
 ### Trailing Lambda
+
 Si el último parámetro es una lambda, puedes sacarla de los paréntesis.
 
 ```kotlin
 // Forma 1: Lambda dentro
-lifecycleScope.launch({ 
-    println("Hola") 
+lifecycleScope.launch({
+    println("Hola")
 })
 
 // Forma 2: Trailing lambda (más común)
@@ -868,6 +895,7 @@ lifecycleScope.launch {
 ## 🚀 Intent - Navegar entre Activities
 
 ### ¿Qué es un Intent?
+
 Un **mensaje** para navegar entre Activities o enviar datos.
 
 ### 1. Intent Simple (sin datos)
@@ -881,6 +909,7 @@ binding.btnNext.setOnClickListener {
 ```
 
 **Ejemplo del Proyecto** (MainActivity.kt):
+
 ```kotlin
 binding.btnAddUser.setOnClickListener {
     // INTENT: Navegar a AddUserActivity
@@ -907,6 +936,7 @@ binding.btnHistory.setOnClickListener {
 ### 2. Intent con Datos (Extras)
 
 **Enviar datos**:
+
 ```kotlin
 binding.btnSend.setOnClickListener {
     val intent = Intent(this, DetalleActivity::class.java)
@@ -918,16 +948,17 @@ binding.btnSend.setOnClickListener {
 ```
 
 **Recibir datos**:
+
 ```kotlin
 class DetalleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
+
         // Obtener extras
         val nombre = intent.getStringExtra("NOMBRE") ?: ""
         val edad = intent.getIntExtra("EDAD", 0)
         val esAdmin = intent.getBooleanExtra("ES_ADMIN", false)
-        
+
         binding.tvNombre.text = nombre
         binding.tvEdad.text = "Edad: $edad"
     }
@@ -937,6 +968,7 @@ class DetalleActivity : AppCompatActivity() {
 ### 3. Intent Implícito (Compartir, Abrir URL, etc.)
 
 **Compartir texto**:
+
 ```kotlin
 binding.btnShare.setOnClickListener {
     val shareIntent = Intent(Intent.ACTION_SEND).apply {
@@ -949,28 +981,30 @@ binding.btnShare.setOnClickListener {
 ```
 
 **Ejemplo del Proyecto** (FavoritesActivity.kt):
+
 ```kotlin
 // Click en item para compartir
 userAdapter = UserAdapter { user, userId ->
     // INTENT: Compartir información del usuario
     val shareText = getString(
-        R.string.share_user_text, 
-        user.nombre, 
-        user.edad, 
+        R.string.share_user_text,
+        user.nombre,
+        user.edad,
         userId
     )
-    
+
     val shareIntent = Intent(Intent.ACTION_SEND).apply {
         type = "text/plain"
         putExtra(Intent.EXTRA_TEXT, shareText)
         putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_user_subject))
     }
-    
+
     startActivity(Intent.createChooser(shareIntent, getString(R.string.share_via)))
 }
 ```
 
 **Abrir URL**:
+
 ```kotlin
 binding.btnOpenWeb.setOnClickListener {
     val url = "https://www.google.com"
@@ -984,6 +1018,7 @@ binding.btnOpenWeb.setOnClickListener {
 ## 📦 Data Classes
 
 ### ¿Qué es una Data Class?
+
 Clase especial para almacenar datos. Kotlin genera automáticamente `equals()`, `hashCode()`, `toString()`, `copy()`.
 
 ```kotlin
@@ -1003,6 +1038,7 @@ println(user2) // User(nombre=Juan, edad=30)
 ```
 
 **Ejemplo del Proyecto** (User.kt):
+
 ```kotlin
 /**
  * DATA CLASS: Clase de datos para usuario
@@ -1032,6 +1068,7 @@ val config2 = Config(darkMode = true) // Solo cambiar darkMode
 ```
 
 **Ejemplo del Proyecto** (HistoryAction.kt):
+
 ```kotlin
 data class HistoryAction(
     val userName: String,
@@ -1042,7 +1079,7 @@ data class HistoryAction(
     enum class ActionType {
         CREATE, UPDATE, DELETE, VIEW
     }
-    
+
     fun getActionText(): String {
         return when (actionType) {
             ActionType.CREATE -> "Usuario creado"
@@ -1059,6 +1096,7 @@ data class HistoryAction(
 ## 🎨 Strings y Colors en XML
 
 ### Strings.xml
+
 Externalizar textos para facilitar traducción y mantenimiento.
 
 ```xml
@@ -1067,7 +1105,7 @@ Externalizar textos para facilitar traducción y mantenimiento.
     <string name="app_name">Mi App</string>
     <string name="btn_save">Guardar</string>
     <string name="hint_name">Introduce tu nombre</string>
-    
+
     <!-- Con parámetros -->
     <string name="welcome_message">Bienvenido, %1$s</string>
     <string name="user_age">Edad: %1$d años</string>
@@ -1075,6 +1113,7 @@ Externalizar textos para facilitar traducción y mantenimiento.
 ```
 
 **Uso en Kotlin**:
+
 ```kotlin
 // String simple
 binding.tvTitle.text = getString(R.string.app_name)
@@ -1088,6 +1127,7 @@ binding.tvAge.text = getString(R.string.user_age, edad)
 ```
 
 **Uso en XML**:
+
 ```xml
 <Button
     android:text="@string/btn_save" />
@@ -1097,6 +1137,7 @@ binding.tvAge.text = getString(R.string.user_age, edad)
 ```
 
 ### Colors.xml
+
 Definir paleta de colores reutilizable.
 
 ```xml
@@ -1111,6 +1152,7 @@ Definir paleta de colores reutilizable.
 ```
 
 **Uso en Kotlin**:
+
 ```kotlin
 // Obtener color
 val color = getColor(R.color.primary)
@@ -1118,6 +1160,7 @@ binding.tvTitle.setTextColor(color)
 ```
 
 **Uso en XML**:
+
 ```xml
 <TextView
     android:textColor="@color/text_primary"
@@ -1168,6 +1211,7 @@ AlertDialog.Builder(this)
 ```
 
 **Ejemplo del Proyecto** (EditUserActivity.kt):
+
 ```kotlin
 binding.btnDelete.setOnClickListener {
     // Confirmación antes de eliminar
@@ -1191,10 +1235,10 @@ binding.progressBar.visibility = View.VISIBLE
 // Operación asíncrona
 lifecycleScope.launch {
     val data = fetchData()
-    
+
     // Ocultar loading
     binding.progressBar.visibility = View.GONE
-    
+
     // Mostrar datos
     binding.tvData.text = data
 }
@@ -1207,14 +1251,14 @@ lifecycleScope.launch {
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        
+
         <!-- Contenido aquí -->
-        
+
     </LinearLayout>
 </ScrollView>
 ```
@@ -1297,42 +1341,50 @@ app/
 ## 🎓 Conceptos Clave para el Examen
 
 ### 1. **ViewBinding**
+
 - Reemplaza `findViewById`
 - Binding = `NombreLayoutBinding` (PascalCase)
 - Inflar con `.inflate(layoutInflater)`
 - Acceder a vistas: `binding.nombreVista`
 
 ### 2. **RecyclerView**
+
 - Lista eficiente que reutiliza vistas
 - Necesita: Adapter, ViewHolder, LayoutManager
 - `notifyDataSetChanged()` para actualizar
 
 ### 3. **Firestore**
+
 - Base de datos NoSQL en la nube
 - CRUD: `add()`, `get()`, `update()`, `delete()`
 - Callbacks: `addOnSuccessListener` / `addOnFailureListener`
 
 ### 4. **DataStore**
+
 - Reemplazo de SharedPreferences
 - Operaciones con `suspend` (corrutinas)
 - `Flow` para observar cambios
 
 ### 5. **Corrutinas**
+
 - `lifecycleScope.launch { }` para tareas asíncronas
 - `suspend` para funciones que se pueden pausar
 - `collect` para observar Flows
 
 ### 6. **Lambdas**
+
 - Funciones anónimas: `{ parámetros -> código }`
 - Como parámetros: `(TipoEntrada) -> TipoSalida`
 - Click listener: `setOnClickListener { código }`
 
 ### 7. **Intent**
+
 - Explícito: navegar entre Activities
 - Implícito: compartir, abrir URLs
 - Extras: `putExtra()` / `getExtra()`
 
 ### 8. **Data Classes**
+
 - `data class` genera automáticamente métodos
 - Inmutables con `val`
 - `copy()` para crear variaciones
@@ -1359,6 +1411,7 @@ app/
 ## 🚀 ¡Éxito en el Examen!
 
 **Recuerda**:
+
 1. ViewBinding para acceder a vistas
 2. Lambdas para callbacks y eventos
 3. Corrutinas para operaciones asíncronas
@@ -1366,17 +1419,18 @@ app/
 5. Firestore para base de datos en la nube
 
 **Patrón común**:
+
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    
+
     // 1. Inflar binding
     binding = ActivityMainBinding.inflate(layoutInflater)
     setContentView(binding.root)
-    
+
     // 2. Configurar vistas
     setupViews()
-    
+
     // 3. Cargar datos
     loadData()
 }

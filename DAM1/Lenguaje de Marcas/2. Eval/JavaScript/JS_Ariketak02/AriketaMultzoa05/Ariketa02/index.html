@@ -1,72 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="eu">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Select option dinamikoa</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <form name="f1">
-        <select name="herrialde" id="herrialde" onchange="aldatu_herria()">
-            <option value="0" selected>Aukeratu...</option>
-            <option value="1">Araba</option>
-            <option value="2">Bizkaia</option>
-            <option value="3">Gipuzkoa</option>
-            <option value="4">Lapurdi</option>
-        </select>
+      <select name="herrialde" id="herrialde" onchange="aldatu_herria()">
+        <option value="0" selected>Aukeratu...</option>
+        <option value="1">Araba</option>
+        <option value="2">Bizkaia</option>
+        <option value="3">Gipuzkoa</option>
+        <option value="4">Lapurdi</option>
+      </select>
 
-        <select name="herri" id="herri">
-            <option value="-">-</option>
-        </select>
+      <select name="herri" id="herri">
+        <option value="-">-</option>
+      </select>
     </form>
 
     <script>
-        var herrialde_1 = new Array("Amurrio", "Añana", "Aramaio", "Artzeniega", "Arraia-Maeztu", "...");
-        var herrialde_2 = new Array("Abadiño", "Abanto-Zierbena", "Ajangiz", "Alonsotegi	", "Amoroto", "Arakaldo",
-            "...");
-        var herrialde_3 = new Array("Abaltzisketa", "Aduna", "Aizarnazabal", "Albiztur", "...");
-        var herrialde_4 = new Array("Ahetze", "Ainhoa", "Angelu", "Arbona", "Arrangoitze", "...");
+      var herrialde_1 = new Array(
+        "Amurrio",
+        "Añana",
+        "Aramaio",
+        "Artzeniega",
+        "Arraia-Maeztu",
+        "...",
+      );
+      var herrialde_2 = new Array(
+        "Abadiño",
+        "Abanto-Zierbena",
+        "Ajangiz",
+        "Alonsotegi	",
+        "Amoroto",
+        "Arakaldo",
+        "...",
+      );
+      var herrialde_3 = new Array(
+        "Abaltzisketa",
+        "Aduna",
+        "Aizarnazabal",
+        "Albiztur",
+        "...",
+      );
+      var herrialde_4 = new Array(
+        "Ahetze",
+        "Ainhoa",
+        "Angelu",
+        "Arbona",
+        "Arrangoitze",
+        "...",
+      );
 
-        var herrialdeak = [
-            [],
-            herrialde_1,
-            herrialde_2,
-            herrialde_3,
-            herrialde_4,
-        ];
+      var herrialdeak = [
+        [],
+        herrialde_1,
+        herrialde_2,
+        herrialde_3,
+        herrialde_4,
+      ];
 
-        function aldatu_herria() {
-            // 1. Select elementuak (herrialdearena eta herriena) lortu
-            let herrialde_select = document.getElementById("herrialde");
-            let herri_select = document.getElementById("herri");
+      function aldatu_herria() {
+        // 1. Select elementuak (herrialdearena eta herriena) lortu
+        let herrialde_select = document.getElementById("herrialde");
+        let herri_select = document.getElementById("herri");
 
-            // 2. Hautaturiko herrialdea zein den jakin
-            let herrialde_hautatua = parseInt(herrialde_select.options[herrialde_select.selectedIndex].value);
+        // 2. Hautaturiko herrialdea zein den jakin
+        let herrialde_hautatua = parseInt(
+          herrialde_select.options[herrialde_select.selectedIndex].value,
+        );
 
-            // 3. Aurretik zeuden herri guztiak select-etik ezabatu ('-' defektuzko aukera izan ezik)
-            herri_select.innerHTML = '<option value="-">-</option>';
+        // 3. Aurretik zeuden herri guztiak select-etik ezabatu ('-' defektuzko aukera izan ezik)
+        herri_select.innerHTML = '<option value="-">-</option>';
 
-            // 4. Herrialde bat aukeratu bada... (0 balioa herrialdea hautatu ez denean da)
-            if (herrialde_hautatua != 0) {
-                // 5. Herrialdetako array egokia hartu, hautatutako herrialdearen indizea erabiliz
-                let nire_herriak = herrialdeak[herrialde_hautatua];
+        // 4. Herrialde bat aukeratu bada... (0 balioa herrialdea hautatu ez denean da)
+        if (herrialde_hautatua != 0) {
+          // 5. Herrialdetako array egokia hartu, hautatutako herrialdearen indizea erabiliz
+          let nire_herriak = herrialdeak[herrialde_hautatua];
 
-                // 6. Herrien select/option-ek izan behar duen aukera kopurua (herri kopurua) lortu
-                let herri_kop = nire_herriak.length;
+          // 6. Herrien select/option-ek izan behar duen aukera kopurua (herri kopurua) lortu
+          let herri_kop = nire_herriak.length;
 
-                // 7. Herri bakoitzeko 'option' elementu bat sortu eta txertatu
-                for (let i = 0; i < herri_kop; i++) {
-                    let optionHerria = document.createElement("option");
-                    optionHerria.value = nire_herriak[i]; // Asignar el valor
-                    optionHerria.textContent = nire_herriak[i]; // Asignar el texto
-                    herri_select.appendChild(optionHerria); // Añadir al select
-                }
-            }
+          // 7. Herri bakoitzeko 'option' elementu bat sortu eta txertatu
+          for (let i = 0; i < herri_kop; i++) {
+            let optionHerria = document.createElement("option");
+            optionHerria.value = nire_herriak[i]; // Asignar el valor
+            optionHerria.textContent = nire_herriak[i]; // Asignar el texto
+            herri_select.appendChild(optionHerria); // Añadir al select
+          }
         }
+      }
     </script>
-</body>
-
+  </body>
 </html>

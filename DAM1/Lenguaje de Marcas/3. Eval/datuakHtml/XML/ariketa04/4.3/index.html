@@ -1,36 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        .container {
-            width: 50%;
-            margin: 0 auto;
-        }
+      .container {
+        width: 50%;
+        margin: 0 auto;
+      }
 
-        .kutxa {
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-        }
+      .kutxa {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+      }
 
-        .kutxa:nth-child(odd) {
-            background-color: #f2f2f2;
-        }
+      .kutxa:nth-child(odd) {
+        background-color: #f2f2f2;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <h1>XML fitxategi bat irakurri</h1>
     <h5>XML fitxategi bat irakurri eta bere edukia pantailan erakutsi.</h5>
 
     <div id="lista" class="container"></div>
 
     <script>
-        const xmlString = `
+      const xmlString = `
         <zikloak>
             <zikloa id="SISA">
                 <izena>Sareko Informatika Sistemen Administrazioa</izena>
@@ -49,39 +47,40 @@
             </zikloa>
         </zikloak>`;
 
-        let parser = new DOMParser();
-        let xmlDoc = parser.parseFromString(xmlString, "text/xml");
+      let parser = new DOMParser();
+      let xmlDoc = parser.parseFromString(xmlString, "text/xml");
 
-        let zikloak = xmlDoc.getElementsByTagName("zikloa");
+      let zikloak = xmlDoc.getElementsByTagName("zikloa");
 
-        for (let i = 0; i < zikloak.length; i++) {
-            let id = zikloak[i].getAttribute("id");
-            let izena = zikloak[i].getElementsByTagName("izena")[0].textContent;
-            let gradua = zikloak[i].getElementsByTagName("gradua")[0].textContent;
-            let dekretua = zikloak[i].getElementsByTagName("dekretua")[0].getAttribute("urtea");
+      for (let i = 0; i < zikloak.length; i++) {
+        let id = zikloak[i].getAttribute("id");
+        let izena = zikloak[i].getElementsByTagName("izena")[0].textContent;
+        let gradua = zikloak[i].getElementsByTagName("gradua")[0].textContent;
+        let dekretua = zikloak[i]
+          .getElementsByTagName("dekretua")[0]
+          .getAttribute("urtea");
 
-            let div = document.createElement("div");
-            div.className = "kutxa";
+        let div = document.createElement("div");
+        div.className = "kutxa";
 
-            let idElementua = document.createElement("p");
-            idElementua.textContent = `Id: ${id}`;
-            div.appendChild(idElementua);
+        let idElementua = document.createElement("p");
+        idElementua.textContent = `Id: ${id}`;
+        div.appendChild(idElementua);
 
-            let izenaElementua = document.createElement("p");
-            izenaElementua.textContent = `Izena: ${izena}`;
-            div.appendChild(izenaElementua);
+        let izenaElementua = document.createElement("p");
+        izenaElementua.textContent = `Izena: ${izena}`;
+        div.appendChild(izenaElementua);
 
-            let graduaElementua = document.createElement("p");
-            graduaElementua.textContent = `Gradua: ${gradua}`;
-            div.appendChild(graduaElementua);
+        let graduaElementua = document.createElement("p");
+        graduaElementua.textContent = `Gradua: ${gradua}`;
+        div.appendChild(graduaElementua);
 
-            let dekretuaElementua = document.createElement("p");
-            dekretuaElementua.textContent = `Dekretua: ${dekretua}`;
-            div.appendChild(dekretuaElementua);
+        let dekretuaElementua = document.createElement("p");
+        dekretuaElementua.textContent = `Dekretua: ${dekretua}`;
+        div.appendChild(dekretuaElementua);
 
-            document.getElementById("lista").appendChild(div);
-        }
+        document.getElementById("lista").appendChild(div);
+      }
     </script>
-</body>
-
+  </body>
 </html>

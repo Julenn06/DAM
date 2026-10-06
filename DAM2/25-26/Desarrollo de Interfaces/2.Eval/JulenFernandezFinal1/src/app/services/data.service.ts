@@ -5,20 +5,20 @@ import { Provincia } from '../models/provincia.model';
 import { Persona } from '../models/persona.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
   private apiUrl = 'http://localhost:3000';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getPersonas(): Observable<Persona[]> {
     return this.http.get<Persona[]>(`${this.apiUrl}/personas`).pipe(
-      map(personas =>
-        personas.map(personas => ({
-          ...personas
-        }))
-      )
+      map((personas) =>
+        personas.map((personas) => ({
+          ...personas,
+        })),
+      ),
     );
   }
 

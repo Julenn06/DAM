@@ -1,173 +1,203 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="eu">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zinema Erreserba</title>
     <style>
-        /*Orokorra*/
+      /*Orokorra*/
 
-        * {
-            box-sizing: border-box;
-            font: normal 16px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
-        }
+      * {
+        box-sizing: border-box;
+        font:
+          normal 16px/1.5 "Fira Sans",
+          "Helvetica Neue",
+          sans-serif;
+      }
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
 
-        header,
-        footer {
-            background-color: #003366;
-            color: #ffffff;
-            padding: 10px;
-            text-align: center;
-        }
+      header,
+      footer {
+        background-color: #003366;
+        color: #ffffff;
+        padding: 10px;
+        text-align: center;
+      }
 
-        main {
-            flex-grow: 1;
-        }
+      main {
+        flex-grow: 1;
+      }
 
-        p {
-            font-weight: bold;
-        }
+      p {
+        font-weight: bold;
+      }
 
-        h1,
-        footer p {
-            font-size: 18px;
-        }
+      h1,
+      footer p {
+        font-size: 18px;
+      }
 
-        /*Formularioa*/
+      /*Formularioa*/
 
-        form {
-            width: 90%;
-            margin: auto;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
+      form {
+        width: 90%;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
 
-        legend {
-            font-style: italic;
-        }
+      legend {
+        font-style: italic;
+      }
 
-        select {
-            padding: 7px;
-        }
+      select {
+        padding: 7px;
+      }
 
-        #kontaktuaDatuak label,
-        #fimaDatuak label {
-            display: block;
-        }
+      #kontaktuaDatuak label,
+      #fimaDatuak label {
+        display: block;
+      }
 
-        #tiketaMotak label,
-        #jatekoakDatuak label {
-            display: inline-block;
-            width: 10vw;
-        }
+      #tiketaMotak label,
+      #jatekoakDatuak label {
+        display: inline-block;
+        width: 10vw;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>Zinema Erreserba</h1>
+      <h1>Zinema Erreserba</h1>
     </header>
     <main>
+      <form action="erreserbaDatuak.php" method="post">
+        <fieldset id="kontaktuaDatuak">
+          <legend>Kontaktu datuak</legend>
+          <label>Izen-Abizenak *</label>
+          <input type="text" required id="izena" />
+          <label>e-Posta *</label>
+          <input
+            type="email"
+            required
+            id="eposta"
+            placeholder="izena@gmail.com"
+          />
+          <label>Telefonoa *</label>
+          <input type="tel" required id="telefonoa" />
+        </fieldset>
 
-        <form action="erreserbaDatuak.php" method="post">
-            <fieldset id="kontaktuaDatuak">
-                <legend>Kontaktu datuak</legend>
-                <label>Izen-Abizenak *</label>
-                <input type="text" required id="izena">
-                <label>e-Posta *</label>
-                <input type="email" required id="eposta" placeholder="izena@gmail.com">
-                <label>Telefonoa *</label>
-                <input type="tel" required id="telefonoa">
-            </fieldset>
+        <br />
 
-            <br>
+        <fieldset id="fimaDatuak">
+          <legend>Filma</legend>
+          <label>Aukeratu Filma</label>
+          <select id="filma">
+            <option value="">--Filmak--</option>
+            <option value="TP">20.000 especies de abejas</option>
+            <option value="TP">La sociedad de la nieve</option>
+            <option value="TP">Saben aquell</option>
+            <option value="13">As bestas</option>
+            <option value="TP">Un amor</option>
+            <option value="13">Cerrar los ojos</option>
+          </select>
+        </fieldset>
 
-            <fieldset id="fimaDatuak">
-                <legend> Filma</legend>
-                <label>Aukeratu Filma</label>
-                <select id="filma">
-                    <option value="">--Filmak--</option>
-                    <option value="TP">20.000 especies de abejas</option>
-                    <option value="TP">La sociedad de la nieve</option>
-                    <option value="TP">Saben aquell</option>
-                    <option value="13">As bestas</option>
-                    <option value="TP">Un amor</option>
-                    <option value="13">Cerrar los ojos</option>
-                </select>
-            </fieldset>
+        <br />
 
-            <br>
+        <fieldset id="tiketaMotak">
+          <legend>Sarrera Mota</legend>
+          <div class="ticket-mota">
+            <p>Arrunta (12,40€)</p>
+            <label>Kantitatea:</label>
+            <input
+              type="number"
+              id="arrunta"
+              onblur="prezioaArruntak()"
+              min="0"
+            />
+            <label>Subtotala:</label>
+            <input type=" text" id="emaitzaArrunta" readonly placeholder="0" />
+          </div>
+          <div class="ticket-mota">
+            <p>Haurrak (10,40€)</p>
+            <label>Kantitatea:</label>
+            <input
+              type="number"
+              id="haurrak"
+              onblur="prezioaHaurrak()"
+              min="0"
+            />
+            <label>Subtotala:</label>
+            <input type="text" id="emaitzaHaurra" readonly placeholder="0" />
+          </div>
+          <div class="ticket-mota">
+            <p>Nagusiak > 65 (10,40€)</p>
+            <label>Kantitatea:</label>
+            <input
+              type="number"
+              id="nagusiak"
+              onblur="prezioaNagusiak()"
+              min="0"
+            />
+            <label>Subtotala:</label>
+            <input type="text" id="emaitzaNagusia" readonly placeholder="0" />
+          </div>
+        </fieldset>
 
-            <fieldset id="tiketaMotak">
-                <legend>Sarrera Mota</legend>
-                <div class="ticket-mota">
-                    <p>Arrunta (12,40€)</p>
-                    <label>Kantitatea:</label>
-                    <input type="number" id="arrunta" onblur="prezioaArruntak()" min="0">
-                    <label>Subtotala:</label>
-                    <input type=" text" id="emaitzaArrunta" readonly placeholder="0">
-                </div>
-                <div class="ticket-mota">
-                    <p>Haurrak (10,40€)</p>
-                    <label>Kantitatea:</label>
-                    <input type="number" id="haurrak" onblur="prezioaHaurrak()" min="0">
-                    <label>Subtotala:</label>
-                    <input type="text" id="emaitzaHaurra" readonly placeholder="0">
-                </div>
-                <div class="ticket-mota">
-                    <p>Nagusiak > 65 (10,40€)</p>
-                    <label>Kantitatea:</label>
-                    <input type="number" id="nagusiak" onblur="prezioaNagusiak()" min="0">
-                    <label>Subtotala:</label>
-                    <input type="text" id="emaitzaNagusia" readonly placeholder="0">
-                </div>
-            </fieldset>
+        <br />
 
-            <br>
+        <fieldset id="jatekoakDatuak">
+          <legend>Jatekoak</legend>
 
-            <fieldset id="jatekoakDatuak">
-                <legend>Jatekoak</legend>
+          <label>Palomitak (5€)</label>
+          <input type="checkbox" onclick="palomita()" id="palomitak" />
+          <br />
+          <label>Kantitatea</label>
+          <input
+            type="number"
+            min="0"
+            id="kantitatePalomitak"
+            readonly
+            placeholder="0"
+          />
+          <br />
+          <label>Freskagarriak (3€)</label>
+          <input type="checkbox" onclick="freskagarria()" id="freskagarriak" />
+          <br />
+          <label>Kantitatea</label>
+          <input
+            type="number"
+            min="0"
+            id="kantitateFreskagarriak"
+            readonly
+            placeholder="0"
+          />
+          <br />
+        </fieldset>
 
-                <label>Palomitak (5€)</label>
-                <input type="checkbox" onclick="palomita()" id="palomitak">
-                <br>
-                <label>Kantitatea</label>
-                <input type="number" min="0" id="kantitatePalomitak" readonly placeholder="0">
-                <br>
-                <label>Freskagarriak (3€)</label>
-                <input type="checkbox" onclick="freskagarria()" id="freskagarriak">
-                <br>
-                <label>Kantitatea</label>
-                <input type="number" min="0" id="kantitateFreskagarriak" readonly placeholder="0">
-                <br>
-            </fieldset>
+        <br />
 
-            <br>
-
-            <button type="submit" onclick="emaitzaFinala()">Erreserbatu</button>
-        </form>
+        <button type="submit" onclick="emaitzaFinala()">Erreserbatu</button>
+      </form>
     </main>
     <footer>
-        <p>&copy; 2025: Kultura Events</p>
+      <p>&copy; 2025: Kultura Events</p>
     </footer>
 
     <script src="js/script.js"></script>
     <script>
-        // Sarrera motak
+      // Sarrera motak
 
+      // Jatekoak
 
-        // Jatekoak
-
-
-        // ERRESERBATU botoia
+      // ERRESERBATU botoia
     </script>
-</body>
-
+  </body>
 </html>

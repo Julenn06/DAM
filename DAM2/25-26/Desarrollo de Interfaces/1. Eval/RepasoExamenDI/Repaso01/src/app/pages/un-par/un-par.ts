@@ -10,10 +10,13 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './un-par.css',
 })
 export class UnPar {
-
   animalesTop: Animal[] = [];
 
-  constructor(private remote: AnimalesRemoteService, private cdr: ChangeDetectorRef, private router: Router) {}
+  constructor(
+    private remote: AnimalesRemoteService,
+    private cdr: ChangeDetectorRef,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.remote.getFeaturedAnimales(4).subscribe({
@@ -21,7 +24,7 @@ export class UnPar {
         this.animalesTop = ah;
         this.cdr.markForCheck();
       },
-      error: (err) => console.error("no se han podido cargar a los Bros", err)
+      error: (err) => console.error('no se han podido cargar a los Bros', err),
     });
   }
 }

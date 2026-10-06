@@ -1,105 +1,118 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="eu">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Errepasoa1</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
+  <body>
     <section class="container">
-        <div class="formularioa">
-            <fieldset>
-                <legend>Eroslearen Datuak</legend>
-                <label for="izena">Izena - Abizena</label>
-                <br>
-                <input type="text" name="izena" id="izena" placeholder="Izena eta Abizena">
-                <br>
-                <label for="email">Email</label>
-                <br>
-                <input type="email" name="email" id="email" placeholder="adibidea@gmail.com">
-                <br>
-                <label for="telefonoa">Telefonoa</label>
-                <br>
-                <input type="tel" name="telefonoa" id="telefonoa" placeholder="666666666">
-            </fieldset>
-            <br>
-            <fieldset>
-                <legend>Ordenagailu Osagaiak Erosteko Formularioa</legend>
-                <div>
-                    <label>Prozezadorea:</label>
-                    <br>
-                    <select name="prozezadorea">
-                        <option value="0" selected>Aukeratu prozesadore bat</option>
-                        <option value="Intel i5" data-value2="250">Intel i5, 250€</option>
-                        <option value="Intel i7" data-value2="350">Intel i7, 350€</option>
-                        <option value="Ryzen 5" data-value2="200">Ryzen 5, 200€</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Grafiko Txartela:</label>
-                    <br>
-                    <select name="grafikoa">
-                        <option value="0" selected>Aukeratu grafikoa bat</option>
-                        <option value="RTX 3060" data-value2="400">RTX 3060, 400€</option>
-                        <option value="RTX 3070" data-value2="600">RTX 3070, 600</option>
-                        <option value="RX 6700XT" data-value2="450">RX 6700XT, 450€</option>
-                    </select>
-                </div>
-                <div>
-                    <label>RAM Memoria:</label>
-                    <br>
-                    <select name="memoria">
-                        <option value="0" selected>Aukeratu memoria bat</option>
-                        <option value="16GB" data-value2="80">16GB, 80€</option>
-                        <option value="32GB" data-value2="140">32GB, 140€</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Biltegiratzea:</label>
-                    <br>
-                    <select name="diskoa">
-                        <option value="0" selected>Aukeratu disko bat</option>
-                        <option value="SSD 500GB" data-value2="70">SSD 500GB, 70€</option>
-                        <option value="SSD 1TB" data-value2="120">SSD 1TB, 120€</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Windows SE Gehitu behar da?</label>
-                    <br>
-                    <input type="radio" id="bai" name="aukera" value="bai">
-                    <label for="bai">Bai</label>
-                    <input type="radio" id="ez" name="aukera" value="ez">
-                    <label for="ez">Ez</label>
-                </div>
-            </fieldset>
-            <br>
-            <div>
-                <button id="bidali" name="bidali" onclick="taula()">Bidali</button>
-            </div>
+      <div class="formularioa">
+        <fieldset>
+          <legend>Eroslearen Datuak</legend>
+          <label for="izena">Izena - Abizena</label>
+          <br />
+          <input
+            type="text"
+            name="izena"
+            id="izena"
+            placeholder="Izena eta Abizena"
+          />
+          <br />
+          <label for="email">Email</label>
+          <br />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="adibidea@gmail.com"
+          />
+          <br />
+          <label for="telefonoa">Telefonoa</label>
+          <br />
+          <input
+            type="tel"
+            name="telefonoa"
+            id="telefonoa"
+            placeholder="666666666"
+          />
+        </fieldset>
+        <br />
+        <fieldset>
+          <legend>Ordenagailu Osagaiak Erosteko Formularioa</legend>
+          <div>
+            <label>Prozezadorea:</label>
+            <br />
+            <select name="prozezadorea">
+              <option value="0" selected>Aukeratu prozesadore bat</option>
+              <option value="Intel i5" data-value2="250">Intel i5, 250€</option>
+              <option value="Intel i7" data-value2="350">Intel i7, 350€</option>
+              <option value="Ryzen 5" data-value2="200">Ryzen 5, 200€</option>
+            </select>
+          </div>
+          <div>
+            <label>Grafiko Txartela:</label>
+            <br />
+            <select name="grafikoa">
+              <option value="0" selected>Aukeratu grafikoa bat</option>
+              <option value="RTX 3060" data-value2="400">RTX 3060, 400€</option>
+              <option value="RTX 3070" data-value2="600">RTX 3070, 600</option>
+              <option value="RX 6700XT" data-value2="450">
+                RX 6700XT, 450€
+              </option>
+            </select>
+          </div>
+          <div>
+            <label>RAM Memoria:</label>
+            <br />
+            <select name="memoria">
+              <option value="0" selected>Aukeratu memoria bat</option>
+              <option value="16GB" data-value2="80">16GB, 80€</option>
+              <option value="32GB" data-value2="140">32GB, 140€</option>
+            </select>
+          </div>
+          <div>
+            <label>Biltegiratzea:</label>
+            <br />
+            <select name="diskoa">
+              <option value="0" selected>Aukeratu disko bat</option>
+              <option value="SSD 500GB" data-value2="70">SSD 500GB, 70€</option>
+              <option value="SSD 1TB" data-value2="120">SSD 1TB, 120€</option>
+            </select>
+          </div>
+          <div>
+            <label>Windows SE Gehitu behar da?</label>
+            <br />
+            <input type="radio" id="bai" name="aukera" value="bai" />
+            <label for="bai">Bai</label>
+            <input type="radio" id="ez" name="aukera" value="ez" />
+            <label for="ez">Ez</label>
+          </div>
+        </fieldset>
+        <br />
+        <div>
+          <button id="bidali" name="bidali" onclick="taula()">Bidali</button>
         </div>
+      </div>
     </section>
 
     <div class="taula-datuak">
-        <table id="taula" class="hidden">
-            <thead>
-                <tr>
-                    <th>Izen Abizena</th>
-                    <th>Emaila</th>
-                    <th>Telefonoa</th>
-                    <th>Osagaiak</th>
-                    <th>Guztira</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+      <table id="taula" class="hidden">
+        <thead>
+          <tr>
+            <th>Izen Abizena</th>
+            <th>Emaila</th>
+            <th>Telefonoa</th>
+            <th>Osagaiak</th>
+            <th>Guztira</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
 
     <script src="js/script.js"></script>
-
-</body>
-
+  </body>
 </html>

@@ -1,5 +1,5 @@
 export interface User {
-    id: number;
-    usuario: string;
-    contra: string;
+  id: number;
+  usuario: string;
+  contra: string;
 }

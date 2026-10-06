@@ -25,9 +25,27 @@ export class Dashboard implements OnInit {
   playlists: Playlist[] = [];
 
   // Formularios
-  nuevoArtista: Omit<Artista, 'id'> = { nombre: '', genero: '', pais: '', anioFormacion: 0, activo: true };
-  nuevoAlbum: Omit<Album, 'id'> = { titulo: '', artistaId: '', anio: 0, genero: '', duracionTotal: 0 };
-  nuevaCancion: Omit<Cancion, 'id'> = { titulo: '', albumId: '', artistaId: '', duracion: 0, genero: '' };
+  nuevoArtista: Omit<Artista, 'id'> = {
+    nombre: '',
+    genero: '',
+    pais: '',
+    anioFormacion: 0,
+    activo: true,
+  };
+  nuevoAlbum: Omit<Album, 'id'> = {
+    titulo: '',
+    artistaId: '',
+    anio: 0,
+    genero: '',
+    duracionTotal: 0,
+  };
+  nuevaCancion: Omit<Cancion, 'id'> = {
+    titulo: '',
+    albumId: '',
+    artistaId: '',
+    duracion: 0,
+    genero: '',
+  };
   nuevaPlaylist: Omit<Playlist, 'id'> = { nombre: '', descripcion: '', cancionIds: [] };
 
   // Filtros y búsquedas
@@ -54,7 +72,7 @@ export class Dashboard implements OnInit {
     private albumService: AlbumService,
     private cancionService: CancionService,
     private playlistService: PlaylistService,
-    private estadisticasService: EstadisticasService
+    private estadisticasService: EstadisticasService,
   ) {}
 
   ngOnInit() {
@@ -64,24 +82,42 @@ export class Dashboard implements OnInit {
 
   cargarDatos() {
     // 1-4. CRUD Artistas
-    this.artistaService.getArtistas().subscribe(data => this.artistas = data);
-    this.albumService.getAlbumes().subscribe(data => this.albumes = data);
-    this.cancionService.getCanciones().subscribe(data => this.canciones = data);
-    this.playlistService.getPlaylists().subscribe(data => this.playlists = data);
+    this.artistaService.getArtistas().subscribe((data) => (this.artistas = data));
+    this.albumService.getAlbumes().subscribe((data) => (this.albumes = data));
+    this.cancionService.getCanciones().subscribe((data) => (this.canciones = data));
+    this.playlistService.getPlaylists().subscribe((data) => (this.playlists = data));
   }
 
   cargarEstadisticas() {
     // 61-70. Estadísticas
-    this.estadisticasService.getEstadisticasGenerales().subscribe(data => this.estadisticasGenerales = data);
-    this.estadisticasService.getEstadisticasPorGenero().subscribe(data => this.estadisticasPorGenero = data);
-    this.estadisticasService.getDuracionTotal().subscribe(data => this.duracionTotal = data);
-    this.estadisticasService.getArtistaConMasAlbumes().subscribe(data => this.artistaMasAlbumes = data);
-    this.estadisticasService.getCancionMasLarga().subscribe(data => this.cancionMasLarga = data);
-    this.estadisticasService.getCancionMasCorta().subscribe(data => this.cancionMasCorta = data);
-    this.estadisticasService.getPromedioDuracionPorGenero().subscribe(data => this.promedioDuracionPorGenero = data);
-    this.estadisticasService.getDistribucionArtistasPorPais().subscribe(data => this.distribucionPorPais = data);
-    this.estadisticasService.getAlbumesPorDecada().subscribe(data => this.albumesPorDecada = data);
-    this.estadisticasService.getPlaylistMasPopular().subscribe(data => this.playlistMasPopular = data);
+    this.estadisticasService
+      .getEstadisticasGenerales()
+      .subscribe((data) => (this.estadisticasGenerales = data));
+    this.estadisticasService
+      .getEstadisticasPorGenero()
+      .subscribe((data) => (this.estadisticasPorGenero = data));
+    this.estadisticasService.getDuracionTotal().subscribe((data) => (this.duracionTotal = data));
+    this.estadisticasService
+      .getArtistaConMasAlbumes()
+      .subscribe((data) => (this.artistaMasAlbumes = data));
+    this.estadisticasService
+      .getCancionMasLarga()
+      .subscribe((data) => (this.cancionMasLarga = data));
+    this.estadisticasService
+      .getCancionMasCorta()
+      .subscribe((data) => (this.cancionMasCorta = data));
+    this.estadisticasService
+      .getPromedioDuracionPorGenero()
+      .subscribe((data) => (this.promedioDuracionPorGenero = data));
+    this.estadisticasService
+      .getDistribucionArtistasPorPais()
+      .subscribe((data) => (this.distribucionPorPais = data));
+    this.estadisticasService
+      .getAlbumesPorDecada()
+      .subscribe((data) => (this.albumesPorDecada = data));
+    this.estadisticasService
+      .getPlaylistMasPopular()
+      .subscribe((data) => (this.playlistMasPopular = data));
   }
 
   // Métodos CRUD
@@ -133,13 +169,15 @@ export class Dashboard implements OnInit {
   getArtistasFiltrados(): Artista[] {
     let filtered = this.artistas;
     if (this.filtroGenero) {
-      filtered = filtered.filter(a => a.genero === this.filtroGenero);
+      filtered = filtered.filter((a) => a.genero === this.filtroGenero);
     }
     if (this.filtroPais) {
-      filtered = filtered.filter(a => a.pais === this.filtroPais);
+      filtered = filtered.filter((a) => a.pais === this.filtroPais);
     }
     if (this.busquedaArtista) {
-      filtered = filtered.filter(a => a.nombre.toLowerCase().includes(this.busquedaArtista.toLowerCase()));
+      filtered = filtered.filter((a) =>
+        a.nombre.toLowerCase().includes(this.busquedaArtista.toLowerCase()),
+      );
     }
     return filtered;
   }
@@ -147,7 +185,9 @@ export class Dashboard implements OnInit {
   getAlbumesFiltrados(): Album[] {
     let filtered = this.albumes;
     if (this.busquedaAlbum) {
-      filtered = filtered.filter(a => a.titulo.toLowerCase().includes(this.busquedaAlbum.toLowerCase()));
+      filtered = filtered.filter((a) =>
+        a.titulo.toLowerCase().includes(this.busquedaAlbum.toLowerCase()),
+      );
     }
     return filtered;
   }
@@ -155,23 +195,25 @@ export class Dashboard implements OnInit {
   getCancionesFiltradas(): Cancion[] {
     let filtered = this.canciones;
     if (this.busquedaCancion) {
-      filtered = filtered.filter(c => c.titulo.toLowerCase().includes(this.busquedaCancion.toLowerCase()));
+      filtered = filtered.filter((c) =>
+        c.titulo.toLowerCase().includes(this.busquedaCancion.toLowerCase()),
+      );
     }
     return filtered;
   }
 
   // Utilidades
   getArtistaNombre(id: string): string {
-    const artista = this.artistas.find(a => a.id === id);
+    const artista = this.artistas.find((a) => a.id === id);
     return artista ? artista.nombre : 'Desconocido';
   }
 
   getAlbumNombre(id: string): string {
-    const album = this.albumes.find(a => a.id === id);
+    const album = this.albumes.find((a) => a.id === id);
     return album ? album.titulo : 'Desconocido';
   }
 
   getCancionesDePlaylist(playlist: Playlist): Cancion[] {
-    return this.canciones.filter(c => playlist.cancionIds.includes(c.id));
+    return this.canciones.filter((c) => playlist.cancionIds.includes(c.id));
   }
 }

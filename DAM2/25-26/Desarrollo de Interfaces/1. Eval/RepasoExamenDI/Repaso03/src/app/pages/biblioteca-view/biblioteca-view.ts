@@ -10,7 +10,6 @@ import { Libro } from '../../libro/Libro';
   styleUrl: './biblioteca-view.css',
 })
 export class BibliotecaView {
-
   titulo: string = '';
   autor: string = '';
   genero: string = '';
@@ -26,21 +25,26 @@ export class BibliotecaView {
   numeroAno: number = 0;
   todosLosLibros: Libro[] = [];
 
-  constructor(private cdr: ChangeDetectorRef, private remote: LibrosRemoteService) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private remote: LibrosRemoteService,
+  ) {}
 
   anadirLibro() {
     if (!this.titulo.trim()) {
       console.error('El título es obligatorio');
       return;
     }
-    this.remote.createLibro(this.titulo.trim(), this.autor.trim(), this.genero.trim(), this.ano).subscribe({
-      next: (libroCreado) => {
-        console.log('Libro creado exitosamente:', libroCreado);
-        this.verLibros();
-        this.limpiarDatos();
-      },
-      error: (err) => console.error('Error creando libro', err)
-    });
+    this.remote
+      .createLibro(this.titulo.trim(), this.autor.trim(), this.genero.trim(), this.ano)
+      .subscribe({
+        next: (libroCreado) => {
+          console.log('Libro creado exitosamente:', libroCreado);
+          this.verLibros();
+          this.limpiarDatos();
+        },
+        error: (err) => console.error('Error creando libro', err),
+      });
   }
 
   limpiarDatos() {
@@ -67,7 +71,7 @@ export class BibliotecaView {
         this.verLibros();
         this.limpiarDatosEdicion();
       },
-      error: (err) => console.error('Error actualizando libro', err)
+      error: (err) => console.error('Error actualizando libro', err),
     });
   }
 
@@ -86,7 +90,7 @@ export class BibliotecaView {
       },
       error: (err) => {
         console.error('Error cargando Libros', err);
-      }
+      },
     });
   }
 
@@ -98,7 +102,7 @@ export class BibliotecaView {
       },
       error: () => {
         this.todosLosLibros = [];
-      }
+      },
     });
   }
 
@@ -117,7 +121,7 @@ export class BibliotecaView {
         console.error('Error cargando Libros por autor', err);
         this.todosLosLibros = [];
         this.cdr.markForCheck();
-      }
+      },
     });
   }
 
@@ -135,13 +139,13 @@ export class BibliotecaView {
         console.error('Error cargando Libros por género', err);
         this.todosLosLibros = [];
         this.cdr.markForCheck();
-      }
+      },
     });
   }
 
   verLibrosMayoresDeUnAno() {
     if (this.numeroAno <= 0) {
-      console.log("El año debe ser mayor a 0");
+      console.log('El año debe ser mayor a 0');
       return;
     }
     this.remote.getLibrosByAnoGreaterThan(this.numeroAno).subscribe({
@@ -154,7 +158,7 @@ export class BibliotecaView {
         console.error('Error cargando Libros por año', err);
         this.todosLosLibros = [];
         this.cdr.markForCheck();
-      }
+      },
     });
   }
 
@@ -168,7 +172,7 @@ export class BibliotecaView {
         console.error('Error cargando Libros con año par', err);
         this.todosLosLibros = [];
         this.cdr.markForCheck();
-      }
+      },
     });
   }
 
@@ -183,7 +187,7 @@ export class BibliotecaView {
         this.verLibros();
         this.idLibro = 0;
       },
-      error: (err) => console.error('Error eliminando libro', err)
+      error: (err) => console.error('Error eliminando libro', err),
     });
   }
 
@@ -198,7 +202,7 @@ export class BibliotecaView {
         this.verLibros();
         this.tituloBuscar = '';
       },
-      error: (err) => console.error('Error eliminando libro', err)
+      error: (err) => console.error('Error eliminando libro', err),
     });
   }
 }

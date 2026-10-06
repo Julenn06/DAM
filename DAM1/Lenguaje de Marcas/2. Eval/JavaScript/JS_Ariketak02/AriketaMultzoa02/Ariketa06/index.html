@@ -1,74 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <table border="2">
-        <thead>
-            <tr>
-                <th>Zutabe 1</th>
-                <th>Zutabe 2</th>
-                <th>Zutabe 3</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td> 1, 1 Gelaxka</td>
-                <td> 1, 2 Gelaxka</td>
-                <td> 1, 3 Gelaxka</td>
-            </tr>
-            <tr>
-                <td> 2, 1 Gelaxka</td>
-                <td> 2, 2 Gelaxka</td>
-                <td> 2, 3 Gelaxka</td>
-            </tr>
-            <tr>
-                <td> 3, 1 Gelaxka</td>
-                <td> 3, 2 Gelaxka</td>
-                <td> 3, 3 Gelaxka</td>
-            </tr>
-            <tr>
-                <td> 4, 1 Gelaxka</td>
-                <td> 4, 2 Gelaxka</td>
-                <td> 4, 3 Gelaxka</td>
-            </tr>
-            <tr>
-                <td> 5, 1 Gelaxka</td>
-                <td> 5, 2 Gelaxka</td>
-                <td> 5, 3 Gelaxka</td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th>Zutabe 1</th>
+          <th>Zutabe 2</th>
+          <th>Zutabe 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1, 1 Gelaxka</td>
+          <td>1, 2 Gelaxka</td>
+          <td>1, 3 Gelaxka</td>
+        </tr>
+        <tr>
+          <td>2, 1 Gelaxka</td>
+          <td>2, 2 Gelaxka</td>
+          <td>2, 3 Gelaxka</td>
+        </tr>
+        <tr>
+          <td>3, 1 Gelaxka</td>
+          <td>3, 2 Gelaxka</td>
+          <td>3, 3 Gelaxka</td>
+        </tr>
+        <tr>
+          <td>4, 1 Gelaxka</td>
+          <td>4, 2 Gelaxka</td>
+          <td>4, 3 Gelaxka</td>
+        </tr>
+        <tr>
+          <td>5, 1 Gelaxka</td>
+          <td>5, 2 Gelaxka</td>
+          <td>5, 3 Gelaxka</td>
+        </tr>
+      </tbody>
     </table>
 
-    <br>
+    <br />
 
     <button onclick="txertatu()">Txertatu</button>
 
     <button onclick="ezabatu()">Ezabatu</button>
 
-
     <script>
-        function txertatu() {
-            let taula = document.querySelector('table');
-            let body = taula.tBodies[0];
-            let lerroa = body.insertRow();
-            let g1 = lerroa.insertCell();
-            g1.innerText = "1. Gelaxka"
-            let g2 = lerroa.insertCell();
-            g2.innerText = "2. Gelaxka"
-            let g3 = lerroa.insertCell();
-            g3.innerText = "3. Gelaxka"
-        }
+      function txertatu() {
+        let taula = document.querySelector("table");
+        let body = taula.tBodies[0];
+        let lerroa = body.insertRow();
+        let g1 = lerroa.insertCell();
+        g1.innerText = "1. Gelaxka";
+        let g2 = lerroa.insertCell();
+        g2.innerText = "2. Gelaxka";
+        let g3 = lerroa.insertCell();
+        g3.innerText = "3. Gelaxka";
+      }
 
-        function ezabatu() {
-            document.querySelector('table').tBodies[0].deleteRow(-1);
-        }
+      function ezabatu() {
+        document.querySelector("table").tBodies[0].deleteRow(-1);
+      }
     </script>
-</body>
-
+  </body>
 </html>

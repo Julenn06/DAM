@@ -1,39 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/gmi.css">
-</head>
+    <link rel="stylesheet" href="css/gmi.css" />
+  </head>
 
-<body>
+  <body>
     <h1>Gorputz-masaren indizearen kalkulagailua</h1>
     <fieldset>
-        <label for="izena">izena</label>
-        <br>
-        <input type="text" id="izena" name="izena">
-        <br>
-        <label for="altuera">altuera (zm)</label>
-        <br>
-        <input type="number" id="altuera" name="altuera" min="0" placeholder="0">
-        <br>
-        <label for="pisua">pisua (kg)</label>
-        <br>
-        <input type="number" id="pisua" name="pisua" min="0" placeholder="0">
-        <br>
-        <button type="button" id="kalkulatu">kalkulatu</button>
-        <button type="submit" id="ezabatu">berretsi</button>
+      <label for="izena">izena</label>
+      <br />
+      <input type="text" id="izena" name="izena" />
+      <br />
+      <label for="altuera">altuera (zm)</label>
+      <br />
+      <input
+        type="number"
+        id="altuera"
+        name="altuera"
+        min="0"
+        placeholder="0"
+      />
+      <br />
+      <label for="pisua">pisua (kg)</label>
+      <br />
+      <input type="number" id="pisua" name="pisua" min="0" placeholder="0" />
+      <br />
+      <button type="button" id="kalkulatu">kalkulatu</button>
+      <button type="submit" id="ezabatu">berretsi</button>
     </fieldset>
     <fieldset>
-        <label for="gmi">GMI</label>
-        <br>
-        <input type="text" id="gmi" name="gmi" readonly>
-        <br>
+      <label for="gmi">GMI</label>
+      <br />
+      <input type="text" id="gmi" name="gmi" readonly />
+      <br />
     </fieldset>
 
     <script src="js/gmi.js"></script>
-</body>
-
+  </body>
 </html>

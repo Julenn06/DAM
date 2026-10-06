@@ -1,248 +1,235 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: burlywood;
+  background-color: burlywood;
 }
 
 header {
-    display: flex;
-    background-color: aqua;
-    text-align: center;
-    margin: 0 auto;
+  display: flex;
+  background-color: aqua;
+  text-align: center;
+  margin: 0 auto;
 }
 
 header h1 {
-    padding: 40px;
-    margin: 0 auto;
-    width: 50%;
+  padding: 40px;
+  margin: 0 auto;
+  width: 50%;
 }
 
 header img {
-    max-width: 200px;
+  max-width: 200px;
 }
 
 nav {
-    background-color: darksalmon;
-    padding: 20px;
-    border-radius: 10px;
-    border-style: solid;
-    border-width: 1px;
-    margin-top: 15px;
-
-
+  background-color: darksalmon;
+  padding: 20px;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: 15px;
 }
 
 nav ul {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
 }
 
 nav ul li {
-    background-color: black;
-    color: white;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: black;
-    padding: 25px;
-
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  padding: 25px;
 }
 
 nav ul li:hover {
-
-    text-align: center;
-    color: red;
-    border-color: red;
-    width: 20%;
+  text-align: center;
+  color: red;
+  border-color: red;
+  width: 20%;
 }
-
 
 article {
-    margin-top: 10px;
-    border-radius: 10px;
-    background-color: darkseagreen;
-    width: 65%;
-    height: 250px;
-    line-height: 50px;
-    display: inline-block;
-    text-align: center;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: darkseagreen;
+  width: 65%;
+  height: 250px;
+  line-height: 50px;
+  display: inline-block;
+  text-align: center;
 }
-
 
 article img {
-    max-width: 250px;
-    display: flex;
-    margin: 0 auto;
+  max-width: 250px;
+  display: flex;
+  margin: 0 auto;
 }
 
-
-
 aside {
-    margin-top: 10px;
-    border-radius: 10px;
-    background-color: cornflowerblue;
-    width: 34%;
-    height: 250px;
-    line-height: 50px;
-    display: inline-block;
-    vertical-align: top;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: cornflowerblue;
+  width: 34%;
+  height: 250px;
+  line-height: 50px;
+  display: inline-block;
+  vertical-align: top;
 }
 
 aside h4 {
-    text-align: center;
-    margin: 0 auto;
+  text-align: center;
+  margin: 0 auto;
 }
 
 aside img {
-    max-width: 250px;
-    display: block;
-    margin: 0 auto;
+  max-width: 250px;
+  display: block;
+  margin: 0 auto;
 }
 
 margin nav {
-    margin: 0;
-    align-items: center;
-    text-align: center;
+  margin: 0;
+  align-items: center;
+  text-align: center;
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
-    /* Posiciona el footer de forma fija en la parte inferior de la página */
-    background-color: green;
-    /* Asigna un color de fondo verde al footer */
-    width: 100%;
-    /* Asegura que el footer ocupe todo el ancho de la pantalla */
-    margin: 0;
-    /* Elimina cualquier margen externo del footer */
-    padding: 20px;
-    /* Agrega un relleno interno para separar el contenido de los bordes */
-    display: flex;
-    /* Activa Flexbox para organizar el contenido dentro del footer */
-    justify-content: space-between;
-    /* Distribuye los elementos internos con espacio uniforme entre ellos */
-    align-items: center;
-    /* Centra los elementos internos verticalmente */
-    border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+  /* Posiciona el footer de forma fija en la parte inferior de la página */
+  background-color: green;
+  /* Asigna un color de fondo verde al footer */
+  width: 100%;
+  /* Asegura que el footer ocupe todo el ancho de la pantalla */
+  margin: 0;
+  /* Elimina cualquier margen externo del footer */
+  padding: 20px;
+  /* Agrega un relleno interno para separar el contenido de los bordes */
+  display: flex;
+  /* Activa Flexbox para organizar el contenido dentro del footer */
+  justify-content: space-between;
+  /* Distribuye los elementos internos con espacio uniforme entre ellos */
+  align-items: center;
+  /* Centra los elementos internos verticalmente */
+  border-radius: 10px;
 }
 
 .futer {
-    display: flex;
-    /* Activa Flexbox para organizar los elementos dentro del contenedor */
-    width: 100%;
-    /* Asegura que el contenedor `.futer` ocupe todo el ancho del footer */
+  display: flex;
+  /* Activa Flexbox para organizar los elementos dentro del contenedor */
+  width: 100%;
+  /* Asegura que el contenedor `.futer` ocupe todo el ancho del footer */
 }
 
 .futer ul {
-    display: flex;
-    /* Usa Flexbox para alinear los elementos de la lista horizontalmente */
-    width: 100%;
-    /* Asegura que la lista ocupe todo el ancho disponible */
-    justify-content: space-between;
-    /* Distribuye los elementos de la lista con espacio uniforme (izquierda, centro, derecha) */
-    margin: 0;
-    /* Elimina márgenes externos de la lista */
-    padding: 0;
-    /* Elimina rellenos internos de la lista */
+  display: flex;
+  /* Usa Flexbox para alinear los elementos de la lista horizontalmente */
+  width: 100%;
+  /* Asegura que la lista ocupe todo el ancho disponible */
+  justify-content: space-between;
+  /* Distribuye los elementos de la lista con espacio uniforme (izquierda, centro, derecha) */
+  margin: 0;
+  /* Elimina márgenes externos de la lista */
+  padding: 0;
+  /* Elimina rellenos internos de la lista */
 }
 
 .futer ul li {
-    color: white;
-    /* Define el color del texto como blanco para contraste con el fondo verde */
-    font-size: 16px;
-    /* Ajusta el tamaño de la fuente de los elementos de la lista */
+  color: white;
+  /* Define el color del texto como blanco para contraste con el fondo verde */
+  font-size: 16px;
+  /* Ajusta el tamaño de la fuente de los elementos de la lista */
 }
 
 .futer ul li:hover {
-    color: black;
-    text-decoration: underline red;
+  color: black;
+  text-decoration: underline red;
 }
-
-
 
 /* Media queries para pantallas pequeñas */
 @media (max-width: 800px) {
-    header {
-        flex-direction: column;
-        /* Apila el contenido del header en una columna */
-        align-items: center;
-        /* Alinea todos los elementos en el centro */
-    }
+  header {
+    flex-direction: column;
+    /* Apila el contenido del header en una columna */
+    align-items: center;
+    /* Alinea todos los elementos en el centro */
+  }
 
-    header h1 {
+  header h1 {
+    width: 50%;
+    /* Hace que el título ocupe todo el ancho disponible */
+  }
 
-        width: 50%;
-        /* Hace que el título ocupe todo el ancho disponible */
-    }
+  header img {
+    max-width: 100px;
+  }
 
-    header img {
+  nav ul {
+    flex-direction: column;
+    /* Los elementos de la lista se apilan verticalmente */
+    align-items: center;
+    /* Centra los elementos de la lista */
+    width: 100%;
+    /* Asegura que la lista ocupe todo el ancho disponible */
+  }
 
-        max-width: 100px;
-    }
+  nav ul li {
+    margin-top: 10px;
+    /*Pone un margen entre los contenedores de aaa, bbb...*/
+    text-align: center;
+    /*Alinea el texto */
+    width: 100%;
+    /* Los elementos de la lista ocuparán todo el ancho disponible */
+    padding: 15px;
+    /* Ajusta el padding para pantallas pequeñas */
+  }
 
-    nav ul {
-        flex-direction: column;
-        /* Los elementos de la lista se apilan verticalmente */
-        align-items: center;
-        /* Centra los elementos de la lista */
-        width: 100%;
-        /* Asegura que la lista ocupe todo el ancho disponible */
-    }
+  nav ul li:hover {
+    text-align: center;
+    color: red;
+    border-color: red;
+    width: 100%;
+  }
 
-    nav ul li {
-        margin-top: 10px;
-        /*Pone un margen entre los contenedores de aaa, bbb...*/
-        text-align: center;
-        /*Alinea el texto */
-        width: 100%;
-        /* Los elementos de la lista ocuparán todo el ancho disponible */
-        padding: 15px;
-        /* Ajusta el padding para pantallas pequeñas */
-    }
+  footer {
+    margin-top: 10px;
+    position: relative;
+    bottom: 0;
+    flex-direction: column;
+    /* Apila los elementos del footer en columnas */
+    text-align: center;
+    /* Centra todo el contenido */
+    padding: 10px;
+  }
 
-    nav ul li:hover {
+  .futer {
+    flex-direction: column;
+    /* Asegura que los elementos se apilen */
+    align-items: center;
+    /* Centra los elementos */
+  }
 
-        text-align: center;
-        color: red;
-        border-color: red;
-        width: 100%;
-    }
+  .futer ul {
+    flex-direction: column;
+    /* Los elementos de la lista se apilan verticalmente */
+    align-items: center;
+    margin-top: 10px;
+    padding: 0;
+  }
 
-    footer {
-        margin-top: 10px;
-        position: relative;
-        bottom: 0;
-        flex-direction: column;
-        /* Apila los elementos del footer en columnas */
-        text-align: center;
-        /* Centra todo el contenido */
-        padding: 10px;
-    }
-
-    .futer {
-        flex-direction: column;
-        /* Asegura que los elementos se apilen */
-        align-items: center;
-        /* Centra los elementos */
-    }
-
-    .futer ul {
-        flex-direction: column;
-        /* Los elementos de la lista se apilan verticalmente */
-        align-items: center;
-        margin-top: 10px;
-        padding: 0;
-    }
-
-    .futer ul li {
-        flex: none;
-        /* Los elementos se apilan verticalmente */
-        width: 100%;
-        /* Cada elemento ocupa todo el ancho disponible */
-        margin-bottom: 10px;
-    }
+  .futer ul li {
+    flex: none;
+    /* Los elementos se apilan verticalmente */
+    width: 100%;
+    /* Cada elemento ocupa todo el ancho disponible */
+    margin-bottom: 10px;
+  }
 }

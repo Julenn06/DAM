@@ -1,156 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Página con menú a la izquierda</title>
     <style>
-        /* Reset básico para eliminar márgenes y rellenos predeterminados y asegurar un box model uniforme */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            /* Control consistente del tamaño de los elementos */
-        }
+      /* Reset básico para eliminar márgenes y rellenos predeterminados y asegurar un box model uniforme */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* Control consistente del tamaño de los elementos */
+      }
 
-        /* Configuración general del cuerpo del documento */
-        body {
-            font-family: Arial, sans-serif;
-            /* Fuente base para el texto */
-            height: 100vh;
-            /* Altura completa de la ventana del navegador */
-            display: flex;
-            /* Uso de flexbox para organizar los elementos */
-            flex-direction: column;
-            /* Coloca los elementos principales (header, container, footer) en columna */
-        }
+      /* Configuración general del cuerpo del documento */
+      body {
+        font-family: Arial, sans-serif;
+        /* Fuente base para el texto */
+        height: 100vh;
+        /* Altura completa de la ventana del navegador */
+        display: flex;
+        /* Uso de flexbox para organizar los elementos */
+        flex-direction: column;
+        /* Coloca los elementos principales (header, container, footer) en columna */
+      }
 
-        /* Estilo del encabezado (header) */
-        header {
-            background-color: #4CAF50;
-            /* Fondo verde para el encabezado */
-            color: white;
-            /* Texto en color blanco */
-            padding: 10px 20px;
-            /* Espaciado interno */
-            text-align: center;
-            /* Centrar el texto del encabezado */
-        }
+      /* Estilo del encabezado (header) */
+      header {
+        background-color: #4caf50;
+        /* Fondo verde para el encabezado */
+        color: white;
+        /* Texto en color blanco */
+        padding: 10px 20px;
+        /* Espaciado interno */
+        text-align: center;
+        /* Centrar el texto del encabezado */
+      }
 
-        /* Contenedor principal para el contenido y la barra de navegación */
-        .container {
-            display: flex;
-            /* Uso de flexbox para organizar el menú de navegación y el contenido principal */
-            flex: 1;
-            /* Ocupa todo el espacio disponible entre el header y el footer */
-        }
+      /* Contenedor principal para el contenido y la barra de navegación */
+      .container {
+        display: flex;
+        /* Uso de flexbox para organizar el menú de navegación y el contenido principal */
+        flex: 1;
+        /* Ocupa todo el espacio disponible entre el header y el footer */
+      }
 
-        /* Estilo de la barra de navegación (nav) */
-        nav {
-            background-color: #333;
-            /* Fondo oscuro */
-            color: white;
-            /* Texto blanco */
-            flex: 1;
-            /* Define un ancho fijo para el menú de navegación */
-            display: flex;
-            /* Flexbox para organizar los enlaces en columna */
-            flex-direction: column;
-            /* Los enlaces del menú se colocan uno debajo del otro */
-        }
+      /* Estilo de la barra de navegación (nav) */
+      nav {
+        background-color: #333;
+        /* Fondo oscuro */
+        color: white;
+        /* Texto blanco */
+        flex: 1;
+        /* Define un ancho fijo para el menú de navegación */
+        display: flex;
+        /* Flexbox para organizar los enlaces en columna */
+        flex-direction: column;
+        /* Los enlaces del menú se colocan uno debajo del otro */
+      }
 
-        /* Estilo de los enlaces dentro del menú (nav a) */
-        nav a {
-            color: white;
-            /* Texto blanco */
-            padding: 15px;
-            /* Espaciado interno para facilitar los clics */
-            text-decoration: none;
-            /* Elimina el subrayado de los enlaces */
-            text-align: center;
-            /* Centra el texto dentro del enlace */
-            border-bottom: 1px solid #575757;
-            /* Línea divisoria entre los enlaces */
-        }
+      /* Estilo de los enlaces dentro del menú (nav a) */
+      nav a {
+        color: white;
+        /* Texto blanco */
+        padding: 15px;
+        /* Espaciado interno para facilitar los clics */
+        text-decoration: none;
+        /* Elimina el subrayado de los enlaces */
+        text-align: center;
+        /* Centra el texto dentro del enlace */
+        border-bottom: 1px solid #575757;
+        /* Línea divisoria entre los enlaces */
+      }
 
-        /* Efecto hover para los enlaces del menú */
-        nav a:hover {
-            background-color: #575757;
-            /* Cambia el color de fondo al pasar el ratón */
-        }
+      /* Efecto hover para los enlaces del menú */
+      nav a:hover {
+        background-color: #575757;
+        /* Cambia el color de fondo al pasar el ratón */
+      }
 
-        /* Configuración de la sección principal (section) */
-        section {
-            flex: 3;
-            /* Ocupa más espacio que el menú de navegación */
-            display: flex;
-            /* Flexbox para organizar el contenido interno */
-            flex-direction: column;
-            /* Coloca el artículo y el aside en una columna */
-        }
+      /* Configuración de la sección principal (section) */
+      section {
+        flex: 3;
+        /* Ocupa más espacio que el menú de navegación */
+        display: flex;
+        /* Flexbox para organizar el contenido interno */
+        flex-direction: column;
+        /* Coloca el artículo y el aside en una columna */
+      }
 
-        /* Estilo del artículo principal (article) */
-        article {
-            padding: 20px;
-            /* Espaciado interno */
-            background-color: #ffffff;
-            /* Fondo blanco para el contenido principal */
-            flex: 1;
-            /* Permite que crezca si hay contenido adicional */
-        }
+      /* Estilo del artículo principal (article) */
+      article {
+        padding: 20px;
+        /* Espaciado interno */
+        background-color: #ffffff;
+        /* Fondo blanco para el contenido principal */
+        flex: 1;
+        /* Permite que crezca si hay contenido adicional */
+      }
 
-        /* Estilo del contenido lateral (aside) */
-        aside {
-            padding: 20px;
-            /* Espaciado interno */
-            background-color: #f4f4f4;
-            /* Fondo gris claro */
-        }
+      /* Estilo del contenido lateral (aside) */
+      aside {
+        padding: 20px;
+        /* Espaciado interno */
+        background-color: #f4f4f4;
+        /* Fondo gris claro */
+      }
 
-        /* Estilo del pie de página (footer) */
-        footer {
-            background-color: #333;
-            /* Fondo oscuro */
-            color: white;
-            /* Texto blanco */
-            text-align: center;
-            /* Centra el contenido */
-            padding: 10px 20px;
-            /* Espaciado interno */
-        }
+      /* Estilo del pie de página (footer) */
+      footer {
+        background-color: #333;
+        /* Fondo oscuro */
+        color: white;
+        /* Texto blanco */
+        text-align: center;
+        /* Centra el contenido */
+        padding: 10px 20px;
+        /* Espaciado interno */
+      }
     </style>
+  </head>
 
-</head>
-
-<body>
+  <body>
     <header>
-        <h1>Página con menú a la izquierda</h1>
+      <h1>Página con menú a la izquierda</h1>
     </header>
     <div class="container">
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#articulos">Artículos</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-        <section>
-            <article>
-                <h2>Artículo principal</h2>
-                <p>
-                    Este es el contenido principal de la página. Aquí se describe el tema central del sitio web.
-                </p>
-            </article>
-            <aside>
-                <h2>Información adicional</h2>
-                <p>
-                    Este es un espacio para agregar enlaces, noticias, o cualquier contenido complementario.
-                </p>
-            </aside>
-        </section>
+      <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#articulos">Artículos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <section>
+        <article>
+          <h2>Artículo principal</h2>
+          <p>
+            Este es el contenido principal de la página. Aquí se describe el
+            tema central del sitio web.
+          </p>
+        </article>
+        <aside>
+          <h2>Información adicional</h2>
+          <p>
+            Este es un espacio para agregar enlaces, noticias, o cualquier
+            contenido complementario.
+          </p>
+        </aside>
+      </section>
     </div>
     <footer>
-        <p>&copy; 2024 Mi Página Web. Todos los derechos reservados.</p>
+      <p>&copy; 2024 Mi Página Web. Todos los derechos reservados.</p>
     </footer>
-</body>
-
+  </body>
 </html>

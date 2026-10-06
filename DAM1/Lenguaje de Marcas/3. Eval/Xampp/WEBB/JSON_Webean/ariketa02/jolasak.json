@@ -1,31 +1,32 @@
-[{
-        "izena": "Zelda: Breath of the Wild",
-        "plataforma_original": "Nintendo Switch / Wii U",
-        "generoa": ["Ekintza", "Abentura", "Mundu Irekia"],
-        "irudia": "https://www.nintendo.com/eu/media/images/10_share_images/games_15/wiiu_14/SI_WiiU_TheLegendOfZeldaBreathOfTheWild.jpg"
-    },
-    {
-        "izena": "The Witcher 3",
-        "plataforma_original": "PC",
-        "generoa": ["RPG", "Ekintza", "Mundu Irekia"],
-        "irudia": "https://image.api.playstation.com/vulcan/ap/rnd/202211/0711/qezXTVn1ExqBjVjR5Ipm97IK.png"
-    },
-    {
-        "izena": "Hollow Knight",
-        "plataforma_original": "PC",
-        "generoa": ["Metroidvania", "Plataformak", "Ekintza"],
-        "irudia": "https://www.nintendo.com/eu/media/images/10_share_images/games_15/wiiu_download_software_5/H2x1_WiiUDS_HollowKnight.jpg"
-    },
-    {
-        "izena": "Elden Ring",
-        "plataforma_original": "PC / PS4 / Xbox One",
-        "generoa": ["RPG", "Ekintza", "Mundu Irekia", "Soulslike"],
-        "irudia": "https://store-images.s-microsoft.com/image/apps.30323.14537704372270848.6ecb6038-5426-409a-8660-158d1eb64fb0.08703491-f5dc-4b00-bca6-486b7b293c17?q=90&w=336&h=200"
-    },
-    {
-        "izena": "Baldur's Gate",
-        "plataforma_original": "PC",
-        "generoa": ["RPG", "Fantasia", "Txandaka estrategikoa"],
-        "irudia": "https://image.api.playstation.com/vulcan/ap/rnd/202308/1519/95cce955dc59d04e2ea5ab624a823ace14e9c5f7e24dfb8f.png"
-    }
+[
+  {
+    "izena": "Zelda: Breath of the Wild",
+    "plataforma_original": "Nintendo Switch / Wii U",
+    "generoa": ["Ekintza", "Abentura", "Mundu Irekia"],
+    "irudia": "https://www.nintendo.com/eu/media/images/10_share_images/games_15/wiiu_14/SI_WiiU_TheLegendOfZeldaBreathOfTheWild.jpg"
+  },
+  {
+    "izena": "The Witcher 3",
+    "plataforma_original": "PC",
+    "generoa": ["RPG", "Ekintza", "Mundu Irekia"],
+    "irudia": "https://image.api.playstation.com/vulcan/ap/rnd/202211/0711/qezXTVn1ExqBjVjR5Ipm97IK.png"
+  },
+  {
+    "izena": "Hollow Knight",
+    "plataforma_original": "PC",
+    "generoa": ["Metroidvania", "Plataformak", "Ekintza"],
+    "irudia": "https://www.nintendo.com/eu/media/images/10_share_images/games_15/wiiu_download_software_5/H2x1_WiiUDS_HollowKnight.jpg"
+  },
+  {
+    "izena": "Elden Ring",
+    "plataforma_original": "PC / PS4 / Xbox One",
+    "generoa": ["RPG", "Ekintza", "Mundu Irekia", "Soulslike"],
+    "irudia": "https://store-images.s-microsoft.com/image/apps.30323.14537704372270848.6ecb6038-5426-409a-8660-158d1eb64fb0.08703491-f5dc-4b00-bca6-486b7b293c17?q=90&w=336&h=200"
+  },
+  {
+    "izena": "Baldur's Gate",
+    "plataforma_original": "PC",
+    "generoa": ["RPG", "Fantasia", "Txandaka estrategikoa"],
+    "irudia": "https://image.api.playstation.com/vulcan/ap/rnd/202308/1519/95cce955dc59d04e2ea5ab624a823ace14e9c5f7e24dfb8f.png"
+  }
 ]

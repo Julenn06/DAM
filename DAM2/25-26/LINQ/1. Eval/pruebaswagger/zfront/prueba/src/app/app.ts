@@ -7,7 +7,7 @@ import { ApiService, ApiResponse } from './services/api.service';
   selector: 'app-root',
   imports: [FormsModule, CommonModule],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   protected readonly title = signal('PruebaSwagger Frontend');
@@ -16,7 +16,7 @@ export class App {
   navigationItems = [
     { title: 'Explore the Docs', link: 'https://angular.dev' },
     { title: 'Learn with Tutorials', link: 'https://angular.dev/tutorials' },
-    { title: 'Prompt and best practices for AI', link: 'https://angular.dev/ai/develop-with-ai'},
+    { title: 'Prompt and best practices for AI', link: 'https://angular.dev/ai/develop-with-ai' },
     { title: 'CLI Docs', link: 'https://angular.dev/tools/cli' },
     { title: 'Angular Language Service', link: 'https://angular.dev/tools/language-service' },
     { title: 'Angular DevTools', link: 'https://angular.dev/tools/devtools' },
@@ -31,15 +31,15 @@ export class App {
   matematicasForm = {
     a: 0,
     b: 0,
-    n: 0
+    n: 0,
   };
 
   cadenaForm = {
-    texto: ''
+    texto: '',
   };
 
   mensajeForm = {
-    nombre: ''
+    nombre: '',
   };
 
   constructor(private apiService: ApiService) {}
@@ -122,7 +122,7 @@ export class App {
       this.setError('Error al enviar el mensaje');
     }
     this.setLoading(false);
-  }  // === MÉTODOS MATEMÁTICOS ===
+  } // === MÉTODOS MATEMÁTICOS ===
   async sumar() {
     await this.operacionMatematica('sumar', 'Suma');
   }
@@ -176,19 +176,29 @@ export class App {
 
       switch (operacion) {
         case 'sumar':
-          result = await this.apiService.sumar(this.matematicasForm.a, this.matematicasForm.b).toPromise();
+          result = await this.apiService
+            .sumar(this.matematicasForm.a, this.matematicasForm.b)
+            .toPromise();
           break;
         case 'restar':
-          result = await this.apiService.restar(this.matematicasForm.a, this.matematicasForm.b).toPromise();
+          result = await this.apiService
+            .restar(this.matematicasForm.a, this.matematicasForm.b)
+            .toPromise();
           break;
         case 'multiplicar':
-          result = await this.apiService.multiplicar(this.matematicasForm.a, this.matematicasForm.b).toPromise();
+          result = await this.apiService
+            .multiplicar(this.matematicasForm.a, this.matematicasForm.b)
+            .toPromise();
           break;
         case 'dividir':
-          result = await this.apiService.dividir(this.matematicasForm.a, this.matematicasForm.b).toPromise();
+          result = await this.apiService
+            .dividir(this.matematicasForm.a, this.matematicasForm.b)
+            .toPromise();
           break;
         case 'potencia':
-          result = await this.apiService.potencia(this.matematicasForm.a, this.matematicasForm.b).toPromise();
+          result = await this.apiService
+            .potencia(this.matematicasForm.a, this.matematicasForm.b)
+            .toPromise();
           break;
       }
 

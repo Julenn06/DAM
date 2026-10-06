@@ -11,20 +11,17 @@
       <div class="row g-3">
         <!-- Fila 1: Nombre y Categoría -->
         <div class="col-md-6">
-          <label class="form-label fw-bold">
-            <i class="bi bi-tag"></i> Produktuaren Izena
-          </label>
-          <input 
-            type="text" 
-            class="form-control" 
-            [(ngModel)]="nuevoProducto.nombre" 
-            placeholder="Adib: Laptop HP" />
+          <label class="form-label fw-bold"> <i class="bi bi-tag"></i> Produktuaren Izena </label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="nuevoProducto.nombre"
+            placeholder="Adib: Laptop HP"
+          />
         </div>
-        
+
         <div class="col-md-6">
-          <label class="form-label fw-bold">
-            <i class="bi bi-bookmark"></i> Kategoria
-          </label>
+          <label class="form-label fw-bold"> <i class="bi bi-bookmark"></i> Kategoria </label>
           <select class="form-select" [(ngModel)]="nuevoProducto.categoria">
             <option value="">Hautatu kategoria bat</option>
             @for (cat of categorias; track cat) {
@@ -35,14 +32,13 @@
 
         <!-- Fila 2: Descripción -->
         <div class="col-md-12">
-          <label class="form-label fw-bold">
-            <i class="bi bi-file-text"></i> Deskribapena
-          </label>
-          <textarea 
-            class="form-control" 
-            [(ngModel)]="nuevoProducto.descripcion" 
-            placeholder="Produktuaren deskribapen zehatza" 
-            rows="3"></textarea>
+          <label class="form-label fw-bold"> <i class="bi bi-file-text"></i> Deskribapena </label>
+          <textarea
+            class="form-control"
+            [(ngModel)]="nuevoProducto.descripcion"
+            placeholder="Produktuaren deskribapen zehatza"
+            rows="3"
+          ></textarea>
         </div>
 
         <!-- Fila 3: Precio, Stock, Descuento y Disponible -->
@@ -50,70 +46,72 @@
           <label class="form-label fw-bold">
             <i class="bi bi-currency-euro"></i> Prezioa (€)
           </label>
-          <input 
-            type="number" 
-            class="form-control" 
-            [(ngModel)]="nuevoProducto.precio" 
-            placeholder="0.00" 
-            step="0.01" />
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="nuevoProducto.precio"
+            placeholder="0.00"
+            step="0.01"
+          />
         </div>
-        
+
         <div class="col-md-3">
-          <label class="form-label fw-bold">
-            <i class="bi bi-box"></i> Stock
-          </label>
-          <input 
-            type="number" 
-            class="form-control" 
-            [(ngModel)]="nuevoProducto.stock" 
-            placeholder="0" />
+          <label class="form-label fw-bold"> <i class="bi bi-box"></i> Stock </label>
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="nuevoProducto.stock"
+            placeholder="0"
+          />
         </div>
-        
+
         <div class="col-md-3">
-          <label class="form-label fw-bold">
-            <i class="bi bi-percent"></i> Deskontua (%)
-          </label>
-          <input 
-            type="number" 
-            class="form-control" 
-            [(ngModel)]="nuevoProducto.descuento" 
-            placeholder="0" 
-            min="0" 
-            max="100" />
+          <label class="form-label fw-bold"> <i class="bi bi-percent"></i> Deskontua (%) </label>
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="nuevoProducto.descuento"
+            placeholder="0"
+            min="0"
+            max="100"
+          />
         </div>
-        
+
         <div class="col-md-3">
           <label class="form-label fw-bold d-block">
             <i class="bi bi-check-circle"></i> Eskuragarri
           </label>
           <div class="form-check form-switch mt-2">
-            <input 
-              type="checkbox" 
-              class="form-check-input" 
-              [(ngModel)]="nuevoProducto.disponible" 
-              id="disponibleSwitch" />
+            <input
+              type="checkbox"
+              class="form-check-input"
+              [(ngModel)]="nuevoProducto.disponible"
+              id="disponibleSwitch"
+            />
             <label class="form-check-label" for="disponibleSwitch">Bai</label>
           </div>
         </div>
 
         <!-- Fila 4: URL de Imagen -->
         <div class="col-md-12">
-          <label class="form-label fw-bold">
-            <i class="bi bi-image"></i> Irudiaren URL-a
-          </label>
-          <input 
-            type="text" 
-            class="form-control" 
-            [(ngModel)]="nuevoProducto.imagen" 
-            placeholder="https://..." />
+          <label class="form-label fw-bold"> <i class="bi bi-image"></i> Irudiaren URL-a </label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="nuevoProducto.imagen"
+            placeholder="https://..."
+          />
         </div>
 
         <!-- Botón de Crear -->
         <div class="col-md-12 text-center mt-3">
-          <button 
-            class="btn btn-success btn-lg px-5" 
-            (click)="crearProducto()" 
-            [disabled]="!nuevoProducto.nombre || !nuevoProducto.categoria || nuevoProducto.precio <= 0">
+          <button
+            class="btn btn-success btn-lg px-5"
+            (click)="crearProducto()"
+            [disabled]="
+              !nuevoProducto.nombre || !nuevoProducto.categoria || nuevoProducto.precio <= 0
+            "
+          >
             <i class="bi bi-plus-circle-fill"></i> Produktua Sortu
           </button>
         </div>
@@ -123,122 +121,166 @@
 </div>
 
 <div>
-  @if(productos){
-  <table class="table table-hover table-bordered">
-    <thead class="table-dark">
-      <tr>
-        <th style="width: 60px;">Irudia</th>
-        <th>Izena</th>
-        <th>Deskribapena</th>
-        <th>Kategoria</th>
-        <th>Prezioa</th>
-        <th>Stock</th>
-        <th>Deskontua</th>
-        <th>Egoera</th>
-        <th>Ekintzak</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (producto of productos; track producto.id) {
-      <tr [class.table-secondary]="!producto.disponible">
-        <td>
-          <img [src]="producto.imagen" [alt]="producto.nombre" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" 
-               onerror="this.src='https://via.placeholder.com/50'" />
-        </td>
-        <td><strong>{{ producto.nombre }}</strong></td>
-        <td style="max-width: 250px; font-size: 0.9em;">{{ producto.descripcion }}</td>
-        <td><span class="badge bg-info">{{ producto.categoria }}</span></td>
-        <td>
-          @if(producto.descuento && producto.descuento > 0) {
-            <span style="text-decoration: line-through; color: #999;">{{ producto.precio | currency:'EUR' }}</span>
-            <br/>
-            <strong style="color: #28a745;">{{ producto.precio * (1 - producto.descuento / 100) | currency:'EUR' }}</strong>
-            <span class="badge bg-danger ms-1">-{{ producto.descuento }}%</span>
-          } @else {
-            <strong>{{ producto.precio | currency:'EUR' }}</strong>
-          }
-        </td>
-        <td>
-          @if(producto.stock > 0) {
-            <span class="badge bg-success">{{ producto.stock }} unid.</span>
-          } @else {
-            <span class="badge bg-danger">Agortuta</span>
-          }
-        </td>
-        <td>{{ producto.descuento }}%</td>
-        <td>
-          @if(producto.disponible) {
-            <span class="badge bg-success">Eskuragarri</span>
-          } @else {
-            <span class="badge bg-secondary">Ez eskuragarri</span>
-          }
-        </td>
-        <td>
-          <button class="btn btn-sm btn-primary me-1" (click)="seleccionarProducto(producto)">
-            <i class="bi bi-pencil"></i> Editatu
-          </button>
-          <button class="btn btn-sm btn-danger" (click)="borrarProducto(producto.id)">
-            <i class="bi bi-trash"></i> Ezabatu
-          </button>
-        </td>
-      </tr>
-      }
-    </tbody>
-  </table>
+  @if (productos) {
+    <table class="table table-hover table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th style="width: 60px">Irudia</th>
+          <th>Izena</th>
+          <th>Deskribapena</th>
+          <th>Kategoria</th>
+          <th>Prezioa</th>
+          <th>Stock</th>
+          <th>Deskontua</th>
+          <th>Egoera</th>
+          <th>Ekintzak</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (producto of productos; track producto.id) {
+          <tr [class.table-secondary]="!producto.disponible">
+            <td>
+              <img
+                [src]="producto.imagen"
+                [alt]="producto.nombre"
+                style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px"
+                onerror="this.src = 'https://via.placeholder.com/50'"
+              />
+            </td>
+            <td>
+              <strong>{{ producto.nombre }}</strong>
+            </td>
+            <td style="max-width: 250px; font-size: 0.9em">{{ producto.descripcion }}</td>
+            <td>
+              <span class="badge bg-info">{{ producto.categoria }}</span>
+            </td>
+            <td>
+              @if (producto.descuento && producto.descuento > 0) {
+                <span style="text-decoration: line-through; color: #999">{{
+                  producto.precio | currency: 'EUR'
+                }}</span>
+                <br />
+                <strong style="color: #28a745">{{
+                  producto.precio * (1 - producto.descuento / 100) | currency: 'EUR'
+                }}</strong>
+                <span class="badge bg-danger ms-1">-{{ producto.descuento }}%</span>
+              } @else {
+                <strong>{{ producto.precio | currency: 'EUR' }}</strong>
+              }
+            </td>
+            <td>
+              @if (producto.stock > 0) {
+                <span class="badge bg-success">{{ producto.stock }} unid.</span>
+              } @else {
+                <span class="badge bg-danger">Agortuta</span>
+              }
+            </td>
+            <td>{{ producto.descuento }}%</td>
+            <td>
+              @if (producto.disponible) {
+                <span class="badge bg-success">Eskuragarri</span>
+              } @else {
+                <span class="badge bg-secondary">Ez eskuragarri</span>
+              }
+            </td>
+            <td>
+              <button class="btn btn-sm btn-primary me-1" (click)="seleccionarProducto(producto)">
+                <i class="bi bi-pencil"></i> Editatu
+              </button>
+              <button class="btn btn-sm btn-danger" (click)="borrarProducto(producto.id)">
+                <i class="bi bi-trash"></i> Ezabatu
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
   }
 </div>
 
 @if (productoSeleccionado) {
-<div style="border: 2px solid #0170ff; padding: 20px; margin-top: 20px; border-radius: 8px; background-color: #e8f4ff;">
-  <h3>Produktua Editatu: {{ productoSeleccionado.nombre }}</h3>
-  <div class="row g-3">
-    <div class="col-md-6">
-      <label class="form-label">Produktuaren Izena</label>
-      <input type="text" class="form-control" [(ngModel)]="productoSeleccionado.nombre" placeholder="Izena" />
-    </div>
-    <div class="col-md-6">
-      <label class="form-label">Kategoria</label>
-      <select class="form-select" [(ngModel)]="productoSeleccionado.categoria">
-        @for (cat of categorias; track cat) {
-          <option [value]="cat">{{ cat }}</option>
-        }
-      </select>
-    </div>
-    <div class="col-md-12">
-      <label class="form-label">Deskribapena</label>
-      <textarea class="form-control" [(ngModel)]="productoSeleccionado.descripcion" rows="2"></textarea>
-    </div>
-    <div class="col-md-3">
-      <label class="form-label">Prezioa (€)</label>
-      <input type="number" class="form-control" [(ngModel)]="productoSeleccionado.precio" step="0.01" />
-    </div>
-    <div class="col-md-3">
-      <label class="form-label">Stock</label>
-      <input type="number" class="form-control" [(ngModel)]="productoSeleccionado.stock" />
-    </div>
-    <div class="col-md-3">
-      <label class="form-label">Deskontua (%)</label>
-      <input type="number" class="form-control" [(ngModel)]="productoSeleccionado.descuento" min="0" max="100" />
-    </div>
-    <div class="col-md-3">
-      <label class="form-label">Eskuragarri</label>
-      <div class="form-check mt-2">
-        <input type="checkbox" class="form-check-input" [(ngModel)]="productoSeleccionado.disponible" />
-        <label class="form-check-label">Bai</label>
+  <div
+    style="
+      border: 2px solid #0170ff;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+      background-color: #e8f4ff;
+    "
+  >
+    <h3>Produktua Editatu: {{ productoSeleccionado.nombre }}</h3>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Produktuaren Izena</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="productoSeleccionado.nombre"
+          placeholder="Izena"
+        />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Kategoria</label>
+        <select class="form-select" [(ngModel)]="productoSeleccionado.categoria">
+          @for (cat of categorias; track cat) {
+            <option [value]="cat">{{ cat }}</option>
+          }
+        </select>
+      </div>
+      <div class="col-md-12">
+        <label class="form-label">Deskribapena</label>
+        <textarea
+          class="form-control"
+          [(ngModel)]="productoSeleccionado.descripcion"
+          rows="2"
+        ></textarea>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Prezioa (€)</label>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="productoSeleccionado.precio"
+          step="0.01"
+        />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Stock</label>
+        <input type="number" class="form-control" [(ngModel)]="productoSeleccionado.stock" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Deskontua (%)</label>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="productoSeleccionado.descuento"
+          min="0"
+          max="100"
+        />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Eskuragarri</label>
+        <div class="form-check mt-2">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            [(ngModel)]="productoSeleccionado.disponible"
+          />
+          <label class="form-check-label">Bai</label>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <label class="form-label">Irudiaren URL-a</label>
+        <input type="text" class="form-control" [(ngModel)]="productoSeleccionado.imagen" />
+      </div>
+      <div class="col-md-12">
+        <button class="btn btn-primary me-2" (click)="actualizarProducto()">
+          <i class="bi bi-check-circle"></i> Aldaketak Gorde
+        </button>
+        <button class="btn btn-secondary" (click)="productoSeleccionado = null">
+          <i class="bi bi-x-circle"></i> Utzi
+        </button>
       </div>
     </div>
-    <div class="col-md-12">
-      <label class="form-label">Irudiaren URL-a</label>
-      <input type="text" class="form-control" [(ngModel)]="productoSeleccionado.imagen" />
-    </div>
-    <div class="col-md-12">
-      <button class="btn btn-primary me-2" (click)="actualizarProducto()">
-        <i class="bi bi-check-circle"></i> Aldaketak Gorde
-      </button>
-      <button class="btn btn-secondary" (click)="productoSeleccionado = null">
-        <i class="bi bi-x-circle"></i> Utzi
-      </button>
-    </div>
   </div>
-</div>
 }

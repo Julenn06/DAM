@@ -1,12 +1,12 @@
 <h1>Login</h1>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <label for="username">Username:</label>
-    <input type="text" id="username" formControlName="username" required>
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" formControlName="password" required>
-    <br>
-    <button type="submit">Login</button>
+  <label for="username">Username:</label>
+  <input type="text" id="username" formControlName="username" required />
+  <br />
+  <label for="password">Password:</label>
+  <input type="password" id="password" formControlName="password" required />
+  <br />
+  <button type="submit">Login</button>
 </form>
-<div *ngIf="loginError" style="color:red">{{ loginError }}</div>
-<div *ngIf="loginSuccess" style="color:green">{{ loginSuccess }}</div>
+<div *ngIf="loginError" style="color: red">{{ loginError }}</div>
+<div *ngIf="loginSuccess" style="color: green">{{ loginSuccess }}</div>

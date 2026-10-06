@@ -1,5 +1,6 @@
 {
-  "users": [{
+  "users": [
+    {
       "usuario": "user",
       "contra": "user"
     },

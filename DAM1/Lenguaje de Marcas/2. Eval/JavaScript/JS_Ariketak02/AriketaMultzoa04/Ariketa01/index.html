@@ -1,79 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<form name="formularioa">
-    <label for="fname">Idatzi zure izena:</label><br>
-    <input type="text" name="fname" id="fname" onmouseover=izenaLarria() onmouseleave=izenaTxikia()><br><br>
+  <form name="formularioa">
+    <label for="fname">Idatzi zure izena:</label><br />
+    <input
+      type="text"
+      name="fname"
+      id="fname"
+      onmouseover="izenaLarria()"
+      onmouseleave="izenaTxikia()"
+    /><br /><br />
 
-    <label for="lname">Idatzi zure abizena:</label><br>
-    <input type="text" name="lname" id="lname" onmouseover=abizenaKolorea() onmouseleave=abizenaZuria()><br><br>
+    <label for="lname">Idatzi zure abizena:</label><br />
+    <input
+      type="text"
+      name="lname"
+      id="lname"
+      onmouseover="abizenaKolorea()"
+      onmouseleave="abizenaZuria()"
+    /><br /><br />
 
-    <label for="lherria">Bizilekua:</label><br>
-    <input type="text" name="lherria" id="lherria" value="Bizkaia" onblur=bizilekua()><br>
+    <label for="lherria">Bizilekua:</label><br />
+    <input
+      type="text"
+      name="lherria"
+      id="lherria"
+      value="Bizkaia"
+      onblur="bizilekua()"
+    /><br />
 
     <label for="ltestua">Idatzi mezu bat:</label>
-    <input type="text" name="ltestua" id="ltestua" onkeydown=mezua() onblur=testuaZuria()><br><br>
+    <input
+      type="text"
+      name="ltestua"
+      id="ltestua"
+      onkeydown="mezua()"
+      onblur="testuaZuria()"
+    /><br /><br />
 
-    <input type="submit" value="BIDALI">
-    <input type="reset" value="GARBITU" onclick=garbitu()>
-</form>
+    <input type="submit" value="BIDALI" />
+    <input type="reset" value="GARBITU" onclick="garbitu()" />
+  </form>
 
-<script>
+  <script>
     function izenaLarria() {
-        const fname = document.getElementById('fname');
+      const fname = document.getElementById("fname");
 
-        fname.value = fname.value.toUpperCase();
+      fname.value = fname.value.toUpperCase();
     }
 
     function izenaTxikia() {
-        const fname = document.getElementById('fname');
+      const fname = document.getElementById("fname");
 
-        fname.value = fname.value.toLowerCase();
+      fname.value = fname.value.toLowerCase();
     }
 
     function abizenaKolorea() {
-        var elemento = document.getElementById('lname');
+      var elemento = document.getElementById("lname");
 
-        elemento.style.backgroundColor = 'green';
+      elemento.style.backgroundColor = "green";
     }
 
     function abizenaZuria() {
-        var elemento = document.getElementById('lname');
+      var elemento = document.getElementById("lname");
 
-        elemento.style.backgroundColor = 'white';
+      elemento.style.backgroundColor = "white";
     }
 
     function bizilekua() {
-        const fname = document.getElementById('lherria');
+      const fname = document.getElementById("lherria");
 
-        if (fname.value != "Bizkaia") {
-            window.alert("Herria Bizkaia izan behar da!!");
-        }
+      if (fname.value != "Bizkaia") {
+        window.alert("Herria Bizkaia izan behar da!!");
+      }
     }
 
     function mezua() {
-        var elemento = document.getElementById('ltestua');
+      var elemento = document.getElementById("ltestua");
 
-        elemento.style.backgroundColor = 'green';
+      elemento.style.backgroundColor = "green";
     }
 
     function testuaZuria() {
-        var elemento = document.getElementById('ltestua');
+      var elemento = document.getElementById("ltestua");
 
-        elemento.style.backgroundColor = 'white';
+      elemento.style.backgroundColor = "white";
     }
 
     function garbitu() {
-        let form = document.getElementById('formularioa');
-        window.alert("Zure datuak ezabatuko dira");
-        form.reset();
-
+      let form = document.getElementById("formularioa");
+      window.alert("Zure datuak ezabatuko dira");
+      form.reset();
     }
-</script>
+  </script>
 </html>

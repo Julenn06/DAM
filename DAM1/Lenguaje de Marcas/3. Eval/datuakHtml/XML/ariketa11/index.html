@@ -1,81 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
 
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
 
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <table id="taula">
-        <tr>
-            <th>Herria</th>
-            <th>Ezaugarriak</th>
-        </tr>
-
+      <tr>
+        <th>Herria</th>
+        <th>Ezaugarriak</th>
+      </tr>
     </table>
 
     <script>
-        //Datuak deitu
-        fetch('herriak.xml')
-            .then(response => response.text())
-            .then(data => {
-                //XML parseatu
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(data, "text/xml");
+      //Datuak deitu
+      fetch("herriak.xml")
+        .then((response) => response.text())
+        .then((data) => {
+          //XML parseatu
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(data, "text/xml");
 
-                //Herriak lortu
-                const herriak = xmlDoc.getElementsByTagName("row");
+          //Herriak lortu
+          const herriak = xmlDoc.getElementsByTagName("row");
 
-                //Herrien datuak lortu eta Taulan gehitu
-                for (let i = 0; i < herriak.length; i++) {
-                    const herria = herriak[i].getElementsByTagName("documentName")[0].textContent;
-                    const description = herriak[i].getElementsByTagName("documentDescription")[0].textContent;
-                    const territory = herriak[i].getElementsByTagName("territory")[0].textContent;
+          //Herrien datuak lortu eta Taulan gehitu
+          for (let i = 0; i < herriak.length; i++) {
+            const herria =
+              herriak[i].getElementsByTagName("documentName")[0].textContent;
+            const description = herriak[i].getElementsByTagName(
+              "documentDescription",
+            )[0].textContent;
+            const territory =
+              herriak[i].getElementsByTagName("territory")[0].textContent;
 
-                    const row = document.createElement("tr");
-                    const td1 = document.createElement("td");
-                    const td2 = document.createElement("td");
+            const row = document.createElement("tr");
+            const td1 = document.createElement("td");
+            const td2 = document.createElement("td");
 
-                    if (territory.includes("Bizkaia")) {
-                        td1.textContent = herria;
-                        td2.textContent = description;
+            if (territory.includes("Bizkaia")) {
+              td1.textContent = herria;
+              td2.textContent = description;
 
-                        row.appendChild(td1);
-                        row.appendChild(td2);
-                        document.getElementById("taula").appendChild(row);
-                    }
-                }
-            })
-            .catch(error => console.error('Errorea XML fitxategiari Fetch egitean:', error));
+              row.appendChild(td1);
+              row.appendChild(td2);
+              document.getElementById("taula").appendChild(row);
+            }
+          }
+        })
+        .catch((error) =>
+          console.error("Errorea XML fitxategiari Fetch egitean:", error),
+        );
     </script>
-</body>
-
+  </body>
 </html>

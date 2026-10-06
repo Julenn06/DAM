@@ -1,166 +1,182 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ejemplo de XSD</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
 
-        .content {
-            display: none;
-            margin-top: 20px;
-        }
+      .content {
+        display: none;
+        margin-top: 20px;
+      }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
 
-        table,
-        th,
-        td {
-            border: 1px solid black;
-        }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
 
-        th,
-        td {
-            padding: 8px;
-            text-align: left;
-            font-family: Arial, sans-serif;
-        }
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+        font-family: Arial, sans-serif;
+      }
 
-        th {
-            background-color: #7f8c8d;
-            color: white;
-        }
+      th {
+        background-color: #7f8c8d;
+        color: white;
+      }
 
-        td {
-            background-color: #f7f7f7;
-        }
+      td {
+        background-color: #f7f7f7;
+      }
 
-        tr:nth-child(even) td {
-            background-color: #dfe6e9;
-        }
+      tr:nth-child(even) td {
+        background-color: #dfe6e9;
+      }
 
-        tr:nth-child(odd) td {
-            background-color: #ffffff;
-        }
+      tr:nth-child(odd) td {
+        background-color: #ffffff;
+      }
 
-        tr:hover td {
-            background-color: #b2bec3;
-        }
+      tr:hover td {
+        background-color: #b2bec3;
+      }
 
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 10px 0;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+      button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 10px 0;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
 
-        button:hover {
-            background-color: #45a049;
-        }
+      button:hover {
+        background-color: #45a049;
+      }
 
-        .active {
-            background-color: #45a049;
-            /* Resalta el botón con color diferente */
-        }
+      .active {
+        background-color: #45a049;
+        /* Resalta el botón con color diferente */
+      }
 
-        .definicion,
-        #tabla-xsd tr {
-            transition: all 0.3s ease;
-        }
+      .definicion,
+      #tabla-xsd tr {
+        transition: all 0.3s ease;
+      }
 
-        .definicion.hidden,
-        #tabla-xsd tr.hidden {
-            display: none;
-        }
+      .definicion.hidden,
+      #tabla-xsd tr.hidden {
+        display: none;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <h1>Definiciones y Ejemplos de XSD</h1>
     <!-- Botones para mostrar contenido -->
-    <button onclick="showContent('definiciones', this)">Ver Definiciones y Ejemplos</button>
-    <button onclick="showContent('xml-xsd-example', this)">Ver Ejemplo de XML y XSD</button>
-    <button onclick="showContent('xsd-validations', this)">Ver Validaciones XSD</button>
+    <button onclick="showContent('definiciones', this)">
+      Ver Definiciones y Ejemplos
+    </button>
+    <button onclick="showContent('xml-xsd-example', this)">
+      Ver Ejemplo de XML y XSD
+    </button>
+    <button onclick="showContent('xsd-validations', this)">
+      Ver Validaciones XSD
+    </button>
 
     <!-- Definiciones y ejemplos -->
-    <div id="definiciones" class="content" style="display:block;">
+    <div id="definiciones" class="content" style="display: block">
+      <input
+        type="text"
+        id="search"
+        placeholder="Buscar etiqueta XSD"
+        oninput="searchTags()"
+      />
 
-        <input type="text" id="search" placeholder="Buscar etiqueta XSD" oninput="searchTags()">
+      <table>
+        <tr>
+          <th>Etiqueta</th>
+          <th>Para qué sirve</th>
+        </tr>
+        <tr>
+          <td>&lt;xs:schema&gt;</td>
+          <td>Raíz del esquema XSD</td>
+        </tr>
+        <tr>
+          <td>&lt;xs:element&gt;</td>
+          <td>Define un dato o grupo de datos</td>
+        </tr>
+        <tr>
+          <td>&lt;xs:complexType&gt;</td>
+          <td>Agrupa varios elementos o atributos</td>
+        </tr>
+        <tr>
+          <td>&lt;xs:sequence&gt;</td>
+          <td>Define un orden obligatorio de elementos</td>
+        </tr>
+        <tr>
+          <td>&lt;xs:choice&gt;</td>
+          <td>Permite elegir solo uno entre varios elementos</td>
+        </tr>
+        <tr>
+          <td>&lt;xs:attribute&gt;</td>
+          <td>Define un atributo de un elemento</td>
+        </tr>
+        <tr>
+          <td>minOccurs / maxOccurs</td>
+          <td>Controla cuántas veces puede repetirse un elemento</td>
+        </tr>
+        <tr>
+          <td>Tipos de datos</td>
+          <td>Define el tipo del dato (xs:string, xs:integer, etc.)</td>
+        </tr>
+        <tr>
+          <td>&lt;xs:simpleType&gt; + &lt;xs:restriction&gt;</td>
+          <td>Crea tipos personalizados con restricciones</td>
+        </tr>
+      </table>
 
-        <table>
-            <tr>
-                <th>Etiqueta</th>
-                <th>Para qué sirve</th>
-            </tr>
-            <tr>
-                <td>&lt;xs:schema&gt;</td>
-                <td>Raíz del esquema XSD</td>
-            </tr>
-            <tr>
-                <td>&lt;xs:element&gt;</td>
-                <td>Define un dato o grupo de datos</td>
-            </tr>
-            <tr>
-                <td>&lt;xs:complexType&gt;</td>
-                <td>Agrupa varios elementos o atributos</td>
-            </tr>
-            <tr>
-                <td>&lt;xs:sequence&gt;</td>
-                <td>Define un orden obligatorio de elementos</td>
-            </tr>
-            <tr>
-                <td>&lt;xs:choice&gt;</td>
-                <td>Permite elegir solo uno entre varios elementos</td>
-            </tr>
-            <tr>
-                <td>&lt;xs:attribute&gt;</td>
-                <td>Define un atributo de un elemento</td>
-            </tr>
-            <tr>
-                <td>minOccurs / maxOccurs</td>
-                <td>Controla cuántas veces puede repetirse un elemento</td>
-            </tr>
-            <tr>
-                <td>Tipos de datos</td>
-                <td>Define el tipo del dato (xs:string, xs:integer, etc.)</td>
-            </tr>
-            <tr>
-                <td>&lt;xs:simpleType&gt; + &lt;xs:restriction&gt;</td>
-                <td>Crea tipos personalizados con restricciones</td>
-            </tr>
-        </table>
+      <h2>Definiciones con Ejemplos</h2>
+      <p>
+        <strong>&lt;xs:schema&gt;</strong> es la raíz de todo el archivo .xsd.
+        Marca que aquí empieza tu definición de reglas.
+      </p>
+      <pre>&lt;xs:element name="nombre" type="xs:string"/&gt;</pre>
 
-        <h2>Definiciones con Ejemplos</h2>
-        <p><strong>&lt;xs:schema&gt;</strong> es la raíz de todo el archivo .xsd. Marca que aquí empieza tu definición
-            de reglas.</p>
-        <pre>&lt;xs:element name="nombre" type="xs:string"/&gt;</pre>
-
-        <p><strong>&lt;xs:element&gt;</strong> Define un elemento de tu XML. Puede ser simple (un valor) o complejo (con
-            hijos).</p>
-        <pre>&lt;xs:element name="persona"&gt;
+      <p>
+        <strong>&lt;xs:element&gt;</strong> Define un elemento de tu XML. Puede
+        ser simple (un valor) o complejo (con hijos).
+      </p>
+      <pre>
+&lt;xs:element name="persona"&gt;
   &lt;xs:complexType&gt;
     &lt;xs:sequence&gt; ... &lt;/xs:sequence&gt;
   &lt;/xs:complexType&gt;
 &lt;/xs:element&gt;</pre>
 
-        <p><strong>&lt;xs:complexType&gt;</strong> Agrupa varios elementos o atributos juntos. Lo usas cuando un
-            elemento tiene hijos o atributos.</p>
-        <pre>&lt;xs:element name="persona"&gt;
+      <p>
+        <strong>&lt;xs:complexType&gt;</strong> Agrupa varios elementos o
+        atributos juntos. Lo usas cuando un elemento tiene hijos o atributos.
+      </p>
+      <pre>
+&lt;xs:element name="persona"&gt;
   &lt;xs:complexType&gt;
     &lt;xs:sequence&gt;
       &lt;xs:element name="nombre" type="xs:string"/&gt;
@@ -169,16 +185,22 @@
   &lt;/xs:complexType&gt;
 &lt;/xs:element&gt;</pre>
 
-        <p><strong>&lt;xs:sequence&gt;</strong> Orden obligatorio de elementos. Los hijos deben ir en el mismo orden en
-            el XML.</p>
-        <pre>&lt;xs:sequence&gt;
+      <p>
+        <strong>&lt;xs:sequence&gt;</strong> Orden obligatorio de elementos. Los
+        hijos deben ir en el mismo orden en el XML.
+      </p>
+      <pre>
+&lt;xs:sequence&gt;
   &lt;xs:element name="nombre"/&gt;
   &lt;xs:element name="edad"/&gt;
 &lt;/xs:sequence&gt;</pre>
 
-        <p><strong>&lt;xs:choice&gt;</strong> Se usa cuando solo uno de varios elementos puede aparecer en un XML. No
-            pueden estar todos a la vez.</p>
-        <pre>&lt;xs:element name="contacto"&gt;
+      <p>
+        <strong>&lt;xs:choice&gt;</strong> Se usa cuando solo uno de varios
+        elementos puede aparecer en un XML. No pueden estar todos a la vez.
+      </p>
+      <pre>
+&lt;xs:element name="contacto"&gt;
   &lt;xs:complexType&gt;
     &lt;xs:choice&gt;
       &lt;xs:element name="email" type="xs:string"/&gt;
@@ -187,35 +209,53 @@
   &lt;/xs:complexType&gt;
 &lt;/xs:element&gt;</pre>
 
-        <p><strong>Ejemplo de resultados válidos:</strong></p>
-        <pre>&lt;contacto&gt;
+      <p><strong>Ejemplo de resultados válidos:</strong></p>
+      <pre>
+&lt;contacto&gt;
   &lt;email&gt;usuario@correo.com&lt;/email&gt;
 &lt;/contacto&gt;</pre>
-        <pre>&lt;contacto&gt;
+      <pre>
+&lt;contacto&gt;
   &lt;telefono&gt;666777888&lt;/telefono&gt;
 &lt;/contacto&gt;</pre>
 
-        <p><strong>Resultado NO válido:</strong></p>
-        <pre>&lt;contacto&gt;
+      <p><strong>Resultado NO válido:</strong></p>
+      <pre>
+&lt;contacto&gt;
   &lt;email&gt;usuario@correo.com&lt;/email&gt;
   &lt;telefono&gt;666777888&lt;/telefono&gt;
 &lt;/contacto&gt;</pre>
 
-        <p><strong>Tipos de datos (xs:string, xs:integer, xs:date, xs:boolean, xs:decimal)</strong> Tipos básicos para
-            definir de qué tipo es un dato.</p>
-        <pre>&lt;xs:element name="fechaNacimiento" type="xs:date"/&gt;</pre>
+      <p>
+        <strong
+          >Tipos de datos (xs:string, xs:integer, xs:date, xs:boolean,
+          xs:decimal)</strong
+        >
+        Tipos básicos para definir de qué tipo es un dato.
+      </p>
+      <pre>&lt;xs:element name="fechaNacimiento" type="xs:date"/&gt;</pre>
 
-        <p><strong>&lt;xs:attribute&gt;</strong> Atributo para un elemento (como id="5"). No lleva contenido interno,
-            solo se define en el propio tag.</p>
-        <pre>&lt;xs:attribute name="id" type="xs:integer" use="required"/&gt;</pre>
+      <p>
+        <strong>&lt;xs:attribute&gt;</strong> Atributo para un elemento (como
+        id="5"). No lleva contenido interno, solo se define en el propio tag.
+      </p>
+      <pre>
+&lt;xs:attribute name="id" type="xs:integer" use="required"/&gt;</pre>
 
-        <p><strong>minOccurs y maxOccurs</strong> Número mínimo/máximo de veces que puede repetirse un elemento.</p>
-        <pre>&lt;xs:element name="telefono" maxOccurs="unbounded"/&gt;</pre>
-        <pre>&lt;xs:element name="dni" minOccurs="0"/&gt;</pre>
+      <p>
+        <strong>minOccurs y maxOccurs</strong> Número mínimo/máximo de veces que
+        puede repetirse un elemento.
+      </p>
+      <pre>&lt;xs:element name="telefono" maxOccurs="unbounded"/&gt;</pre>
+      <pre>&lt;xs:element name="dni" minOccurs="0"/&gt;</pre>
 
-        <p><strong>&lt;xs:simpleType&gt; y &lt;xs:restriction&gt;</strong> Sirven para crear tipos especiales, como un
-            string que solo puede ser "Hombre" o "Mujer".</p>
-        <pre>&lt;xs:simpleType name="Genero"&gt;
+      <p>
+        <strong>&lt;xs:simpleType&gt; y &lt;xs:restriction&gt;</strong> Sirven
+        para crear tipos especiales, como un string que solo puede ser "Hombre"
+        o "Mujer".
+      </p>
+      <pre>
+&lt;xs:simpleType name="Genero"&gt;
   &lt;xs:restriction base="xs:string"&gt;
     &lt;xs:enumeration value="Hombre"/&gt;
     &lt;xs:enumeration value="Mujer"/&gt;
@@ -223,13 +263,13 @@
 &lt;/xs:simpleType&gt;</pre>
     </div>
 
-
     <!-- Ejemplo de XML y XSD -->
-    <div id="xml-xsd-example" class="content" style="display:none;">
-        <h2>Ejemplo de XML y XSD</h2>
+    <div id="xml-xsd-example" class="content" style="display: none">
+      <h2>Ejemplo de XML y XSD</h2>
 
-        <h3>Ejemplo de XML</h3>
-        <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+      <h3>Ejemplo de XML</h3>
+      <pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;persona id="101" activo="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
     &lt;nombre&gt;Laura Martínez&lt;/nombre&gt;
     &lt;edad&gt;29&lt;/edad&gt;
@@ -241,8 +281,9 @@
     &lt;/direccion&gt;
 &lt;/persona&gt;</pre>
 
-        <h3>Ejemplo de XSD</h3>
-        <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+      <h3>Ejemplo de XSD</h3>
+      <pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
     &lt;xs:element name="persona"&gt;
         &lt;xs:complexType&gt;
@@ -270,186 +311,264 @@
 &lt;/xs:schema&gt;</pre>
     </div>
 
-
     <!-- Ejemplo de validaciones XSD -->
-    <div id="xsd-validations" class="content" style="display:none;">
-        <h2>Validaciones XSD</h2>
-        <p><strong>1. Validar un máximo de 5 letras (solo letras, sin números ni caracteres especiales):</strong></p>
-        <pre>&lt;xs:simpleType name="idMax5Letras"&gt;
+    <div id="xsd-validations" class="content" style="display: none">
+      <h2>Validaciones XSD</h2>
+      <p>
+        <strong
+          >1. Validar un máximo de 5 letras (solo letras, sin números ni
+          caracteres especiales):</strong
+        >
+      </p>
+      <pre>
+&lt;xs:simpleType name="idMax5Letras"&gt;
         &lt;xs:restriction base="xs:string"&gt;
             &lt;xs:maxLength value="5"/&gt;
             &lt;xs:pattern value="[A-Za-z]+"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>2. Validar un número de teléfono con 9 dígitos (solo números):</strong></p>
-        <pre>&lt;xs:simpleType name="telefono"&gt;
+      <p>
+        <strong
+          >2. Validar un número de teléfono con 9 dígitos (solo
+          números):</strong
+        >
+      </p>
+      <pre>
+&lt;xs:simpleType name="telefono"&gt;
         &lt;xs:restriction base="xs:string"&gt;
             &lt;xs:pattern value="\d{9}"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>3. Validar un DNI (8 dígitos seguidos de una letra):</strong></p>
-        <pre>&lt;xs:simpleType name="dni"&gt;
+      <p>
+        <strong>3. Validar un DNI (8 dígitos seguidos de una letra):</strong>
+      </p>
+      <pre>
+&lt;xs:simpleType name="dni"&gt;
         &lt;xs:restriction base="xs:string"&gt;
             &lt;xs:pattern value="\d{8}[A-Za-z]"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>4. Validar un rango de números entre 1 y 100:</strong></p>
-        <pre>&lt;xs:simpleType name="rangoNumerico"&gt;
+      <p><strong>4. Validar un rango de números entre 1 y 100:</strong></p>
+      <pre>
+&lt;xs:simpleType name="rangoNumerico"&gt;
         &lt;xs:restriction base="xs:integer"&gt;
             &lt;xs:minInclusive value="1"/&gt;
             &lt;xs:maxInclusive value="100"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>5. Validar una fecha en formato `yyyy-MM-dd`:</strong></p>
-        <pre>&lt;xs:simpleType name="fechaFormato"&gt;
+      <p><strong>5. Validar una fecha en formato `yyyy-MM-dd`:</strong></p>
+      <pre>
+&lt;xs:simpleType name="fechaFormato"&gt;
         &lt;xs:restriction base="xs:string"&gt;
             &lt;xs:pattern value="\d{4}-\d{2}-\d{2}"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>6. Validar una dirección de correo electrónico:</strong></p>
-        <pre>&lt;xs:simpleType name="email"&gt;
+      <p><strong>6. Validar una dirección de correo electrónico:</strong></p>
+      <pre>
+&lt;xs:simpleType name="email"&gt;
         &lt;xs:restriction base="xs:string"&gt;
             &lt;xs:pattern value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>7. Validar una URL:</strong></p>
-        <pre>&lt;xs:simpleType name="url"&gt;
+      <p><strong>7. Validar una URL:</strong></p>
+      <pre>
+&lt;xs:simpleType name="url"&gt;
         &lt;xs:restriction base="xs:string"&gt;
             &lt;xs:pattern value="https?://([a-z0-9.-]+)+(\.[a-z]{2,})+"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>8. Validar un código postal de 5 dígitos (solo números):</strong></p>
-        <pre>&lt;xs:simpleType name="codigoPostal"&gt;
+      <p>
+        <strong
+          >8. Validar un código postal de 5 dígitos (solo números):</strong
+        >
+      </p>
+      <pre>
+&lt;xs:simpleType name="codigoPostal"&gt;
         &lt;xs:restriction base="xs:string"&gt;
             &lt;xs:pattern value="\d{5}"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>9. Validar un número decimal con hasta 2 decimales (por ejemplo, 10.99):</strong></p>
-        <pre>&lt;xs:simpleType name="numeroDecimal"&gt;
+      <p>
+        <strong
+          >9. Validar un número decimal con hasta 2 decimales (por ejemplo,
+          10.99):</strong
+        >
+      </p>
+      <pre>
+&lt;xs:simpleType name="numeroDecimal"&gt;
         &lt;xs:restriction base="xs:decimal"&gt;
             &lt;xs:totalDigits value="5"/&gt;
             &lt;xs:fractionDigits value="2"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>10. Validar una cadena de texto con solo caracteres alfanuméricos:</strong></p>
-        <pre>&lt;xs:simpleType name="alfanumerico"&gt;
+      <p>
+        <strong
+          >10. Validar una cadena de texto con solo caracteres
+          alfanuméricos:</strong
+        >
+      </p>
+      <pre>
+&lt;xs:simpleType name="alfanumerico"&gt;
         &lt;xs:restriction base="xs:string"&gt;
             &lt;xs:pattern value="[A-Za-z0-9]+"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>11. Validar que un valor esté entre 0 y 10, y sea un número decimal (por ejemplo, 5.7):</strong></p>
-        <pre>&lt;xs:simpleType name="rangoDecimal"&gt;
+      <p>
+        <strong
+          >11. Validar que un valor esté entre 0 y 10, y sea un número decimal
+          (por ejemplo, 5.7):</strong
+        >
+      </p>
+      <pre>
+&lt;xs:simpleType name="rangoDecimal"&gt;
         &lt;xs:restriction base="xs:decimal"&gt;
             &lt;xs:minInclusive value="0"/&gt;
             &lt;xs:maxInclusive value="10"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>12. Validar una dirección IP (por ejemplo, 192.168.1.1):</strong></p>
-        <pre>&lt;xs:simpleType name="ipAddress"&gt;
+      <p>
+        <strong
+          >12. Validar una dirección IP (por ejemplo, 192.168.1.1):</strong
+        >
+      </p>
+      <pre>
+&lt;xs:simpleType name="ipAddress"&gt;
         &lt;xs:restriction base="xs:string"&gt;
             &lt;xs:pattern value="([0-9]{1,3}\.){3}[0-9]{1,3}"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>13. Validar un número positivo (es decir, mayor que 0):</strong></p>
-        <pre>&lt;xs:simpleType name="numeroPositivo"&gt;
+      <p>
+        <strong>13. Validar un número positivo (es decir, mayor que 0):</strong>
+      </p>
+      <pre>
+&lt;xs:simpleType name="numeroPositivo"&gt;
         &lt;xs:restriction base="xs:decimal"&gt;
             &lt;xs:minInclusive value="0.01"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>14. Validar un número de teléfono internacional (empezando con `+` seguido de 1-3 dígitos de país, y
-                luego 4-15 dígitos de teléfono):</strong></p>
-        <pre>&lt;xs:simpleType name="telefonoInternacional"&gt;
+      <p>
+        <strong
+          >14. Validar un número de teléfono internacional (empezando con `+`
+          seguido de 1-3 dígitos de país, y luego 4-15 dígitos de
+          teléfono):</strong
+        >
+      </p>
+      <pre>
+&lt;xs:simpleType name="telefonoInternacional"&gt;
         &lt;xs:restriction base="xs:string"&gt;
             &lt;xs:pattern value="\+(\d{1,3})\d{4,15}"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>15. Validar un número de tarjeta de crédito (solo 16 dígitos):</strong></p>
-        <pre>&lt;xs:simpleType name="tarjetaCredito"&gt;
+      <p>
+        <strong
+          >15. Validar un número de tarjeta de crédito (solo 16
+          dígitos):</strong
+        >
+      </p>
+      <pre>
+&lt;xs:simpleType name="tarjetaCredito"&gt;
         &lt;xs:restriction base="xs:string"&gt;
             &lt;xs:pattern value="\d{16}"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>16. Validar un nombre con solo letras y espacios (por ejemplo, Juan Pérez):</strong></p>
-        <pre>&lt;xs:simpleType name="nombre"&gt;
+      <p>
+        <strong
+          >16. Validar un nombre con solo letras y espacios (por ejemplo, Juan
+          Pérez):</strong
+        >
+      </p>
+      <pre>
+&lt;xs:simpleType name="nombre"&gt;
         &lt;xs:restriction base="xs:string"&gt;
             &lt;xs:pattern value="[A-Za-z\s]+"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>17. Validar una contraseña con al menos 8 caracteres, al menos 1 número, 1 letra minúscula, 1 letra
-                mayúscula y 1 carácter especial:</strong></p>
-        <pre>&lt;xs:simpleType name="contrasena"&gt;
+      <p>
+        <strong
+          >17. Validar una contraseña con al menos 8 caracteres, al menos 1
+          número, 1 letra minúscula, 1 letra mayúscula y 1 carácter
+          especial:</strong
+        >
+      </p>
+      <pre>
+&lt;xs:simpleType name="contrasena"&gt;
         &lt;xs:restriction base="xs:string"&gt;
             &lt;xs:pattern value="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>18. Validar que un valor sea una hora en formato `HH:mm` (hora y minutos):</strong></p>
-        <pre>&lt;xs:simpleType name="hora"&gt;
+      <p>
+        <strong
+          >18. Validar que un valor sea una hora en formato `HH:mm` (hora y
+          minutos):</strong
+        >
+      </p>
+      <pre>
+&lt;xs:simpleType name="hora"&gt;
         &lt;xs:restriction base="xs:string"&gt;
             &lt;xs:pattern value="([01]?[0-9]|2[0-3]):([0-5]?[0-9])"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
 
-        <p><strong>19. Validar una dirección URL segura (solo HTTPS):</strong></p>
-        <pre>&lt;xs:simpleType name="urlSegura"&gt;
+      <p><strong>19. Validar una dirección URL segura (solo HTTPS):</strong></p>
+      <pre>
+&lt;xs:simpleType name="urlSegura"&gt;
         &lt;xs:restriction base="xs:string"&gt;
             &lt;xs:pattern value="https://([a-zA-Z0-9.-]+)+(\.[a-zA-Z]{2,})+"/&gt;
         &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;</pre>
     </div>
 
-
     <script>
-        function showContent(contentId, button) {
-            // Ocultar todos los contenidos
-            document.querySelectorAll('.content').forEach(function (element) {
-                element.style.display = 'none';
-            });
+      function showContent(contentId, button) {
+        // Ocultar todos los contenidos
+        document.querySelectorAll(".content").forEach(function (element) {
+          element.style.display = "none";
+        });
 
-            // Mostrar el contenido seleccionado
-            document.getElementById(contentId).style.display = 'block';
+        // Mostrar el contenido seleccionado
+        document.getElementById(contentId).style.display = "block";
 
-            // Eliminar la clase activa de todos los botones
-            document.querySelectorAll('button').forEach(function (btn) {
-                btn.classList.remove('active');
-            });
+        // Eliminar la clase activa de todos los botones
+        document.querySelectorAll("button").forEach(function (btn) {
+          btn.classList.remove("active");
+        });
 
-            // Añadir clase activa al botón clicado
-            button.classList.add('active');
-        }
+        // Añadir clase activa al botón clicado
+        button.classList.add("active");
+      }
 
-        function searchTags() {
-            let query = document.getElementById('search').value.toLowerCase();
-            let rows = document.querySelectorAll('table tr');
-            rows.forEach(row => {
-                let cells = row.getElementsByTagName('td');
-                if (cells.length > 0) {
-                    let tag = cells[0].textContent.toLowerCase();
-                    if (tag.includes(query)) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
-                    }
-                }
-            });
-        }
+      function searchTags() {
+        let query = document.getElementById("search").value.toLowerCase();
+        let rows = document.querySelectorAll("table tr");
+        rows.forEach((row) => {
+          let cells = row.getElementsByTagName("td");
+          if (cells.length > 0) {
+            let tag = cells[0].textContent.toLowerCase();
+            if (tag.includes(query)) {
+              row.style.display = "";
+            } else {
+              row.style.display = "none";
+            }
+          }
+        });
+      }
     </script>
-</body>
-
+  </body>
 </html>

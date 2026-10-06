@@ -1,69 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
+  <head>
     <title>Taulak</title>
     <style>
-        #nireTaula {
-            border-collapse: collapse;
-            border: 1px solid black;
-        }
+      #nireTaula {
+        border-collapse: collapse;
+        border: 1px solid black;
+      }
 
-        #nireTaula td {
-            border: 1px solid black;
-            padding: 5px;
-        }
+      #nireTaula td {
+        border: 1px solid black;
+        padding: 5px;
+      }
     </style>
     <script>
-        function aldatuErtza() {
-            const taula = document.getElementById("nireTaula");
-            taula.style.border = "5px solid black";
-            const celdas = taula.getElementsByTagName("td");
-            for (let celda of celdas) {
-                celda.style.border = "5px solid black";
-            }
+      function aldatuErtza() {
+        const taula = document.getElementById("nireTaula");
+        taula.style.border = "5px solid black";
+        const celdas = taula.getElementsByTagName("td");
+        for (let celda of celdas) {
+          celda.style.border = "5px solid black";
         }
+      }
 
-        function aldatuPadding() {
-            const celdas = document.getElementById("nireTaula").getElementsByTagName("td");
-            for (let celda of celdas) {
-                celda.style.padding = "15px";
-            }
+      function aldatuPadding() {
+        const celdas = document
+          .getElementById("nireTaula")
+          .getElementsByTagName("td");
+        for (let celda of celdas) {
+          celda.style.padding = "15px";
         }
+      }
 
-        function gelaxkarenBalioa() {
-            const lehenGelaxka = document.getElementById("nireTaula").rows[0].cells[0].innerText;
-            alert("1. gelaxkaren balioa da: " + lehenGelaxka);
-        }
+      function gelaxkarenBalioa() {
+        const lehenGelaxka =
+          document.getElementById("nireTaula").rows[0].cells[0].innerText;
+        alert("1. gelaxkaren balioa da: " + lehenGelaxka);
+      }
 
-        function izenburuaSortu() {
-            const taula = document.getElementById("nireTaula");
-            if (!document.getElementById("izenburua")) {
-                const caption = document.createElement("caption");
-                caption.id = "izenburua";
-                caption.innerText = "Izenburua";
-                taula.insertBefore(caption, taula.firstChild);
-            }
+      function izenburuaSortu() {
+        const taula = document.getElementById("nireTaula");
+        if (!document.getElementById("izenburua")) {
+          const caption = document.createElement("caption");
+          caption.id = "izenburua";
+          caption.innerText = "Izenburua";
+          taula.insertBefore(caption, taula.firstChild);
         }
+      }
     </script>
-</head>
+  </head>
 
-<body>
+  <body>
     <table id="nireTaula">
-        <tr>
-            <td>100</td>
-            <td>200</td>
-        </tr>
-        <tr>
-            <td>300</td>
-            <td>400</td>
-        </tr>
+      <tr>
+        <td>100</td>
+        <td>200</td>
+      </tr>
+      <tr>
+        <td>300</td>
+        <td>400</td>
+      </tr>
     </table>
-    <br>
+    <br />
     <button onclick="aldatuErtza()">Aldatu ertza</button>
     <button onclick="aldatuPadding()">Aldatu padding</button>
     <button onclick="gelaxkarenBalioa()">1. Gelaxkaren balioa</button>
     <button onclick="izenburuaSortu()">Izenburua sortu</button>
-</body>
-
+  </body>
 </html>

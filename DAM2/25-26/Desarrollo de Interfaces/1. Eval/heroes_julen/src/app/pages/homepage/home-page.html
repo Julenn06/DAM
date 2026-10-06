@@ -9,7 +9,11 @@
   <div class="top-heroes-container">
     <h2>Top Heroes</h2>
     <div class="top-heroes-list">
-      <button *ngFor="let hero of topHeroes" class="top-hero-btn" [routerLink]="['/hero', hero.id]">
+      <button
+        *ngFor="let hero of topHeroes"
+        class="top-hero-btn"
+        [routerLink]="['/hero', hero.id]"
+      >
         {{ hero.name }}
       </button>
     </div>

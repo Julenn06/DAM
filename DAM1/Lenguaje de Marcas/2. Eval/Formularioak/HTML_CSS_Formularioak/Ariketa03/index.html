@@ -1,91 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
+  <body>
     <form>
-        <ul class="flex-bata">
+      <ul class="flex-bata">
+        <li>
+          <label for="izena">Izena</label>
+          <input type="text" id="izena" placeholder="Idatzi hemen zure izena" />
+        </li>
+        <li>
+          <label for="abizena">Abizena</label>
+          <input
+            type="text"
+            id="abizena"
+            placeholder="Idatzi hemen zure abizenak"
+          />
+        </li>
+        <li>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Idatzi hemen zure emaila"
+          />
+        </li>
+        <li>
+          <label>Herria:</label>
+          <input list="herri" name="herri" />
+          <datalist id="herri">
+            <option>Abadiño</option>
+            <option>Abanto</option>
+            <option>Ajangiz</option>
+            <option>Alonsotegi</option>
+            <option>Amoroto</option>
+            <option>Arakaldo</option>
+            <option>Arantzazu</option>
+            <option>Areatza</option>
+            <option>Arrankudiaga</option>
+            <option>Arratzu</option>
+            <option>Arrieta</option>
+            <option>Arrigorriaga</option>
+            <option>Arteaga</option>
+            <option>Artzentales</option>
+            <option>Atxondo</option>
+            <option>Aulesti</option>
+          </datalist>
+        </li>
+        <li>
+          <label for="mezua">Mezua</label>
+          <textarea
+            rows="6"
+            id="mezua"
+            placeholder="Idatzi hemen zure mezua"
+          ></textarea>
+        </li>
+        <li>
+          <ul class="flex-bestea">
+            <p>Adina</p>
             <li>
-                <label for="izena">Izena</label>
-                <input type="text" id="izena" placeholder="Idatzi hemen zure izena">
+              <input type="checkbox" id="hogeiak" />
+              <label for="hogeiak">20-29</label>
             </li>
             <li>
-                <label for="abizena">Abizena</label>
-                <input type="text" id="abizena" placeholder="Idatzi hemen zure abizenak">
+              <input type="checkbox" id="hogeitahamarrak" />
+              <label for="hogeitahamarrak">30-39</label>
             </li>
             <li>
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Idatzi hemen zure emaila">
+              <input type="checkbox" id="berrogeiak" />
+              <label for="berrogeiak">40-49</label>
             </li>
             <li>
-                <label>Herria:</label>
-                <input list="herri" name="herri" />
-                <datalist id="herri">
-                    <option>Abadiño</option>
-                    <option>Abanto</option>
-                    <option>Ajangiz</option>
-                    <option>Alonsotegi</option>
-                    <option>Amoroto</option>
-                    <option>Arakaldo</option>
-                    <option>Arantzazu</option>
-                    <option>Areatza</option>
-                    <option>Arrankudiaga</option>
-                    <option>Arratzu</option>
-                    <option>Arrieta</option>
-                    <option>Arrigorriaga</option>
-                    <option>Arteaga</option>
-                    <option>Artzentales</option>
-                    <option>Atxondo</option>
-                    <option>Aulesti</option>
-                </datalist>
-
+              <input type="checkbox" id="berrogeitahamarrak" />
+              <label for="berrogeitahamarrak">50-59</label>
             </li>
             <li>
-                <label for="mezua">Mezua</label>
-                <textarea rows="6" id="mezua" placeholder="Idatzi hemen zure mezua"></textarea>
+              <input type="checkbox" id="hirurogeiak" />
+              <label for="hirurogeiak">60-69</label>
             </li>
             <li>
-
-                <ul class="flex-bestea">
-                    <p>Adina</p>
-                    <li>
-                        <input type="checkbox" id="hogeiak">
-                        <label for="hogeiak">20-29</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="hogeitahamarrak">
-                        <label for="hogeitahamarrak">30-39</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="berrogeiak">
-                        <label for="berrogeiak">40-49</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="berrogeitahamarrak">
-                        <label for="berrogeitahamarrak">50-59</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="hirurogeiak">
-                        <label for="hirurogeiak">60-69</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="beste">
-                        <label for="beste">Besterik</label>
-                    </li>
-                </ul>
+              <input type="checkbox" id="beste" />
+              <label for="beste">Besterik</label>
             </li>
-            <li>
-                <input type="submit" name="BIDALI" value="datuak bidali">
-            </li>
-        </ul>
+          </ul>
+        </li>
+        <li>
+          <input type="submit" name="BIDALI" value="datuak bidali" />
+        </li>
+      </ul>
     </form>
-
-</body>
-
+  </body>
 </html>

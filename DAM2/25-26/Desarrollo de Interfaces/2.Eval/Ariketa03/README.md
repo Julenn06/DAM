@@ -21,15 +21,19 @@ Este proyecto implementa una aplicación Angular con operaciones CRUD completas 
 ## Configuración del Backend (XAMPP)
 
 ### 1. Instalar XAMPP
+
 Si no lo tienes instalado, descárgalo de https://www.apachefriends.org/
 
 ### 2. Copiar archivos del servidor
+
 Copia toda la carpeta `Ariketa03` a:
+
 ```
 C:\xampp\htdocs\
 ```
 
 ### 3. Crear la base de datos
+
 1. Inicia **Apache** y **MySQL** desde el Panel de Control de XAMPP
 2. Abre phpMyAdmin: http://localhost/phpmyadmin
 3. Ve a la pestaña "SQL"
@@ -37,11 +41,13 @@ C:\xampp\htdocs\
 5. Haz clic en "Continuar"
 
 Esto creará:
+
 - Base de datos `tareas_db`
 - Tabla `tareas`
 - 5 tareas de ejemplo
 
 ### 4. Verificar la API
+
 Abre en el navegador: http://localhost/Ariketa03/server/api.php
 
 Deberías ver un JSON con las tareas.

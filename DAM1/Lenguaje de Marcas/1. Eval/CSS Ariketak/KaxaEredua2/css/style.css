@@ -1,62 +1,64 @@
 body * {
-    border-radius: 5px;
-    color: white;
-    text-align: center;
-    font-size: 20px;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  font-size: 20px;
 }
 
 header {
-    background-color: #A52A2A;
+  background-color: #a52a2a;
 }
 
 nav {
-    background-color: #6495ED;
+  background-color: #6495ed;
 }
 
 article {
-    background-color: #808080;
-    width: 65%;
-    height: 150px;
-    line-height: 55px;
-    display: inline-block;
+  background-color: #808080;
+  width: 65%;
+  height: 150px;
+  line-height: 55px;
+  display: inline-block;
 }
 
 section {
-    background-color: #5F9EA0;
-    width: 65%;
-    height: 55%;
-    line-height: 50px;
-    margin-left: auto;
-    margin-right: auto;
+  background-color: #5f9ea0;
+  width: 65%;
+  height: 55%;
+  line-height: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 aside {
-    background-color: #D2B48C;
-    width: 34%;
-    height: 150px;
-    line-height: 50px;
-    display: inline-block;
-    vertical-align: top;
+  background-color: #d2b48c;
+  width: 34%;
+  height: 150px;
+  line-height: 50px;
+  display: inline-block;
+  vertical-align: top;
 }
 
 footer {
-    background-color: #CD5C5C;
+  background-color: #cd5c5c;
 }
 
-header, nav, footer {
-    width: 80%;
-    height: 50px;
-    line-height: 50px;
-    margin: 5px auto;
+header,
+nav,
+footer {
+  width: 80%;
+  height: 50px;
+  line-height: 50px;
+  margin: 5px auto;
 }
 
 #edukia {
-    width: 80%;
-    height: 150px;
-    margin: 5px auto;
+  width: 80%;
+  height: 150px;
+  margin: 5px auto;
 }
 
-article, section {
-    width: 65%;
-
+article,
+section {
+  width: 65%;
 }

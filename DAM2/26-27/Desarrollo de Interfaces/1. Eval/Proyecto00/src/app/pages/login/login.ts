@@ -6,7 +6,7 @@ import { Person } from '../../models/person.model';
 @Component({
   selector: 'app-login',
   templateUrl: './login.html',
-  styleUrl: './login.css'
+  styleUrl: './login.css',
 })
 export class Login {
   private router = inject(Router);
@@ -14,23 +14,22 @@ export class Login {
 
   errorMessage: string = '';
 
-onSubmit(username: string, password: string | number) {
-  this.errorMessage = '';
+  onSubmit(username: string, password: string | number) {
+    this.errorMessage = '';
 
-  const credentials: Person = { name: username, password: password };
+    const credentials: Person = { name: username, password: password };
 
-  this.personService.login(credentials).subscribe({
-    next: (usuariosEncontrados) => {
-      if (usuariosEncontrados.length > 0) {
-        this.router.navigate(['/home']);
-      } else {
-        this.errorMessage = 'Usuario o contraseña incorrectos';
-      }
-    },
-    error: () => {
-      this.errorMessage = 'Error de conexión con el servidor.';
-    }
-  });
-}
-
+    this.personService.login(credentials).subscribe({
+      next: (usuariosEncontrados) => {
+        if (usuariosEncontrados.length > 0) {
+          this.router.navigate(['/home']);
+        } else {
+          this.errorMessage = 'Usuario o contraseña incorrectos';
+        }
+      },
+      error: () => {
+        this.errorMessage = 'Error de conexión con el servidor.';
+      },
+    });
+  }
 }

@@ -1,114 +1,112 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #3AAFAB;
-    width: 80%;
-    margin: 0 auto;
+  background-color: #3aafab;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .flex-bata {
-    margin-top: 100px;
-    list-style: none;
+  margin-top: 100px;
+  list-style: none;
 }
 
 .flex-bata li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .flex-bata label {
-    margin-right: 100px;
-    color: white;
-    width: 20%;
-    text-align: right;
+  margin-right: 100px;
+  color: white;
+  width: 20%;
+  text-align: right;
 }
 
 .flex-bata input,
 .flex-bata textarea {
-    width: 50%;
+  width: 50%;
 }
 
 .flex-bata textarea {
-    height: 200px;
+  height: 200px;
 }
 
 .flex-bestea {
-    color: white;
-    display: flex;
-    justify-content: center;
-    list-style: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  list-style: none;
 }
 
 .flex-bestea p {
-    margin-left: 45%;
+  margin-left: 45%;
 }
 
 .flex-bestea li {
-    gap: 50px;
+  gap: 50px;
 }
 
 .flex-bata input[type="submit"] {
-    background-color: black;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .flex-bata input[type="submit"]:hover {
-    transition: 0.5s;
-    background-color: coral;
+  transition: 0.5s;
+  background-color: coral;
 }
 
 /* BIDALI BOTOIA*/
 input[type="submit"] {
-    width: 25%;
-    margin-left: auto;
-    /*ESKUMAN LERROKATZEA LORTZEN DUGU HONELA*/
-    padding: 8px 16px;
-    border: none;
-    background: #333;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: .09em;
-    border-radius: 2px;
+  width: 25%;
+  margin-left: auto;
+  /*ESKUMAN LERROKATZEA LORTZEN DUGU HONELA*/
+  padding: 8px 16px;
+  border: none;
+  background: #333;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  border-radius: 2px;
 }
 
 input[type="submit"]:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-
-
 @media (max-width: 700px) {
-    .flex-bata {
-        margin-top: 100px;
-    }
+  .flex-bata {
+    margin-top: 100px;
+  }
 
-    .flex-bata li {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .flex-bata li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .flex-bata label {
-        text-align: left;
-        margin-bottom: 5px;
-        width: auto;
-    }
+  .flex-bata label {
+    text-align: left;
+    margin-bottom: 5px;
+    width: auto;
+  }
 
-    .flex-bata input,
-    .flex-bata textarea {
-        width: 100%;
-    }
+  .flex-bata input,
+  .flex-bata textarea {
+    width: 100%;
+  }
 
-    input[type="submit"] {
-        width: 25%;
-    }
+  input[type="submit"] {
+    width: 25%;
+  }
 }

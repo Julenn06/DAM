@@ -1,44 +1,43 @@
 body {
-    background-color: #CFC;
+  background-color: #cfc;
 }
 
 h1 {
-    color: #F00;
-    font-family: Verdana, Calibi, sans-serif;
-    font-size: 32px;
-    ;
+  color: #f00;
+  font-family: Verdana, Calibi, sans-serif;
+  font-size: 32px;
 }
 
 h2 {
-    color: #A00;
-    font-family: Verdana, Calibi, sans-serif;
+  color: #a00;
+  font-family: Verdana, Calibi, sans-serif;
 }
 
 p {
-    color: #00F;
-    font-family: Georgia, Cambria, Sans-serif;
+  color: #00f;
+  font-family: Georgia, Cambria, Sans-serif;
 }
 
 .kolore1 {
-    color: green;
+  color: green;
 }
 
 .kolore2 {
-    color: blue;
+  color: blue;
 }
 
 .beltza {
-    font-size: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .fondobeltza {
-    color: white;
-    background-color: black;
-    font-style: italic;
+  color: white;
+  background-color: black;
+  font-style: italic;
 }
 
 .lista {
-    color: blue;
-    font-family: Verdana, Calibi, sans-serif;
+  color: blue;
+  font-family: Verdana, Calibi, sans-serif;
 }

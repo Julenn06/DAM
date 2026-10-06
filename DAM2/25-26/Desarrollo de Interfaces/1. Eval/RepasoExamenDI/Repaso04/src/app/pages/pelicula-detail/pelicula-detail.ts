@@ -23,7 +23,7 @@ import { Pelicula } from '../../models/pelicula.model';
     MatFormFieldModule,
     MatIconModule,
     MatChipsModule,
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './pelicula-detail.html',
   styleUrl: './pelicula-detail.css',
@@ -31,12 +31,21 @@ import { Pelicula } from '../../models/pelicula.model';
 export class PeliculaDetail implements OnInit {
   pelicula: Pelicula | null = null;
   isEditing = false;
-  generos = ['Acción', 'Comedia', 'Drama', 'Terror', 'Ciencia Ficción', 'Fantasía', 'Romance', 'Documental'];
+  generos = [
+    'Acción',
+    'Comedia',
+    'Drama',
+    'Terror',
+    'Ciencia Ficción',
+    'Fantasía',
+    'Romance',
+    'Documental',
+  ];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private peliculasService: PeliculasService
+    private peliculasService: PeliculasService,
   ) {}
 
   ngOnInit() {

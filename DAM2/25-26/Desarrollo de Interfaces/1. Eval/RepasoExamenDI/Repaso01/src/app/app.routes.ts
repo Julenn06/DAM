@@ -8,5 +8,5 @@ export const routes: Routes = [
   { path: '', component: FirstView },
   { path: 'animales', component: Animales },
   { path: 'unPar', component: UnPar },
-  { path: 'animalito/:id', component: Animalito }
+  { path: 'animalito/:id', component: Animalito },
 ];

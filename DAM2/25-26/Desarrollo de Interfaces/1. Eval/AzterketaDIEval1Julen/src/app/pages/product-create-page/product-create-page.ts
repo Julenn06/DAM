@@ -10,20 +10,23 @@ import { Router } from '@angular/router';
   styleUrl: './product-create-page.css',
 })
 export class ProductCreatePage {
-name: string = '';
-price: number = 0;
-stock: number = 0;
+  name: string = '';
+  price: number = 0;
+  stock: number = 0;
 
-constructor (private remote: ProductService, private router: Router) {}
+  constructor(
+    private remote: ProductService,
+    private router: Router,
+  ) {}
 
-produktuaSortu() {
-      if (!this.name.trim()) {
-      alert("Gutxienez Izena bete Bete");
+  produktuaSortu() {
+    if (!this.name.trim()) {
+      alert('Gutxienez Izena bete Bete');
       return;
     }
 
     if (this.price < 0 || this.stock < 0) {
-      alert("Balio Positiboak Jarri");
+      alert('Balio Positiboak Jarri');
       this.price = 0;
       this.stock = 0;
       return;
@@ -31,20 +34,20 @@ produktuaSortu() {
 
     this.remote.createproduct(this.name.trim(), this.price, this.stock).subscribe({
       next: () => {
-        alert("Produktua " + this.name + "Ondo Sortuta");
+        alert('Produktua ' + this.name + 'Ondo Sortuta');
         this.router.navigate(['/']);
       },
-      error: (err) => console.error('Errorea Produktua Sortzen', err)
+      error: (err) => console.error('Errorea Produktua Sortzen', err),
     });
-}
+  }
 
-datuakKendu(){
-this.name = '';
-this.price = 0;
-this.stock = 0;
-}
+  datuakKendu() {
+    this.name = '';
+    this.price = 0;
+    this.stock = 0;
+  }
 
-ezabatu() {
-this.router.navigate(['/']);
-}
+  ezabatu() {
+    this.router.navigate(['/']);
+  }
 }

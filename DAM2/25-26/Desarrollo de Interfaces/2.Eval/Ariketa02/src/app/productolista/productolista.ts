@@ -9,23 +9,31 @@ import { Servicioproducto } from '../servicioproducto';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './productolista.html',
-  styleUrls: ['./productolista.css']
+  styleUrls: ['./productolista.css'],
 })
 export class Productolista {
   productos: Producto[] = [];
-  nuevoProducto: Producto = { 
-    nombre: '', 
-    descripcion: '', 
-    precio: 0, 
-    categoria: '', 
-    stock: 0, 
-    imagen: '', 
+  nuevoProducto: Producto = {
+    nombre: '',
+    descripcion: '',
+    precio: 0,
+    categoria: '',
+    stock: 0,
+    imagen: '',
     disponible: true,
-    descuento: 0
+    descuento: 0,
   };
   productoSeleccionado: Producto | null = null;
   productoService: Servicioproducto = inject(Servicioproducto);
-  categorias: string[] = ['Electrónica', 'Alimentos', 'Ropa', 'Hogar', 'Deportes', 'Juguetes', 'Libros'];
+  categorias: string[] = [
+    'Electrónica',
+    'Alimentos',
+    'Ropa',
+    'Hogar',
+    'Deportes',
+    'Juguetes',
+    'Libros',
+  ];
 
   ngOnInit(): void {
     this.cargarProductos();
@@ -40,7 +48,7 @@ export class Productolista {
       error: (err) => {
         console.error('Error al cargar productos', err);
       },
-      complete: () => {}
+      complete: () => {},
     });
   }
 
@@ -51,11 +59,11 @@ export class Productolista {
   borrarProducto(id?: string) {
     this.productoService.borrarProducto(id).subscribe({
       next: () => {
-        this.productos = this.productos.filter(p => p.id !== id);
+        this.productos = this.productos.filter((p) => p.id !== id);
       },
       error: (err) => {
         console.error('Error al borrar producto', err);
-      }
+      },
     });
   }
 
@@ -63,7 +71,7 @@ export class Productolista {
     if (this.productoSeleccionado) {
       this.productoService.actualizarProducto(this.productoSeleccionado).subscribe({
         next: (productoActualizado) => {
-          const index = this.productos.findIndex(p => p.id === productoActualizado.id);
+          const index = this.productos.findIndex((p) => p.id === productoActualizado.id);
           if (index !== -1) {
             this.productos[index] = productoActualizado;
           }
@@ -71,7 +79,7 @@ export class Productolista {
         },
         error: (err) => {
           console.error('Error al actualizar producto', err);
-        }
+        },
       });
     }
   }
@@ -80,20 +88,20 @@ export class Productolista {
     this.productoService.agregarProducto(this.nuevoProducto).subscribe({
       next: (producto) => {
         this.productos.push(producto);
-        this.nuevoProducto = { 
-          nombre: '', 
-          descripcion: '', 
-          precio: 0, 
-          categoria: '', 
-          stock: 0, 
-          imagen: '', 
+        this.nuevoProducto = {
+          nombre: '',
+          descripcion: '',
+          precio: 0,
+          categoria: '',
+          stock: 0,
+          imagen: '',
           disponible: true,
-          descuento: 0
+          descuento: 0,
         };
       },
       error: (err) => {
         console.error('Error al crear producto', err);
-      }
+      },
     });
   }
 }

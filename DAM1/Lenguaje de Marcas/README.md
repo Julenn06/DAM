@@ -5,6 +5,7 @@ Esta carpeta incluye el módulo de **Lenguaje de Marcas** del primer curso de DA
 ## 📂 Contenido Principal
 
 ### 1.Eval/
+
 - 📄 **Ariketak/**: Ejercicios básicos de HTML.
 - 🎨 **CSS Ariketak/**: Ejercicios de estilos CSS.
 - 📝 **Julen_Azterketa/**: Examen personal.
@@ -12,6 +13,7 @@ Esta carpeta incluye el módulo de **Lenguaje de Marcas** del primer curso de DA
 - 🔄 **Repaso examen/**: Material de repaso.
 
 ### 2.Eval/
+
 - 📝 **1 HTML Formularioak/**: Formularios en HTML.
 - 📋 **Azterketa/**: Exámenes.
 - 🔄 **AzterketaErrepasoa/**: Repaso de exámenes.
@@ -23,6 +25,7 @@ Esta carpeta incluye el módulo de **Lenguaje de Marcas** del primer curso de DA
 - 💻 **JavaScript/**: Introducción a JavaScript.
 
 ### 3.Eval/
+
 - 📋 **azterketa3eval/**: Examen de evaluación 3.
 - 📄 **azterketatxuleta/**: Chuleta de examen.
 - 📊 **datuakHtml/**: Datos en HTML.
@@ -33,6 +36,7 @@ Esta carpeta incluye el módulo de **Lenguaje de Marcas** del primer curso de DA
 - 📄 **XML/**: Procesamiento XML.
 
 ## 🛠️ Tecnologías
+
 - 🌐 **HTML5**: Semántica, APIs del navegador, multimedia.
 - 🎨 **CSS3**: Flexbox, Grid, animaciones, responsive design.
 - 💻 **JavaScript**: ES6+, DOM, eventos, AJAX, localStorage.
@@ -41,6 +45,7 @@ Esta carpeta incluye el módulo de **Lenguaje de Marcas** del primer curso de DA
 - 🔧 **Herramientas**: XAMPP, Chrome DevTools, NPM.
 
 ## 🎯 Objetivos
+
 - 🌐 Crear aplicaciones web modernas y responsive.
 - 📊 Manipular datos con XML y JSON.
 - 💻 Integrar JavaScript para interactividad.

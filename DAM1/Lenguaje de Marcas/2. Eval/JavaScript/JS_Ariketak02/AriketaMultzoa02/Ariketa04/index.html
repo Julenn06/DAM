@@ -1,59 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DOM Lantzen</title>
     <style>
-        .izkutu {
-            display: none;
-        }
+      .izkutu {
+        display: none;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <p id="eduki_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus
-        libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc,
-        posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices
-        porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis,
-        faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at
-        posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
-    <a id="esteka_1" href="#" onclick="izkutu('eduki_1', 'esteka_1')">Edukia izkutatu</a>
+  <body>
+    <p id="eduki_1">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim
+      vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue,
+      commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere
+      vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id,
+      aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum
+      elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut,
+      rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio
+      urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit
+      amet, consectetuer adipiscing elit. Duis scelerisque.
+    </p>
+    <a id="esteka_1" href="#" onclick="izkutu('eduki_1', 'esteka_1')"
+      >Edukia izkutatu</a
+    >
     <br />
-    <p id="eduki_2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus
-        libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc,
-        posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices
-        porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis,
-        faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at
-        posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
-    <a id="esteka_2" href="#" onclick="izkutu('eduki_2', 'esteka_2')""> Edukia izkutatu</a>
+    <p id="eduki_2">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim
+      vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue,
+      commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere
+      vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id,
+      aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum
+      elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut,
+      rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio
+      urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit
+      amet, consectetuer adipiscing elit. Duis scelerisque.
+    </p>
+    <a id="esteka_2" href="#" onclick="izkutu('eduki_2', 'esteka_2')">
+      Edukia izkutatu</a
+    >
     <br />
-        <p id=" eduki_3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci.
-        Phasellus
-        libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc,
-        posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices
-        porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis,
-        faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu,
-        at
-        posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
-        <a id="esteka_3" href="#" onclick="izkutu(' eduki_3', 'esteka_3')"> Edukia izkutatu</a>
+    <p id=" eduki_3">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim
+      vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue,
+      commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere
+      vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id,
+      aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum
+      elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut,
+      rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio
+      urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit
+      amet, consectetuer adipiscing elit. Duis scelerisque.
+    </p>
+    <a id="esteka_3" href="#" onclick="izkutu(' eduki_3', 'esteka_3')">
+      Edukia izkutatu</a
+    >
 
-        <script>
-            function izkutu(aldagaia1, aldagaia2) {
+    <script>
+      function izkutu(aldagaia1, aldagaia2) {
+        let testua = document.getElementById(aldagaia1);
+        let botoia = document.getElementById(aldagaia2);
 
-                let testua = document.getElementById(aldagaia1);
-                let botoia = document.getElementById(aldagaia2);
-
-                if (testua.style.display == "block") {
-                    testua.style.display = "none";
-                    botoia.innerHTML = "Edukia Erakutsi";
-                } else {
-                    testua.style.display = "block";
-                    botoia.innerHTML = "Edukia izkutatu";
-                }
-            }
-        </script>
-</body>
-
+        if (testua.style.display == "block") {
+          testua.style.display = "none";
+          botoia.innerHTML = "Edukia Erakutsi";
+        } else {
+          testua.style.display = "block";
+          botoia.innerHTML = "Edukia izkutatu";
+        }
+      }
+    </script>
+  </body>
 </html>

@@ -7,25 +7,22 @@ console.log("izena: " + izena);
 console.log("adina: " + adina);
 console.log("matrikulatuta: " + matrikulatuta);
 
-
 // Ariketa 2
 let egoera: number | string = 100;
 console.log("Hasierako egoera (zenbakia):", egoera);
 
-egoera = 'OSASUNTSU';
+egoera = "OSASUNTSU";
 console.log("Aldatutako egoera (testua):", egoera);
-
 
 // Ariketa 3
 console.log({
-    izena,
-    adina,
-    matrikulatuta
+  izena,
+  adina,
+  matrikulatuta,
 });
 
-
 // Ariketa 4
-// adina = 'hogei'; 
+// adina = 'hogei';
 //
 // Type 'string' is not assignable to type 'number'.
 //

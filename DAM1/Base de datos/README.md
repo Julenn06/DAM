@@ -15,11 +15,13 @@ Esta carpeta contiene todo el material relacionado con el módulo de **Base de D
   - 🧪 Bases de datos para pruebas y exámenes.
 
 ## 🛠️ Tecnologías
+
 - 🐬 MySQL como sistema de gestión de bases de datos.
 - 📊 SQL para consultas y manipulación de datos.
 - 🔧 Herramientas como phpMyAdmin (a través de XAMPP) para gestión visual.
 
 ## 🎯 Objetivos
+
 - 📚 Aprender fundamentos de bases de datos relacionales.
 - 🏗️ Diseñar esquemas, normalizar datos y optimizar consultas.
 - 🔄 Implementar lógica de negocio en la base de datos con procedimientos y triggers.

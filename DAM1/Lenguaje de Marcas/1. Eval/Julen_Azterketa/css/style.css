@@ -1,175 +1,148 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
 
 /*Webgune osoaren formatua*/
 
 body {
+  font-family: Arial, sans-serif;
 
-    font-family: Arial, sans-serif;
+  height: 100vh;
 
-    height: 100vh;
+  display: flex;
 
-    display: flex;
-
-    flex-direction: column;
-
+  flex-direction: column;
 }
 
 /* Orrien titulua eta atzeko irudia */
 header {
-    background-image: url("../img/main.jpg");
-    color: white;
-    background-color: black;
-    padding: 10px 20px;
-    text-align: center;
-
+  background-image: url("../img/main.jpg");
+  color: white;
+  background-color: black;
+  padding: 10px 20px;
+  text-align: center;
 }
-
-
 
 /* Nabigazio menua antolatzeko eta formatu egokia emateko */
 .container {
-    display: flex;
-    flex: 1;
+  display: flex;
+  flex: 1;
 }
 
 nav {
-    background-color: lightskyblue;
+  background-color: lightskyblue;
 
-    flex: 1;
+  flex: 1;
 
-    display: flex;
+  display: flex;
 
-    flex-direction: column;
-
+  flex-direction: column;
 }
 
 nav a {
-    color: black;
+  color: black;
 
-    font-weight: bold;
+  font-weight: bold;
 
-    padding: 15px;
+  padding: 15px;
 
-    text-decoration: none;
+  text-decoration: none;
 
-    text-align: center;
-
+  text-align: center;
 }
 
 nav a:hover {
-    background-color: #575757;
-
+  background-color: #575757;
 }
-
 
 /* Web orriaren informazioa hemen egongo da, bai taula bai testua */
 
 section {
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    flex: 8;
-    display: flex;
-
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex: 8;
+  display: flex;
 }
 
 article {
-    width: 50%;
+  width: 50%;
 }
 
 .testua {
-
-    display: flex;
-    padding: 20px;
-    border-radius: 10px;
-    border-style: solid;
-    border-width: 1px;
-
+  display: flex;
+  padding: 20px;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
 }
 
 .testua img {
-    max-width: 200px;
-    border-radius: 150px;
+  max-width: 200px;
+  border-radius: 150px;
 }
-
 
 /*Orri guztien oinaren kudeaketa*/
 
 footer {
-    position: absolute;
-    bottom: 0;
-    background-color: silver;
+  position: absolute;
+  bottom: 0;
+  background-color: silver;
 
-    color: black;
-    width: 100%;
+  color: black;
+  width: 100%;
 
-    text-align: center;
+  text-align: center;
 
-    padding: 15px 20px;
-
+  padding: 15px 20px;
 }
 
 footer p {
-    float: right;
+  float: right;
 }
-
-
-
 
 /*============= BASOAK==============*/
 
 /* Taulari formatu egokia emateko */
 table {
-
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
 th,
 td {
-    padding: 12px;
-    text-align: center;
-    border: 1px solid #000;
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #000;
 }
 
 #izenburuak {
-    color: white;
-    background-color: black;
+  color: white;
+  background-color: black;
 }
-
 
 .taula_kolorea {
-    background-color: beige;
+  background-color: beige;
 }
-
 
 /* Pantaila txikiagoa egitean, formatu egokia izateko */
 @media (max-width: 800px) {
+  nav {
+    display: grid;
+    flex-direction: row;
+    height: 50%;
+  }
 
+  .testua {
+    display: grid;
+    font-size: 12px;
+  }
 
-
-    nav {
-        display: grid;
-        flex-direction: row;
-        height: 50%;
-    }
-
-
-    .testua {
-        display: grid;
-        font-size: 12px;
-    }
-
-    .testua img {
-
-        width: 80%;
-        height: 80%;
-    }
+  .testua img {
+    width: 80%;
+    height: 80%;
+  }
 }

@@ -1,101 +1,100 @@
 /*REGISTROAK*/
 
 #registroBotoiak {
-    display: flex;
-    gap: 40px;
+  display: flex;
+  gap: 40px;
 }
 
 #registroBotoiak button {
-    padding: 200px 150px;
-    font-size: 24px;
-    border: none;
-    border-radius: 10px;
-    background-color: #d9534f;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  padding: 200px 150px;
+  font-size: 24px;
+  border: none;
+  border-radius: 10px;
+  background-color: #d9534f;
+  color: white;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 #registroBotoiak button:hover {
-    background-color: #c9302c;
-    transform: scale(1.1);
+  background-color: #c9302c;
+  transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
-    header {
-        color: black;
-        flex-direction: column;
-        height: auto;
-        padding: 10px;
-    }
+  header {
+    color: black;
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
 
-    img {
-        display: none;
-    }
+  img {
+    display: none;
+  }
 
+  #atzeraButton,
+  #logoutButton {
+    position: static;
+    margin: 5px 0;
+  }
 
-    #atzeraButton,
-    #logoutButton {
-        position: static;
-        margin: 5px 0;
-    }
+  section {
+    min-height: auto;
+    align-items: center;
+  }
 
-    section {
-        min-height: auto;
-        align-items: center;
-    }
+  #registroBotoiak {
+    gap: 50px;
+  }
 
-
-    #registroBotoiak {
-        gap: 50px;
-    }
-
-    #registroBotoiak button {
-        padding: 100px;
-        font-size: 24px;
-        width: 75%;
-        margin: 0 auto;
-    }
+  #registroBotoiak button {
+    padding: 100px;
+    font-size: 24px;
+    width: 75%;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 480px) {
-    header {
-        color: black;
-        flex-direction: column;
-        height: auto;
-        padding: 10px;
-        font-size: 18px;
-    }
+  header {
+    color: black;
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+    font-size: 18px;
+  }
 
-    img {
-        display: none;
-    }
+  img {
+    display: none;
+  }
 
+  #atzeraButton,
+  #logoutButton {
+    position: static;
+    margin: 5px 0;
+  }
 
-    #atzeraButton,
-    #logoutButton {
-        position: static;
-        margin: 5px 0;
-    }
+  section {
+    min-height: auto;
+    align-items: center;
+    padding: 15px;
+  }
 
-    section {
-        min-height: auto;
-        align-items: center;
-        padding: 15px;
-    }
+  #registroBotoiak {
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    align-items: center;
+  }
 
-    #registroBotoiak {
-        flex-direction: column;
-        gap: 30px;
-        width: 100%;
-        align-items: center;
-    }
-
-    #registroBotoiak button {
-        padding: 60px;
-        font-size: 20px;
-        width: 90%;
-        margin: 0 auto;
-    }
+  #registroBotoiak button {
+    padding: 60px;
+    font-size: 20px;
+    width: 90%;
+    margin: 0 auto;
+  }
 }

@@ -1,43 +1,42 @@
-
 .gallery {
-    display: flex;
-    gap: 4px;
+  display: flex;
+  gap: 4px;
 }
 
 .card {
-    position: relative;
-    left: 0px;
-    width: 80px;
-    border-radius: 4px;
-    padding: 8px;
-    height: 160px;
-    background-color: white;
-    transition: 0.4s ease-in-out;
-    flex: 1px;
+  position: relative;
+  left: 0px;
+  width: 80px;
+  border-radius: 4px;
+  padding: 8px;
+  height: 160px;
+  background-color: white;
+  transition: 0.4s ease-in-out;
+  flex: 1px;
 }
 
 .card:nth-child(1) {
-    background-color: red;
+  background-color: red;
 }
 
 .card:nth-child(2) {
-    background-color: green;
+  background-color: green;
 }
 
 .card:nth-child(3) {
-    background-color: blue;
+  background-color: blue;
 }
 
 .card:nth-child(4) {
-    background-color: yellow;
+  background-color: yellow;
 }
 
 .card:nth-child(5) {
-    background-color: aqua;
+  background-color: aqua;
 }
 
 .card:hover {
-    flex: 3;
-    font-weight: bold;
-    cursor: pointer;
+  flex: 3;
+  font-weight: bold;
+  cursor: pointer;
 }

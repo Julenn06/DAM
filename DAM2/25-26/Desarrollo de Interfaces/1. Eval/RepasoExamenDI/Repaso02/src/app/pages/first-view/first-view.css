@@ -16,7 +16,7 @@ h3 {
   color: #555;
   margin-bottom: 15px;
   font-size: 1.3rem;
-  border-bottom: 2px solid #4CAF50;
+  border-bottom: 2px solid #4caf50;
   padding-bottom: 5px;
 }
 
@@ -50,7 +50,7 @@ section {
 
 .formulario input:focus {
   outline: none;
-  border-color: #4CAF50;
+  border-color: #4caf50;
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
 }
 
@@ -73,7 +73,7 @@ button {
 }
 
 .btn-success {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
 }
 
@@ -91,7 +91,7 @@ button {
 }
 
 .btn-info {
-  background-color: #2196F3;
+  background-color: #2196f3;
   color: white;
 }
 
@@ -109,8 +109,8 @@ button {
 }
 
 /* Inputs */
-input[type="text"],
-input[type="number"] {
+input[type='text'],
+input[type='number'] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -118,10 +118,10 @@ input[type="number"] {
   margin: 5px 0;
 }
 
-input[type="text"]:focus,
-input[type="number"]:focus {
+input[type='text']:focus,
+input[type='number']:focus {
   outline: none;
-  border-color: #4CAF50;
+  border-color: #4caf50;
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
 }
 
@@ -168,7 +168,7 @@ label {
   margin-bottom: 10px;
   background: #f5f5f5;
   border-radius: 6px;
-  border-left: 4px solid #4CAF50;
+  border-left: 4px solid #4caf50;
   transition: all 0.3s ease;
 }
 
@@ -179,7 +179,7 @@ label {
 }
 
 .animal-id {
-  background: #4CAF50;
+  background: #4caf50;
   color: white;
   padding: 5px 12px;
   border-radius: 20px;

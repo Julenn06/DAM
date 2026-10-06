@@ -1,9 +1,5 @@
-import {
-  Component
-} from '@angular/core';
-import {
-  Router
-} from '@angular/router';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-first-view',
@@ -12,7 +8,6 @@ import {
   styleUrl: './first-view.css',
 })
 export class FirstView {
-
   constructor(private router: Router) {}
 
   animales() {

@@ -42,13 +42,15 @@
   margin-top: 20px;
 }
 
-.location-info, .property-info {
+.location-info,
+.property-info {
   background-color: #f8f9fa;
   padding: 20px;
   border-radius: 8px;
 }
 
-.location-info h3, .property-info h3 {
+.location-info h3,
+.property-info h3 {
   color: #007bff;
   margin-bottom: 15px;
 }
@@ -59,7 +61,8 @@
   margin-top: 15px;
 }
 
-.sale-price, .rent-price {
+.sale-price,
+.rent-price {
   flex: 1;
 }
 
@@ -80,7 +83,7 @@
   .house-info {
     grid-template-columns: 1fr;
   }
-  
+
   .price-info {
     flex-direction: column;
   }

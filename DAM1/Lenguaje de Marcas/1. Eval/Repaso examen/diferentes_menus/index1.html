@@ -1,136 +1,136 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Página de pantalla completa</title>
     <style>
-        /* Estilo básico para eliminar márgenes, rellenos y asegurar un box model consistente */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      /* Estilo básico para eliminar márgenes, rellenos y asegurar un box model consistente */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        /* Configuración general del cuerpo del documento */
-        body {
-            font-family: Arial, sans-serif;
-            /* Fuente básica */
-            height: 100vh;
-            /* Altura completa de la ventana */
-            display: flex;
-            /* Uso de flexbox para el diseño global */
-            flex-direction: column;
-            /* Coloca los elementos principales en una columna */
-        }
+      /* Configuración general del cuerpo del documento */
+      body {
+        font-family: Arial, sans-serif;
+        /* Fuente básica */
+        height: 100vh;
+        /* Altura completa de la ventana */
+        display: flex;
+        /* Uso de flexbox para el diseño global */
+        flex-direction: column;
+        /* Coloca los elementos principales en una columna */
+      }
 
-        /* Estilo del encabezado (header) */
-        header {
-            background-color: #4CAF50;
-            /* Color de fondo verde */
-            color: white;
-            /* Texto en blanco */
-            padding: 10px 20px;
-            /* Espaciado interno */
-            text-align: center;
-            /* Centrar el contenido del encabezado */
-        }
+      /* Estilo del encabezado (header) */
+      header {
+        background-color: #4caf50;
+        /* Color de fondo verde */
+        color: white;
+        /* Texto en blanco */
+        padding: 10px 20px;
+        /* Espaciado interno */
+        text-align: center;
+        /* Centrar el contenido del encabezado */
+      }
 
-        /* Estilo del menú de navegación (nav) */
-        nav {
-            background-color: #333;
-            /* Fondo oscuro para el menú */
-        }
+      /* Estilo del menú de navegación (nav) */
+      nav {
+        background-color: #333;
+        /* Fondo oscuro para el menú */
+      }
 
-        /* Estilo de los enlaces dentro del menú */
-        nav a {
-            display: inline-block;
-            /* Los enlaces se muestran en línea */
-            color: white;
-            /* Texto blanco */
-            padding: 14px 20px;
-            /* Espaciado interno para mayor clicabilidad */
-            text-decoration: none;
-            /* Elimina el subrayado de los enlaces */
-            text-align: center;
-            /* Centra el texto dentro del enlace */
-        }
+      /* Estilo de los enlaces dentro del menú */
+      nav a {
+        display: inline-block;
+        /* Los enlaces se muestran en línea */
+        color: white;
+        /* Texto blanco */
+        padding: 14px 20px;
+        /* Espaciado interno para mayor clicabilidad */
+        text-decoration: none;
+        /* Elimina el subrayado de los enlaces */
+        text-align: center;
+        /* Centra el texto dentro del enlace */
+      }
 
-        /* Efecto hover para los enlaces del menú */
-        nav a:hover {
-            background-color: #575757;
-            /* Cambia el color de fondo al pasar el mouse */
-        }
+      /* Efecto hover para los enlaces del menú */
+      nav a:hover {
+        background-color: #575757;
+        /* Cambia el color de fondo al pasar el mouse */
+      }
 
-        /* Configuración de la sección principal que incluye el contenido y el lateral */
-        section {
-            display: flex;
-            /* Uso de flexbox para dividir el contenido y el lateral */
-            flex: 1;
-            /* Ocupa todo el espacio disponible dentro del contenedor */
-        }
+      /* Configuración de la sección principal que incluye el contenido y el lateral */
+      section {
+        display: flex;
+        /* Uso de flexbox para dividir el contenido y el lateral */
+        flex: 1;
+        /* Ocupa todo el espacio disponible dentro del contenedor */
+      }
 
-        /* Estilo del artículo principal (article) */
-        article {
-            padding: 20px;
-            /* Espaciado interno */
-            flex: 3;
-            /* Ocupa tres veces más espacio que el aside */
-            background-color: #ffffff;
-            /* Fondo blanco */
-        }
+      /* Estilo del artículo principal (article) */
+      article {
+        padding: 20px;
+        /* Espaciado interno */
+        flex: 3;
+        /* Ocupa tres veces más espacio que el aside */
+        background-color: #ffffff;
+        /* Fondo blanco */
+      }
 
-        /* Estilo del contenido lateral (aside) */
-        aside {
-            padding: 20px;
-            /* Espaciado interno */
-            background-color: #f4f4f4;
-            /* Fondo gris claro */
-            flex: 1;
-            /* Ocupa menos espacio que el artículo principal */
-        }
+      /* Estilo del contenido lateral (aside) */
+      aside {
+        padding: 20px;
+        /* Espaciado interno */
+        background-color: #f4f4f4;
+        /* Fondo gris claro */
+        flex: 1;
+        /* Ocupa menos espacio que el artículo principal */
+      }
 
-        /* Estilo del pie de página (footer) */
-        footer {
-            background-color: #333;
-            /* Fondo oscuro */
-            color: white;
-            /* Texto blanco */
-            text-align: center;
-            /* Centrar el contenido */
-            padding: 10px 20px;
-            /* Espaciado interno */
-        }
+      /* Estilo del pie de página (footer) */
+      footer {
+        background-color: #333;
+        /* Fondo oscuro */
+        color: white;
+        /* Texto blanco */
+        text-align: center;
+        /* Centrar el contenido */
+        padding: 10px 20px;
+        /* Espaciado interno */
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>Página de pantalla completa</h1>
+      <h1>Página de pantalla completa</h1>
     </header>
     <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#articulos">Artículos</a>
-        <a href="#contacto">Contacto</a>
+      <a href="#inicio">Inicio</a>
+      <a href="#articulos">Artículos</a>
+      <a href="#contacto">Contacto</a>
     </nav>
     <section>
-        <article>
-            <h2>Artículo principal</h2>
-            <p>
-                Este es el contenido principal de la página. Aquí se describe el tema central del sitio web.
-            </p>
-        </article>
-        <aside>
-            <h2>Información adicional</h2>
-            <p>
-                Este es un espacio para agregar enlaces, noticias, o cualquier contenido complementario.
-            </p>
-        </aside>
+      <article>
+        <h2>Artículo principal</h2>
+        <p>
+          Este es el contenido principal de la página. Aquí se describe el tema
+          central del sitio web.
+        </p>
+      </article>
+      <aside>
+        <h2>Información adicional</h2>
+        <p>
+          Este es un espacio para agregar enlaces, noticias, o cualquier
+          contenido complementario.
+        </p>
+      </aside>
     </section>
     <footer>
-        <p>&copy; 2024 Mi Página Web. Todos los derechos reservados.</p>
+      <p>&copy; 2024 Mi Página Web. Todos los derechos reservados.</p>
     </footer>
-</body>
-
+  </body>
 </html>

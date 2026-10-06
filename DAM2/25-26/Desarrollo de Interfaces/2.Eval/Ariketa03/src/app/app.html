@@ -1,20 +1,20 @@
 <h2>Erabiltzaileak</h2>
 
 <div>
-  <input [(ngModel)]="erabiltzaileaBerria.izena" placeholder="Izena">
-  <input [(ngModel)]="erabiltzaileaBerria.emaila" placeholder="Emaila">
+  <input [(ngModel)]="erabiltzaileaBerria.izena" placeholder="Izena" />
+  <input [(ngModel)]="erabiltzaileaBerria.emaila" placeholder="Emaila" />
   <button (click)="gehitu()">Gehitu</button>
 </div>
 
-<hr>
+<hr />
 
 <ul>
   @for (e of erabiltzaileak; track e) {
-    <li>
-      <input [(ngModel)]="e.izena">
-      <input [(ngModel)]="e.emaila">
-      <button (click)="eguneratu(e)">Eguneratu</button>
-      <button (click)="ezabatu(e)">Ezabatu</button>
-    </li>
+  <li>
+    <input [(ngModel)]="e.izena" />
+    <input [(ngModel)]="e.emaila" />
+    <button (click)="eguneratu(e)">Eguneratu</button>
+    <button (click)="ezabatu(e)">Ezabatu</button>
+  </li>
   }
 </ul>

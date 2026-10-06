@@ -1,107 +1,135 @@
-
 <h2>Operaciones con trabajadores</h2>
 <div class="actions">
-	<button (click)="buscarID()">Buscar ID 1</button>
-	<button (click)="buscarGeneroF()">Buscar Femenino</button>
-	<button (click)="buscarGeneroM()">Buscar Masculino</button>
-	<button (click)="mostrarNombres()">Mostrar Nombres</button>
-	<button (click)="buscarSalarioMayor()">Salario >= 20000</button>
-	<button (click)="calcularMediaSalarios()">Media Salarios</button>
-	<button (click)="mostrarUltimoPorGenero()">Último Masculino</button>
-	<button (click)="mostrarTrabajadorPorSalario()">Primero con Salario 20000</button>
-	<button (click)="mostrarUltimoTrabajadorPorSalario()">Último con Salario 20000</button>
-	<button (click)="buscarID5()">Buscar ID 5</button>
-	<button (click)="buscarTodosLosTrabajadores()">Todos los Trabajadores</button>
-	<button (click)="probarPOP()">POP</button>
-	<button (click)="probarPUSH()">PUSH</button>
-	<button (click)="probarSHIFT()">SHIFT</button>
-	<button (click)="probarUNSHIFT()">UNSHIFT</button>
-	<button (click)="probarSLICE()">SLICE</button>
-	<button (click)="probarSPLICE()">SPLICE</button>
+  <button (click)="buscarID()">Buscar ID 1</button>
+  <button (click)="buscarGeneroF()">Buscar Femenino</button>
+  <button (click)="buscarGeneroM()">Buscar Masculino</button>
+  <button (click)="mostrarNombres()">Mostrar Nombres</button>
+  <button (click)="buscarSalarioMayor()">Salario >= 20000</button>
+  <button (click)="calcularMediaSalarios()">Media Salarios</button>
+  <button (click)="mostrarUltimoPorGenero()">Último Masculino</button>
+  <button (click)="mostrarTrabajadorPorSalario()">Primero con Salario 20000</button>
+  <button (click)="mostrarUltimoTrabajadorPorSalario()">Último con Salario 20000</button>
+  <button (click)="buscarID5()">Buscar ID 5</button>
+  <button (click)="buscarTodosLosTrabajadores()">Todos los Trabajadores</button>
+  <button (click)="probarPOP()">POP</button>
+  <button (click)="probarPUSH()">PUSH</button>
+  <button (click)="probarSHIFT()">SHIFT</button>
+  <button (click)="probarUNSHIFT()">UNSHIFT</button>
+  <button (click)="probarSLICE()">SLICE</button>
+  <button (click)="probarSPLICE()">SPLICE</button>
 </div>
 
 <div *ngIf="workerAriketa1 && resultadoActivo === 'id'">
-	<h3>Trabajador seleccionado:</h3>
-	<table>
-		<tr><th>ID</th><th>Nombre</th><th>Edad</th><th>Género</th><th>Salario</th></tr>
-		<tr>
-			<td>{{ workerAriketa1.id }}</td>
-			<td>{{ workerAriketa1.name }}</td>
-			<td>{{ workerAriketa1.age }}</td>
-			<td>{{ workerAriketa1.gender }}</td>
-			<td>{{ workerAriketa1.salary }}</td>
-		</tr>
-	</table>
+  <h3>Trabajador seleccionado:</h3>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Género</th>
+      <th>Salario</th>
+    </tr>
+    <tr>
+      <td>{{ workerAriketa1.id }}</td>
+      <td>{{ workerAriketa1.name }}</td>
+      <td>{{ workerAriketa1.age }}</td>
+      <td>{{ workerAriketa1.gender }}</td>
+      <td>{{ workerAriketa1.salary }}</td>
+    </tr>
+  </table>
 </div>
 
 <div *ngIf="workerAriketa1 && resultadoActivo === 'ultimoMasculino'">
-	<h3>Último trabajador masculino:</h3>
-	<table>
-		<tr><th>ID</th><th>Nombre</th><th>Edad</th><th>Género</th><th>Salario</th></tr>
-		<tr>
-			<td>{{ workerAriketa1.id }}</td>
-			<td>{{ workerAriketa1.name }}</td>
-			<td>{{ workerAriketa1.age }}</td>
-			<td>{{ workerAriketa1.gender }}</td>
-			<td>{{ workerAriketa1.salary }}</td>
-		</tr>
-	</table>
+  <h3>Último trabajador masculino:</h3>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Género</th>
+      <th>Salario</th>
+    </tr>
+    <tr>
+      <td>{{ workerAriketa1.id }}</td>
+      <td>{{ workerAriketa1.name }}</td>
+      <td>{{ workerAriketa1.age }}</td>
+      <td>{{ workerAriketa1.gender }}</td>
+      <td>{{ workerAriketa1.salary }}</td>
+    </tr>
+  </table>
 </div>
 
 <div *ngIf="langileF.length && resultadoActivo === 'femenino'">
-	<h3>Trabajadores femeninos:</h3>
-	<table>
-		<tr><th>ID</th><th>Nombre</th><th>Edad</th><th>Género</th><th>Salario</th></tr>
-		<tr *ngFor="let worker of langileF">
-			<td>{{ worker.id }}</td>
-			<td>{{ worker.name }}</td>
-			<td>{{ worker.age }}</td>
-			<td>{{ worker.gender }}</td>
-			<td>{{ worker.salary }}</td>
-		</tr>
-	</table>
+  <h3>Trabajadores femeninos:</h3>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Género</th>
+      <th>Salario</th>
+    </tr>
+    <tr *ngFor="let worker of langileF">
+      <td>{{ worker.id }}</td>
+      <td>{{ worker.name }}</td>
+      <td>{{ worker.age }}</td>
+      <td>{{ worker.gender }}</td>
+      <td>{{ worker.salary }}</td>
+    </tr>
+  </table>
 </div>
 
 <div *ngIf="langileGuztiak.length && resultadoActivo === 'nombres'">
-	<h3>Todos los trabajadores (nombres):</h3>
-	<ul>
-		<li *ngFor="let worker of langileGuztiak">{{ worker.name }}</li>
-	</ul>
+  <h3>Todos los trabajadores (nombres):</h3>
+  <ul>
+    <li *ngFor="let worker of langileGuztiak">{{ worker.name }}</li>
+  </ul>
 </div>
 
 <div *ngIf="langile20000.length && resultadoActivo === 'primero20000'">
-	<h3>Primero con salario 20000:</h3>
-	<table>
-		<tr><th>Nombre</th><th>Salario</th></tr>
-		<tr *ngFor="let worker of langile20000">
-			<td>{{ worker.name }}</td>
-			<td>{{ worker.salary }}</td>
-		</tr>
-	</table>
+  <h3>Primero con salario 20000:</h3>
+  <table>
+    <tr>
+      <th>Nombre</th>
+      <th>Salario</th>
+    </tr>
+    <tr *ngFor="let worker of langile20000">
+      <td>{{ worker.name }}</td>
+      <td>{{ worker.salary }}</td>
+    </tr>
+  </table>
 </div>
 
 <div *ngIf="langileAzkena20000 && resultadoActivo === 'ultimo20000'">
-	<h3>Último con salario 20000:</h3>
-	<table>
-		<tr><th>Nombre</th><th>Salario</th></tr>
-		<tr>
-			<td>{{ langileAzkena20000.name }}</td>
-			<td>{{ langileAzkena20000.salary }}</td>
-		</tr>
-	</table>
+  <h3>Último con salario 20000:</h3>
+  <table>
+    <tr>
+      <th>Nombre</th>
+      <th>Salario</th>
+    </tr>
+    <tr>
+      <td>{{ langileAzkena20000.name }}</td>
+      <td>{{ langileAzkena20000.salary }}</td>
+    </tr>
+  </table>
 </div>
 
 <div *ngIf="todosLosTrabajadores.length && resultadoActivo === 'todos'">
-	<h3>Todos los trabajadores:</h3>
-	<table>
-		<tr><th>ID</th><th>Nombre</th><th>Edad</th><th>Género</th><th>Salario</th></tr>
-		<tr *ngFor="let worker of todosLosTrabajadores">
-			<td>{{ worker.id }}</td>
-			<td>{{ worker.name }}</td>
-			<td>{{ worker.age }}</td>
-			<td>{{ worker.gender }}</td>
-			<td>{{ worker.salary }}</td>
-		</tr>
-	</table>
+  <h3>Todos los trabajadores:</h3>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Género</th>
+      <th>Salario</th>
+    </tr>
+    <tr *ngFor="let worker of todosLosTrabajadores">
+      <td>{{ worker.id }}</td>
+      <td>{{ worker.name }}</td>
+      <td>{{ worker.age }}</td>
+      <td>{{ worker.gender }}</td>
+      <td>{{ worker.salary }}</td>
+    </tr>
+  </table>
 </div>
-

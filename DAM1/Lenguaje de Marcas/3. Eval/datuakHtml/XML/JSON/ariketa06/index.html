@@ -1,71 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <table id="taula">
-        <thead>
-            <tr>
-                <th>Izena</th>
-                <th>Nota 1</th>
-                <th>Nota 2</th>
-                <th>Nota 3</th>
-                <th>BatazBeste</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
+      <thead>
+        <tr>
+          <th>Izena</th>
+          <th>Nota 1</th>
+          <th>Nota 2</th>
+          <th>Nota 3</th>
+          <th>BatazBeste</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
     </table>
 
-
     <script>
-        const ikasleak = [{
-                "izena": "Ane",
-                "nota1": 7,
-                "nota2": 8,
-                "nota3": 9
-            },
-            {
-                "izena": "Miren",
-                "nota1": 5,
-                "nota2": 5,
-                "nota3": 4
-            },
-            {
-                "izena": "Liher",
-                "nota1": 9,
-                "nota2": 8,
-                "nota3": 10
-            }
-        ];
+      const ikasleak = [
+        {
+          izena: "Ane",
+          nota1: 7,
+          nota2: 8,
+          nota3: 9,
+        },
+        {
+          izena: "Miren",
+          nota1: 5,
+          nota2: 5,
+          nota3: 4,
+        },
+        {
+          izena: "Liher",
+          nota1: 9,
+          nota2: 8,
+          nota3: 10,
+        },
+      ];
 
-        const taula = document.getElementById("taula");
+      const taula = document.getElementById("taula");
 
-        for (let i = 0; i < ikasleak.length; i++) {
-            let lerroa = taula.insertRow();
-            let izena = lerroa.insertCell();
-            let nota1 = lerroa.insertCell();
-            let nota2 = lerroa.insertCell();
-            let nota3 = lerroa.insertCell();
-            let batazbeste = lerroa.insertCell();
+      for (let i = 0; i < ikasleak.length; i++) {
+        let lerroa = taula.insertRow();
+        let izena = lerroa.insertCell();
+        let nota1 = lerroa.insertCell();
+        let nota2 = lerroa.insertCell();
+        let nota3 = lerroa.insertCell();
+        let batazbeste = lerroa.insertCell();
 
-            izena.textContent = ikasleak[i].izena;
-            nota1.textContent = ikasleak[i].nota1;
-            nota2.textContent = ikasleak[i].nota2;
-            nota3.textContent = ikasleak[i].nota3;
+        izena.textContent = ikasleak[i].izena;
+        nota1.textContent = ikasleak[i].nota1;
+        nota2.textContent = ikasleak[i].nota2;
+        nota3.textContent = ikasleak[i].nota3;
 
-            let totala = ikasleak[i].nota1 + ikasleak[i].nota2 + ikasleak[i].nota3;
-            batazbeste.textContent = (totala / 3).toFixed(2);
-        }
+        let totala = ikasleak[i].nota1 + ikasleak[i].nota2 + ikasleak[i].nota3;
+        batazbeste.textContent = (totala / 3).toFixed(2);
+      }
     </script>
-
-</body>
-
+  </body>
 </html>

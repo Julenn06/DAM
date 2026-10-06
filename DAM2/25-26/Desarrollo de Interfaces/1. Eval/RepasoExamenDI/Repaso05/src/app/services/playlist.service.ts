@@ -4,12 +4,12 @@ import { Observable } from 'rxjs';
 import { Playlist } from '../models/playlist.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PlaylistService {
   private apiUrl = 'http://localhost:3000/playlists';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // 46. Obtener todas las playlists
   getPlaylists(): Observable<Playlist[]> {

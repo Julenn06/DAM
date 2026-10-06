@@ -46,6 +46,7 @@ Repaso06/
 ## 📊 Modelos de Datos
 
 ### 1. Alumno (15 campos)
+
 ```java
 - id, nombre, apellidos, dni, email, telefono
 - fechaNacimiento, direccion, ciudad, codigoPostal
@@ -54,6 +55,7 @@ Repaso06/
 ```
 
 ### 2. Curso (14 campos)
+
 ```java
 - id, codigo, nombre, descripcion, duracionHoras
 - nivel (BASICO/MEDIO/SUPERIOR), turno (MAÑANA/TARDE/NOCHE)
@@ -63,6 +65,7 @@ Repaso06/
 ```
 
 ### 3. Profesor (15 campos)
+
 ```java
 - id, nombre, apellidos, dni, email, telefono
 - fechaNacimiento, especialidad, departamento
@@ -72,6 +75,7 @@ Repaso06/
 ```
 
 ### 4. Asignatura (11 campos)
+
 ```java
 - id, codigo, nombre, descripcion
 - creditos, horasSemanales, tipo (OBLIGATORIA/OPTATIVA/PROYECTO)
@@ -80,6 +84,7 @@ Repaso06/
 ```
 
 ### 5. Matricula (13 campos)
+
 ```java
 - id, idAlumno, idAsignatura (referencias)
 - fechaMatricula, notaParcial1, notaParcial2, notaParcial3
@@ -92,6 +97,7 @@ Repaso06/
 ## 🔥 Operaciones Disponibles
 
 ### 👨‍🎓 GESTIÓN DE ALUMNOS (15 opciones)
+
 1. Crear nuevo alumno
 2. Ver todos los alumnos
 3. Buscar por ID
@@ -109,6 +115,7 @@ Repaso06/
 15. Alumnos sin curso asignado
 
 ### 📚 GESTIÓN DE CURSOS (12 opciones)
+
 1. Crear curso
 2. Ver todos
 3. Buscar por ID
@@ -123,6 +130,7 @@ Repaso06/
 12. Top N cursos con mayor ocupación
 
 ### 👨‍🏫 GESTIÓN DE PROFESORES (10 opciones)
+
 1. Crear profesor
 2. Ver todos
 3. Buscar por ID
@@ -135,6 +143,7 @@ Repaso06/
 10. Filtrar por salario mínimo
 
 ### 📖 GESTIÓN DE ASIGNATURAS (7 opciones)
+
 1. Crear asignatura
 2. Ver todas
 3. Buscar por ID
@@ -144,6 +153,7 @@ Repaso06/
 7. Filtrar por tipo (OBLIGATORIA/OPTATIVA)
 
 ### 📝 GESTIÓN DE MATRÍCULAS (8 opciones)
+
 1. Crear matrícula
 2. Ver todas
 3. Actualizar calificaciones
@@ -154,6 +164,7 @@ Repaso06/
 8. Ver convalidadas
 
 ### 📊 ESTADÍSTICAS Y REPORTES (5 opciones)
+
 1. Resumen general (totales de todo)
 2. Estadísticas de alumnos (notas, edades, top 5)
 3. Estadísticas de cursos (precios, ocupación, top 3)
@@ -161,6 +172,7 @@ Repaso06/
 5. Estadísticas de matrículas (tasa aprobados, distribución)
 
 ### 🔍 BÚSQUEDAS AVANZADAS (6 opciones)
+
 1. Alumnos por rango de edad
 2. Cursos por rango de precio
 3. Profesores por experiencia mínima
@@ -173,6 +185,7 @@ Repaso06/
 ## 🚀 Compilar y Ejecutar
 
 ### 1. Configurar Firebase
+
 ```bash
 # 1. Crea proyecto en Firebase Console
 # 2. Descarga serviceAccountKey.json
@@ -180,12 +193,14 @@ Repaso06/
 ```
 
 ### 2. Compilar
+
 ```powershell
 cd Repaso06
 mvn clean compile
 ```
 
 ### 3. Ejecutar
+
 ```powershell
 mvn exec:java -Dexec.mainClass="view.Main"
 ```
@@ -195,6 +210,7 @@ mvn exec:java -Dexec.mainClass="view.Main"
 ## 📚 Conceptos Cubiertos para el Examen
 
 ### ✅ Firestore (NoSQL)
+
 - Conexión con Firebase Admin SDK
 - Operaciones CRUD completas
 - Queries con `whereEqualTo()`, `whereGreaterThan()`, etc.
@@ -203,11 +219,13 @@ mvn exec:java -Dexec.mainClass="view.Main"
 - Conversión Document ↔ POJO
 
 ### ✅ Arquitectura MVC
+
 - **Model**: POJOs con getters/setters y métodos auxiliares
 - **View**: Menús interactivos con Scanner
 - **Controller**: Lógica de negocio y acceso a datos
 
 ### ✅ Operaciones Avanzadas
+
 - Filtros múltiples y combinados
 - Búsquedas por coincidencia parcial
 - Ordenación y limitación de resultados
@@ -215,6 +233,7 @@ mvn exec:java -Dexec.mainClass="view.Main"
 - Agregaciones de datos
 
 ### ✅ Java Buenas Prácticas
+
 - Singleton pattern (DBConnection)
 - Try-catch para manejo de errores
 - Streams y lambdas (Java 8+)
@@ -222,6 +241,7 @@ mvn exec:java -Dexec.mainClass="view.Main"
 - Conversión de tipos (Long→int, Double→double)
 
 ### ✅ Manejo de Fechas
+
 - `java.util.Date`
 - `SimpleDateFormat` con patrón "dd/MM/yyyy"
 - Conversión String ↔ Date
@@ -257,13 +277,14 @@ mvn exec:java -Dexec.mainClass="view.Main"
 ✅ **Sistema de calificaciones** completo  
 ✅ **Estadísticas avanzadas** con cálculos  
 ✅ **Búsquedas por rangos** (edad, precio, nota)  
-✅ **Múltiples estados** y tipos enumerados  
+✅ **Múltiples estados** y tipos enumerados
 
 ---
 
 ## 📝 Notas para el Examen
 
 ### Importante recordar:
+
 1. **Firestore es NoSQL** → No hay JOINs, usamos referencias de IDs
 2. **ApiFuture<>** → Necesita `.get()` para obtener resultado
 3. **QuerySnapshot** → Iterar con `.getDocuments()`
@@ -272,29 +293,31 @@ mvn exec:java -Dexec.mainClass="view.Main"
 6. **Null checks**: Siempre verificar `!= null` antes de convertir
 
 ### Errores comunes a evitar:
+
 ❌ Olvidar `.get()` en ApiFuture  
 ❌ No hacer null checks en conversiones  
 ❌ No cerrar Scanner  
-❌ No inicializar Firebase antes de usar controllers  
+❌ No inicializar Firebase antes de usar controllers
 
 ---
 
 ## 💯 Resumen de Complejidad
 
-| Aspecto | Repaso05 | **Repaso06** |
-|---------|----------|--------------|
-| Modelos | 2 | **5** |
-| Controladores | 4 | **6** |
-| Operaciones totales | ~30 | **70+** |
-| Filtros | 8 | **20+** |
-| Estadísticas | Básicas | **Avanzadas** |
-| Relaciones | Simple (1) | **Complejas (3)** |
+| Aspecto             | Repaso05   | **Repaso06**      |
+| ------------------- | ---------- | ----------------- |
+| Modelos             | 2          | **5**             |
+| Controladores       | 4          | **6**             |
+| Operaciones totales | ~30        | **70+**           |
+| Filtros             | 8          | **20+**           |
+| Estadísticas        | Básicas    | **Avanzadas**     |
+| Relaciones          | Simple (1) | **Complejas (3)** |
 
 ---
 
 ## ✨ ¡TODO LISTO PARA EL EXAMEN!
 
 Este es el proyecto **MÁS COMPLETO** de todos. Cubre:
+
 - ✅ Firestore completo
 - ✅ MVC profesional
 - ✅ CRUD extenso

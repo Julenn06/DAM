@@ -1,16 +1,18 @@
 <section>
-    <h3>Produktuak</h3>
-    <div>
-      @if (produktuGuztiak.length === 0) {
+  <h3>Produktuak</h3>
+  <div>
+    @if (produktuGuztiak.length === 0) {
       <p>Ez daude produkturik</p>
-      } @else {
-        @for (produktu of produktuGuztiak; track produktu.id) {
-    <button [routerLink]="['/products', produktu.id]">{{ produktu.name }}  {{ produktu.price }}€  ({{ produktu.stock }} stock)</button>
-    <button (click)="deleteProduct(produktu.id)">Ezabatu</button>
-        }
+    } @else {
+      @for (produktu of produktuGuztiak; track produktu.id) {
+        <button [routerLink]="['/products', produktu.id]">
+          {{ produktu.name }} {{ produktu.price }}€ ({{ produktu.stock }} stock)
+        </button>
+        <button (click)="deleteProduct(produktu.id)">Ezabatu</button>
       }
-    </div>
-    <br>
-    <br>
-    <button (click)="sortuProduktua()">Produktu Berria Sortu</button>
+    }
+  </div>
+  <br />
+  <br />
+  <button (click)="sortuProduktua()">Produktu Berria Sortu</button>
 </section>

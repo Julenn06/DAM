@@ -1,43 +1,43 @@
 h1 {
-    color: blue;
-    text-align: center;
+  color: blue;
+  text-align: center;
 }
 
 form {
-    max-width: 300px;
-    margin: 0 auto;
-    padding: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 label {
-    margin-bottom: .5em;
-    color: #333333;
-    display: block;
+  margin-bottom: 0.5em;
+  color: #333333;
+  display: block;
 }
 
 input {
-    border: 1px solid #CCCCCC;
-    padding: .5em;
-    font-size: 1em;
-    width: 100%;
-    box-sizing: border-box;
-    border-radius: 5px;
+  border: 1px solid #cccccc;
+  padding: 0.5em;
+  font-size: 1em;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
 }
 
 button {
-    padding: .7em;
-    color: white;
-    background-color: blue;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 1em;
-    margin-top: 1em;
-    align-items: center;
+  padding: 0.7em;
+  color: white;
+  background-color: blue;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1em;
+  margin-top: 1em;
+  align-items: center;
 }
 button:hover {
-    background-color: darkblue;
+  background-color: darkblue;
 }

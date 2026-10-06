@@ -116,13 +116,13 @@ private checkIdExists(id: string): Observable<boolean> {
 
 private createHouseWithData(house: House): Observable<House> {
   const data = {
-    id: house.id, 
-    name: house.name, 
-    location: house.location, 
-    propertyType: house.propertyType, 
-    isForSale: house.isForSale, 
+    id: house.id,
+    name: house.name,
+    location: house.location,
+    propertyType: house.propertyType,
+    isForSale: house.isForSale,
     salePrice: house.isForSale ? house.salePrice : null,
-    isForRent: house.isForRent, 
+    isForRent: house.isForRent,
     rentPrice: house.isForRent ? house.rentPrice : null,
     picture: house.picture
   };

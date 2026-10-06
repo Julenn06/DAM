@@ -8,8 +8,8 @@
   --color-text: #263238;
   --color-text-light: #fff;
   --color-muted: #ececec;
-  --font-main: "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont,
-    sans-serif;
+  --font-main:
+    "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
   --shadow-sm: 0 2px 8px rgba(38, 50, 56, 0.1);
   --shadow-md: 0 4px 20px rgba(38, 50, 56, 0.15);
   --shadow-lg: 0 10px 40px rgba(38, 50, 56, 0.2);
@@ -114,7 +114,7 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(69, 90, 100, 0.1);
 }
 
-router-outlet+* {
+router-outlet + * {
   display: block;
   min-height: calc(100vh - 2rem);
   padding: 1rem;

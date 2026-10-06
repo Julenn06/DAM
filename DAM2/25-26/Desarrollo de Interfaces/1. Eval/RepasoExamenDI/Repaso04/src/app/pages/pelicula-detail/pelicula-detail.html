@@ -2,10 +2,12 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title *ngIf="!isEditing">{{ pelicula.titulo }}</mat-card-title>
-      <mat-card-subtitle *ngIf="!isEditing">{{ pelicula.director }} ({{ pelicula.ano }})</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="!isEditing"
+        >{{ pelicula.director }} ({{ pelicula.ano }})</mat-card-subtitle
+      >
     </mat-card-header>
 
-    <img mat-card-image [src]="pelicula.poster" [alt]="pelicula.titulo" class="pelicula-poster">
+    <img mat-card-image [src]="pelicula.poster" [alt]="pelicula.titulo" class="pelicula-poster" />
 
     <mat-card-content>
       <div *ngIf="!isEditing" class="view-mode">
@@ -24,12 +26,12 @@
       <div *ngIf="isEditing" class="edit-mode">
         <mat-form-field>
           <mat-label>Título</mat-label>
-          <input matInput [(ngModel)]="pelicula.titulo">
+          <input matInput [(ngModel)]="pelicula.titulo" />
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Director</mat-label>
-          <input matInput [(ngModel)]="pelicula.director">
+          <input matInput [(ngModel)]="pelicula.director" />
         </mat-form-field>
 
         <mat-form-field>
@@ -41,37 +43,42 @@
 
         <mat-form-field>
           <mat-label>Actores (separados por coma)</mat-label>
-          <input matInput [(ngModel)]="pelicula.actores" [value]="pelicula.actores.join(', ')" (input)="pelicula.actores = $any($event.target).value.split(', ')">
+          <input
+            matInput
+            [(ngModel)]="pelicula.actores"
+            [value]="pelicula.actores.join(', ')"
+            (input)="pelicula.actores = $any($event.target).value.split(', ')"
+          />
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Año</mat-label>
-          <input matInput type="number" [(ngModel)]="pelicula.ano">
+          <input matInput type="number" [(ngModel)]="pelicula.ano" />
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Duración (min)</mat-label>
-          <input matInput type="number" [(ngModel)]="pelicula.duracion">
+          <input matInput type="number" [(ngModel)]="pelicula.duracion" />
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Rating</mat-label>
-          <input matInput type="number" min="1" max="10" [(ngModel)]="pelicula.rating">
+          <input matInput type="number" min="1" max="10" [(ngModel)]="pelicula.rating" />
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Presupuesto (M$)</mat-label>
-          <input matInput type="number" [(ngModel)]="pelicula.presupuesto">
+          <input matInput type="number" [(ngModel)]="pelicula.presupuesto" />
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Recaudación (M$)</mat-label>
-          <input matInput type="number" [(ngModel)]="pelicula.recaudacion">
+          <input matInput type="number" [(ngModel)]="pelicula.recaudacion" />
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Poster URL</mat-label>
-          <input matInput [(ngModel)]="pelicula.poster">
+          <input matInput [(ngModel)]="pelicula.poster" />
         </mat-form-field>
 
         <mat-form-field>

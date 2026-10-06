@@ -1,7 +1,9 @@
 .hero-card {
-  background: linear-gradient(135deg,
-      var(--color-primary),
-      var(--color-secondary));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
   color: var(--color-text-light);
   padding: 3rem 2rem;
   border-radius: 16px;
@@ -95,9 +97,11 @@
 }
 
 .hero-edit-form {
-  background: linear-gradient(135deg,
-      var(--color-primary),
-      var(--color-secondary));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
   color: var(--color-text-light);
   padding: 3rem 2rem;
   border-radius: 16px;

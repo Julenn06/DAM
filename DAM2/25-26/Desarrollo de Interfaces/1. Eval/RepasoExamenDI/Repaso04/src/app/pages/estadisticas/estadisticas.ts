@@ -9,13 +9,7 @@ import { Pelicula } from '../../models/pelicula.model';
 
 @Component({
   selector: 'app-estadisticas',
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatChipsModule
-  ],
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, MatChipsModule],
   templateUrl: './estadisticas.html',
   styleUrl: './estadisticas.css',
 })

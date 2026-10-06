@@ -7,5 +7,5 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'person', component: PersonComponent, canActivate: [authGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', redirectTo: '/login' }
+  { path: '**', redirectTo: '/login' },
 ];

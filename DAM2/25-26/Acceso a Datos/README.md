@@ -5,6 +5,7 @@ Esta carpeta abarca el módulo de **Acceso a Datos** del segundo curso de DAM, e
 ## 📂 Contenido Principal
 
 ### 1. Eval/
+
 - 🌳 **ariketaDOM/**: Ejercicios con DOM parsing.
 - 🧪 **ariketaprueba00/** y **01/**: Pruebas.
 - 🔍 **ariketaXPATH01/**: Consultas XPATH.
@@ -15,9 +16,11 @@ Esta carpeta abarca el módulo de **Acceso a Datos** del segundo curso de DAM, e
 - 🔄 **RepasoExamenAD/**: Repaso de exámenes.
 
 ### 2.Eval/
+
 - 📝 **Ariketa01/**: Proyecto con JDBC, MySQL, CRUD operations (ver README interno para detalles).
 
 ## 🛠️ Tecnologías
+
 - 📄 **XML**: DOM, SAX, XPATH, XSLT, validación.
 - 🔥 **NoSQL**: Firebase Realtime DB, Firestore, MongoDB.
 - 💾 **Persistencia**: JPA/Hibernate, JDBC, transacciones.
@@ -25,6 +28,7 @@ Esta carpeta abarca el módulo de **Acceso a Datos** del segundo curso de DAM, e
 - 🌐 **APIs**: REST, GraphQL, OAuth, JWT.
 
 ## 🎯 Objetivos
+
 - 📄 Manipular datos en formatos XML y JSON.
 - 🔥 Integrar bases de datos NoSQL.
 - 💾 Implementar persistencia en aplicaciones Java.

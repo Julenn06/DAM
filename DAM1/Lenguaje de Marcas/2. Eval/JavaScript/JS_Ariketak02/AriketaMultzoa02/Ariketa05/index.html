@@ -1,42 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Elementuak gehitu</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <ul id="lista">
-        <li>Lorem ipsum dolor sit amet</li>
-        <li>Consectetuer adipiscing elit</li>
-        <li>Sed mattis enim vitae orci</li>
-        <li>Phasellus libero</li>
-        <li>Maecenas nisl arcu</li>
+      <li>Lorem ipsum dolor sit amet</li>
+      <li>Consectetuer adipiscing elit</li>
+      <li>Sed mattis enim vitae orci</li>
+      <li>Phasellus libero</li>
+      <li>Maecenas nisl arcu</li>
     </ul>
-    <input type="button" value="Elementua gehitu bukaeran" onclick="gehituB();">
-    <input type="button" value="Elementua gehitu hasieran" onclick="gehituH();">
-    <br>
-    <br>
-    <input type="button" value="Elementua ezabatu bukaeran" onclick="ezabatuB();">
-    <input type="button" value="Elementua ezabatu hasieran" onclick="ezabatuH();">
-</body>
+    <input
+      type="button"
+      value="Elementua gehitu bukaeran"
+      onclick="gehituB()"
+    />
+    <input
+      type="button"
+      value="Elementua gehitu hasieran"
+      onclick="gehituH()"
+    />
+    <br />
+    <br />
+    <input
+      type="button"
+      value="Elementua ezabatu bukaeran"
+      onclick="ezabatuB()"
+    />
+    <input
+      type="button"
+      value="Elementua ezabatu hasieran"
+      onclick="ezabatuH()"
+    />
+  </body>
 
-<script>
+  <script>
     function gehituB() {
-        let berria = document.createElement('li');
-        let lista = document.getElementById('lista');
-        berria.textContent = "Elementua bukaeran";
-        lista.appendChild(berria);
+      let berria = document.createElement("li");
+      let lista = document.getElementById("lista");
+      berria.textContent = "Elementua bukaeran";
+      lista.appendChild(berria);
     }
 
     function gehituH() {
-        let berria = document.createElement('li');
-        let lista = document.getElementById('lista');
-        berria.textContent = "Elementua hasieran";
-        lista.insertBefore(berria, lista.firstChild);
+      let berria = document.createElement("li");
+      let lista = document.getElementById("lista");
+      berria.textContent = "Elementua hasieran";
+      lista.insertBefore(berria, lista.firstChild);
     }
-</script>
-
+  </script>
 </html>

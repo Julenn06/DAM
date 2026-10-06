@@ -1,20 +1,8 @@
-import {
-  ChangeDetectorRef,
-  Component
-} from '@angular/core';
-import {
-  FormsModule,
-  ReactiveFormsModule
-} from '@angular/forms';
-import {
-  AnimalesRemoteService
-} from '../services/animales.remote';
-import {
-  Animal
-} from '../animal/animal';
-import {
-  Router
-} from '@angular/router';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AnimalesRemoteService } from '../services/animales.remote';
+import { Animal } from '../animal/animal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-animales',
@@ -23,22 +11,24 @@ import {
   styleUrl: './animales.css',
 })
 export class Animales {
+  nombre: string = '';
+  tipo: string = '';
 
-  nombre: string = "";
-  tipo: string = "";
-
-  nombreNuevo: string = "";
-  tipoNuevo: string = "";
+  nombreNuevo: string = '';
+  tipoNuevo: string = '';
 
   idAnimal: number = 0;
-  nombreAnimal: string = "";
+  nombreAnimal: string = '';
 
   todosLosAnimales: Animal[] = [];
 
-  constructor(private cdr: ChangeDetectorRef, private remote: AnimalesRemoteService, private router: Router) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private remote: AnimalesRemoteService,
+    private router: Router,
+  ) {}
 
   anadirAnimal() {
-
     if (!this.nombre.trim()) {
       console.error('El nombre es obligatorio');
       return;
@@ -50,7 +40,7 @@ export class Animales {
         this.verAnimales();
         this.limpiarDatos();
       },
-      error: (err) => console.error('Error creando animal', err)
+      error: (err) => console.error('Error creando animal', err),
     });
   }
 
@@ -62,7 +52,7 @@ export class Animales {
       },
       error: (err) => {
         console.error('Error cargando Animales', err);
-      }
+      },
     });
   }
 
@@ -82,7 +72,7 @@ export class Animales {
         console.error('Error cargando Animal por ID', err);
         this.todosLosAnimales = [];
         this.cdr.markForCheck();
-      }
+      },
     });
   }
 
@@ -102,25 +92,22 @@ export class Animales {
         console.error('Error cargando Animal por ID', err);
         this.todosLosAnimales = [];
         this.cdr.markForCheck();
-      }
+      },
     });
   }
 
   nuevosDatos() {
-
     if (!this.idAnimal || this.idAnimal <= 0) {
       console.error('ID inválido para editar');
       return;
     }
-
 
     if (!this.nombreNuevo.trim() && !this.tipoNuevo.trim()) {
       console.error('Debe proporcionar al menos un campo para actualizar');
       return;
     }
 
-
-    const changes: Partial < Animal > = {};
+    const changes: Partial<Animal> = {};
     if (this.nombreNuevo.trim()) changes.nombre = this.nombreNuevo.trim();
     if (this.tipoNuevo.trim()) changes.tipo = this.tipoNuevo.trim();
 
@@ -130,17 +117,15 @@ export class Animales {
         this.verAnimales();
         this.limpiarDatosEdicion();
       },
-      error: (err) => console.error('Error actualizando animal', err)
+      error: (err) => console.error('Error actualizando animal', err),
     });
   }
 
   eliminarAnimal() {
-
     if (!this.idAnimal || this.idAnimal <= 0) {
       console.error('ID inválido para eliminar');
       return;
     }
-
 
     if (!confirm(`Esta seguro de eliminar el animal con ID ${this.idAnimal}?`)) {
       return;
@@ -152,12 +137,11 @@ export class Animales {
         this.verAnimales();
         this.idAnimal = 0;
       },
-      error: (err) => console.error('Error eliminando animal', err)
+      error: (err) => console.error('Error eliminando animal', err),
     });
   }
 
   eliminarAnimalPorNombre() {
-
     if (!this.nombreAnimal || this.nombreAnimal.trim() === '') {
       console.error('Nombre inválido para eliminar');
       return;
@@ -171,9 +155,9 @@ export class Animales {
       next: () => {
         console.log(`Animal con Nombre ${this.nombreAnimal} eliminado`);
         this.verAnimales();
-        this.nombreAnimal = "";
+        this.nombreAnimal = '';
       },
-      error: (err) => console.error('Error eliminando animal', err)
+      error: (err) => console.error('Error eliminando animal', err),
     });
   }
 
@@ -182,12 +166,12 @@ export class Animales {
   }
 
   limpiarDatos() {
-    this.nombre = "";
-    this.tipo = "";
+    this.nombre = '';
+    this.tipo = '';
   }
 
   limpiarDatosEdicion() {
-    this.nombreNuevo = "";
-    this.tipoNuevo = "";
+    this.nombreNuevo = '';
+    this.tipoNuevo = '';
   }
 }

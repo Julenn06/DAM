@@ -1,168 +1,164 @@
 .bidaia-formularioa {
-
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .bidaia-formularioa h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    margin-top: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 50px;
 }
 
 #form-bidaia {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 #form-bidaia label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 #form-bidaia input,
 #form-bidaia select {
-    width: calc(100% - 20px);
-    font-size: 14px;
-    box-sizing: border-box;
+  width: calc(100% - 20px);
+  font-size: 14px;
+  box-sizing: border-box;
 }
 
 form {
-    background-color: #fff;
-    width: 40%;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+  background-color: #fff;
+  width: 40%;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 form textarea {
-    margin-top: 10px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    width: 90%;
-    max-width: 90%;
-    min-width: 90%;
-    padding: 8px;
-    border-radius: 5px;
-    border-width: 1px;
-    height: 120px;
-    resize: none;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  width: 90%;
+  max-width: 90%;
+  min-width: 90%;
+  padding: 8px;
+  border-radius: 5px;
+  border-width: 1px;
+  height: 120px;
+  resize: none;
 }
 
 div input,
 select {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 #form-bidaia input[type="date"],
 #form-bidaia input[type="number"] {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .bidaia-botoia {
-    text-align: center;
+  text-align: center;
 }
 
 .bidaia-botoia button {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .bidaia-botoia button:hover {
-    background-color: #444;
+  background-color: #444;
 }
 
 #taula {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-    min-width: 600px;
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  min-width: 600px;
 }
 
 #taula th,
 #taula td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: center;
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
 }
 
 .taula-datuak {
-    width: 100%;
-    overflow-x: auto;
+  width: 100%;
+  overflow-x: auto;
 }
 
 @media (max-width: 768px) {
+  header {
+    color: black;
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+    padding: 10px;
+  }
 
-    header {
-        color: black;
-        flex-direction: column;
-        text-align: center;
-        height: auto;
-        padding: 10px;
-    }
+  img {
+    display: none;
+  }
 
-    img {
-        display: none;
-    }
+  #atzeraButton,
+  #logoutButton {
+    position: static;
+    margin: 5px 0;
+    width: auto;
+  }
 
-    #atzeraButton,
-    #logoutButton {
-        position: static;
-        margin: 5px 0;
-        width: auto;
-    }
+  form {
+    width: 90%;
+    padding: 15px;
+    margin-top: 50px;
+  }
 
-    form {
-        width: 90%;
-        padding: 15px;
-        margin-top: 50px;
-    }
-
-    .bidaia-botoia button {
-        font-size: 16px;
-    }
+  .bidaia-botoia button {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 480px) {
+  header {
+    color: black;
+    font-size: 18px;
+  }
 
-    header {
-        color: black;
-        font-size: 18px;
-    }
+  img {
+    display: none;
+  }
 
-    img {
-        display: none;
-    }
+  form {
+    width: 95%;
+  }
 
+  #form-bidaia input,
+  #form-bidaia select,
+  form textarea {
+    font-size: 12px;
+  }
 
-    form {
-        width: 95%;
-    }
+  .bidaia-botoia button {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
 
-    #form-bidaia input,
-    #form-bidaia select,
-    form textarea {
-        font-size: 12px;
-    }
-
-    .bidaia-botoia button {
-        font-size: 14px;
-        padding: 8px 15px;
-    }
-
-    #taula th,
-    #taula td {
-        font-size: 12px;
-        padding: 4px;
-    }
+  #taula th,
+  #taula td {
+    font-size: 12px;
+    padding: 4px;
+  }
 }

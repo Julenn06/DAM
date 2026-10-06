@@ -2,16 +2,8 @@
   <h3>CRUD Firebase Realtime Database</h3>
 
   <div class="form-section">
-    <input 
-      [(ngModel)]="nuevoUsuario.nombre" 
-      placeholder="Izena" 
-      class="input-field"
-    />
-    <input 
-      [(ngModel)]="nuevoUsuario.email" 
-      placeholder="Emaila" 
-      class="input-field"
-    />
+    <input [(ngModel)]="nuevoUsuario.nombre" placeholder="Izena" class="input-field" />
+    <input [(ngModel)]="nuevoUsuario.email" placeholder="Emaila" class="input-field" />
     <button (click)="crearUsuario()" class="btn btn-primary">Gehitu</button>
   </div>
 
@@ -20,26 +12,10 @@
   <ul class="users-list">
     @for (usuario of usuarios; track usuario.id) {
       <li class="user-item">
-        <input 
-          [(ngModel)]="usuario.nombre" 
-          class="input-field"
-        />
-        <input 
-          [(ngModel)]="usuario.email" 
-          class="input-field"
-        />
-        <button 
-          (click)="actualizarUsuario(usuario)" 
-          class="btn btn-success"
-        >
-          Gorde
-        </button>
-        <button 
-          (click)="eliminarUsuario(usuario.id)" 
-          class="btn btn-danger"
-        >
-          Ezabatu
-        </button>
+        <input [(ngModel)]="usuario.nombre" class="input-field" />
+        <input [(ngModel)]="usuario.email" class="input-field" />
+        <button (click)="actualizarUsuario(usuario)" class="btn btn-success">Gorde</button>
+        <button (click)="eliminarUsuario(usuario.id)" class="btn btn-danger">Ezabatu</button>
       </li>
     }
   </ul>

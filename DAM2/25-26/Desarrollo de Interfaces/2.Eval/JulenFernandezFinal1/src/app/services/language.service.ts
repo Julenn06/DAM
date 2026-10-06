@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LanguageService {
   private langKey = 'lang';
 
-  constructor(private translate: TranslateService) { }
+  constructor(private translate: TranslateService) {}
 
   initLanguage() {
     const lang = localStorage.getItem(this.langKey) || 'es';

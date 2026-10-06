@@ -1,62 +1,56 @@
 {
-    "faktura": {
+  "faktura": {
+    "$": {
+      "id": "876"
+    },
+    "f_data": ["2022-02-28T08:25:02"],
+    "saltzailea": [
+      {
         "$": {
-            "id": "876"
+          "id": "12"
         },
-        "f_data": [
-            "2022-02-28T08:25:02"
-        ],
-        "saltzailea": [
+        "izena": ["June Arriaga Zarate"]
+      }
+    ],
+    "bezeroa": [
+      {
+        "$": {
+          "id": "9878"
+        },
+        "izena": "Leire Bengoetxea Zallo",
+        "helbidea": {
+          "kalea": "Kale Nagusia 8, 2 - A",
+          "kp": "48300",
+          "herria": "Gernika",
+          "probintzia": "Bizkaia"
+        },
+        "telefonoak": {
+          "telefonoa": [
             {
-                "$": {
-                    "id": "12"
-                },
-                "izena": [
-                    "June Arriaga Zarate"
-                ]
-            }
-        ],
-        "bezeroa": [
+              "$": {
+                "num": "6111666"
+              }
+            },
             {
-                "$": {
-                    "id": "9878"
-                },
-                "izena": "Leire Bengoetxea Zallo",
-                "helbidea": {
-                    "kalea": "Kale Nagusia 8, 2 - A",
-                    "kp": "48300",
-                    "herria": "Gernika",
-                    "probintzia": "Bizkaia"
-                },
-                "telefonoak": {
-                    "telefonoa": [
-                        {
-                            "$": {
-                                "num": "6111666"
-                            }
-                        },
-                        {
-                            "$": {
-                                "num": "954666111"
-                            }
-                        }
-                    ]
-                }
+              "$": {
+                "num": "954666111"
+              }
             }
-        ],
-        "artikulua": [
-            {
-                "$": {
-                    "id": "Liburua",
-                    "bez": "21"
-                },
-                "deskribapena": "Aulki Birakaria, C-121 modeloa",
-                "prezioa": "98.23",
-                "kant": "1"
-            }
-        ],
-        "deskontua": [
-            "20"
-        ]
-    }
+          ]
+        }
+      }
+    ],
+    "artikulua": [
+      {
+        "$": {
+          "id": "Liburua",
+          "bez": "21"
+        },
+        "deskribapena": "Aulki Birakaria, C-121 modeloa",
+        "prezioa": "98.23",
+        "kant": "1"
+      }
+    ],
+    "deskontua": ["20"]
+  }
 }

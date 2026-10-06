@@ -9,18 +9,18 @@ import { PersonService } from '../../services/person.service';
   selector: 'app-person-table',
   templateUrl: './person.html',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslateModule]
+  imports: [CommonModule, FormsModule, TranslateModule],
 })
 export class PersonComponent implements OnInit {
   // Datos de personas desde el servidor
   personas: Person[] = [];
   personasFiltradas: Person[] = [];
-  
+
   // Filtros de búsqueda
   edadMinima: number | null = null;
   textoBusquedaNombre = '';
   textoBusquedaEmail = '';
-  
+
   // Objetos para los modales de creación y edición
   personaEnModal: Partial<Person> | null = null;
   personaNuevaEnModal: Partial<Person> | null = null;
@@ -143,14 +143,18 @@ export class PersonComponent implements OnInit {
     const busquedaNombre = this.textoBusquedaNombre.trim().toLowerCase();
     if (busquedaNombre) {
       tempPersonas = tempPersonas.filter((persona) =>
-        String(persona.nombre ?? '').toLowerCase().includes(busquedaNombre)
+        String(persona.nombre ?? '')
+          .toLowerCase()
+          .includes(busquedaNombre),
       );
     }
 
     const busquedaEmail = this.textoBusquedaEmail.trim().toLowerCase();
     if (busquedaEmail) {
       tempPersonas = tempPersonas.filter((persona) =>
-        String(persona.email ?? '').toLowerCase().includes(busquedaEmail)
+        String(persona.email ?? '')
+          .toLowerCase()
+          .includes(busquedaEmail),
       );
     }
 

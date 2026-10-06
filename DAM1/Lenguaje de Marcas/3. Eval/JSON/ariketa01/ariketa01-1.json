@@ -1,37 +1,20 @@
 {
   "tokiak": {
-    "lekua": [{
-        "izena": [
-          "Askata"
-        ],
-        "herria": [
-          "Donostia"
-        ],
-        "kontinentea": [
-          "Asia"
-        ]
+    "lekua": [
+      {
+        "izena": ["Askata"],
+        "herria": ["Donostia"],
+        "kontinentea": ["Asia"]
       },
       {
-        "izena": [
-          "Lisboa"
-        ],
-        "herria": [
-          "Portugal"
-        ],
-        "kontinentea": [
-          "Europa"
-        ]
+        "izena": ["Lisboa"],
+        "herria": ["Portugal"],
+        "kontinentea": ["Europa"]
       },
       {
-        "izena": [
-          "El Cairo"
-        ],
-        "herria": [
-          "Egipto"
-        ],
-        "kontinentea": [
-          "Afrika"
-        ]
+        "izena": ["El Cairo"],
+        "herria": ["Egipto"],
+        "kontinentea": ["Afrika"]
       }
     ]
   }

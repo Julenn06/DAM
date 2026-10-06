@@ -10,7 +10,7 @@ import { Persona } from '../../models/persona.model';
   selector: 'app-person',
   templateUrl: './person.html',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslateModule]
+  imports: [CommonModule, FormsModule, TranslateModule],
 })
 export class PersonComponent implements OnInit {
   provincias: Provincia[] = [];
@@ -29,7 +29,7 @@ export class PersonComponent implements OnInit {
   }
 
   loadpersonas() {
-    this.dataService.getPersonas().subscribe(data => {
+    this.dataService.getPersonas().subscribe((data) => {
       this.personas = data;
       this.filtrarPersonas();
     });
@@ -39,11 +39,11 @@ export class PersonComponent implements OnInit {
     let temppersonas = this.personas;
 
     if (this.provinciaSeleccionada) {
-      temppersonas = temppersonas.filter(p => p.id === this.provinciaSeleccionada);
+      temppersonas = temppersonas.filter((p) => p.id === this.provinciaSeleccionada);
     }
 
     if (this.filtroHabitantes) {
-      temppersonas = temppersonas.filter(p => p.edad > this.filtroHabitantes!);
+      temppersonas = temppersonas.filter((p) => p.edad > this.filtroHabitantes!);
     }
 
     this.personasFiltrados = temppersonas;

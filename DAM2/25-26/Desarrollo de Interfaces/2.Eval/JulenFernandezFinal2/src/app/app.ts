@@ -6,7 +6,7 @@ import { LanguageService } from './services/language.service';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './app.html'
+  templateUrl: './app.html',
 })
 export class App {
   constructor(private languageService: LanguageService) {

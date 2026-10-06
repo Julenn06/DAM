@@ -1,33 +1,33 @@
 // Ariketa 1
 class Ibilgailua {
-    constructor(
-        public marka: string,
-        public matrikula: string
-    ) {}
+  constructor(
+    public marka: string,
+    public matrikula: string,
+  ) {}
 
-    informazioa(): string {
-        return `Marka: ${this.marka} | Matrikula: ${this.matrikula}`;
-    }
+  informazioa(): string {
+    return `Marka: ${this.marka} | Matrikula: ${this.matrikula}`;
+  }
 }
 
 // Ariketa 2
 class Autoa extends Ibilgailua {
-    public plazaKopurua: number;
+  public plazaKopurua: number;
 
-    constructor(marka: string, matrikula: string, plazaKopurua: number) {
-        super(marka, matrikula);
-        this.plazaKopurua = plazaKopurua;
-    }
+  constructor(marka: string, matrikula: string, plazaKopurua: number) {
+    super(marka, matrikula);
+    this.plazaKopurua = plazaKopurua;
+  }
 }
 
 // Ariketa 3
 class Motorra extends Ibilgailua {
-    public zilindrada ? : number;
+  public zilindrada?: number;
 
-    constructor(marka: string, matrikula: string, zilindrada ? : number) {
-        super(marka, matrikula);
-        this.zilindrada = zilindrada;
-    }
+  constructor(marka: string, matrikula: string, zilindrada?: number) {
+    super(marka, matrikula);
+    this.zilindrada = zilindrada;
+  }
 }
 
 // Ariketa 4

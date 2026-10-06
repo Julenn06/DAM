@@ -6,12 +6,21 @@
     <div class="card-body">
       <div class="row mb-4">
         <div class="col-md-4">
-          <label for="filtropersona" class="form-label">{{ 'tabla.filtrar_persona' | translate }}</label>
+          <label for="filtropersona" class="form-label">{{
+            'tabla.filtrar_persona' | translate
+          }}</label>
         </div>
         <div class="col-md-4">
-          <label for="filtroHabitantes" class="form-label">{{ 'tabla.filtrar_habitantes' | translate }}</label>
-          <input type="number" id="filtroHabitantes" class="form-control" [(ngModel)]="filtroHabitantes"
-            (ngModelChange)="filtrarPersonas()">
+          <label for="filtroHabitantes" class="form-label">{{
+            'tabla.filtrar_habitantes' | translate
+          }}</label>
+          <input
+            type="number"
+            id="filtroHabitantes"
+            class="form-control"
+            [(ngModel)]="filtroHabitantes"
+            (ngModelChange)="filtrarPersonas()"
+          />
         </div>
         <div class="col-md-4 d-flex align-items-end">
           <button class="btn btn-outline-secondary" (click)="limpiarFiltros()">
@@ -32,51 +41,69 @@
           </thead>
           <tbody>
             @for (persona of personasFiltrados; track persona.id) {
-            <tr>
-              <td></td>
-              <td>
-                @if (personaEditando?.id !== persona.id) {
-                <span>{{ persona.nombre }}</span>
-                } @else {
-                <input type="text" [(ngModel)]="personaEditando!.nombre" class="form-control form-control-sm">
-                }
-              </td>
-              <td class="text-end">
-                @if (personaEditando?.id !== persona.id) {
-                <span>{{ persona.habitantes | number }}</span>
-                } @else {
-                <input type="number" [(ngModel)]="personaEditando!.habitantes" class="form-control form-control-sm">
-                }
-              </td>
-              <td class="text-end">
-                @if (personaEditando?.id !== persona.id) {
-                <span>{{ persona.superficie | number:'1.2-2' }}</span>
-                } @else {
-                <input type="number" [(ngModel)]="personaEditando!.superficie" class="form-control form-control-sm">
-                }
-              </td>
-              <td class="text-center">
-                @if (personaEditando?.id !== persona.id) {
-                <div>
-                  <button class="btn btn-sm btn-outline-primary me-2" (click)="editarpersona(persona)">
-                    <i class="bi bi-pencil-fill"></i> {{ 'tabla.editar' | translate }}
-                  </button>
-                  <button class="btn btn-sm btn-outline-danger" (click)="eliminarpersona(persona.id)">
-                    <i class="bi bi-trash-fill"></i> {{ 'tabla.eliminar' | translate }}
-                  </button>
-                </div>
-                } @else {
-                <div>
-                  <button class="btn btn-sm btn-success me-2" (click)="guardarpersona()">
-                    <i class="bi bi-check-lg"></i> Guardar
-                  </button>
-                  <button class="btn btn-sm btn-secondary" (click)="cancelarEdicion()">
-                    <i class="bi bi-x-lg"></i> Cancelar
-                  </button>
-                </div>
-                }
-              </td>
-            </tr>
+              <tr>
+                <td></td>
+                <td>
+                  @if (personaEditando?.id !== persona.id) {
+                    <span>{{ persona.nombre }}</span>
+                  } @else {
+                    <input
+                      type="text"
+                      [(ngModel)]="personaEditando!.nombre"
+                      class="form-control form-control-sm"
+                    />
+                  }
+                </td>
+                <td class="text-end">
+                  @if (personaEditando?.id !== persona.id) {
+                    <span>{{ persona.habitantes | number }}</span>
+                  } @else {
+                    <input
+                      type="number"
+                      [(ngModel)]="personaEditando!.habitantes"
+                      class="form-control form-control-sm"
+                    />
+                  }
+                </td>
+                <td class="text-end">
+                  @if (personaEditando?.id !== persona.id) {
+                    <span>{{ persona.superficie | number: '1.2-2' }}</span>
+                  } @else {
+                    <input
+                      type="number"
+                      [(ngModel)]="personaEditando!.superficie"
+                      class="form-control form-control-sm"
+                    />
+                  }
+                </td>
+                <td class="text-center">
+                  @if (personaEditando?.id !== persona.id) {
+                    <div>
+                      <button
+                        class="btn btn-sm btn-outline-primary me-2"
+                        (click)="editarpersona(persona)"
+                      >
+                        <i class="bi bi-pencil-fill"></i> {{ 'tabla.editar' | translate }}
+                      </button>
+                      <button
+                        class="btn btn-sm btn-outline-danger"
+                        (click)="eliminarpersona(persona.id)"
+                      >
+                        <i class="bi bi-trash-fill"></i> {{ 'tabla.eliminar' | translate }}
+                      </button>
+                    </div>
+                  } @else {
+                    <div>
+                      <button class="btn btn-sm btn-success me-2" (click)="guardarpersona()">
+                        <i class="bi bi-check-lg"></i> Guardar
+                      </button>
+                      <button class="btn btn-sm btn-secondary" (click)="cancelarEdicion()">
+                        <i class="bi bi-x-lg"></i> Cancelar
+                      </button>
+                    </div>
+                  }
+                </td>
+              </tr>
             }
           </tbody>
         </table>
@@ -93,23 +120,40 @@
         <div class="row">
           <div class="col-md-3 mb-3">
             <label class="form-label">persona</label>
-            <select [(ngModel)]="nuevopersona.personaId" name="personaId" class="form-select" required>
+            <select
+              [(ngModel)]="nuevopersona.personaId"
+              name="personaId"
+              class="form-select"
+              required
+            >
               @for (persona of personas; track persona.id) {
-              <option [ngValue]="persona.id">{{ persona.nombre }}</option>
+                <option [ngValue]="persona.id">{{ persona.nombre }}</option>
               }
             </select>
           </div>
           <div class="col-md-3 mb-3">
             <label class="form-label">Nombre</label>
-            <input type="text" [(ngModel)]="nuevopersona.nombre" name="nombre" class="form-control" required>
+            <input
+              type="text"
+              [(ngModel)]="nuevopersona.nombre"
+              name="nombre"
+              class="form-control"
+              required
+            />
           </div>
           <div class="col-md-2 mb-3">
             <label class="form-label">Edad</label>
-            <input type="number" [(ngModel)]="nuevopersona.habitantes" name="habitantes" class="form-control" required>
+            <input
+              type="number"
+              [(ngModel)]="nuevopersona.habitantes"
+              name="habitantes"
+              class="form-control"
+              required
+            />
           </div>
           <div class="col-md-2 mb-3">
             <label class="form-label">Email</label>
-                    </div>
+          </div>
           <div class="col-md-2 d-flex align-items-end mb-3">
             <button type="submit" class="btn btn-primary w-100" [disabled]="formCrear.invalid">
               <i class="bi bi-plus-circle-fill"></i> {{ 'tabla.crear' | translate }}

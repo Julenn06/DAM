@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-private',
+  selector: "app-private",
   standalone: true,
   imports: [],
-  templateUrl: './private.html',
-  styleUrl: './private.css'
+  templateUrl: "./private.html",
+  styleUrl: "./private.css",
 })
-export class Private {
-}
+export class Private {}

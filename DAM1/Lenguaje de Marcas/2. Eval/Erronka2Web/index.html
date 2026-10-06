@@ -1,47 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="eu">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/login.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="argiaIluna"></div>
     <div id="loginContainer">
-        <div class="saioaHasi">
-            <h2>Login</h2>
-            <form action="php/login.php" method="POST">
-                <input type="text" placeholder="Erabiltzailea" id="erabiltzailea" name="erabiltzailea" required>
-                <input type="password" placeholder="Pasahitza" id="pasahitza" name="pasahitza" required>
-                <div class="LoginBotoiak">
-                    <button class="erregistratuBotoia" type="button">Registratu</button>
-                    <button class="saioaHasiBotoia" type="submit">Saioa Hasi</button>
-                </div>
-            </form>
-        </div>
+      <div class="saioaHasi">
+        <h2>Login</h2>
+        <form action="php/login.php" method="POST">
+          <input
+            type="text"
+            placeholder="Erabiltzailea"
+            id="erabiltzailea"
+            name="erabiltzailea"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Pasahitza"
+            id="pasahitza"
+            name="pasahitza"
+            required
+          />
+          <div class="LoginBotoiak">
+            <button class="erregistratuBotoia" type="button">Registratu</button>
+            <button class="saioaHasiBotoia" type="submit">Saioa Hasi</button>
+          </div>
+        </form>
+      </div>
     </div>
 
     <script src="js/script.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const params = new URLSearchParams(window.location.search);
-            const error = params.get("error");
+      document.addEventListener("DOMContentLoaded", function () {
+        const params = new URLSearchParams(window.location.search);
+        const error = params.get("error");
 
-            if (error) {
-                Swal.fire({
-                    icon: "error",
-                    title: "Errorea",
-                    text: decodeURIComponent(error)
-                });
-            }
-        });
+        if (error) {
+          Swal.fire({
+            icon: "error",
+            title: "Errorea",
+            text: decodeURIComponent(error),
+          });
+        }
+      });
     </script>
-
-</body>
-
-
+  </body>
 </html>

@@ -1,77 +1,65 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
 
 /* CENTRAR FOOTER */
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /*================*/
 
-
 .bear_argazkia {
-    background-image: url(https://s3.amazonaws.com/codecademy-content/courses/web-101/web101-image_brownbear.jpg);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-attachment: fixed;
+  background-image: url(https://s3.amazonaws.com/codecademy-content/courses/web-101/web101-image_brownbear.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
 }
 
-
 body header h1 {
-    text-align: center;
-
+  text-align: center;
 }
 
 body header li {
-    background-color: aqua;
-    border-color: black;
-
-
+  background-color: aqua;
+  border-color: black;
 }
 
 body header nav ul {
-    text-align: center;
-    margin-top: 10px;
-
+  text-align: center;
+  margin-top: 10px;
 }
 
 body header ul li {
-    display: inline;
-    text-align: center;
-    width: 5%;
-    border-radius: 10px;
-    border-style: solid;
-    border-width: 1px;
-
+  display: inline;
+  text-align: center;
+  width: 5%;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
 }
 
 body header ul li a {
-    text-decoration: none;
-
-
+  text-decoration: none;
 }
 
-
-
 body header ul li a:hover {
-    color: red;
-    text-decoration: underline;
-    background-color: black;
-    border-radius: 10px;
+  color: red;
+  text-decoration: underline;
+  background-color: black;
+  border-radius: 10px;
 }
 
 main {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
-@media (max-width:700px) {
-    .bear_argazkia {
-        background-image: none;
-    }
+@media (max-width: 700px) {
+  .bear_argazkia {
+    background-image: none;
+  }
 }

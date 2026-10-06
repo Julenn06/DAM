@@ -7,7 +7,6 @@ import { map, Observable, switchMap, take } from 'rxjs';
   providedIn: 'root',
 })
 export class PeliculasService {
-
   private http = inject(HttpClient);
   private apiUrl = 'http://localhost:3000/Peliculas';
 
@@ -31,10 +30,10 @@ export class PeliculasService {
 
         const body = {
           id: String(newId),
-          ...pelicula
+          ...pelicula,
         };
         return this.http.post<Pelicula>(this.apiUrl, body);
-      })
+      }),
     );
   }
 
@@ -48,23 +47,23 @@ export class PeliculasService {
 
   getEstadisticas(): Observable<any> {
     return this.getAllPeliculas().pipe(
-      map(peliculas => {
+      map((peliculas) => {
         const totalPeliculas = peliculas.length;
         const promedioRating = peliculas.reduce((sum, p) => sum + p.rating, 0) / totalPeliculas;
-        const generos = [...new Set(peliculas.map(p => p.genero))];
+        const generos = [...new Set(peliculas.map((p) => p.genero))];
         return {
           totalPeliculas,
           promedioRating: promedioRating.toFixed(2),
-          totalGeneros: generos.length
+          totalGeneros: generos.length,
         };
-      })
+      }),
     );
   }
 
   getPeliculasMasRecaudadoras(): Observable<Pelicula[]> {
     // Asumiendo que no hay campo de recaudación, ordenar por rating
     return this.getAllPeliculas().pipe(
-      map(peliculas => peliculas.sort((a, b) => b.rating - a.rating).slice(0, 5))
+      map((peliculas) => peliculas.sort((a, b) => b.rating - a.rating).slice(0, 5)),
     );
   }
 }

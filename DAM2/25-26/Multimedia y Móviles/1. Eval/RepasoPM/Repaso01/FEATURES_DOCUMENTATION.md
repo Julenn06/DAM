@@ -7,6 +7,7 @@ Este proyecto de Android/Kotlin implementa una aplicación completa de gestión 
 ## 🎯 Tecnologías Implementadas
 
 ### 1. **INTENT** - Navegación entre Activities
+
 - `MainActivity` → `AddUserActivity` (con resultado)
 - `MainActivity` → `UserListActivity`
 - `MainActivity` → `EditUserActivity`
@@ -15,12 +16,14 @@ Este proyecto de Android/Kotlin implementa una aplicación completa de gestión 
 - Intent implícito: `ACTION_SEND` para compartir usuarios favoritos
 
 ### 2. **DATA** - Paso de datos entre Activities
+
 - `Intent.putExtra()` / `getExtra()` para pasar User data
 - `Pair<String, User>` para asociar ID con objeto User
 - Data classes: `User`, `HistoryAction` ⭐ NUEVO
 - JSON serialization con Gson para persistencia
 
 ### 3. **LISTOF** - Manejo de colecciones
+
 - `mutableListOf<Pair<String, User>>()` en adapters
 - `List<HistoryAction>` para timeline ⭐ NUEVO
 - `Set<String>` para IDs de favoritos ⭐ NUEVO
@@ -28,6 +31,7 @@ Este proyecto de Android/Kotlin implementa una aplicación completa de gestión 
 - Operaciones funcionales: `sortedByDescending`, `take()`
 
 ### 4. **BINDING** - ViewBinding
+
 - `ActivityMainBinding` - Pantalla principal
 - `ActivityAddUserBinding` - Formulario de añadir
 - `ActivityUserListBinding` - Lista de usuarios
@@ -38,6 +42,7 @@ Este proyecto de Android/Kotlin implementa una aplicación completa de gestión 
 - `ItemHistoryBinding` - Items de historial con iconos ⭐ NUEVO
 
 ### 5. **CONSTRAINTLAYOUT** - Layouts flexibles
+
 - `activity_main.xml` - 5 botones con iconos
 - `activity_edit_user.xml` - RecyclerView + ScrollView (toggle visibility)
 - `activity_favorites.xml` - RecyclerView con empty state ⭐ NUEVO
@@ -46,6 +51,7 @@ Este proyecto de Android/Kotlin implementa una aplicación completa de gestión 
 - `item_history.xml` - CardView con icono según acción ⭐ NUEVO
 
 ### 6. **RECYCLERVIEW** - Listas eficientes
+
 - `UserAdapter` - Adapter con ViewHolder pattern
   - Callbacks: `onUserClick`, `onFavoriteClick`, `isFavorite` ⭐ ACTUALIZADO
 - `HistoryAdapter` - Timeline de acciones ⭐ NUEVO
@@ -54,6 +60,7 @@ Este proyecto de Android/Kotlin implementa una aplicación completa de gestión 
 - ViewHolder para caching de vistas
 
 ### 7. **LAMBDA** - Programación funcional
+
 - Click listeners: `setOnClickListener { ... }`
 - Callbacks de adapters: `(User, String) -> Unit`
 - Higher-order functions en UserAdapter ⭐ ACTUALIZADO:
@@ -63,6 +70,7 @@ Este proyecto de Android/Kotlin implementa una aplicación completa de gestión 
 - Flow collectors: `flow.collect { ... }`
 
 ### 8. **DATASTORE** - Persistencia moderna
+
 - `PreferencesManager` - Preferencias básicas
   - `lastUserId`, `userCount`
 - `FavoritesManager` ⭐ NUEVO
@@ -76,6 +84,7 @@ Este proyecto de Android/Kotlin implementa una aplicación completa de gestión 
   - Métodos: `addCreateAction()`, `addUpdateAction()`, `addDeleteAction()`, `addViewAction()`, `clearHistory()`
 
 ### 9. **COROUTINE** - Asincronía
+
 - `lifecycleScope.launch { ... }` para operaciones asíncronas
 - `suspend fun` en managers de DataStore
 - `Flow.collect { ... }` para observación reactiva ⭐ USADO EN FAVORITOS/HISTORIAL
@@ -83,6 +92,7 @@ Este proyecto de Android/Kotlin implementa una aplicación completa de gestión 
 - Cancelación automática con lifecycle
 
 ### 10. **CRASHLYTICS** - Monitoreo
+
 - `FirebaseCrashlytics.getInstance()`
 - `log()` para breadcrumbs
 - `recordException()` para errores manuales
@@ -90,12 +100,14 @@ Este proyecto de Android/Kotlin implementa una aplicación completa de gestión 
 - Logging de todas las acciones CRUD y navegación
 
 ### 11. **AUTH** - Autenticación
+
 - Firebase Authentication anónimo
 - `signInAnonymously()` en MainActivity
 - `auth.currentUser?.uid` para identificar usuario
 - Asociación con Crashlytics
 
 ### 12. **FIRESTORE** - Base de datos
+
 - `FirestoreManager` - Encapsulación de operaciones
 - `addDocument()` - ID autogenerado por Firestore
 - `saveDocument()` - Actualización
@@ -112,13 +124,14 @@ Este proyecto de Android/Kotlin implementa una aplicación completa de gestión 
 ### 1. Sistema de Favoritos ⭐
 
 #### **FavoritesManager.kt**
+
 ```kotlin
 class FavoritesManager(context: Context) {
     private val dataStore: DataStore<Preferences>
-    
+
     // Flow reactivo de favoritos
     val favoritesFlow: Flow<Set<String>>
-    
+
     // Operaciones asíncronas
     suspend fun addToFavorites(userId: String)
     suspend fun removeFromFavorites(userId: String)
@@ -129,6 +142,7 @@ class FavoritesManager(context: Context) {
 ```
 
 #### **FavoritesActivity.kt**
+
 - Muestra solo usuarios favoritos
 - Observa `favoritesFlow` reactivamente
 - Permite quitar de favoritos con botón
@@ -136,6 +150,7 @@ class FavoritesManager(context: Context) {
 - Empty state cuando no hay favoritos
 
 #### **Integración en UI**
+
 - Botón de estrella en `item_user.xml`
 - Toggle favorito en `UserListActivity` y `EditUserActivity`
 - Icono cambia según estado (star_big_on / star_big_off)
@@ -144,6 +159,7 @@ class FavoritesManager(context: Context) {
 ### 2. Sistema de Historial ⭐
 
 #### **HistoryAction.kt** - Data Class
+
 ```kotlin
 data class HistoryAction(
     val userName: String,
@@ -152,21 +168,22 @@ data class HistoryAction(
     val timestamp: Long = System.currentTimeMillis()
 ) {
     enum class ActionType { CREATE, UPDATE, DELETE, VIEW }
-    
+
     fun getFormattedTime(): String // "16/11/2025 14:30"
     fun getActionText(): String // "Creó usuario"
 }
 ```
 
 #### **HistoryManager.kt**
+
 ```kotlin
 class HistoryManager(context: Context) {
     private val gson = Gson()
     private val dataStore: DataStore<Preferences>
-    
+
     // Flow reactivo del historial
     val historyFlow: Flow<List<HistoryAction>>
-    
+
     // Operaciones asíncronas
     suspend fun addAction(action: HistoryAction)
     suspend fun addCreateAction(userName: String, userId: String)
@@ -174,7 +191,7 @@ class HistoryManager(context: Context) {
     suspend fun addDeleteAction(userName: String, userId: String)
     suspend fun addViewAction(userName: String, userId: String)
     suspend fun clearHistory()
-    
+
     companion object {
         const val MAX_HISTORY_SIZE = 50 // Últimas 50 acciones
     }
@@ -182,6 +199,7 @@ class HistoryManager(context: Context) {
 ```
 
 #### **HistoryActivity.kt**
+
 - Timeline de todas las acciones (CREATE, UPDATE, DELETE, VIEW)
 - RecyclerView con `HistoryAdapter`
 - Iconos y colores según tipo de acción
@@ -190,6 +208,7 @@ class HistoryManager(context: Context) {
 - Empty state cuando no hay historial
 
 #### **HistoryAdapter.kt**
+
 - RecyclerView adapter para `List<HistoryAction>`
 - Icono dinámico según `ActionType`:
   - CREATE → `ic_input_add` (verde)
@@ -199,6 +218,7 @@ class HistoryManager(context: Context) {
 - Timestamps formateados: "dd/MM/yyyy HH:mm"
 
 #### **Integración Automática**
+
 - `AddUserActivity` → `addCreateAction()` al guardar
 - `EditUserActivity` → `addUpdateAction()` al actualizar
 - `EditUserActivity` → `addDeleteAction()` al eliminar
@@ -209,6 +229,7 @@ class HistoryManager(context: Context) {
 ## 📁 Estructura del Proyecto
 
 ### **Activities (7 total)**
+
 1. `MainActivity` - Pantalla principal con 5 botones
 2. `AddUserActivity` - Formulario añadir usuario
 3. `UserListActivity` - Lista completa de usuarios con favoritos
@@ -217,20 +238,24 @@ class HistoryManager(context: Context) {
 6. `HistoryActivity` ⭐ NUEVO - Timeline de acciones
 
 ### **Adapters (2 total)**
+
 1. `UserAdapter` - Adapter de usuarios con favoritos
 2. `HistoryAdapter` ⭐ NUEVO - Adapter de historial
 
 ### **Data Classes (2 total)**
+
 1. `User` - Modelo de usuario (nombre, edad)
 2. `HistoryAction` ⭐ NUEVO - Modelo de acción histórica
 
 ### **Managers (4 total)**
+
 1. `FirestoreManager` - Operaciones Firestore
 2. `PreferencesManager` - Preferencias básicas
 3. `FavoritesManager` ⭐ NUEVO - Gestión de favoritos
 4. `HistoryManager` ⭐ NUEVO - Gestión de historial
 
 ### **Layouts (10 total)**
+
 1. `activity_main.xml` - 5 botones
 2. `activity_add_user.xml` - Formulario
 3. `activity_user_list.xml` - RecyclerView
@@ -241,6 +266,7 @@ class HistoryManager(context: Context) {
 8. `item_history.xml` ⭐ NUEVO
 
 ### **Resources**
+
 - `strings.xml` - 74 strings (18 nuevos para favoritos/historial)
 - `colors.xml` - Material Design palette
 
@@ -249,6 +275,7 @@ class HistoryManager(context: Context) {
 ## 🔄 Flujos de Usuario
 
 ### **Flujo 1: Añadir Usuario**
+
 1. MainActivity → Botón "Añadir Usuario"
 2. AddUserActivity → Llenar formulario
 3. Guardar → Firestore.addDocument() con ID autogenerado
@@ -256,6 +283,7 @@ class HistoryManager(context: Context) {
 5. Resultado devuelto a MainActivity con Intent
 
 ### **Flujo 2: Ver y Marcar Favoritos**
+
 1. MainActivity → Botón "Ver Lista de Usuarios"
 2. UserListActivity → Muestra todos los usuarios
 3. Click en estrella → FavoritesManager.toggleFavorite()
@@ -263,6 +291,7 @@ class HistoryManager(context: Context) {
 5. Toast de confirmación
 
 ### **Flujo 3: Ver Solo Favoritos**
+
 1. MainActivity → Botón "Ver Favoritos" ⭐ NUEVO
 2. FavoritesActivity → Observa favoritesFlow
 3. Filtra usuarios de Firestore por IDs favoritos
@@ -270,6 +299,7 @@ class HistoryManager(context: Context) {
 5. Click en estrella → Quitar de favoritos
 
 ### **Flujo 4: Editar Usuario**
+
 1. MainActivity → Botón "Editar Usuario"
 2. EditUserActivity → Muestra lista de usuarios
 3. Click en usuario → Carga en formulario
@@ -278,6 +308,7 @@ class HistoryManager(context: Context) {
 6. Vuelve a la lista
 
 ### **Flujo 5: Eliminar Usuario**
+
 1. EditUserActivity → Seleccionar usuario de lista
 2. Botón "Eliminar" → AlertDialog de confirmación
 3. Confirmar → Firestore.deleteDocument()
@@ -285,6 +316,7 @@ class HistoryManager(context: Context) {
 5. Vuelve a la lista
 
 ### **Flujo 6: Ver Historial**
+
 1. MainActivity → Botón "Ver Historial" ⭐ NUEVO
 2. HistoryActivity → Observa historyFlow
 3. Timeline con últimas 50 acciones
@@ -296,6 +328,7 @@ class HistoryManager(context: Context) {
 ## 🎨 Diseño y UX
 
 ### **MainActivity**
+
 - 5 botones con iconos Material:
   - ➕ Añadir Usuario
   - 👁️ Ver Lista de Usuarios
@@ -304,12 +337,14 @@ class HistoryManager(context: Context) {
   - 🕐 Ver Historial (TonalButton)
 
 ### **FavoritesActivity**
+
 - RecyclerView con usuarios favoritos
 - Botón de estrella (quitar favorito)
 - Click en usuario → Compartir con Intent
 - Empty state: "No tienes usuarios favoritos"
 
 ### **HistoryActivity**
+
 - Timeline con RecyclerView
 - Items con icono + color según acción
 - Timestamp formateado
@@ -317,12 +352,14 @@ class HistoryManager(context: Context) {
 - Empty state: "No hay acciones registradas"
 
 ### **UserAdapter**
+
 - CardView con botón de estrella
 - Icono cambia según estado (filled/outline)
 - Click en card → Acción principal
 - Click en estrella → Toggle favorito
 
 ### **HistoryAdapter**
+
 - CardView con icono grande
 - Color dinámico según acción
 - Tres líneas de texto:
@@ -335,6 +372,7 @@ class HistoryManager(context: Context) {
 ## 🔧 Dependencias Agregadas
 
 ### **Gson - JSON Serialization**
+
 ```gradle
 // libs.versions.toml
 gson = "2.10.1"
@@ -364,26 +402,31 @@ implementation(libs.gson)
 ## 🎓 Conceptos Educativos Destacados
 
 ### **Flow + Coroutine**
+
 - Observación reactiva de favoritos y historial
 - `lifecycleScope.launch { flow.collect { ... } }`
 - Cancelación automática en onDestroy
 
 ### **DataStore con Tipos Complejos**
+
 - Set<String> para favoritos (type-safe)
 - JSON serialization con Gson para List<HistoryAction>
 - Flow para cambios reactivos
 
 ### **RecyclerView con Callbacks Opcionales**
+
 - Lambdas opcionales con default null
 - `((String) -> Unit)?` - Nullable lambda
 - Verificación con `?.invoke()`
 
 ### **Intent ACTION_SEND**
+
 - Intent implícito para compartir
 - `Intent.createChooser()` para selector de apps
 - `EXTRA_SUBJECT` y `EXTRA_TEXT`
 
 ### **AlertDialog**
+
 - Confirmación antes de eliminar
 - Builder pattern
 - Positive/Negative buttons
@@ -406,6 +449,7 @@ implementation(libs.gson)
 ## 📝 Notas Finales
 
 Este proyecto demuestra dominio completo de:
+
 - Arquitectura Android moderna
 - Programación reactiva con Flow
 - Persistencia con DataStore

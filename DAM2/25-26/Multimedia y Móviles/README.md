@@ -5,6 +5,7 @@ Esta carpeta abarca el módulo de **Multimedia y Móviles** del segundo curso de
 ## 📂 Contenido Principal
 
 ### 1. Eval/
+
 - 📱 **1EbalAzterketaApp/**: App de examen evaluación 1.
 - 🧪 **aplicacionprueba00/**: Aplicación de prueba.
 - 📝 **ariketa00/** a **ariketa02/**: Ejercicios.
@@ -16,6 +17,7 @@ Esta carpeta abarca el módulo de **Multimedia y Móviles** del segundo curso de
 - ⚙️ **SettingApp/**: App de configuraciones.
 
 ## 🛠️ Tecnologías
+
 - 🤖 **Android**: Activities, Fragments, UI con XML/Jetpack Compose, Material Design.
 - 💾 **Gestión de Datos**: Room, SharedPreferences, APIs.
 - 🎥 **Multimedia**: Camera, media playback, image processing.
@@ -23,6 +25,7 @@ Esta carpeta abarca el módulo de **Multimedia y Móviles** del segundo curso de
 - 🔔 **Características**: Background tasks, notifications, GPS, sensores, Firebase.
 
 ## 🎯 Objetivos
+
 - 🤖 Desarrollar apps Android nativas.
 - 💾 Gestionar multimedia y datos en móviles.
 - 🎨 Implementar UI/UX accesibles.

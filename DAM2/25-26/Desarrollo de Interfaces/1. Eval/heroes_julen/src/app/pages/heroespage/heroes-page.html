@@ -10,8 +10,14 @@
     <ul class="all-heroes-list">
       <li *ngFor="let hero of allHeroes; trackBy: trackById">
         <span class="hero-id">{{ hero.id }}</span>
-        <a class="all-hero-btn" [routerLink]="['/hero', hero.id]">{{ hero.name }}</a>
-        <button class="delete-btn btn btn-icon btn-danger" (click)="deleteHero(hero.id)" title="Eliminar heroe">
+        <a class="all-hero-btn" [routerLink]="['/hero', hero.id]"
+          >{{ hero.name }}</a
+        >
+        <button
+          class="delete-btn btn btn-icon btn-danger"
+          (click)="deleteHero(hero.id)"
+          title="Eliminar heroe"
+        >
           ×
         </button>
       </li>
@@ -24,12 +30,23 @@
       <form (ngSubmit)="submitAddHero()" #heroForm="ngForm">
         <label>
           Heroearen Izena:
-          <input name="name" [(ngModel)]="newHeroName" required placeholder="Ej: Spider-Man" autocomplete="off" />
+          <input
+            name="name"
+            [(ngModel)]="newHeroName"
+            required
+            placeholder="Ej: Spider-Man"
+            autocomplete="off"
+          />
         </label>
         <label>
           Superboterea:
-          <input name="power" [(ngModel)]="newHeroPower" required placeholder="Ej: Telarañas y agilidad"
-            autocomplete="off" />
+          <input
+            name="power"
+            [(ngModel)]="newHeroPower"
+            required
+            placeholder="Ej: Telarañas y agilidad"
+            autocomplete="off"
+          />
         </label>
         <div class="modal-actions">
           <button type="button" (click)="closeAddHero()">Itxi</button>

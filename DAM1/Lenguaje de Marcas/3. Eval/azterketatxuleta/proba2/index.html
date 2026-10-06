@@ -1,56 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Repaso</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
+  <body>
     <div id="kontenedorea"></div>
     <script>
-        let produktuak = [];
+      let produktuak = [];
 
-        fetch('denda.json')
-            .then(response => response.json())
-            .then(data => {
-                produktuak = data.tienda.productos;
-                erakutsiJSON(produktuak);
-            })
-            .catch(error => console.error('Error fetching JSON:', error));
+      fetch("denda.json")
+        .then((response) => response.json())
+        .then((data) => {
+          produktuak = data.tienda.productos;
+          erakutsiJSON(produktuak);
+        })
+        .catch((error) => console.error("Error fetching JSON:", error));
 
+      function erakutsiJSON(produktuak) {
+        const kontenedorea = document.getElementById("kontenedorea");
 
-        function erakutsiJSON(produktuak) {
-            const kontenedorea = document.getElementById('kontenedorea');
+        produktuak.forEach((produktua) => {
+          const kutxa = document.createElement("div");
+          kutxa.className = "txartela";
 
-            produktuak.forEach(produktua => {
-                const kutxa = document.createElement('div');
-                kutxa.className = 'txartela';
+          const irudia = document.createElement("img");
+          irudia.src = produktua.foto;
+          irudia.alt = produktua.nombre;
 
-                const irudia = document.createElement('img');
-                irudia.src = produktua.foto;
-                irudia.alt = produktua.nombre;
+          const titulua = document.createElement("h2");
+          titulua.textContent = produktua.nombre;
 
-                const titulua = document.createElement('h2');
-                titulua.textContent = produktua.nombre;
+          const descripcionP = document.createElement("p");
+          descripcionP.textContent = produktua.kaleratzeurtea;
 
-                const descripcionP = document.createElement('p');
-                descripcionP.textContent = produktua.kaleratzeurtea;
+          const precio = document.createElement("p");
+          precio.textContent = produktua.precio + "€";
 
-                const precio = document.createElement('p');
-                precio.textContent = produktua.precio + '€';
+          kutxa.appendChild(irudia);
+          kutxa.appendChild(titulua);
+          kutxa.appendChild(descripcionP);
+          kutxa.appendChild(precio);
 
-                kutxa.appendChild(irudia);
-                kutxa.appendChild(titulua);
-                kutxa.appendChild(descripcionP);
-                kutxa.appendChild(precio);
-
-                kontenedorea.appendChild(kutxa);
-            });
-        }
+          kontenedorea.appendChild(kutxa);
+        });
+      }
     </script>
-</body>
-
+  </body>
 </html>

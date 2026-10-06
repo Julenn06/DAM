@@ -4,21 +4,20 @@ import { Component } from '@angular/core';
   selector: 'app-welcome',
   standalone: true,
   templateUrl: './welcome.component.html',
-  styleUrl: './welcome.component.css'
+  styleUrl: './welcome.component.css',
 })
 export class WelcomeComponent {
-
-    ngOnInit(): void {
-      if (!localStorage.getItem('loggedInUser')) {
-        window.location.href = '/login';
-      }
+  ngOnInit(): void {
+    if (!localStorage.getItem('loggedInUser')) {
+      window.location.href = '/login';
     }
+  }
 
   suma_resta() {
-      window.location.href = "/suma_resta";
+    window.location.href = '/suma_resta';
   }
 
   navigateToArrays() {
-    window.location.href = "/arrays";
+    window.location.href = '/arrays';
   }
 }

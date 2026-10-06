@@ -5,16 +5,16 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   protected readonly title = signal('first-project');
 
   ngOnInit() {
     if (window.location.href.includes('login')) {
-      const button = document.getElementById("buttonlogout");
+      const button = document.getElementById('buttonlogout');
       if (button) {
-        button.style.display = "none";
+        button.style.display = 'none';
       }
     }
   }
@@ -24,4 +24,3 @@ export class App {
     window.location.href = 'login';
   }
 }
-

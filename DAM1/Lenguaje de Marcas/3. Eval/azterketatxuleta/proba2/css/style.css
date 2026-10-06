@@ -1,46 +1,46 @@
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 body {
-    background-color: bisque;
+  background-color: bisque;
 }
 
 #kontenedorea {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .txartela {
-    border: solid 1px rgb(51, 51, 51);
-    border-radius: 10px;
-    width: 200px;
-    text-align: center;
-    margin: 10px;
-    background-color: white;
-    padding: 10px;
+  border: solid 1px rgb(51, 51, 51);
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+  margin: 10px;
+  background-color: white;
+  padding: 10px;
 }
 
 .txartela img {
-    width: 90%;
-    border-radius: 10px;
-    height: 250px;
-    object-fit: cover;
-    display: inline-block;
-    margin-top: 5px;
+  width: 90%;
+  border-radius: 10px;
+  height: 250px;
+  object-fit: cover;
+  display: inline-block;
+  margin-top: 5px;
 }
 
 .txartela a {
-    background-color: rgb(56, 115, 223);
-    color: white;
-    padding: 4px, 8px;
-    display: inline-block;
-    text-decoration: none;
-    padding: 5px;
-    border-radius: 5px;
+  background-color: rgb(56, 115, 223);
+  color: white;
+  padding: 4px, 8px;
+  display: inline-block;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .txartela a:hover {
-    background-color: rgb(23, 70, 145);
+  background-color: rgb(23, 70, 145);
 }

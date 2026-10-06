@@ -1,37 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="eu">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Botoiak eta Ekintzak</title>
     <script>
-        function showURL() {
-            alert("https://berria.eus");
-        }
+      function showURL() {
+        alert("https://berria.eus");
+      }
 
-        function openWebsite() {
-            const newWindow = window.open("https://berria.eus", "_blank");
-            if (!newWindow) {
-                alert("Ezinezkoa da leiho berria irekitzea. Nabigatzaileak blokeatu du.");
-            }
+      function openWebsite() {
+        const newWindow = window.open("https://berria.eus", "_blank");
+        if (!newWindow) {
+          alert(
+            "Ezinezkoa da leiho berria irekitzea. Nabigatzaileak blokeatu du.",
+          );
         }
+      }
 
-        function closeWindow() {
-            if (confirm("Ziur zaude leihoa itxi nahi duzula?")) {
-                window.close();
-            }
+      function closeWindow() {
+        if (confirm("Ziur zaude leihoa itxi nahi duzula?")) {
+          window.close();
         }
+      }
     </script>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>HTML dokumentua: 3 botoi</h1>
-    <button onclick="showURL()">Klikatu botoia web orria zein den aztertzeko</button>
-    <br><br>
+    <button onclick="showURL()">
+      Klikatu botoia web orria zein den aztertzeko
+    </button>
+    <br /><br />
     <button onclick="openWebsite()">Ireki Berria.eus</button>
-    <br><br>
+    <br /><br />
     <button onclick="closeWindow()">Itxi leihoa</button>
-</body>
-
+  </body>
 </html>

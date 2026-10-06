@@ -26,7 +26,10 @@ export class HeroesPage implements OnInit {
   newHeroName = '';
   newHeroPower = '';
 
-  constructor(private cdr: ChangeDetectorRef, private remote: HeroesRemoteService) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private remote: HeroesRemoteService,
+  ) {}
 
   ngOnInit(): void {
     this.loadHeroes();
@@ -40,7 +43,7 @@ export class HeroesPage implements OnInit {
       },
       error: (err) => {
         console.error('Error loading heroes', err);
-      }
+      },
     });
   }
 
@@ -49,7 +52,7 @@ export class HeroesPage implements OnInit {
       next: () => {
         this.loadHeroes();
       },
-      error: (err) => console.error('Delete failed', err)
+      error: (err) => console.error('Delete failed', err),
     });
   }
 
@@ -63,7 +66,7 @@ export class HeroesPage implements OnInit {
         this.loadHeroes();
         this.closeAddHero();
       },
-      error: (err) => console.error('Create failed', err)
+      error: (err) => console.error('Create failed', err),
     });
   }
 

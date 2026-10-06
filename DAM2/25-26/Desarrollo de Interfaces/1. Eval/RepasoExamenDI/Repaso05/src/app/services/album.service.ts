@@ -4,12 +4,12 @@ import { Observable } from 'rxjs';
 import { Album } from '../models/album.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AlbumService {
   private apiUrl = 'http://localhost:3000/albumes';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // 16. Obtener todos los álbumes
   getAlbumes(): Observable<Album[]> {

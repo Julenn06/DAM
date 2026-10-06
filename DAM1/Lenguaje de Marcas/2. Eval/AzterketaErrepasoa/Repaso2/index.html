@@ -1,113 +1,135 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Errepasoa2</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
+  <body>
     <section>
-        <form class="container">
-            <h2>Datuak</h2>
-            <fieldset>
-                <legend>Eroslearen Datuak</legend>
-                <div id="div1">
-                    <br>
-                    <label for="izena">Izena - Abizena</label>
-                    <br>
-                    <input type="text" name="izena" id="izena" placeholder="Izena eta Abizena">
-                    <br>
-                    <label for="email">Email</label>
-                    <br>
-                    <input type="email" name="email" id="email" placeholder="Email">
-                    <br>
-                    <label for="telefonoa">Telefonoa</label>
-                    <br>
-                    <input type="tel" name="telefonoa" id="telefonoa" placeholder="Telefonoa">
-                    <br>
-                    <label for="helbidea">Helbidea</label>
-                    <br>
-                    <input type="text" name="helbidea" id="helbidea" placeholder="Helbidea">
-                    <br>
-                    <br>
-                    <div>
-                        <label>Nongoa zara</label>
-                        <br>
-                        <br>
-                        <input type="radio" id="Bilbo" name="aukera" value="Bilbo">
-                        <label for="Bilbo" class="aukera">Bilbo</label>
-                        <br>
-                        <input type="radio" id="Kanpokoa" name="aukera" value="Kanpokoa">
-                        <label for="Kanpokoa" class="aukera">Kanpokoa</label>
-                    </div>
-                    <br>
-                    <label for="postakodea">Posta Kodea</label>
-                    <br>
-                    <input type="text" name="postakodea" id="postakodea" placeholder="Posta Kodea">
-                    <br>
-                    <label for="generoa">Generoa</label>
-                    <br>
-                    <select name="generoa" id="generoa">
-                        <option value="0" label="--Aukeratu--"></option>
-                        <option value="Gizona">Gizona</option>
-                        <option value="Emakumea">Emakumea</option>
-                        <option value="Binarioa">Binarioa</option>
-                    </select>
-                    <br>
-                    <br>
-                </div>
-                <button type="button" onclick="formulario()">Bidali</button>
-            </fieldset>
-        </form>
+      <form class="container">
+        <h2>Datuak</h2>
+        <fieldset>
+          <legend>Eroslearen Datuak</legend>
+          <div id="div1">
+            <br />
+            <label for="izena">Izena - Abizena</label>
+            <br />
+            <input
+              type="text"
+              name="izena"
+              id="izena"
+              placeholder="Izena eta Abizena"
+            />
+            <br />
+            <label for="email">Email</label>
+            <br />
+            <input type="email" name="email" id="email" placeholder="Email" />
+            <br />
+            <label for="telefonoa">Telefonoa</label>
+            <br />
+            <input
+              type="tel"
+              name="telefonoa"
+              id="telefonoa"
+              placeholder="Telefonoa"
+            />
+            <br />
+            <label for="helbidea">Helbidea</label>
+            <br />
+            <input
+              type="text"
+              name="helbidea"
+              id="helbidea"
+              placeholder="Helbidea"
+            />
+            <br />
+            <br />
+            <div>
+              <label>Nongoa zara</label>
+              <br />
+              <br />
+              <input type="radio" id="Bilbo" name="aukera" value="Bilbo" />
+              <label for="Bilbo" class="aukera">Bilbo</label>
+              <br />
+              <input
+                type="radio"
+                id="Kanpokoa"
+                name="aukera"
+                value="Kanpokoa"
+              />
+              <label for="Kanpokoa" class="aukera">Kanpokoa</label>
+            </div>
+            <br />
+            <label for="postakodea">Posta Kodea</label>
+            <br />
+            <input
+              type="text"
+              name="postakodea"
+              id="postakodea"
+              placeholder="Posta Kodea"
+            />
+            <br />
+            <label for="generoa">Generoa</label>
+            <br />
+            <select name="generoa" id="generoa">
+              <option value="0" label="--Aukeratu--"></option>
+              <option value="Gizona">Gizona</option>
+              <option value="Emakumea">Emakumea</option>
+              <option value="Binarioa">Binarioa</option>
+            </select>
+            <br />
+            <br />
+          </div>
+          <button type="button" onclick="formulario()">Bidali</button>
+        </fieldset>
+      </form>
     </section>
-    <br>
-    <br>
+    <br />
+    <br />
 
     <div id="div2">
-        <table id="taula" class="hidden">
-            <tr>
-                <th>Izena</th>
-                <th>Email</th>
-                <th>Telefonoa</th>
-                <th>Helbidea</th>
-                <th>Nongoa</th>
-                <th>Posta Kodea</th>
-                <th>Generoa</th>
-            </tr>
-        </table>
+      <table id="taula" class="hidden">
+        <tr>
+          <th>Izena</th>
+          <th>Email</th>
+          <th>Telefonoa</th>
+          <th>Helbidea</th>
+          <th>Nongoa</th>
+          <th>Posta Kodea</th>
+          <th>Generoa</th>
+        </tr>
+      </table>
     </div>
     <script src="js/script.js"></script>
-    <br>
-    <br>
+    <br />
+    <br />
     <div id="div3">
-        <table id="taula2" class="hidden">
-            <tr>
-                <th>Izena</th>
-            </tr>
-            <tr>
-                <th>Email</th>
-            </tr>
-            <tr>
-                <th>Telefonoa</th>
-            </tr>
-            <tr>
-                <th>Helbidea</th>
-            </tr>
-            <tr>
-                <th>Nongoa</th>
-            </tr>
-            <tr>
-                <th>Posta Kodea</th>
-            </tr>
-            <tr>
-                <th>Generoa</th>
-            </tr>
-        </table>
+      <table id="taula2" class="hidden">
+        <tr>
+          <th>Izena</th>
+        </tr>
+        <tr>
+          <th>Email</th>
+        </tr>
+        <tr>
+          <th>Telefonoa</th>
+        </tr>
+        <tr>
+          <th>Helbidea</th>
+        </tr>
+        <tr>
+          <th>Nongoa</th>
+        </tr>
+        <tr>
+          <th>Posta Kodea</th>
+        </tr>
+        <tr>
+          <th>Generoa</th>
+        </tr>
+      </table>
     </div>
-
-</body>
-
+  </body>
 </html>

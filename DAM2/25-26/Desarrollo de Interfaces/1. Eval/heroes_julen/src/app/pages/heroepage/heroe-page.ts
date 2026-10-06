@@ -1,4 +1,9 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, OnInit } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, ActivatedRoute } from '@angular/router';
@@ -23,7 +28,7 @@ export class HeroePage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private remote: HeroesRemoteService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +39,7 @@ export class HeroePage implements OnInit {
           this.hero = h;
           this.cdr.markForCheck();
         },
-        error: (err) => console.error('Failed to load hero', err)
+        error: (err) => console.error('Failed to load hero', err),
       });
     }
   }
@@ -57,7 +62,7 @@ export class HeroePage implements OnInit {
     if (this.hero && this.editName.trim() && this.editPower.trim()) {
       const changes: Partial<Hero> = {
         name: this.editName.trim(),
-        power: this.editPower.trim()
+        power: this.editPower.trim(),
       };
       this.remote.updateHero(this.hero.id, changes).subscribe({
         next: (updated) => {
@@ -67,7 +72,7 @@ export class HeroePage implements OnInit {
           this.editPower = '';
           this.cdr.markForCheck();
         },
-        error: (err) => console.error('Update failed', err)
+        error: (err) => console.error('Update failed', err),
       });
     }
   }

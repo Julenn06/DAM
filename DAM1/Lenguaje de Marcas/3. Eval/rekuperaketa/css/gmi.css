@@ -1,53 +1,54 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 fieldset {
-    border: 2px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
-    width: 300px;
+  border: 2px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 300px;
 }
 
-label, input {
-    display: block;
-    width: 100%;
+label,
+input {
+  display: block;
+  width: 100%;
 }
 
 label {
-    text-align: center;
+  text-align: center;
 }
 
 button {
-    width: 45%;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
+  width: 45%;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 button[type="button"] {
-    background-color: #4CAF50;
-    color: white;
-    float: left;
+  background-color: #4caf50;
+  color: white;
+  float: left;
 }
 
 button[type="button"]:active {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
 button[type="submit"] {
-    background-color: #008CBA;
-    color: white;
-    float: right;
+  background-color: #008cba;
+  color: white;
+  float: right;
 }
 
 button[type="submit"]:active {
-    background-color: #007bb5;
+  background-color: #007bb5;
 }

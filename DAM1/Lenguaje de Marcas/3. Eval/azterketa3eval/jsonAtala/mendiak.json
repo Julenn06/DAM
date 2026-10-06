@@ -23,7 +23,7 @@
     "herria": "Atxondo",
     "lurraldea": "Bizkaia",
     "irudia": "anboto.jpg",
-    "koordenatuak": { "latitudea": 43.1167, "longitudea": -2.6000 },
+    "koordenatuak": { "latitudea": 43.1167, "longitudea": -2.6 },
     "deskribapena": "Anboto mendia euskal mitologiaren arabera Mari jainkosaren bizilekua da."
   },
   {
@@ -50,7 +50,7 @@
     "herria": "Larraitz",
     "lurraldea": "Gipuzkoa",
     "irudia": "txindoki.jpg",
-    "koordenatuak": { "latitudea": 43.0000, "longitudea": -2.0833 },
+    "koordenatuak": { "latitudea": 43.0, "longitudea": -2.0833 },
     "deskribapena": "‘Larrun Txiki’ izenez ere ezaguna, oso mendi ikonikoa da Euskal Herrian."
   },
   {

@@ -5,43 +5,25 @@
         "$": {
           "deskribapena": "IBMk PCa ezagutarazten du."
         },
-        "eguna": [
-          "12"
-        ],
-        "hilea": [
-          "8"
-        ],
-        "urtea": [
-          "1981"
-        ]
+        "eguna": ["12"],
+        "hilea": ["8"],
+        "urtea": ["1981"]
       },
       {
         "$": {
           "deskribapena": "Googleren sorrera"
         },
-        "eguna": [
-          "4"
-        ],
-        "hilea": [
-          "9"
-        ],
-        "urtea": [
-          "1998"
-        ]
+        "eguna": ["4"],
+        "hilea": ["9"],
+        "urtea": ["1998"]
       },
       {
         "$": {
           "deskribapena": "Facebooken sorrera"
         },
-        "eguna": [
-          "4"
-        ],
-        "hilea": [
-          "2"
-        ],
-        "urtea": [
-          "2004"
-        ]
+        "eguna": ["4"],
+        "hilea": ["2"],
+        "urtea": ["2004"]
       }
     ]
   }

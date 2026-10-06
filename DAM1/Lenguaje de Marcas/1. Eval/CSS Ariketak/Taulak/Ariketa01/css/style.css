@@ -1,32 +1,31 @@
 body {
-    background-color:blanchedalmond;
+  background-color: blanchedalmond;
 }
 
 tr * {
-    border: 1px;
-    border-style: double;
-
+  border: 1px;
+  border-style: double;
 }
 
 th {
-    width: 10%;
+  width: 10%;
 }
 
 caption {
-    text-transform: uppercase;
-    font-size: 20px;
-    letter-spacing: 5px;
-    text-align: left;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 5px;
+  text-align: left;
 }
 
 td {
-    padding-bottom: 3em;
-    padding-right: 3em;
+  padding-bottom: 3em;
+  padding-right: 3em;
 }
 
 td:hover {
-    background-color: white;
-    text-align: center;
-    font-size: 25px;
-    padding: 0%;
+  background-color: white;
+  text-align: center;
+  font-size: 25px;
+  padding: 0%;
 }

@@ -70,6 +70,7 @@ Firestore (base de datos)
 ```
 
 **Relaciones:**
+
 - Un alumno puede tener **una referencia** a un curso (campo `idCurso`)
 - Esto permite consultas tipo JOIN: "Todos los alumnos del curso X"
 
@@ -133,6 +134,7 @@ Conectando a Firestore...
 ### 1. Gestión de Alumnos
 
 **Operaciones disponibles:**
+
 - **Crear:** Agregar nuevo alumno con nombre, edad, fecha de nacimiento
 - **Listar:** Ver todos los alumnos registrados
 - **Buscar por ID:** Buscar alumno específico por su ID de documento
@@ -143,6 +145,7 @@ Conectando a Firestore...
 - **Eliminar:** Borrar alumno de Firestore
 
 **Ejemplo de creación:**
+
 ```
 Nombre: María García
 Edad: 19
@@ -155,6 +158,7 @@ ID del curso (opcional): curso_ad_001
 ### 2. Gestión de Cursos
 
 **Operaciones disponibles:**
+
 - **Crear:** Nuevo curso con nombre y descripción
 - **Listar:** Ver todos los cursos
 - **Buscar por ID:** Buscar curso específico
@@ -162,6 +166,7 @@ ID del curso (opcional): curso_ad_001
 - **Eliminar:** Borrar curso (con advertencia sobre referencias)
 
 **Ejemplo de creación:**
+
 ```
 Nombre del curso: Acceso a Datos
 Descripción: Gestión de ficheros, XML, JSON y bases de datos
@@ -178,6 +183,7 @@ Demuestra cómo vincular documentos entre colecciones:
 - **Eliminar asignación:** Quita la referencia del curso
 
 **Ejemplo:**
+
 ```
 Introduce el ID del alumno: aBc123Xyz
 Introduce el ID del curso: curso_ad_001
@@ -190,14 +196,17 @@ Introduce el ID del curso: curso_ad_001
 Exporta datos de Firestore a archivos locales:
 
 **Formatos disponibles:**
+
 - **XML:** Estructura jerárquica con etiquetas, fácil de procesar
 - **DAT:** Texto plano separado por `;`
 
 **Archivos generados:**
+
 - `alumnos_export.xml` / `alumnos_export.dat`
 - `cursos_export.xml` / `cursos_export.dat`
 
 **Formato XML de alumnos:**
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <alumnos>
@@ -212,6 +221,7 @@ Exporta datos de Firestore a archivos locales:
 ```
 
 **Formato DAT de alumnos:**
+
 ```
 aBc123Xyz;María García;19;15/03/2005;curso_ad_001
 ```
@@ -222,12 +232,12 @@ aBc123Xyz;María García;19;15/03/2005;curso_ad_001
 
 ### 1. Firestore vs SQL
 
-| Característica | SQL (Relacional) | Firestore (NoSQL) |
-|----------------|------------------|-------------------|
-| Estructura | Tablas con esquema fijo | Colecciones de documentos JSON |
-| Relaciones | Foreign Keys, JOINs | Referencias manuales |
-| Escalabilidad | Vertical (más potente servidor) | Horizontal (distribuido) |
-| Consultas | SQL complejo | Queries limitadas + filtros client-side |
+| Característica | SQL (Relacional)                | Firestore (NoSQL)                       |
+| -------------- | ------------------------------- | --------------------------------------- |
+| Estructura     | Tablas con esquema fijo         | Colecciones de documentos JSON          |
+| Relaciones     | Foreign Keys, JOINs             | Referencias manuales                    |
+| Escalabilidad  | Vertical (más potente servidor) | Horizontal (distribuido)                |
+| Consultas      | SQL complejo                    | Queries limitadas + filtros client-side |
 
 ### 2. Operaciones CRUD en Firestore
 
@@ -265,11 +275,13 @@ db.collection("alumnos")
 ### 4. Relaciones entre Colecciones
 
 **Referencia simple (ID):**
+
 ```java
 alumno.setIdCurso("curso_ad_001");  // Guardar ID como String
 ```
 
 **Alternativa (DocumentReference):**
+
 ```java
 DocumentReference cursoRef = db.collection("cursos").document("curso_ad_001");
 data.put("cursoRef", cursoRef);  // Guardar referencia completa
@@ -331,12 +343,14 @@ Date fecha = document.getDate("birthDate");
 ## ⚠️ Notas Importantes
 
 ### Limitaciones de Firestore
+
 - **Búsqueda full-text:** No nativa, se hace client-side
 - **Índices compuestos:** Necesarios para múltiples `where`
 - **Transacciones:** Limitadas a 500 documentos
 - **Costos:** Lectura/escritura se cobran por operación
 
 ### Mejoras Posibles
+
 1. **Validaciones:** Añadir más controles de entrada
 2. **Logging:** Usar SLF4J para logs estructurados
 3. **Tests:** JUnit para probar controllers

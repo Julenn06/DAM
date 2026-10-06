@@ -19,7 +19,7 @@ import { Pelicula } from '../../models/pelicula.model';
     MatSelectModule,
     MatFormFieldModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './pelicula-create.html',
   styleUrl: './pelicula-create.css',
@@ -36,12 +36,24 @@ export class PeliculaCreate {
     sinopsis: '',
     poster: '',
     presupuesto: 0,
-    recaudacion: 0
+    recaudacion: 0,
   };
 
-  generos = ['Acción', 'Comedia', 'Drama', 'Terror', 'Ciencia Ficción', 'Fantasía', 'Romance', 'Documental'];
+  generos = [
+    'Acción',
+    'Comedia',
+    'Drama',
+    'Terror',
+    'Ciencia Ficción',
+    'Fantasía',
+    'Romance',
+    'Documental',
+  ];
 
-  constructor(private peliculasService: PeliculasService, private router: Router) {}
+  constructor(
+    private peliculasService: PeliculasService,
+    private router: Router,
+  ) {}
 
   onSubmit() {
     if (this.isValid()) {
@@ -66,12 +78,13 @@ export class PeliculaCreate {
   }
 
   onActoresChange(value: string) {
-    this.pelicula.actores = value.split(',').map(actor => actor.trim()).filter(actor => actor);
+    this.pelicula.actores = value
+      .split(',')
+      .map((actor) => actor.trim())
+      .filter((actor) => actor);
   }
 
   cancel() {
     this.router.navigate(['/peliculas']);
   }
 }
-
-

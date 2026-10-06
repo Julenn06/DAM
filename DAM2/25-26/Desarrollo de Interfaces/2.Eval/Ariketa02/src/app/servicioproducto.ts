@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Producto } from './interfaceproducto';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class Servicioproducto {
   private http = inject(HttpClient);

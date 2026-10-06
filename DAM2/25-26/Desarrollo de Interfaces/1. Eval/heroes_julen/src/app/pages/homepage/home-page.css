@@ -6,9 +6,11 @@
 .home-welcome h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg,
-      var(--color-primary),
-      var(--color-secondary));
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -33,9 +35,11 @@
 }
 
 .top-hero-btn {
-  background: linear-gradient(135deg,
-      var(--color-secondary),
-      var(--color-primary));
+  background: linear-gradient(
+    135deg,
+    var(--color-secondary),
+    var(--color-primary)
+  );
   color: var(--color-text-light);
   padding: 1.2rem 2rem;
   font-size: 1.1rem;

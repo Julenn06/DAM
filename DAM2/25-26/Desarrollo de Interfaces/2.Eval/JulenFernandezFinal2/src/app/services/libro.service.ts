@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Libro } from '../models/libro.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LibroService {
   private apiUrl = 'http://localhost:3000/libros';

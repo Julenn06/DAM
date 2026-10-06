@@ -1,4 +1,4 @@
-let frutak = ['sagarra', 'platanoa', 'laranja'];
+let frutak = ["sagarra", "platanoa", "laranja"];
 
 let frutaSartu;
 

@@ -23,7 +23,7 @@ import { Pelicula } from '../../models/pelicula.model';
     MatFormFieldModule,
     MatIconModule,
     MatPaginatorModule,
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './pelicula-list.html',
   styleUrl: './pelicula-list.css',
@@ -40,7 +40,10 @@ export class PeliculaList implements OnInit {
   pageIndex = 0;
   totalPeliculas = 0;
 
-  constructor(private peliculasService: PeliculasService, private router: Router) {}
+  constructor(
+    private peliculasService: PeliculasService,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     this.loadPeliculas();
@@ -52,7 +55,9 @@ export class PeliculaList implements OnInit {
       this.filteredPeliculas = peliculas;
       this.totalPeliculas = peliculas.length;
       this.generos = [...new Set(peliculas.map((p: Pelicula) => p.genero))];
-      this.anos = [...new Set(peliculas.map((p: Pelicula) => p.ano))].sort((a: number, b: number) => b - a);
+      this.anos = [...new Set(peliculas.map((p: Pelicula) => p.ano))].sort(
+        (a: number, b: number) => b - a,
+      );
       this.applyFilters();
     });
   }
@@ -61,18 +66,19 @@ export class PeliculaList implements OnInit {
     let filtered = this.peliculas;
 
     if (this.searchQuery) {
-      filtered = filtered.filter(p =>
-        p.titulo.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        p.director.toLowerCase().includes(this.searchQuery.toLowerCase())
+      filtered = filtered.filter(
+        (p) =>
+          p.titulo.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          p.director.toLowerCase().includes(this.searchQuery.toLowerCase()),
       );
     }
 
     if (this.selectedGenero) {
-      filtered = filtered.filter(p => p.genero === this.selectedGenero);
+      filtered = filtered.filter((p) => p.genero === this.selectedGenero);
     }
 
     if (this.selectedAno) {
-      filtered = filtered.filter(p => p.ano === this.selectedAno);
+      filtered = filtered.filter((p) => p.ano === this.selectedAno);
     }
 
     this.filteredPeliculas = filtered;

@@ -1,192 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-
-<style>
-    table {
+    <style>
+      table {
         display: none;
-    }
-</style>
+      }
+    </style>
+  </head>
 
-<body>
+  <body>
+    <label>Izena: <input type="text" name="izena" id="izena" /></label>
 
-    <label>Izena: <input type="text" name="izena" id="izena"></label>
+    <br /><br />
 
-    <br><br>
+    <label
+      >Email:
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="ejemplo@gmail.com"
+    /></label>
 
-    <label>Email: <input type="email" name="email" id="email" placeholder="ejemplo@gmail.com"></label>
+    <br /><br />
 
-    <br><br>
+    <label
+      >Telefonoa: <input type="text" name="telefonoa" id="telefonoa"
+    /></label>
 
-    <label>Telefonoa: <input type="text" name="telefonoa" id="telefonoa"></label>
+    <br /><br />
 
-    <br><br>
+    <label>Data: <input type="date" name="data" id="data" /></label>
 
-    <label>Data: <input type="date" name="data" id="data"></label>
+    <br /><br />
 
-    <br><br>
+    <label>NAN: <input type="text" name="nan" id="nan" /></label>
 
-    <label>NAN: <input type="text" name="nan" id="nan"></label>
-
-    <br><br>
+    <br /><br />
 
     <label>Kontzertua</label>
     <select name="sarrera" id="sarrera">
-        <option value="0">--</option>
-        <option value="28">Sen Senra (28€)</option>
-        <option value="18">Chill Mafia (18€)</option>
-        <option value="15">Merina Gris (15€)</option>
+      <option value="0">--</option>
+      <option value="28">Sen Senra (28€)</option>
+      <option value="18">Chill Mafia (18€)</option>
+      <option value="15">Merina Gris (15€)</option>
     </select>
 
-    <br><br>
+    <br /><br />
 
-    <label>Kantitatea: <input type="number" name=kantitatea" id="kantitatea"></label>
+    <!-- Línea corregida con las comillas dobles correspondientes -->
+    <label
+      >Kantitatea: <input type="number" name="kantitatea" id="kantitatea"
+    /></label>
 
-    <br><br>
+    <br /><br />
 
     <button onclick="erosi()">Erosi</button>
 
-    <br><br>
+    <br /><br />
 
     <table border="2">
-        <thead>
-            <tr>
-                <th>Bezeroa</th>
-                <th>Emaila</th>
-                <th>Telefonoa</th>
-                <th>Sarrera</th>
-                <th>Kopurua</th>
-                <th>Prezioa</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
+      <thead>
+        <tr>
+          <th>Bezeroa</th>
+          <th>Emaila</th>
+          <th>Telefonoa</th>
+          <th>Sarrera</th>
+          <th>Kopurua</th>
+          <th>Prezioa</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
     </table>
     <script>
-        function erosi() {
-            let balidazioa = true;
-            let izena = document.getElementById("izena").value;
-            let email = document.getElementById("email").value;
-            let telefonoa = document.getElementById("telefonoa").value;
-            let data = document.getElementById("data").value;
-            let nan = document.getElementById("nan").value;
-            let sarrera = document.getElementById("sarrera").value;
-            let kantitatea = document.getElementById("kantitatea").value;
+      function erosi() {
+        let balidazioa = true;
+        let izena = document.getElementById("izena").value;
+        let email = document.getElementById("email").value;
+        let telefonoa = document.getElementById("telefonoa").value;
+        let data = document.getElementById("data").value;
+        let nan = document.getElementById("nan").value;
+        let sarrera = document.getElementById("sarrera").value;
+        let kantitatea = document.getElementById("kantitatea").value;
 
-            if (izena.length === 0) {
-                alert("Izena ezin da hutsik egon.");
-                balidazioa = false;
-            }
-
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                alert("Sartu baliozko email bat.");
-                balidazioa = false;
-            }
-
-            if (telefonoa.length != 9) {
-                alert("Sartu baliozko zenbaki bat.");
-                balidazioa = false;
-            }
-
-            if (data === "") {
-                alert("Data hautatu behar duzu.");
-                balidazioa = false;
-            } else {
-                let hoy = new Date();
-                let fechaNacimiento = new Date(data);
-                let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
-
-                if (hoy < new Date(fechaNacimiento.setFullYear(hoy.getFullYear()))) {
-                    edad--;
-                }
-
-                if (edad < 18) {
-                    let fechaFormateada = fechaNacimiento.toISOString().split("T")[0];
-                    alert(
-                        `Adingabea zara. 18 urte edo gehiago izan behar duzu. Sartu data baliozkoa (${fechaFormateada}).`
-                    );
-                    balidazioa = false;
-                }
-            }
-
-            nan = String(nan);
-            let nanArray = nan.split("");
-            let zenbakia = nanArray.slice(0, 8).join("");
-            let zbk = parseInt(zenbakia, 10);
-            let hondarra = zbk % 23;
-
-            const letrak = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q",
-                "V", "H", "L", "C", "K", "E"
-            ];
-
-            let emaitza = letrak[hondarra];
-
-            if (nanArray[8].toUpperCase() != emaitza) {
-                alert("Idatzi baliozko NAN bat.");
-                balidazioa = false;
-            }
-
-            if (sarrera === "0") {
-                alert("Aukeratu kontzertu baten Sarrera");
-                balidazioa = false;
-            }
-
-            if (kantitatea <= 0) {
-                alert("Aukeratu nahi dituzun sarrerak");
-                balidazioa = false;
-            }
-
-            if (balidazioa === true) {
-                document.querySelector('table').style.display = 'table';
-                let taula = document.querySelector('table');
-                let body = taula.tBodies[0];
-                let lerroa = body.insertRow();
-                let g1 = lerroa.insertCell();
-                g1.innerText = izena;
-                let g2 = lerroa.insertCell();
-                g2.innerText = email;
-                let g3 = lerroa.insertCell();
-                g3.innerText = telefonoa;
-                let g4 = lerroa.insertCell();
-                g4.innerText = sarrera + "€";
-                let g5 = lerroa.insertCell();
-                g5.innerText = kantitatea;
-                let g6 = lerroa.insertCell();
-                g6.innerText = sarrera * kantitatea;
-            }
-
-            /* DE IZQUIERDA A DERECHA
-            if (balidazioa === true) {
-                document.querySelector('table').style.display = 'table';
-                let taula = document.querySelector('table');
-                let body = taula.tBodies[0];
-
-                // Selecciona la primera fila o crea una nueva
-                let lerroa = body.rows[0] || body.insertRow();
-
-                // Añadir celdas continuamente en la misma fila
-                let g1 = lerroa.insertCell();
-                g1.innerText = izena; // Primera celda de la fila
-                let g2 = lerroa.insertCell();
-                g2.innerText = email; // Segunda celda
-                let g3 = lerroa.insertCell();
-                g3.innerText = telefonoa; // Tercera celda
-                let g4 = lerroa.insertCell();
-                g4.innerText = sarrera + "€"; // Cuarta celda
-                let g5 = lerroa.insertCell();
-                g5.innerText = kantitatea; // Quinta celda
-                let g6 = lerroa.insertCell();
-                g6.innerText = sarrera * kantitatea; // Sexta celda
-            }
-*/
+        if (izena.length === 0) {
+          alert("Izena ezin da hutsik egon.");
+          balidazioa = false;
         }
-    </script>
-</body>
 
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+\$/.test(email)) {
+          alert("Sartu baliozko email bat.");
+          balidazioa = false;
+        }
+
+        if (telefonoa.length != 9) {
+          alert("Sartu baliozko zenbaki bat.");
+          balidazioa = false;
+        }
+
+        if (data === "") {
+          alert("Data hautatu behar duzu.");
+          balidazioa = false;
+        } else {
+          let hoy = new Date();
+          let fechaNacimiento = new Date(data);
+          let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+
+          if (hoy < new Date(fechaNacimiento.setFullYear(hoy.getFullYear()))) {
+            exactAge--;
+          }
+
+          if (edad < 18) {
+            let fechaFormateada = fechaNacimiento.toISOString().split("T")[0];
+            alert(
+              `Adingabea zara. 18 urte edo gehiago izan behar duzu. Sartu data baliozkoa (${fechaFormateada}).`,
+            );
+            balidazioa = false;
+          }
+        }
+
+        nan = String(nan);
+        let nanArray = nan.split("");
+        let zenbakia = nanArray.slice(0, 8).join("");
+        let zbk = parseInt(zenbakia, 10);
+        let hondarra = zbk % 23;
+
+        const letrak = [
+          "T",
+          "R",
+          "W",
+          "A",
+          "G",
+          "M",
+          "Y",
+          "F",
+          "P",
+          "D",
+          "X",
+          "B",
+          "N",
+          "J",
+          "Z",
+          "S",
+          "Q",
+          "V",
+          "H",
+          "L",
+          "C",
+          "K",
+          "E",
+        ];
+
+        let emaitza = letrak[hondarra];
+
+        if (nanArray[8].toUpperCase() != emaitza) {
+          alert("Idatzi baliozko NAN bat.");
+          balidazioa = false;
+        }
+
+        if (sarrera === "0") {
+          alert("Aukeratu kontzertu baten Sarrera");
+          balidazioa = false;
+        }
+
+        if (kantitatea <= 0) {
+          alert("Aukeratu nahi dituzun sarrerak");
+          balidazioa = false;
+        }
+
+        if (balidazioa === true) {
+          document.querySelector("table").style.display = "table";
+          let taula = document.querySelector("table");
+          let body = taula.tBodies[0];
+          let lerroa = body.insertRow();
+          let g1 = lerroa.insertCell();
+          g1.innerText = izena;
+          let g2 = lerroa.insertCell();
+          g2.innerText = email;
+          let g3 = lerroa.insertCell();
+          g3.innerText = telefonoa;
+          let g4 = lerroa.insertCell();
+          g4.innerText = sarrera + "€";
+          let g5 = lerroa.insertCell();
+          g5.innerText = kantitatea;
+          let g6 = lerroa.insertCell();
+          g6.innerText = sarrera * kantitatea;
+        }
+      }
+    </script>
+  </body>
 </html>

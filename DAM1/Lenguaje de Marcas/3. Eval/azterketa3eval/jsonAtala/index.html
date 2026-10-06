@@ -1,217 +1,208 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="eu">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Euskal Herriko Mendien Katalogoa</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    header {
-      background-color: coral;
-      height: 10vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    main {
-      flex-grow: 1;
-      margin: 20px auto;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    #jolasa {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .mendiaDiv {
-      border: solid 1px rgb(51, 51, 51);
-      border-radius: 10px;
-      width: 220px;
-      text-align: center;
-      margin: 10px;
-      background-color: white;
-      padding: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .mendiaDiv img {
-      width: 90%;
-      border-radius: 8px;
-      height: 250px;
-      object-fit: cover;
-      display: inline-block;
-      margin-top: 5px;
-    }
-
-    .altuera {
-      color: #555;
-    }
-
-    .herria {
-      color: #555;
-    }
-
-    .lurraldea {
-      color: #555;
-    }
-
-    footer #azalpena {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row;
-      height: 10vh;
-    }
-
-    footer input {
-      background-color: coral;
-      border-radius: 5px;
-      color: wheat;
-      font-weight: bold;
-      padding: 10px;
-
-    }
-
-    footer #jolasa {
-      background-color: coral;
-      border-radius: 5px;
-      color: wheat;
-      font-weight: bold;
-      padding: 10px;
-      width: 80%;
-      margin: auto;
-      text-align: center;
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <h1>Euskal Herriko Mendien Jolasa</h1>
-  </header>
-  <main>
-    <div class="bilaketa">
-      <label for="lurraldeaAukera">Lurraldea aukeratu: </label>
-      <select name="jolasak" id="jolasak">
-        <option value="0">Lurralde Guztiak</option>
-        <option value="Bizkaia">Bizkaia</option>
-        <option value="Araba">Araba</option>
-        <option value="Gipuzkoa">Gipuzkoa</option>
-        <option value="Nafarroa">Nafarroa</option>
-        <option value="Zuberoa">Zuberoa</option>
-      </select>
-
-    </div>
-    <div class="kontainerrak" id="mendiak"></div>
-  </main>
-  <hr>
-  <footer>
-    <div id="azalpena">
-      <input type="button" value="JOLASTU" onclick="jolastu()">
-      <p>Aukeratu 4 mendi, orotara 6000 metro baino gutxiago izan behar dira</p>
-    </div>
-    <div id="jolasa">
-    </div>
-  </footer>
-
-  <script>
-    let mendiak = [];
-
-    fetch('mendiak.json') // JSON fitxategia irakurri
-      .then(response => response.json())
-      .then(data => {
-        mendiak = data; // JSON datuak aldagaian gorde
-        mendiakErakutsi(mendiak); // Hasieran denak erakutsi
-      })
-      .catch(error => console.error('Error fetching JSON:', error));
-
-    function mendiakErakutsi(mendiak) {
-      const kontainerra = document.getElementById('jolasa');
-
-      while (kontainerra.firstChild) {
-        kontainerra.removeChild(kontainerra.firstChild);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Euskal Herriko Mendien Katalogoa</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
-      mendiak.forEach(mendia => {
-        const txartela = document.createElement('div');
-        txartela.className = 'mendiaDiv';
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
 
-        const izena = document.createElement('h3');
-        izena.textContent = mendia.izena;
+      header {
+        background-color: coral;
+        height: 10vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-        const altuera = document.createElement('p');
-        altuera.textContent = "Altuera: " + mendia.altuera;
-        altuera.className = "altuera";
+      main {
+        flex-grow: 1;
+        margin: 20px auto;
+      }
 
-        const herria = document.createElement('p');
-        herria.textContent = mendia.herria;
-        herria.className = "herria";
+      h1 {
+        text-align: center;
+      }
 
-        const lurraldea = document.createElement('p');
-        lurraldea.textContent = mendia.lurraldea;
-        lurraldea.className = "lurraldea";
+      #jolasa {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
 
-        const irudia = document.createElement("img");
-        irudia.src = `img/${mendia.irudia}`;
+      .mendiaDiv {
+        border: solid 1px rgb(51, 51, 51);
+        border-radius: 10px;
+        width: 220px;
+        text-align: center;
+        margin: 10px;
+        background-color: white;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
 
-        const deskribapena = document.createElement("p");
-        deskribapena.textContent = mendia.deskribapena
+      .mendiaDiv img {
+        width: 90%;
+        border-radius: 8px;
+        height: 250px;
+        object-fit: cover;
+        display: inline-block;
+        margin-top: 5px;
+      }
 
+      .altuera {
+        color: #555;
+      }
 
-        const hautatu = document.createElement("input");
-        hautatu.type = "checkbox";
-        hautatu.name = "mendiaAukeratu";
-        hautatu.value = mendia.izena;
+      .herria {
+        color: #555;
+      }
 
+      .lurraldea {
+        color: #555;
+      }
 
+      footer #azalpena {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        height: 10vh;
+      }
 
+      footer input {
+        background-color: coral;
+        border-radius: 5px;
+        color: wheat;
+        font-weight: bold;
+        padding: 10px;
+      }
 
-        txartela.appendChild(izena);
-        txartela.appendChild(altuera);
-        txartela.appendChild(herria);
-        txartela.appendChild(lurraldea);
-        txartela.appendChild(irudia);
-        txartela.appendChild(deskribapena);
-        txartela.appendChild(hautatu);
+      footer #jolasa {
+        background-color: coral;
+        border-radius: 5px;
+        color: wheat;
+        font-weight: bold;
+        padding: 10px;
+        width: 80%;
+        margin: auto;
+        text-align: center;
+      }
+    </style>
+  </head>
 
+  <body>
+    <header>
+      <h1>Euskal Herriko Mendien Jolasa</h1>
+    </header>
+    <main>
+      <div class="bilaketa">
+        <label for="lurraldeaAukera">Lurraldea aukeratu: </label>
+        <select name="jolasak" id="jolasak">
+          <option value="0">Lurralde Guztiak</option>
+          <option value="Bizkaia">Bizkaia</option>
+          <option value="Araba">Araba</option>
+          <option value="Gipuzkoa">Gipuzkoa</option>
+          <option value="Nafarroa">Nafarroa</option>
+          <option value="Zuberoa">Zuberoa</option>
+        </select>
+      </div>
+      <div class="kontainerrak" id="mendiak"></div>
+    </main>
+    <hr />
+    <footer>
+      <div id="azalpena">
+        <input type="button" value="JOLASTU" onclick="jolastu()" />
+        <p>
+          Aukeratu 4 mendi, orotara 6000 metro baino gutxiago izan behar dira
+        </p>
+      </div>
+      <div id="jolasa"></div>
+    </footer>
 
-        kontainerra.appendChild(txartela);
+    <script>
+      let mendiak = [];
+
+      fetch("mendiak.json") // JSON fitxategia irakurri
+        .then((response) => response.json())
+        .then((data) => {
+          mendiak = data; // JSON datuak aldagaian gorde
+          mendiakErakutsi(mendiak); // Hasieran denak erakutsi
+        })
+        .catch((error) => console.error("Error fetching JSON:", error));
+
+      function mendiakErakutsi(mendiak) {
+        const kontainerra = document.getElementById("jolasa");
+
+        while (kontainerra.firstChild) {
+          kontainerra.removeChild(kontainerra.firstChild);
+        }
+
+        mendiak.forEach((mendia) => {
+          const txartela = document.createElement("div");
+          txartela.className = "mendiaDiv";
+
+          const izena = document.createElement("h3");
+          izena.textContent = mendia.izena;
+
+          const altuera = document.createElement("p");
+          altuera.textContent = "Altuera: " + mendia.altuera;
+          altuera.className = "altuera";
+
+          const herria = document.createElement("p");
+          herria.textContent = mendia.herria;
+          herria.className = "herria";
+
+          const lurraldea = document.createElement("p");
+          lurraldea.textContent = mendia.lurraldea;
+          lurraldea.className = "lurraldea";
+
+          const irudia = document.createElement("img");
+          irudia.src = `img/${mendia.irudia}`;
+
+          const deskribapena = document.createElement("p");
+          deskribapena.textContent = mendia.deskribapena;
+
+          const hautatu = document.createElement("input");
+          hautatu.type = "checkbox";
+          hautatu.name = "mendiaAukeratu";
+          hautatu.value = mendia.izena;
+
+          txartela.appendChild(izena);
+          txartela.appendChild(altuera);
+          txartela.appendChild(herria);
+          txartela.appendChild(lurraldea);
+          txartela.appendChild(irudia);
+          txartela.appendChild(deskribapena);
+          txartela.appendChild(hautatu);
+
+          kontainerra.appendChild(txartela);
+        });
+      }
+
+      document.getElementById("jolasak").addEventListener("change", (e) => {
+        const hautatutakoMendiak = e.target.value;
+        if (hautatutakoMendiak === "0") {
+          mendiakErakutsi(mendiak);
+        } else if (hautatutakoMendiak === "Bizkaia") {
+          const filtratutakoMendia = mendiak.filter(
+            (mendia) => mendia.lurraldea === hautatutakoMendiak,
+          );
+          mendiakErakutsi(filtratutakoMendia);
+        }
       });
-    }
-
-    document.getElementById('jolasak').addEventListener('change', (e) => {
-      const hautatutakoMendiak = e.target.value;
-      if (hautatutakoMendiak === '0') {
-        mendiakErakutsi(mendiak);
-      } else if (hautatutakoMendiak === 'Bizkaia') {
-        const filtratutakoMendia = mendiak.filter(mendia =>
-          mendia.lurraldea === hautatutakoMendiak
-        );
-        mendiakErakutsi(filtratutakoMendia);
-      };
-    });
-  </script>
-
-</body>
-
+    </script>
+  </body>
 </html>

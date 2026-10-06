@@ -10,7 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: 'app-login',
   templateUrl: './login.html',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, TranslateModule]
+  imports: [CommonModule, ReactiveFormsModule, TranslateModule],
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -19,18 +19,18 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 
   onSubmit() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
-      this.authService.login({ usuario: username, contra: password }).subscribe(users => {
+      this.authService.login({ usuario: username, contra: password }).subscribe((users) => {
         if (users.length > 0) {
           this.error = '';
           this.router.navigate(['/person']);

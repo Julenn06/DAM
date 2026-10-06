@@ -1,197 +1,232 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="eu">
+  <head>
+    <title>Ordenagailua. Eskaera orria</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+        font:
+          normal 18px/1.5 "Fira Sans",
+          "Helvetica Neue",
+          sans-serif;
+      }
 
-<head>
-  <title>Ordenagailua. Eskaera orria</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * {
-      box-sizing: border-box;
-      font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
-    }
+      body {
+        background: #f5f5f5;
+      }
 
-    body {
-      background: #F5F5F5;
-    }
+      h1 {
+        color: #fda000;
+      }
 
-    h1 {
-      color: #fda000;
-    }
+      span.derrigorrezkoa {
+        font-weight: bold;
+        color: #c00;
+      }
 
-    span.derrigorrezkoa {
-      font-weight: bold;
-      color: #C00;
-    }
+      legend {
+        font-size: 16px;
+        color: #545454;
+        font-weight: bold;
+      }
 
-    legend {
-      font-size: 16px;
-      color: #545454;
-      font-weight: bold;
-    }
+      .pTitu {
+        color: #fda000;
+      }
 
+      /* Botoiak eta emaitzak  */
+      .botoia {
+        background-color: #fda000;
+        border: 1px solid #fda000;
+        color: #ffffff;
+        padding: 11px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 16px;
+        margin: 3px;
+      }
 
-    .pTitu {
-      color: #fda000;
-    }
+      .hidden {
+        display: none;
+      }
 
-    /* Botoiak eta emaitzak  */
-    .botoia {
-      background-color: #fda000;
-      border: 1px solid #fda000;
-      color: #FFFFFF;
-      padding: 11px;
-      border-radius: 5px;
-      font-weight: bold;
-      font-size: 16px;
-      margin: 3px;
-    }
+      table {
+        font-size: 12px;
+        width: 800px;
+        text-align: left;
+        border-collapse: collapse;
+      }
 
-    .hidden{
-      display: none;
-    }
+      th {
+        font-size: 14px;
+        font-weight: normal;
+        padding: 8px;
+        background: #f7be81;
+        border-top: 4px solid #fda000;
+        border-bottom: 1px solid #fff;
+        color: black;
+      }
 
+      td {
+        padding: 8px;
+        background: #d0d3d4;
+        border-bottom: 1px solid #fff;
+        color: #545454;
+        border-top: 1px solid transparent;
+      }
 
-    table {
-      font-size: 12px;
-      width: 800px;
-      text-align: left;
-      border-collapse: collapse;
+      button[type="button"] {
+        background-color: #fda000;
+        border: 1px solid #fda000;
+        color: #ffffff;
+        padding: 11px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 16px;
+        margin: 3px;
+      }
+    </style>
+  </head>
 
-    }
+  <body>
+    <form id="nireformularioa">
+      <h1>Eskaera. Ordenagailuaren prezioa</h1>
 
-    th {
-      font-size: 14px;
-      font-weight: normal;
-      padding: 8px;
-      background: #F7BE81;
-      border-top: 4px solid #fda000;
-      border-bottom: 1px solid #fff;
-      color: black;
-    }
+      <fieldset>
+        <legend>Bezeroaren datuak</legend>
+        <label class="label" for="izena"
+          >Izena <span class="derrigorrezkoa">*</span></label
+        >
+        <input type="text" id="izena" name="izena" value="" /><br /><br />
 
-    td {
-      padding: 8px;
-      background: #d0d3d4;
-      border-bottom: 1px solid #fff;
-      color: #545454;
-      border-top: 1px solid transparent;
-    }
+        <label class="label" for="telefonoa"
+          >Telefonoa <span class="derrigorrezkoa">*</span></label
+        >
+        <input
+          type="text"
+          id="telefonoa"
+          name="telefonoa"
+          value=""
+        /><br /><br />
 
-    button[type="button"] {
-      background-color: #fda000;
-      border: 1px solid #fda000;
-      color: #FFFFFF;
-      padding: 11px;
-      border-radius: 5px;
-      font-weight: bold;
-      font-size: 16px;
-      margin: 3px;
-    }
-  </style>
-</head>
+        <label class="label" for="dni"
+          >NAN <span class="derrigorrezkoa">*</span></label
+        >
+        <input type="text" id="dni" name="dni" value="" /><br /><br />
 
-<body>
+        <label class="label" for="helbidea"
+          >Helbidea <span class="derrigorrezkoa">*</span></label
+        >
+        <input type="text" id="helbidea" name="helbidea" /><br /><br />
 
-  <form id="nireformularioa">
+        <label class="label" for="cp"
+          >Posta kodea<span class="derrigorrezkoa">*</span></label
+        >
+        <input type="number" id="cp" name="cp" value="" /><br /><br />
 
-    <h1>Eskaera. Ordenagailuaren prezioa</h1>
+        <label class="label" for="herria">Herria</label>
+        <input
+          type="text"
+          id="herria"
+          name="herria"
+          value="Bilbao"
+          readonly
+        /><br /><br />
+      </fieldset>
 
-    <fieldset>
-      <legend>Bezeroaren datuak</legend>
-      <label class="label" for="izena">Izena <span class="derrigorrezkoa">*</span></label>
-      <input type="text" id="izena" name="izena" value=""><br><br>
+      <fieldset>
+        <legend>Ordenagailuaren konfigurazioa</legend>
 
-      <label class="label" for="telefonoa">Telefonoa <span class="derrigorrezkoa">*</span></label>
-      <input type="text" id="telefonoa" name="telefonoa" value=""><br><br>
+        <p class="pTitu">
+          1.Prozesadorea <span class="derrigorrezkoa">*</span>
+        </p>
 
-      <label class="label" for="dni">NAN <span class="derrigorrezkoa">*</span></label>
-      <input type="text" id="dni" name="dni" value=""><br><br>
+        <input type="radio" name="prozesadorea" id="intel" value="311" />
+        <label for="intel">Intel socket LGA1200</label><br />
+        <input type="radio" name="prozesadorea" id="amd" value="270" />
+        <label for="amd">AMD Socket AM4</label><br />
 
+        <p class="pTitu">2.Memoria <span class="derrigorrezkoa">*</span></p>
+        <input type="radio" name="memoria" id="m8gb" value="90" />8 GB<br />
+        <input type="radio" name="memoria" id="m16gb" value="145" />16 GB<br />
+        <input type="radio" name="memoria" id="m32Mg" value="210" />32 GB<br />
 
-      <label class="label" for="helbidea">Helbidea <span class="derrigorrezkoa">*</span></label>
-      <input type="text" id="helbidea" name="helbidea"><br><br>
+        <p class="pTitu">
+          3. Biltegiratzea <span class="derrigorrezkoa">*</span>
+        </p>
+        <input type="radio" name="biltegiratzea" id="untb" value="100" />SSD 1
+        TB<br />
+        <input type="radio" name="biltegiratzea" id="dostb" value="230" />SSD 2
+        TB<br />
 
-      <label class="label" for="cp">Posta kodea<span class="derrigorrezkoa">*</span></label>
-      <input type="number" id="cp" name="cp" value=""><br><br>
+        <p class="pTitu">
+          4. Elikatze iturria<span class="derrigorrezkoa">*</span>
+        </p>
+        <label class="label" for="complemento1"
+          >Hautatu elikadura-iturriaren eredu bat</label
+        >
+        <select id="complemento1" name="complemento1" required>
+          <option>Ez da aukeratu</option>
+          <option value="32">Tempest PSU 750W Fuente de Alimentación</option>
+          <option value="12">Owlotech BPS Fuente Alimentación 600W</option>
+          <option value="140">
+            Forgeon Bolt PSU 850W 80+ Gold Full Modular
+          </option>
+          <option value="100">
+            Nfortec Sagitta RGB 650W 80 Plus Gold Full Modular
+          </option>
+          <option value="72">
+            Corsair CX750M 750 W 80 Plus Bronze Semi-Modular
+          </option>
+        </select>
+        <br />
 
-      <label class="label" for="herria">Herria</label>
-      <input type="text" id="herria" name="herria" value="Bilbao" readonly><br><br>
-    </fieldset>
+        <p class="pTitu">5.Gehigarriak</p>
+        <input type="checkbox" class="gehigarria" id="Sound" value="190" />
+        <label for="Sound"
+          >Creative Sound Blaster Z SE Sonido y DAC PCI-e. Jokuak</label
+        ><br />
+        <input type="checkbox" class="gehigarria" id="usbwifi" value="45" />
+        <label for="usbwifi">Asus USB-AX55 Nano Adaptador USB WiFi AX180</label
+        ><br />
+        <input type="checkbox" class="gehigarria" id="sop" value="100" />
+        <label for="sop">SO Windows</label><br />
+        <input type="checkbox" class="gehigarria" id="gdvd" value="16" />
+        <label for="gdvd"
+          >Asus SDRW-08D2S-U Lite Grabadora DVD Slim Ext USB</label
+        ><br />
+      </fieldset>
 
-    <fieldset>
-      <legend>Ordenagailuaren konfigurazioa</legend>
+      <fieldset>
+        <legend>Zerbitzuaren baldintzak</legend>
+        <input type="checkbox" name="bidali" id="bidali" required />
+        <label for="bidali">
+          Adierazten dut datu guztiak zuzenak direla, eta onartzen dut Elorrieta
+          Koop.ri informazioa bidaltzea.<span class="derrigorrezkoa"
+            >*</span
+          ></label
+        >
+      </fieldset>
+      <br />
+      <button type="button" onclick="kalkulatu()">Informazioa Eskatu</button>
 
-      <p class="pTitu">1.Prozesadorea <span class="derrigorrezkoa">*</span></p>
+      <hr />
+    </form>
 
-      <input type="radio" name="prozesadorea" id="intel" value="311">
-      <label for="intel">Intel socket LGA1200</label><br>
-      <input type="radio" name="prozesadorea" id="amd" value="270">
-      <label for="amd">AMD Socket AM4</label><br>
+    <table id="taula" class="hidden">
+      <thead>
+        <tr>
+          <th>Bezeroa</th>
+          <th>Ordenagailua</th>
+          <th>Totala</th>
+          <th>Totala (BEZ barne 21%)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
 
-
-      <p class="pTitu">2.Memoria <span class="derrigorrezkoa">*</span></p>
-      <input type="radio" name="memoria" id="m8gb" value="90">8 GB<br>
-      <input type="radio" name="memoria" id="m16gb" value="145">16 GB<br>
-      <input type="radio" name="memoria" id="m32Mg" value="210">32 GB<br>
-
-
-      <p class="pTitu">3. Biltegiratzea <span class="derrigorrezkoa">*</span></p>
-      <input type="radio" name="biltegiratzea" id="untb" value="100">SSD 1 TB<br>
-      <input type="radio" name="biltegiratzea" id="dostb" value="230">SSD 2 TB<br>
-
-
-      <p class="pTitu">4. Elikatze iturria<span class="derrigorrezkoa">*</span> </p>
-      <label class="label" for="complemento1">Hautatu elikadura-iturriaren eredu bat</label>
-      <select id="complemento1" name="complemento1" required>
-        <option>Ez da aukeratu</option>
-        <option value="32">Tempest PSU 750W Fuente de Alimentación</option>
-        <option value="12">Owlotech BPS Fuente Alimentación 600W</option>
-        <option value="140">Forgeon Bolt PSU 850W 80+ Gold Full Modular</option>
-        <option value="100">Nfortec Sagitta RGB 650W 80 Plus Gold Full Modular</option>
-        <option value="72">Corsair CX750M 750 W 80 Plus Bronze Semi-Modular</option>
-      </select>
-      <br>
-
-
-      <p class="pTitu">5.Gehigarriak</p>
-      <input type="checkbox" class="gehigarria" id="Sound" value="190">
-      <label for="Sound">Creative Sound Blaster Z SE Sonido y DAC PCI-e. Jokuak</label><br>
-      <input type="checkbox" class="gehigarria" id="usbwifi" value="45">
-      <label for="usbwifi">Asus USB-AX55 Nano Adaptador USB WiFi AX180</label><br>
-      <input type="checkbox" class="gehigarria" id="sop" value="100">
-      <label for="sop">SO Windows</label><br>
-      <input type="checkbox" class="gehigarria" id="gdvd" value="16">
-      <label for="gdvd">Asus SDRW-08D2S-U Lite Grabadora DVD Slim Ext USB</label><br>
-
-    </fieldset>
-
-
-    <fieldset>
-      <legend>Zerbitzuaren baldintzak</legend>
-      <input type="checkbox" name="bidali" id="bidali" required>
-      <label for="bidali"> Adierazten dut datu guztiak zuzenak direla, eta onartzen dut Elorrieta Koop.ri informazioa
-        bidaltzea.<span class="derrigorrezkoa">*</span></label>
-    </fieldset>
-    <br>
-    <button type="button" onclick="kalkulatu()">Informazioa Eskatu</button>
-
-    <hr>
-  </form>
-
-  <table id="taula" class="hidden">
-    <thead>
-      <tr>
-        <th>Bezeroa</th>
-        <th>Ordenagailua</th>
-        <th>Totala</th>
-        <th>Totala (BEZ barne 21%)</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-
-  <script src="js/eskaera.js"></script>
-</body>
+    <script src="js/eskaera.js"></script>
+  </body>
 </html>

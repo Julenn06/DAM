@@ -46,7 +46,6 @@
 
 ---
 
-
 <div align="center">
 
 ## 🔧 OPERADORES LINQ
@@ -63,16 +62,19 @@ _Los operadores más importantes que debes conocer_
 > **¿Qué hace?** Verifica si existe **al menos un elemento** que cumple una condición → `bool`
 
 **📝 Sintaxis:**
+
 ```csharp
 coleccion.Any(x => condicion)
 ```
 
 **✅ Cuándo usarlo:**
+
 - Validaciones rápidas
 - Mejor rendimiento que `Count() > 0`
 - Para verificar existencia sin contar todos
 
 **💻 Ejemplos prácticos:**
+
 ```csharp
 numeros.Any(n => n > 100)                                    // ¿Hay alguno mayor que 100?
 pets.Any(p => p.Type == PetType.Dog && p.Weight >= 36)      // ¿Hay perros pesados?
@@ -89,16 +91,19 @@ palabras.Any(p => p.Contains("net"))                         // ¿Alguna contien
 > **¿Qué hace?** Verifica si **TODOS** los elementos cumplen una condición → `bool`
 
 **📝 Sintaxis:**
+
 ```csharp
 coleccion.All(x => condicion)
 ```
 
 **✅ Cuándo usarlo:**
+
 - Validaciones estrictas
 - Verificar reglas de negocio
 - Asegurar consistencia de datos
 
 **💻 Ejemplos prácticos:**
+
 ```csharp
 palabra.All(char.IsUpper)           // ¿Todas las letras son mayúsculas?
 numeros.All(n => n % 2 == 0)        // ¿Todos son pares?
@@ -119,16 +124,19 @@ numeros.All(n => n > 0)             // ¿Todos son positivos?
 > **¿Qué hace?** Filtra elementos según una condición → `IEnumerable<T>`
 
 **📝 Sintaxis:**
+
 ```csharp
 coleccion.Where(x => condicion)
 ```
 
 **✅ Cuándo usarlo:**
+
 - Obtener múltiples elementos filtrados
 - Encadenar con otros operadores
 - Base para consultas complejas
 
 **💻 Ejemplos prácticos:**
+
 ```csharp
 numeros.Where(n => n % 2 == 0)                    // Solo números pares
 personas.Where(p => p.Edad >= 18)                 // Mayores de edad
@@ -146,17 +154,20 @@ estudiantes.Where(e => e.Nota > 6).ToList()       // Aprobados
 > **¿Qué hace?** Cuenta elementos (con/sin condición) → `int`
 
 **📝 Sintaxis:**
+
 ```csharp
 coleccion.Count(x => condicion)    // Con condición
 coleccion.Count()                   // Sin condición
 ```
 
 **✅ Cuándo usarlo:**
+
 - Estadísticas y reportes
 - Métricas de negocio
 - Validar cantidades
 
 **💻 Ejemplos prácticos:**
+
 ```csharp
 numeros.Count(n => n % 2 == 0)                      // Contar pares
 libros.Count(l => l.Paginas > 300)                  // Libros largos
@@ -174,16 +185,19 @@ palabras.Count(p => "aeiou".Contains(p[0]))         // Empiezan con vocal
 > **¿Qué hace?** Busca un **valor exacto** en la colección → `bool`
 
 **📝 Sintaxis:**
+
 ```csharp
 coleccion.Contains(valor)
 ```
 
 **✅ Cuándo usarlo:**
+
 - Buscar valores simples (int, string, char)
 - Igualdad exacta
 - Más simple que `Any()` para valores directos
 
 **💻 Ejemplos prácticos:**
+
 ```csharp
 numeros.Contains(10)          // ¿Existe el número 10?
 titulos.Contains("LINQ")      // ¿Existe el título "LINQ"?
@@ -204,16 +218,19 @@ letras.Contains('A')          // ¿Existe la letra 'A'?
 > **¿Qué hace?** Devuelve el primer elemento o `null` si no existe
 
 **📝 Sintaxis:**
+
 ```csharp
 coleccion.FirstOrDefault(x => condicion)
 ```
 
 **✅ Cuándo usarlo:**
+
 - Buscar un elemento específico
 - Evitar excepciones (vs `First()`)
 - Obtener el primero que cumple condición
 
 **💻 Ejemplos prácticos:**
+
 ```csharp
 pets.FirstOrDefault(p => p.Id == 5)           // Primera mascota con ID 5
 numeros.FirstOrDefault(n => n > 100)          // Primer número mayor que 100
@@ -234,17 +251,20 @@ personas.FirstOrDefault(p => p.Edad < 18)     // Primera persona menor de edad
 > **¿Qué hace?** Ordena elementos ascendente ⬆️ o descendente ⬇️ → `IOrderedEnumerable<T>`
 
 **📝 Sintaxis:**
+
 ```csharp
 coleccion.OrderBy(x => x)              // Ascendente
 coleccion.OrderByDescending(x => x)    // Descendente
 ```
 
 **✅ Cuándo usarlo:**
+
 - Mostrar datos ordenados
 - Antes de obtener primero/último
 - Rankings y clasificaciones
 
 **💻 Ejemplos prácticos:**
+
 ```csharp
 numeros.OrderBy(n => n)                       // Menor a mayor
 numeros.OrderByDescending(n => n)             // Mayor a menor
@@ -266,6 +286,7 @@ personas.OrderBy(p => p.Edad).ThenBy(p => p.Nombre)
 > **¿Qué hace?** Devuelve el valor **máximo** o **mínimo** de una colección
 
 **📝 Sintaxis:**
+
 ```csharp
 coleccion.Max()                   // Máximo directo
 coleccion.Max(x => x.Propiedad)  // Máximo de propiedad
@@ -275,11 +296,13 @@ coleccion.Min(x => x.Propiedad)  // Mínimo de propiedad
 ```
 
 **✅ Cuándo usarlo:**
+
 - Encontrar valores extremos
 - Estadísticas y análisis
 - Comparaciones y validaciones
 
 **💻 Ejemplos prácticos:**
+
 ```csharp
 numeros.Max()                    // El número más grande
 numeros.Min()                    // El número más pequeño
@@ -301,17 +324,20 @@ productos.Min(p => p.Precio)     // El precio más barato
 > **¿Qué hace?** Calcula el promedio (media aritmética) → `double`
 
 **📝 Sintaxis:**
+
 ```csharp
 coleccion.Average()                   // Promedio directo
 coleccion.Average(x => x.Propiedad)  // Promedio de propiedad
 ```
 
 **✅ Cuándo usarlo:**
+
 - Medias y estadísticas
 - Comparar valores contra promedio
 - Análisis de datos
 
 **💻 Ejemplos prácticos:**
+
 ```csharp
 calificaciones.Average()                       // Promedio de notas
 personas.Average(p => p.Edad)                  // Edad media
@@ -332,17 +358,20 @@ var mayores = numeros.Where(n => n > promedio);
 > **¿Qué hace?** Suma todos los valores de una colección
 
 **📝 Sintaxis:**
+
 ```csharp
 coleccion.Sum()                   // Suma todos
 coleccion.Sum(x => x.Propiedad)  // Suma una propiedad
 ```
 
 **✅ Cuándo usarlo:**
+
 - Calcular totales
 - Acumulaciones
 - Agregaciones financieras
 
 **💻 Ejemplos prácticos:**
+
 ```csharp
 numeros.Sum()                                     // Suma total
 numeros.Where(n => n % 2 == 0).Sum()              // Suma de pares
@@ -360,16 +389,19 @@ empleados.Where(e => e.Edad > 30).Sum(e => e.Salario)  // Salarios filtrados
 > **¿Qué hace?** Proyecta/transforma elementos → `IEnumerable<T>`
 
 **📝 Sintaxis:**
+
 ```csharp
 coleccion.Select(x => transformacion)
 ```
 
 **✅ Cuándo usarlo:**
+
 - Extraer propiedades específicas
 - Transformar datos
 - Crear objetos anónimos
 
 **💻 Ejemplos prácticos:**
+
 ```csharp
 personas.Select(p => p.Nombre)           // Solo nombres
 numeros.Select(n => n * 2)               // Duplicar valores
@@ -394,17 +426,20 @@ personas.Select(p => new { p.Nombre, p.Edad })
 > **¿Qué hace?** Materializa la consulta (la ejecuta) → `List<T>` o `T[]`
 
 **📝 Sintaxis:**
+
 ```csharp
 consulta.ToList()     // Lista
 consulta.ToArray()    // Array
 ```
 
 **✅ Cuándo usarlo:**
+
 - Ejecutar inmediatamente
 - Reutilizar resultados
 - Evitar múltiples ejecuciones
 
 **💻 Ejemplos prácticos:**
+
 ```csharp
 numeros.Where(n => n > 5).ToList()               // Ejecuta y guarda
 personas.OrderBy(p => p.Nombre).ToArray()        // Ejecuta como array
@@ -416,7 +451,6 @@ int suma = pares.Sum();          // No re-ejecuta
 ```
 
 </details>
-
 
 <div align="center">
 
@@ -488,7 +522,6 @@ personas.Sum(p => p.Edad)
 
 ---
 
-
 <div align="center">
 
 ## 📐 SINTAXIS LINQ
@@ -502,6 +535,7 @@ _Dos formas de escribir lo mismo_
 <td width="50%" align="center">
 
 ### 🔹 Sintaxis de Métodos
+
 _Más común y directa_
 
 ```csharp
@@ -515,6 +549,7 @@ coleccion
 <td width="50%" align="center">
 
 ### 🔸 Sintaxis de Consulta
+
 _Parecida a SQL_
 
 ```csharp
@@ -530,19 +565,18 @@ _Parecida a SQL_
 
 ### 🎯 Comparación rápida
 
-| Operación | Sintaxis Métodos | Sintaxis Consulta |
-|-----------|------------------|-------------------|
-| Filtrar | `.Where(x => x > 5)` | `where x > 5` |
-| Ordenar ↑ | `.OrderBy(x => x)` | `orderby x` |
-| Ordenar ↓ | `.OrderByDescending(x => x)` | `orderby x descending` |
-| Transformar | `.Select(x => x * 2)` | `select x * 2` |
+| Operación   | Sintaxis Métodos             | Sintaxis Consulta      |
+| ----------- | ---------------------------- | ---------------------- |
+| Filtrar     | `.Where(x => x > 5)`         | `where x > 5`          |
+| Ordenar ↑   | `.OrderBy(x => x)`           | `orderby x`            |
+| Ordenar ↓   | `.OrderByDescending(x => x)` | `orderby x descending` |
+| Transformar | `.Select(x => x * 2)`        | `select x * 2`         |
 
 > **💡 Importante:** Los siguientes operadores **solo funcionan en sintaxis de métodos**:
-> 
+>
 > `Count()` • `Sum()` • `Average()` • `Max()` • `Min()` • `Any()` • `All()` • `Contains()` • `FirstOrDefault()` • `ToList()` • `ToArray()`
 
 ---
-
 
 <div align="center">
 
@@ -558,6 +592,7 @@ _Referencia rápida de qué operadores se usan en cada proyecto_
 ```csharp
 pets.FirstOrDefault(p => p.Id == 5)
 ```
+
 _Buscar mascota por ID específico_
 
 </details>
@@ -568,6 +603,7 @@ _Buscar mascota por ID específico_
 ```csharp
 pets.Any(p => p.Type == PetType.Dog && p.Weight >= 36)
 ```
+
 _Verificar si existe perro con peso >= 36_
 
 </details>
@@ -579,6 +615,7 @@ _Verificar si existe perro con peso >= 36_
 numeros.Count(n => n % 2 == 0)      // Contar pares
 libros.Count(l => l.Paginas > 300)  // Libros largos
 ```
+
 _Contar elementos con condición_
 
 </details>
@@ -590,6 +627,7 @@ _Contar elementos con condición_
 numeros.Contains(10)                    // ¿Está el 10?
 personas.Any(p => p.Nombre == "Luis")   // ¿Existe Luis?
 ```
+
 _Buscar valores exactos_
 
 </details>
@@ -601,6 +639,7 @@ _Buscar valores exactos_
 numeros.OrderBy(n => n)                      // Ascendente
 productos.OrderByDescending(p => p.Precio)   // Descendente
 ```
+
 _Ordenar colecciones_
 
 </details>
@@ -613,6 +652,7 @@ numeros.Max()                    // Número más grande
 personas.Max(p => p.Edad)        // Edad máxima
 productos.Min(p => p.Precio)     // Precio más bajo
 ```
+
 _Encontrar valores extremos_
 
 </details>
@@ -624,6 +664,7 @@ _Encontrar valores extremos_
 calificaciones.Average()         // Promedio de notas
 personas.Average(p => p.Edad)    // Edad promedio
 ```
+
 _Calcular promedios_
 
 </details>
@@ -636,6 +677,7 @@ numeros.Sum()                              // Suma total
 productos.Sum(p => p.Precio)               // Total precios
 numeros.Where(n => n % 2 == 0).Sum()       // Suma de pares
 ```
+
 _Sumar valores_
 
 </details>
@@ -644,25 +686,24 @@ _Sumar valores_
 
 ## 🎯 TABLA RESUMEN
 
-| Operador | Retorna | Uso | Ejemplo |
-|----------|---------|-----|---------|
-| **Any()** | `bool` | ¿Existe al menos uno? | `numeros.Any(n => n > 100)` |
-| **All()** | `bool` | ¿Todos cumplen? | `numeros.All(n => n > 0)` |
-| **Where()** | `IEnumerable<T>` | Filtrar | `numeros.Where(n => n % 2 == 0)` |
-| **Count()** | `int` | Contar | `numeros.Count(n => n > 5)` |
-| **Contains()** | `bool` | Buscar valor exacto | `numeros.Contains(10)` |
-| **FirstOrDefault()** | `T?` | Primer elemento o null | `lista.FirstOrDefault(x => x > 5)` |
-| **OrderBy()** | `IOrderedEnumerable<T>` | Ordenar ↑ | `numeros.OrderBy(n => n)` |
-| **OrderByDescending()** | `IOrderedEnumerable<T>` | Ordenar ↓ | `numeros.OrderByDescending(n => n)` |
-| **Max()** | Tipo elemento | Valor máximo | `numeros.Max()` |
-| **Min()** | Tipo elemento | Valor mínimo | `numeros.Min()` |
-| **Average()** | `double` | Promedio | `numeros.Average()` |
-| **Sum()** | Tipo numérico | Suma total | `numeros.Sum()` |
-| **Select()** | `IEnumerable<T>` | Transformar | `personas.Select(p => p.Nombre)` |
-| **ToList()** | `List<T>` | Materializar | `query.ToList()` |
+| Operador                | Retorna                 | Uso                    | Ejemplo                             |
+| ----------------------- | ----------------------- | ---------------------- | ----------------------------------- |
+| **Any()**               | `bool`                  | ¿Existe al menos uno?  | `numeros.Any(n => n > 100)`         |
+| **All()**               | `bool`                  | ¿Todos cumplen?        | `numeros.All(n => n > 0)`           |
+| **Where()**             | `IEnumerable<T>`        | Filtrar                | `numeros.Where(n => n % 2 == 0)`    |
+| **Count()**             | `int`                   | Contar                 | `numeros.Count(n => n > 5)`         |
+| **Contains()**          | `bool`                  | Buscar valor exacto    | `numeros.Contains(10)`              |
+| **FirstOrDefault()**    | `T?`                    | Primer elemento o null | `lista.FirstOrDefault(x => x > 5)`  |
+| **OrderBy()**           | `IOrderedEnumerable<T>` | Ordenar ↑              | `numeros.OrderBy(n => n)`           |
+| **OrderByDescending()** | `IOrderedEnumerable<T>` | Ordenar ↓              | `numeros.OrderByDescending(n => n)` |
+| **Max()**               | Tipo elemento           | Valor máximo           | `numeros.Max()`                     |
+| **Min()**               | Tipo elemento           | Valor mínimo           | `numeros.Min()`                     |
+| **Average()**           | `double`                | Promedio               | `numeros.Average()`                 |
+| **Sum()**               | Tipo numérico           | Suma total             | `numeros.Sum()`                     |
+| **Select()**            | `IEnumerable<T>`        | Transformar            | `personas.Select(p => p.Nombre)`    |
+| **ToList()**            | `List<T>`               | Materializar           | `query.ToList()`                    |
 
 ---
-
 
 <div align="center">
 
@@ -686,6 +727,7 @@ _Sumar valores_
 numeros.Any(n => n > 100)  // ¿Alguno > 100?
 numeros.All(n => n > 0)    // ¿Todos > 0?
 ```
+
 </details>
 
 <details>
@@ -698,6 +740,7 @@ numeros.All(n => n > 0)    // ¿Todos > 0?
 lista.Any(x => x.Edad > 18)  // Condición
 lista.Contains(5)             // Valor exacto
 ```
+
 </details>
 
 <details>
@@ -710,6 +753,7 @@ lista.Contains(5)             // Valor exacto
 var filtrados = lista.Where(x => x > 5)  // IEnumerable
 var cantidad = lista.Count(x => x > 5)    // int
 ```
+
 </details>
 
 </td>

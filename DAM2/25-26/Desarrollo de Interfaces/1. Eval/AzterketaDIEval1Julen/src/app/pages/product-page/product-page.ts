@@ -9,19 +9,22 @@ import { ProductService } from '../product-service/product-service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './product-page.html',
-  styleUrls: ['./product-page.css']
+  styleUrls: ['./product-page.css'],
 })
 export class ProductPage implements OnInit {
-  produktua: Product[] = []
+  produktua: Product[] = [];
 
   id: string = '';
 
-  constructor (private remote: ProductService, private route: ActivatedRoute) {}
+  constructor(
+    private remote: ProductService,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit() {
     this.id = String(this.route.snapshot.paramMap.get('id'));
     this.remote.getproductById(this.id).subscribe({
-      next: (produktua) => this.produktua = [produktua]
+      next: (produktua) => (this.produktua = [produktua]),
     });
   }
 }

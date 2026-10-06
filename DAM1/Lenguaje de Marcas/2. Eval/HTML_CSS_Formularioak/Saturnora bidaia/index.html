@@ -1,86 +1,120 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>Trans Planet Airlines</h1>
-        <img src="img/Saturno.jpg" width="100%" alt="Saturno" />
+      <h1>Trans Planet Airlines</h1>
+      <img src="img/Saturno.jpg" width="100%" alt="Saturno" />
     </header>
 
     <article>
-        <h3>Saturnora bidaia irabazi!</h3>
-        <p>Presta zaitez Saturnoren eraztunak patinatzeko! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-            do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+      <h3>Saturnora bidaia irabazi!</h3>
+      <p>
+        Presta zaitez Saturnoren eraztunak patinatzeko! Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
 
-        <form action="scripts/mailForm.php" method="get">
-            <fieldset>
-                <legend><b>Lehiaketan izena emateko inprimakia</b></legend>
+      <form action="scripts/mailForm.php" method="get">
+        <fieldset>
+          <legend><b>Lehiaketan izena emateko inprimakia</b></legend>
 
-                <form name="datu_pertsonalak" action="#" method="get" class="form-egitura">
-                    <label for="izena">izena:</label>
-                    <input type="text" id="izena" name="izena" required maxlength="40"><br><br>
+          <form
+            name="datu_pertsonalak"
+            action="#"
+            method="get"
+            class="form-egitura"
+          >
+            <label for="izena">izena:</label>
+            <input
+              type="text"
+              id="izena"
+              name="izena"
+              required
+              maxlength="40"
+            /><br /><br />
 
-                    <label for="abizenak">abizenak:</label>
-                    <input type="text" id="abizenak" abizenak="abizenak" required maxlength="40"><br><br>
+            <label for="abizenak">abizenak:</label>
+            <input
+              type="text"
+              id="abizenak"
+              abizenak="abizenak"
+              required
+              maxlength="40"
+            /><br /><br />
 
-                    <label for="eposta">e-posta:</label>
-                    <input type="email" id="eposta" name="eposta" placeholder="e-posta" required maxlength="40"
-                        autocomplete="off"><br><br>
+            <label for="eposta">e-posta:</label>
+            <input
+              type="email"
+              id="eposta"
+              name="eposta"
+              placeholder="e-posta"
+              required
+              maxlength="40"
+              autocomplete="off"
+            /><br /><br />
 
-                    <label for="data">Jaiotze Data:</label>
-                    <input type="date" id="data" name="data" required min="1900-01-01" max="2200-12-31"><br><br>
+            <label for="data">Jaiotze Data:</label>
+            <input
+              type="date"
+              id="data"
+              name="data"
+              required
+              min="1900-01-01"
+              max="2200-12-31"
+            /><br /><br />
 
-                    <details>
-                        <summary>Gehigarriak</summary>
+            <details>
+              <summary>Gehigarriak</summary>
 
-                        <p>Zein planeta bisitatu nahi duzu?</p>
-                        <input type="checkbox" id="artizarra">
-                        <label for="artizarra">Artizarra</label><br>
+              <p>Zein planeta bisitatu nahi duzu?</p>
+              <input type="checkbox" id="artizarra" />
+              <label for="artizarra">Artizarra</label><br />
 
-                        <input type="checkbox" id="martitza">
-                        <label for="martitza">Martitza</label><br>
+              <input type="checkbox" id="martitza" />
+              <label for="martitza">Martitza</label><br />
 
-                        <input type="checkbox" id="neptuno">
-                        <label for="neptuno">Neptuno</label><br>
+              <input type="checkbox" id="neptuno" />
+              <label for="neptuno">Neptuno</label><br />
 
-                        <input type="checkbox" id="jupiter">
-                        <label for="jupiter">Jupiter</label>
+              <input type="checkbox" id="jupiter" />
+              <label for="jupiter">Jupiter</label>
 
-                        <br><br>
+              <br /><br />
 
-                        <label for="planeta">Zein tamaina nahi duzu?:</label>
-                        <br>
-                        <select name="planeta" id="planeta" required>
-                            <option value=""></option>
-                            <option value="handia">Tamaina handia</option>
-                            <option value="eraztunak">Bere eraztunak</option>
-                            <option value="koloreak">Koloreak</option>
-                        </select>
-                    </details>
+              <label for="planeta">Zein tamaina nahi duzu?:</label>
+              <br />
+              <select name="planeta" id="planeta" required>
+                <option value=""></option>
+                <option value="handia">Tamaina handia</option>
+                <option value="eraztunak">Bere eraztunak</option>
+                <option value="koloreak">Koloreak</option>
+              </select>
+            </details>
 
-                    <br>
-                    <br>
+            <br />
+            <br />
 
-                    <p>Aurkeztu zure burua 100 hitzetan</p>
-                    <textarea name="idatzi" id="idatzi" maxlength="100"></textarea>
+            <p>Aurkeztu zure burua 100 hitzetan</p>
+            <textarea name="idatzi" id="idatzi" maxlength="100"></textarea>
 
-                    <br>
-                    <br>
+            <br />
+            <br />
 
-                    <button type="submit">Datuak Bidali</button>
-                    <button type="reset">Datuak Ezabatu</button>
-            </fieldset>
-        </form>
+            <button type="submit">Datuak Bidali</button>
+            <button type="reset">Datuak Ezabatu</button>
+          </form>
+        </fieldset>
+      </form>
     </article>
-</body>
-
+  </body>
 </html>

@@ -5,10 +5,10 @@
   <section class="seccion-crear">
     <h3>Crear Nuevo Libro</h3>
     <div class="formulario">
-      <input type="text" [(ngModel)]="titulo" placeholder="Título del Libro" required>
-      <input type="text" [(ngModel)]="autor" placeholder="Autor del Libro">
-      <input type="text" [(ngModel)]="genero" placeholder="Género del Libro">
-      <input type="number" [(ngModel)]="ano" placeholder="Año del Libro">
+      <input type="text" [(ngModel)]="titulo" placeholder="Título del Libro" required />
+      <input type="text" [(ngModel)]="autor" placeholder="Autor del Libro" />
+      <input type="text" [(ngModel)]="genero" placeholder="Género del Libro" />
+      <input type="number" [(ngModel)]="ano" placeholder="Año del Libro" />
       <div class="botones-formulario">
         <button (click)="anadirLibro()" class="btn-success">✓ Añadir Libro</button>
         <button (click)="limpiarDatos()" class="btn-cancel">✗ Cancelar</button>
@@ -20,12 +20,12 @@
   <section class="seccion-editar">
     <h3>Editar Libro</h3>
     <label>ID del Libro a editar:</label>
-    <input type="number" [(ngModel)]="idLibro" min="1" placeholder="ID">
+    <input type="number" [(ngModel)]="idLibro" min="1" placeholder="ID" />
     <div class="formulario">
-      <input type="text" [(ngModel)]="tituloNuevo" placeholder="Nuevo título (opcional)">
-      <input type="text" [(ngModel)]="autorNuevo" placeholder="Nuevo autor (opcional)">
-      <input type="text" [(ngModel)]="generoNuevo" placeholder="Nuevo género (opcional)">
-      <input type="number" [(ngModel)]="anoNuevo" placeholder="Año del Libro (opcional)">
+      <input type="text" [(ngModel)]="tituloNuevo" placeholder="Nuevo título (opcional)" />
+      <input type="text" [(ngModel)]="autorNuevo" placeholder="Nuevo autor (opcional)" />
+      <input type="text" [(ngModel)]="generoNuevo" placeholder="Nuevo género (opcional)" />
+      <input type="number" [(ngModel)]="anoNuevo" placeholder="Año del Libro (opcional)" />
       <div class="botones-formulario">
         <button (click)="nuevosDatos()" class="btn-success">✓ Guardar cambios</button>
         <button (click)="limpiarDatosEdicion()" class="btn-cancel">✗ Cancelar</button>
@@ -41,10 +41,10 @@
 
     <div class="consulta-por-id">
       <label>Buscar por ID:</label>
-      <input type="number" [(ngModel)]="idLibro" min="1" placeholder="ID">
+      <input type="number" [(ngModel)]="idLibro" min="1" placeholder="ID" />
       <button (click)="verLibroPorId()" class="btn-info">🔍 Buscar</button>
       <label>Buscar por Autor:</label>
-      <input type="text" [(ngModel)]="autorBuscar" placeholder="Autor">
+      <input type="text" [(ngModel)]="autorBuscar" placeholder="Autor" />
       <button (click)="verLibrosPorAutor()" class="btn-info">🔍 Buscar</button>
       <label>Buscar por Género:</label>
       <select [(ngModel)]="generoSeleccionado">
@@ -59,7 +59,7 @@
       </select>
       <button (click)="verLibrosPorGenero()" class="btn-info">🔍 Buscar</button>
       <label>Buscar libros publicados después de:</label>
-      <input type="number" [(ngModel)]="numeroAno" placeholder="Año">
+      <input type="number" [(ngModel)]="numeroAno" placeholder="Año" />
       <button (click)="verLibrosMayoresDeUnAno()" class="btn-info">🔍 Buscar</button>
     </div>
   </section>
@@ -69,10 +69,10 @@
     <h3>Eliminar Libro</h3>
     <div class="consulta-por-id">
       <label>ID del Libro a eliminar:</label>
-      <input type="number" [(ngModel)]="idLibro" min="1" placeholder="ID">
+      <input type="number" [(ngModel)]="idLibro" min="1" placeholder="ID" />
       <button (click)="eliminarLibro()" class="btn-danger">🗑️ Eliminar</button>
       <label>Título del Libro a eliminar:</label>
-      <input type="text" [(ngModel)]="tituloBuscar" placeholder="Título">
+      <input type="text" [(ngModel)]="tituloBuscar" placeholder="Título" />
       <button (click)="eliminarLibroPorTitulo()" class="btn-danger">🗑️ Eliminar</button>
     </div>
   </section>
@@ -82,19 +82,19 @@
     <h3>Resultados ({{ todosLosLibros.length }} Libros)</h3>
     <div class="lista-libros">
       @if (todosLosLibros.length === 0) {
-      <p class="sin-resultados">No hay libros para mostrar</p>
+        <p class="sin-resultados">No hay libros para mostrar</p>
       } @else {
-      <ul>
-        @for (libro of todosLosLibros; track libro.id) {
-        <li class="libro-item">
-          <span class="libro-id">ID: {{ libro.id }}</span>
-          <strong class="libro-titulo">{{ libro.titulo }}</strong>
-          <em class="libro-autor">por {{ libro.autor }}</em>
-          <span class="libro-genero">{{ libro.genero }}</span>
-          <span class="libro-ano">({{ libro.ano }})</span>
-        </li>
-        }
-      </ul>
+        <ul>
+          @for (libro of todosLosLibros; track libro.id) {
+            <li class="libro-item">
+              <span class="libro-id">ID: {{ libro.id }}</span>
+              <strong class="libro-titulo">{{ libro.titulo }}</strong>
+              <em class="libro-autor">por {{ libro.autor }}</em>
+              <span class="libro-genero">{{ libro.genero }}</span>
+              <span class="libro-ano">({{ libro.ano }})</span>
+            </li>
+          }
+        </ul>
       }
     </div>
   </section>

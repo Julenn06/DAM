@@ -1,57 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Produktuak eta Prezioak</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script src="js/script.js"></script>
     <table border="2">
-        <caption>Produktuak eta prezioak</caption>
-        <thead>
-            <tr>
-                <th>Produktua</th>
-                <th>Prezioa / Kg.</th>
-                <th>Hautatu</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Laranjak</td>
-                <td>0.75</td>
-                <td><input type="radio" name="produktua" id="0.75" value="0.75"></td>
-            </tr>
-            <tr>
-                <td>Madariak</td>
-                <td>1.50</td>
-                <td><input type="radio" name="produktua" id="1.50" value="1.50"></td>
-            </tr>
-            <tr>
-                <td>Platanoak</td>
-                <td>2.25</td>
-                <td><input type="radio" name="produktua" id="2.25" value="2.25"></td>
-            </tr>
-        </tbody>
+      <caption>
+        Produktuak eta prezioak
+      </caption>
+      <thead>
+        <tr>
+          <th>Produktua</th>
+          <th>Prezioa / Kg.</th>
+          <th>Hautatu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Laranjak</td>
+          <td>0.75</td>
+          <td>
+            <input type="radio" name="produktua" id="0.75" value="0.75" />
+          </td>
+        </tr>
+        <tr>
+          <td>Madariak</td>
+          <td>1.50</td>
+          <td>
+            <input type="radio" name="produktua" id="1.50" value="1.50" />
+          </td>
+        </tr>
+        <tr>
+          <td>Platanoak</td>
+          <td>2.25</td>
+          <td>
+            <input type="radio" name="produktua" id="2.25" value="2.25" />
+          </td>
+        </tr>
+      </tbody>
     </table>
-    <br>
-    <p>Kantitatea:<input type="number" name="kantitatea" id="kantitatea"></p>
+    <br />
+    <p>Kantitatea:<input type="number" name="kantitatea" id="kantitatea" /></p>
 
-    <br>
+    <br />
     <label for="ordainketa_metodoa">Ordainketa Metodoa</label>
     <select name="dog-ordainketa_metodoa" id="ordainketa_metodoa">
-        <option value="dirua">Dirua</option>
-        <option value="hile1">Hile bat</option>
-        <option value="3hile">Hiru hile</option>
+      <option value="dirua">Dirua</option>
+      <option value="hile1">Hile bat</option>
+      <option value="3hile">Hiru hile</option>
     </select>
-    <label>Garraioa <input type="checkbox" name="garraioa" id="garraioa"></label>
+    <label
+      >Garraioa <input type="checkbox" name="garraioa" id="garraioa"
+    /></label>
 
-    <br><br>
+    <br /><br />
 
-    <input type="button" name="kalkulatu" id="kalkulatu" value="kalkulatu" onclick="eragiketa()">
-    <input type="text" name="emaitza" id="emaitza" readonly>
-</body>
-
+    <input
+      type="button"
+      name="kalkulatu"
+      id="kalkulatu"
+      value="kalkulatu"
+      onclick="eragiketa()"
+    />
+    <input type="text" name="emaitza" id="emaitza" readonly />
+  </body>
 </html>

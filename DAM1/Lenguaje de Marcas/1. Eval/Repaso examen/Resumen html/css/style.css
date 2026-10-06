@@ -1,299 +1,297 @@
 /* Reset de márgenes, relleno y box-sizing para asegurar consistencia */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Estilo general para el cuerpo del documento */
 body {
-
-    font-family: Arial, sans-serif;
-    /* Fuente */
-    font-size: 16px;
-    /* Tamaño de fuente */
-    background-color: #f4f4f4;
-    /* Color de fondo */
-    color: #333;
-    /* Color del texto */
-    margin: 0;
-    padding: 20px;
-    /* Espaciado alrededor */
+  font-family: Arial, sans-serif;
+  /* Fuente */
+  font-size: 16px;
+  /* Tamaño de fuente */
+  background-color: #f4f4f4;
+  /* Color de fondo */
+  color: #333;
+  /* Color del texto */
+  margin: 0;
+  padding: 20px;
+  /* Espaciado alrededor */
 }
 
 body p {
-    text-align: center;
-    /*  centra todo el texto que este en el body y que sea p */
+  text-align: center;
+  /*  centra todo el texto que este en el body y que sea p */
 }
 
 /* Estilo del contenedor principal */
 .container {
-    width: 80%;
-    /* Ancho del contenedor */
-    margin: 0 auto;
-    /* Centrado automático */
-    padding: 20px;
-    /* Espaciado interno */
-    background-color: white;
-    /* Fondo blanco */
-    border-radius: 8px;
-    /* Bordes redondeados */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    /* Sombra suave */
+  width: 80%;
+  /* Ancho del contenedor */
+  margin: 0 auto;
+  /* Centrado automático */
+  padding: 20px;
+  /* Espaciado interno */
+  background-color: white;
+  /* Fondo blanco */
+  border-radius: 8px;
+  /* Bordes redondeados */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  /* Sombra suave */
 }
 
 /* Estilos para contenedor con diseño flexible */
 .flex-container {
-    display: flex;
-    /* Diseño de contenedor flexible */
-    justify-content: space-between;
-    /* Espaciado entre los elementos */
-    align-items: center;
-    /* Alineación vertical */
-    flex-wrap: wrap;
-    /* Permite que los elementos se ajusten */
-    margin-bottom: 20px;
-    /* Espaciado inferior */
+  display: flex;
+  /* Diseño de contenedor flexible */
+  justify-content: space-between;
+  /* Espaciado entre los elementos */
+  align-items: center;
+  /* Alineación vertical */
+  flex-wrap: wrap;
+  /* Permite que los elementos se ajusten */
+  margin-bottom: 20px;
+  /* Espaciado inferior */
 }
 
 /* Estilo para los divs dentro del contenedor flexible */
 .flex-container div {
-    width: 30%;
-    /* Ancho de los divs */
-    padding: 20px;
-    /* Relleno interno */
-    background-color: #e2e2e2;
-    /* Fondo gris */
-    border-radius: 5px;
-    /* Bordes redondeados */
+  width: 30%;
+  /* Ancho de los divs */
+  padding: 20px;
+  /* Relleno interno */
+  background-color: #e2e2e2;
+  /* Fondo gris */
+  border-radius: 5px;
+  /* Bordes redondeados */
 }
 
 /* Estilo para enlaces */
 a {
-    text-decoration: none;
-    /* Sin subrayado */
-    color: #007bff;
-    /* Color del texto */
-    padding: 10px 20px;
-    /* Relleno alrededor */
-    background-color: #e7f3fe;
-    /* Fondo azul claro */
-    border-radius: 5px;
-    /* Bordes redondeados */
+  text-decoration: none;
+  /* Sin subrayado */
+  color: #007bff;
+  /* Color del texto */
+  padding: 10px 20px;
+  /* Relleno alrededor */
+  background-color: #e7f3fe;
+  /* Fondo azul claro */
+  border-radius: 5px;
+  /* Bordes redondeados */
 }
 
 /* Estilo para el enlace al pasar el ratón */
 a:hover {
-    background-color: #cce0ff;
-    /* Fondo azul más oscuro */
+  background-color: #cce0ff;
+  /* Fondo azul más oscuro */
 }
 
 /* Estilo para imágenes, asegurando que sean responsivas */
 img {
-    max-width: 20%;
-    /* Ancho máximo del 30% */
-    height: auto;
-    /* Altura automática */
+  max-width: 20%;
+  /* Ancho máximo del 30% */
+  height: auto;
+  /* Altura automática */
 }
 
 /* Estilo para la tabla */
 table {
-    width: 100%;
-    /* Ancho total */
-    border-collapse: collapse;
-    /* Colapsar bordes */
-    margin-bottom: 20px;
-    /* Espaciado inferior */
+  width: 100%;
+  /* Ancho total */
+  border-collapse: collapse;
+  /* Colapsar bordes */
+  margin-bottom: 20px;
+  /* Espaciado inferior */
 }
 
 /* Estilo para celdas de tabla */
 th,
 td {
-    padding: 12px;
-    /* Relleno */
-    text-align: left;
-    /* Alineación izquierda */
-    border: 1px solid #ddd;
-    /* Bordes grises */
+  padding: 12px;
+  /* Relleno */
+  text-align: left;
+  /* Alineación izquierda */
+  border: 1px solid #ddd;
+  /* Bordes grises */
 }
 
 /* Estilo para botones */
 button {
-    padding: 10px 20px;
-    /* Relleno */
-    background-color: #28a745;
-    /* Fondo verde */
-    color: white;
-    /* Texto blanco */
-    border: none;
-    /* Sin bordes */
-    border-radius: 5px;
-    /* Bordes redondeados */
-    cursor: pointer;
-    /* Cursor en forma de mano */
+  padding: 10px 20px;
+  /* Relleno */
+  background-color: #28a745;
+  /* Fondo verde */
+  color: white;
+  /* Texto blanco */
+  border: none;
+  /* Sin bordes */
+  border-radius: 5px;
+  /* Bordes redondeados */
+  cursor: pointer;
+  /* Cursor en forma de mano */
 }
 
 /* Estilo para el botón al pasar el ratón */
 button:hover {
-    background-color: #218838;
-    /* Fondo verde más oscuro */
+  background-color: #218838;
+  /* Fondo verde más oscuro */
 }
 
 /* Estilo para elementos con sombra */
 .box-shadow {
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-    /* Sombra */
-    margin-bottom: 20px;
-    /* Espaciado inferior */
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  /* Sombra */
+  margin-bottom: 20px;
+  /* Espaciado inferior */
 }
 
 /* Estilos para texto en cursiva */
 .italic {
-    font-style: italic;
-    /* Cursiva */
+  font-style: italic;
+  /* Cursiva */
 }
 
 /* Estilos para texto en negrita */
 .bold {
-    font-weight: bold;
-    /* Negrita */
+  font-weight: bold;
+  /* Negrita */
 }
 
 /* Estilos para texto subrayado */
 .underline {
-    text-decoration: underline;
-    /* Subrayado */
+  text-decoration: underline;
+  /* Subrayado */
 }
 
 /* Estilos para texto capitalizado */
 .capitalize {
-    text-transform: capitalize;
-    /* Capitalización */
+  text-transform: capitalize;
+  /* Capitalización */
 }
 
 /* Contenedor con alineación centrada */
 .justify-content-center {
-    display: flex;
-    justify-content: center;
-    /* Centrado de los elementos */
+  display: flex;
+  justify-content: center;
+  /* Centrado de los elementos */
 }
 
 /* Contenedor con alineación espaciada entre elementos */
 .justify-content-space-between {
-    display: flex;
-    justify-content: space-between;
-    /* Espaciado entre los elementos */
+  display: flex;
+  justify-content: space-between;
+  /* Espaciado entre los elementos */
 }
 
 /* Contenedor con alineación espaciada alrededor de los elementos */
 .justify-content-space-around {
-    display: flex;
-    justify-content: space-around;
-    /* Espaciado alrededor */
+  display: flex;
+  justify-content: space-around;
+  /* Espaciado alrededor */
 }
 
 /* Estilo para opacidad */
 .opacity {
-    opacity: 0.5;
-    /* Opacidad al 50% */
+  opacity: 0.5;
+  /* Opacidad al 50% */
 }
 
 /* Transición suave para todos los cambios */
 .transition {
-    transition: all 0.3s ease;
-    /* Transición de 0.3s */
+  transition: all 0.3s ease;
+  /* Transición de 0.3s */
 }
 
 /* Estilo para margen superior */
 .margin-top {
-    margin-top: 20px;
-    /* Margen superior */
+  margin-top: 20px;
+  /* Margen superior */
 }
 
 /* Estilo para mostrar un elemento como bloque */
 .block {
-    display: block;
-    /* Muestra como bloque */
+  display: block;
+  /* Muestra como bloque */
 }
 
 /* Estilo para mostrar un elemento como bloque en línea */
 .inline-block {
-    display: inline-block;
-    /* Muestra como bloque en línea */
+  display: inline-block;
+  /* Muestra como bloque en línea */
 }
 
 /* Estilo para ocultar un elemento */
 .none {
-    display: none;
-    /* No mostrar */
+  display: none;
+  /* No mostrar */
 }
 
 /* Estilo para posicionamiento relativo */
 .position-relative {
-    position: relative;
-    /* Posicionamiento relativo */
+  position: relative;
+  /* Posicionamiento relativo */
 }
 
 /* Estilo para posicionamiento absoluto */
 .position-absolute {
-    position: absolute;
-    /* Posicionamiento absoluto */
-    top: 50px;
-    /* A 50px del borde superior */
-    left: 50px;
-    /* A 50px del borde izquierdo */
+  position: absolute;
+  /* Posicionamiento absoluto */
+  top: 50px;
+  /* A 50px del borde superior */
+  left: 50px;
+  /* A 50px del borde izquierdo */
 }
 
 /* Estilo para el índice z */
 .z-index-10 {
-    z-index: 10;
-    /* Prioridad de apilamiento */
+  z-index: 10;
+  /* Prioridad de apilamiento */
 }
 
 /* Estilo para texto de tamaño grande */
 .font-large {
-    font-size: 24px;
-    /* Tamaño de fuente grande */
+  font-size: 24px;
+  /* Tamaño de fuente grande */
 }
 
 /* Estilo para texto de tamaño pequeño */
 .font-small {
-    font-size: 12px;
-    /* Tamaño de fuente pequeño */
+  font-size: 12px;
+  /* Tamaño de fuente pequeño */
 }
 
 /* Estilo para permitir el crecimiento flexible de un elemento */
 .flex-grow {
-    flex-grow: 1;
-    /* El elemento crecerá para ocupar el espacio disponible */
+  flex-grow: 1;
+  /* El elemento crecerá para ocupar el espacio disponible */
 }
 
 /* Estilos responsivos para pantallas pequeñas */
 @media screen and (max-width: 600px) {
+  /* Ajustes en el cuerpo para pantallas pequeñas */
+  body {
+    font-size: 14px;
+    /* Reducir tamaño de fuente */
+  }
 
-    /* Ajustes en el cuerpo para pantallas pequeñas */
-    body {
-        font-size: 14px;
-        /* Reducir tamaño de fuente */
-    }
+  /* Ajuste de ancho del contenedor */
+  .container {
+    width: 95%;
+    /* Aumentar el ancho del contenedor */
+  }
 
-    /* Ajuste de ancho del contenedor */
-    .container {
-        width: 95%;
-        /* Aumentar el ancho del contenedor */
-    }
+  /* Cambiar dirección del contenedor flexible a columna */
+  .flex-container {
+    flex-direction: column;
+    /* Apilar los elementos verticalmente */
+  }
 
-    /* Cambiar dirección del contenedor flexible a columna */
-    .flex-container {
-        flex-direction: column;
-        /* Apilar los elementos verticalmente */
-    }
-
-    /* Ajustar el tamaño de los divs dentro del contenedor flexible */
-    .flex-container div {
-        width: 100%;
-        /* Los divs ocupan el 100% del ancho */
-        margin-bottom: 10px;
-        /* Espaciado inferior */
-    }
+  /* Ajustar el tamaño de los divs dentro del contenedor flexible */
+  .flex-container div {
+    width: 100%;
+    /* Los divs ocupan el 100% del ancho */
+    margin-bottom: 10px;
+    /* Espaciado inferior */
+  }
 }

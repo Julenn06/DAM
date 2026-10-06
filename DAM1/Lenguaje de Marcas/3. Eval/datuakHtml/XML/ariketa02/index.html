@@ -1,21 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <h1>XML fitxategi bat irakurri</h1>
     <h5>XML fitxategi bat irakurri eta bere edukia pantailan erakutsi.</h5>
 
     <div id="liburuak"></div>
 
     <script>
-        const xmlString = `
+      const xmlString = `
         <liburuak>
             <liburua>
                 <izenburua>El Señor de los Anillos</izenburua>
@@ -27,24 +25,21 @@
             </liburua>
         </liburuak>`;
 
-        let parser = new DOMParser();
-        let xmlDoc = parser.parseFromString(xmlString, "text/xml");
+      let parser = new DOMParser();
+      let xmlDoc = parser.parseFromString(xmlString, "text/xml");
 
-        for (let i = 0; i < xmlDoc.getElementsByTagName("liburua").length; i++) {
+      for (let i = 0; i < xmlDoc.getElementsByTagName("liburua").length; i++) {
+        let izenburua = xmlDoc.getElementsByTagName("izenburua")[i].textContent;
 
-            let izenburua = xmlDoc.getElementsByTagName("izenburua")[i].textContent;
+        let liburuaDiv = document.createElement("div");
 
-
-            let liburuaDiv = document.createElement("div");
-
-            liburuaDiv.innerHTML = `
+        liburuaDiv.innerHTML = `
                 <ul>
                     <li><b>Izenburua:</b> ${izenburua}</li>
                 </ul>
             `;
-            document.getElementById("liburuak").appendChild(liburuaDiv);
-        }
+        document.getElementById("liburuak").appendChild(liburuaDiv);
+      }
     </script>
-</body>
-
+  </body>
 </html>

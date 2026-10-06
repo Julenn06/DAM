@@ -1,40 +1,40 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 form {
-    width: 20%;
-    margin: auto;
-    padding: 10px;
-    border-radius: 15px;
-    text-align: center;
-    background-color: #ccc;
+  width: 20%;
+  margin: auto;
+  padding: 10px;
+  border-radius: 15px;
+  text-align: center;
+  background-color: #ccc;
 }
 
 #form-egitura input,
 textarea {
-    background-color: darkgray;
+  background-color: darkgray;
 }
 
 #form-egitura input [type="text"],
 #form-egitura input [type="email"] {
-    width: 180px;
+  width: 180px;
 }
 
 #form-egitura label {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 button {
-    border-radius: 5px;
-    height: 40px;
-    width: 250px;
-    background-color: black;
-    color: white;
+  border-radius: 5px;
+  height: 40px;
+  width: 250px;
+  background-color: black;
+  color: white;
 }
 
 #mezua {
-    border-radius: 5px;
+  border-radius: 5px;
 }

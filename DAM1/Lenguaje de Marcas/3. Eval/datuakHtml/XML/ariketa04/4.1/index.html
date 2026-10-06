@@ -1,43 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        table {
-            width: 50%;
-            margin: 0 auto;
-        }
+      table {
+        width: 50%;
+        margin: 0 auto;
+      }
 
-        th {
-            background-color: #f2f2f2;
-        }
+      th {
+        background-color: #f2f2f2;
+      }
 
-        td {
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-        }
+      td {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <h1>XML fitxategi bat irakurri</h1>
     <h5>XML fitxategi bat irakurri eta bere edukia pantailan erakutsi.</h5>
 
     <table id="taula">
-        <tr>
-            <th>Id</th>
-            <th>Izena</th>
-            <th>Gradua</th>
-            <th>Dekretua</th>
-        </tr>
+      <tr>
+        <th>Id</th>
+        <th>Izena</th>
+        <th>Gradua</th>
+        <th>Dekretua</th>
+      </tr>
     </table>
 
     <script>
-        const xmlString = `
+      const xmlString = `
         <zikloak>
             <zikloa id="SISA">
                 <izena>Sareko Informatika Sistemen Administrazioa</izena>
@@ -56,38 +54,39 @@
             </zikloa>
         </zikloak>`;
 
-        let parser = new DOMParser();
-        let xmlDoc = parser.parseFromString(xmlString, "text/xml");
+      let parser = new DOMParser();
+      let xmlDoc = parser.parseFromString(xmlString, "text/xml");
 
-        let zikloak = xmlDoc.getElementsByTagName("zikloa");
+      let zikloak = xmlDoc.getElementsByTagName("zikloa");
 
-        for (let i = 0; i < zikloak.length; i++) {
-            let id = zikloak[i].getAttribute("id");
-            let izena = zikloak[i].getElementsByTagName("izena")[0].textContent;
-            let gradua = zikloak[i].getElementsByTagName("gradua")[0].textContent;
-            let dekretua = zikloak[i].getElementsByTagName("dekretua")[0].getAttribute("urtea");
+      for (let i = 0; i < zikloak.length; i++) {
+        let id = zikloak[i].getAttribute("id");
+        let izena = zikloak[i].getElementsByTagName("izena")[0].textContent;
+        let gradua = zikloak[i].getElementsByTagName("gradua")[0].textContent;
+        let dekretua = zikloak[i]
+          .getElementsByTagName("dekretua")[0]
+          .getAttribute("urtea");
 
-            let tr = document.createElement("tr");
+        let tr = document.createElement("tr");
 
-            let idTd = document.createElement("td");
-            idTd.textContent = id;
-            tr.appendChild(idTd);
+        let idTd = document.createElement("td");
+        idTd.textContent = id;
+        tr.appendChild(idTd);
 
-            let izenaTd = document.createElement("td");
-            izenaTd.textContent = izena;
-            tr.appendChild(izenaTd);
+        let izenaTd = document.createElement("td");
+        izenaTd.textContent = izena;
+        tr.appendChild(izenaTd);
 
-            let graduaTd = document.createElement("td");
-            graduaTd.textContent = gradua;
-            tr.appendChild(graduaTd);
+        let graduaTd = document.createElement("td");
+        graduaTd.textContent = gradua;
+        tr.appendChild(graduaTd);
 
-            let dekretuaTd = document.createElement("td");
-            dekretuaTd.textContent = dekretua;
-            tr.appendChild(dekretuaTd);
+        let dekretuaTd = document.createElement("td");
+        dekretuaTd.textContent = dekretua;
+        tr.appendChild(dekretuaTd);
 
-            document.getElementById("taula").appendChild(tr);
-        }
+        document.getElementById("taula").appendChild(tr);
+      }
     </script>
-</body>
-
+  </body>
 </html>

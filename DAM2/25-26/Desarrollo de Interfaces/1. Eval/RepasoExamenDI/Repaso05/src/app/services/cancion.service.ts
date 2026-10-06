@@ -4,12 +4,12 @@ import { Observable } from 'rxjs';
 import { Cancion } from '../models/cancion.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CancionService {
   private apiUrl = 'http://localhost:3000/canciones';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // 31. Obtener todas las canciones
   getCanciones(): Observable<Cancion[]> {
@@ -92,9 +92,7 @@ export class CancionService {
 
   // 45. Obtener canciones con paginación
   getCancionesPaginadas(page: number, limit: number): Observable<Cancion[]> {
-    const params = new HttpParams()
-      .set('_page', page.toString())
-      .set('_limit', limit.toString());
+    const params = new HttpParams().set('_page', page.toString()).set('_limit', limit.toString());
     return this.http.get<Cancion[]>(this.apiUrl, { params });
   }
 }

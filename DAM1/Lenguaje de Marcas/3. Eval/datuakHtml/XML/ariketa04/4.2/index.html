@@ -1,38 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        ul {
-            width: 50%;
-            margin: 0 auto;
-            list-style-type: none;
-            padding: 0;
-        }
+      ul {
+        width: 50%;
+        margin: 0 auto;
+        list-style-type: none;
+        padding: 0;
+      }
 
-        li {
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-        }
+      li {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+      }
 
-        li:nth-child(odd) {
-            background-color: #f2f2f2;
-        }
+      li:nth-child(odd) {
+        background-color: #f2f2f2;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <h1>XML fitxategi bat irakurri</h1>
     <h5>XML fitxategi bat irakurri eta bere edukia pantailan erakutsi.</h5>
 
     <ul id="lista"></ul>
 
     <script>
-        const xmlString = `
+      const xmlString = `
         <zikloak>
             <zikloa id="SISA">
                 <izena>Sareko Informatika Sistemen Administrazioa</izena>
@@ -51,45 +49,46 @@
             </zikloa>
         </zikloak>`;
 
-        let parser = new DOMParser();
-        let xmlDoc = parser.parseFromString(xmlString, "text/xml");
+      let parser = new DOMParser();
+      let xmlDoc = parser.parseFromString(xmlString, "text/xml");
 
-        let zikloak = xmlDoc.getElementsByTagName("zikloa");
+      let zikloak = xmlDoc.getElementsByTagName("zikloa");
 
-        for (let i = 0; i < zikloak.length; i++) {
-            let id = zikloak[i].getAttribute("id");
-            let izena = zikloak[i].getElementsByTagName("izena")[0].textContent;
-            let gradua = zikloak[i].getElementsByTagName("gradua")[0].textContent;
-            let dekretua = zikloak[i].getElementsByTagName("dekretua")[0].getAttribute("urtea");
+      for (let i = 0; i < zikloak.length; i++) {
+        let id = zikloak[i].getAttribute("id");
+        let izena = zikloak[i].getElementsByTagName("izena")[0].textContent;
+        let gradua = zikloak[i].getElementsByTagName("gradua")[0].textContent;
+        let dekretua = zikloak[i]
+          .getElementsByTagName("dekretua")[0]
+          .getAttribute("urtea");
 
-            let li = document.createElement("li");
+        let li = document.createElement("li");
 
-            let idTestua = document.createElement("b");
-            idTestua.textContent = "Id: ";
-            li.appendChild(idTestua);
-            li.appendChild(document.createTextNode(id));
-            li.appendChild(document.createElement("br"));
+        let idTestua = document.createElement("b");
+        idTestua.textContent = "Id: ";
+        li.appendChild(idTestua);
+        li.appendChild(document.createTextNode(id));
+        li.appendChild(document.createElement("br"));
 
-            let izenaTestua = document.createElement("b");
-            izenaTestua.textContent = "Izena: ";
-            li.appendChild(izenaTestua);
-            li.appendChild(document.createTextNode(izena));
-            li.appendChild(document.createElement("br"));
+        let izenaTestua = document.createElement("b");
+        izenaTestua.textContent = "Izena: ";
+        li.appendChild(izenaTestua);
+        li.appendChild(document.createTextNode(izena));
+        li.appendChild(document.createElement("br"));
 
-            let graduaTestua = document.createElement("b");
-            graduaTestua.textContent = "Gradua: ";
-            li.appendChild(graduaTestua);
-            li.appendChild(document.createTextNode(gradua));
-            li.appendChild(document.createElement("br"));
+        let graduaTestua = document.createElement("b");
+        graduaTestua.textContent = "Gradua: ";
+        li.appendChild(graduaTestua);
+        li.appendChild(document.createTextNode(gradua));
+        li.appendChild(document.createElement("br"));
 
-            let dekretuaTestua = document.createElement("b");
-            dekretuaTestua.textContent = "Dekretua: ";
-            li.appendChild(dekretuaTestua);
-            li.appendChild(document.createTextNode(dekretua));
+        let dekretuaTestua = document.createElement("b");
+        dekretuaTestua.textContent = "Dekretua: ";
+        li.appendChild(dekretuaTestua);
+        li.appendChild(document.createTextNode(dekretua));
 
-            document.getElementById("lista").appendChild(li);
-        }
+        document.getElementById("lista").appendChild(li);
+      }
     </script>
-</body>
-
+  </body>
 </html>

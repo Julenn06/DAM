@@ -9,13 +9,13 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: 'app-header',
   templateUrl: './header.html',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslateModule]
+  imports: [CommonModule, RouterModule, TranslateModule],
 })
 export class HeaderComponent {
   constructor(
     public authService: AuthService,
     private router: Router,
-    public languageService: LanguageService
+    public languageService: LanguageService,
   ) {}
 
   logout() {

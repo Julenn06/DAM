@@ -1,64 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
-
+  <body>
     <form name="datu_pertsonalak" action="#" method="get" id="form-egitura">
-        <label for="izena">izena:</label>
-        <input type="text" id="izena" name="izena" required maxlength="40"><br><br>
+      <label for="izena">izena:</label>
+      <input
+        type="text"
+        id="izena"
+        name="izena"
+        required
+        maxlength="40"
+      /><br /><br />
 
-        <label for="abizenak">abizenak:</label>
-        <input type="text" id="abizenak" abizenak="abizenak" required maxlength="40"><br><br>
+      <label for="abizenak">abizenak:</label>
+      <input
+        type="text"
+        id="abizenak"
+        abizenak="abizenak"
+        required
+        maxlength="40"
+      /><br /><br />
 
+      <label>Herria:<input list="herri_list" name="herri_list" /></label>
+      <datalist id="herri_list">
+        <option>Abadiño</option>
+        <option>Abanto</option>
+        <option>Ajangiz</option>
+        <option>Alonsotegi</option>
+        <option>Amoroto</option>
+        <option>Arakaldo</option>
+        <option>Arantzazu</option>
+        <option>Areatza</option>
+        <option>Arrankudiaga</option>
+        <option>Arratzu</option>
+        <option>Arrieta</option>
+        <option>Arrigorriaga</option>
+        <option>Arteaga</option>
+        <option>Artzentales</option>
+        <option>Atxondo</option>
+        <option>Aulesti</option>
+      </datalist>
 
-        <label>Herria:<input list="herri_list" name="herri_list" /></label>
-        <datalist id="herri_list">
-            <option>Abadiño</option>
-            <option>Abanto</option>
-            <option>Ajangiz</option>
-            <option>Alonsotegi</option>
-            <option>Amoroto</option>
-            <option>Arakaldo</option>
-            <option>Arantzazu</option>
-            <option>Areatza</option>
-            <option>Arrankudiaga</option>
-            <option>Arratzu</option>
-            <option>Arrieta</option>
-            <option>Arrigorriaga</option>
-            <option>Arteaga</option>
-            <option>Artzentales</option>
-            <option>Atxondo</option>
-            <option>Aulesti</option>
-        </datalist>
+      <br />
+      <br />
 
-        <br>
-        <br>
+      <label for="eposta">e-posta:</label>
+      <input
+        type="email"
+        id="eposta"
+        name="eposta"
+        placeholder="e-posta"
+        required
+        maxlength="40"
+        autocomplete="off"
+      /><br /><br />
 
-        <label for="eposta">e-posta:</label>
-        <input type="email" id="eposta" name="eposta" placeholder="e-posta" required maxlength="40"
-            autocomplete="off"><br><br>
+      <label for="eposta">Gaia:</label>
+      <input
+        type="email"
+        id="eposta"
+        name="eposta"
+        placeholder="Galderentzat izenburua"
+        required
+        maxlength="40"
+        autocomplete="off"
+      /><br />
 
-        <label for="eposta">Gaia:</label>
-        <input type="email" id="eposta" name="eposta" placeholder="Galderentzat izenburua" required maxlength="40"
-            autocomplete="off"><br>
+      <label for="mezua">Mezua</label>
+      <textarea
+        name="mezua"
+        id="mezua"
+        placeholder="300 hitz baino gutziagotan azaldu"
+      ></textarea>
 
-        <label for="mezua">Mezua</label>
-        <textarea name="mezua" id="mezua" placeholder="300 hitz baino gutziagotan azaldu"></textarea>
+      <br />
+      <br />
 
-        <br>
-        <br>
-
-        <button type="submit">Datuak Bidali</button>
-
-
-
-</body>
-
+      <button type="submit">Datuak Bidali</button>
+    </form>
+  </body>
 </html>

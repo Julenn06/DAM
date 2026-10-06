@@ -1,103 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        body {
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
+      body {
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
 
-        h1 {
-            text-align: center;
-            color: black;
-        }
+      h1 {
+        text-align: center;
+        color: black;
+      }
 
-        #kontenedorea {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+      #kontenedorea {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
 
-        .txartela {
-            background-color: white;
-            border-radius: 5px;
-            margin: 10px;
-            padding: 20px;
-            text-align: center;
-            width: 200px;
-        }
+      .txartela {
+        background-color: white;
+        border-radius: 5px;
+        margin: 10px;
+        padding: 20px;
+        text-align: center;
+        width: 200px;
+      }
 
-        .txartela img {
-            border-radius: 10px;
-            width: 200px;
-            height: 250px;
-        }
+      .txartela img {
+        border-radius: 10px;
+        width: 200px;
+        height: 250px;
+      }
 
-        a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            background-color: #007BFF;
-            padding: 5px 10px;
-            border-radius: 5px;
-            display: inline-block;
-        }
+      a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        background-color: #007bff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline-block;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Atp Tenis</h1>
-    <div id="kontenedorea">
-    </div>
+    <div id="kontenedorea"></div>
 
     <script>
-        let tenistak = [];
+      let tenistak = [];
 
-        fetch('atp.json')
-            .then(response => response.json())
-            .then(data => {
+      fetch("atp.json")
+        .then((response) => response.json())
+        .then((data) => {
+          tenistak = data;
+          erakutsiJoakalariak(tenistak);
+        });
 
-                tenistak = data;
-                erakutsiJoakalariak(tenistak);
-            });
+      function erakutsiJoakalariak(tenistak) {
+        let kontenedorea = document.getElementById("kontenedorea");
 
-        function erakutsiJoakalariak(tenistak) {
+        for (const tenista of tenistak) {
+          let txartela = document.createElement("div");
+          txartela.classList.add("txartela");
 
-            let kontenedorea = document.getElementById("kontenedorea");
+          let irudia = document.createElement("img");
+          irudia.src = tenista.irudia;
+          irudia.alt = tenista.izena;
+          txartela.appendChild(irudia);
+          kontenedorea.appendChild(txartela);
 
-            for (const tenista of tenistak) {
-                let txartela = document.createElement("div");
-                txartela.classList.add("txartela");
+          let izena = document.createElement("h4");
+          izena.textContent = tenista.izena;
+          txartela.appendChild(izena);
 
-                let irudia = document.createElement("img");
-                irudia.src = tenista.irudia;
-                irudia.alt = tenista.izena;
-                txartela.appendChild(irudia);
-                kontenedorea.appendChild(txartela);
+          let adina = document.createElement("p");
+          adina.textContent = "Adina: " + tenista.adina;
+          txartela.appendChild(adina);
 
-                let izena = document.createElement("h4");
-                izena.textContent = tenista.izena;
-                txartela.appendChild(izena);
-
-                let adina = document.createElement("p");
-                adina.textContent = "Adina: " + tenista.adina;
-                txartela.appendChild(adina);
-
-                let info = document.createElement("a");
-                info.textContent = "Informazio Gehiago";
-                info.href = tenista.info;
-                info.target = "_blank";
-                txartela.appendChild(info);
-            }
+          let info = document.createElement("a");
+          info.textContent = "Informazio Gehiago";
+          info.href = tenista.info;
+          info.target = "_blank";
+          txartela.appendChild(info);
         }
+      }
     </script>
-
-</body>
-
+  </body>
 </html>

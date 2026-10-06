@@ -1,35 +1,36 @@
 {
-    "tienda": {
-        "nombre": "TechWorld",
-        "ubicacion": "Calle del Futuro 42, Ciudad Tecnológica",
-        "productos": [{
-                "id": 1,
-                "nombre": "Smartphone Galaxy Ultra",
-                "precio": 999.99,
-                "descripcion": "El último modelo con cámara de 108 MP y pantalla AMOLED de 6.9 pulgadas.",
-                "foto": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.g60xYgfKj9XCjZJb9LWZcQHaHc%3Fpid%3DApi&f=1&ipt=6fe7a60c3533bf8e9d5161451d99dcedcbdfb554bd72139c545312503462ae84&ipo=images"
-            },
-            {
-                "id": 2,
-                "nombre": "Auriculares Noise Cancelling Pro",
-                "precio": 199.99,
-                "descripcion": "Auriculares inalámbricos con cancelación activa de ruido y batería de larga duración.",
-                "foto": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Fzg-L_xGuj-yHsPuNFPb-gHaJ0%26pid%3DApi&f=1&ipt=51b255659580f7384879263c488c8f1c8f92376fa17b37cc8a6d6c1a16a86024&ipo=images"
-            },
-            {
-                "id": 3,
-                "nombre": "Laptop Gaming Beast 5000",
-                "precio": 1899.00,
-                "descripcion": "Portátil de alto rendimiento con gráfica RTX 4080 y 32 GB de RAM.",
-                "foto": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.IxEd_rCZaaQVly50oKdorQHaE6%26pid%3DApi&f=1&ipt=647655aa6fc707d11464ada7c01cb08e08c2e6d706a69bc4a4a47a7318701200&ipo=images"
-            },
-            {
-                "id": 4,
-                "nombre": "Reloj Inteligente FitLife",
-                "precio": 149.50,
-                "descripcion": "Smartwatch resistente al agua con monitor de ritmo cardíaco y GPS integrado.",
-                "foto": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.x2V1YhOlSLV04gRgY4uVUwHaHa%26pid%3DApi&f=1&ipt=e4e997851dda18c333bf6b706b903f43fc84b25a35bd4cf67e905c74fc23c882&ipo=images"
-            }
-        ]
-    }
+  "tienda": {
+    "nombre": "TechWorld",
+    "ubicacion": "Calle del Futuro 42, Ciudad Tecnológica",
+    "productos": [
+      {
+        "id": 1,
+        "nombre": "Smartphone Galaxy Ultra",
+        "precio": 999.99,
+        "descripcion": "El último modelo con cámara de 108 MP y pantalla AMOLED de 6.9 pulgadas.",
+        "foto": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.g60xYgfKj9XCjZJb9LWZcQHaHc%3Fpid%3DApi&f=1&ipt=6fe7a60c3533bf8e9d5161451d99dcedcbdfb554bd72139c545312503462ae84&ipo=images"
+      },
+      {
+        "id": 2,
+        "nombre": "Auriculares Noise Cancelling Pro",
+        "precio": 199.99,
+        "descripcion": "Auriculares inalámbricos con cancelación activa de ruido y batería de larga duración.",
+        "foto": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Fzg-L_xGuj-yHsPuNFPb-gHaJ0%26pid%3DApi&f=1&ipt=51b255659580f7384879263c488c8f1c8f92376fa17b37cc8a6d6c1a16a86024&ipo=images"
+      },
+      {
+        "id": 3,
+        "nombre": "Laptop Gaming Beast 5000",
+        "precio": 1899.0,
+        "descripcion": "Portátil de alto rendimiento con gráfica RTX 4080 y 32 GB de RAM.",
+        "foto": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.IxEd_rCZaaQVly50oKdorQHaE6%26pid%3DApi&f=1&ipt=647655aa6fc707d11464ada7c01cb08e08c2e6d706a69bc4a4a47a7318701200&ipo=images"
+      },
+      {
+        "id": 4,
+        "nombre": "Reloj Inteligente FitLife",
+        "precio": 149.5,
+        "descripcion": "Smartwatch resistente al agua con monitor de ritmo cardíaco y GPS integrado.",
+        "foto": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.x2V1YhOlSLV04gRgY4uVUwHaHa%26pid%3DApi&f=1&ipt=e4e997851dda18c333bf6b706b903f43fc84b25a35bd4cf67e905c74fc23c882&ipo=images"
+      }
+    ]
+  }
 }

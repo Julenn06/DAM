@@ -4,7 +4,7 @@ import { Observable, switchMap, take } from 'rxjs';
 import { Hero } from '../hero/hero';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HeroesRemoteService {
   private http = inject(HttpClient);
@@ -37,7 +37,7 @@ export class HeroesRemoteService {
         const newId = maxId + 1;
         const body = { ...payload, id: newId } as Partial<Hero>;
         return this.http.post<Hero>(this.apiUrl, body);
-      })
+      }),
     );
   }
 

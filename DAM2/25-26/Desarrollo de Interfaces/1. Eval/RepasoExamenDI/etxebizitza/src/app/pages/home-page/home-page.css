@@ -1,5 +1,6 @@
 /* Contenedor general */
-.houses-container, .selling-container {
+.houses-container,
+.selling-container {
   margin: 20px;
   padding: 20px;
   border-radius: 8px;
@@ -13,7 +14,7 @@
 }
 
 .houses-container::before {
-  content: "TODAS LAS CASAS";
+  content: 'TODAS LAS CASAS';
   display: block;
   font-size: 1.5em;
   font-weight: bold;
@@ -29,7 +30,7 @@
 }
 
 .selling-container::before {
-  content: "CASAS EN VENTA";
+  content: 'CASAS EN VENTA';
   display: block;
   font-size: 1.5em;
   font-weight: bold;
@@ -92,7 +93,7 @@
 }
 
 /* Precios destacados */
-.house-details p:contains("Precio") {
+.house-details p:contains('Precio') {
   color: #28a745;
   font-weight: bold;
   background-color: #d4edda;

@@ -4,20 +4,20 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { LibroService } from '../../services/libro.service';
 import { Libro } from '../../models/libro.model';
-import { HeaderComponent } from "../../shared/header/header";
+import { HeaderComponent } from '../../shared/header/header';
 
 @Component({
   selector: 'app-libros',
   templateUrl: './libros.html',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslateModule, HeaderComponent]
+  imports: [CommonModule, FormsModule, TranslateModule, HeaderComponent],
 })
 export class Libros implements OnInit {
   libros: Libro[] = [];
   librosFiltradas: Libro[] = [];
-  
+
   textoBusquedatitulo = '';
-  
+
   libroEnModal: Partial<Libro> | null = null;
   libroNuevaEnModal: Partial<Libro> | null = null;
 
@@ -117,16 +117,14 @@ export class Libros implements OnInit {
     }
     this.libroEnModal = null;
   }
-  
-  minmax() {
 
+  minmax() {
     let templibros = this.libros;
 
-        templibros = templibros.filter((libro) => Number(libro.anio).toExponential);
+    templibros = templibros.filter((libro) => Number(libro.anio).toExponential);
 
     this.librosFiltradas = templibros;
     this.saveFilters();
-
   }
 
   filtrarlibros() {
@@ -135,7 +133,9 @@ export class Libros implements OnInit {
     const busquedatitulo = this.textoBusquedatitulo.trim().toLowerCase();
     if (busquedatitulo) {
       templibros = templibros.filter((libro) =>
-        String(libro.autor ?? '').toLowerCase().includes(busquedatitulo)
+        String(libro.autor ?? '')
+          .toLowerCase()
+          .includes(busquedatitulo),
       );
     }
 

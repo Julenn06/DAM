@@ -34,7 +34,7 @@ select {
 input[type="submit"] {
   width: 100%;
   padding: 10px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -44,5 +44,5 @@ input[type="submit"] {
 }
 
 #mezua {
-  color: #4CAF50;
+  color: #4caf50;
 }

@@ -1,79 +1,75 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: bisque;
+  background-color: bisque;
 }
 
 header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: aqua;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: aqua;
 }
 
 header h1 {
-    text-align: center;
-    width: 20%;
-    margin: 0 auto;
+  text-align: center;
+  width: 20%;
+  margin: 0 auto;
 }
 
 header img {
-    max-width: 200px;
-    display: flex;
-
+  max-width: 200px;
+  display: flex;
 }
 
 main {
-    display: flex;
-    /* Activa Flexbox */
-    justify-content: space-between;
-    /* Espacia los elementos */
+  display: flex;
+  /* Activa Flexbox */
+  justify-content: space-between;
+  /* Espacia los elementos */
 
-
-    margin-top: 10px;
-    /* align-items: flex-start;
+  margin-top: 10px;
+  /* align-items: flex-start;
     /* Alinea los elementos en la parte superior */
 }
 
 section {
-    flex: 1;
-    /* Permite que el section ocupe el espacio restante */
-    margin-right: 10px;
-    border-radius: 10px;
-    background-color: darkseagreen;
-    height: 125px;
-    line-height: 50px;
-    text-align: center;
+  flex: 1;
+  /* Permite que el section ocupe el espacio restante */
+  margin-right: 10px;
+  border-radius: 10px;
+  background-color: darkseagreen;
+  height: 125px;
+  line-height: 50px;
+  text-align: center;
 }
 
 nav {
-    background-color: darkgrey;
-    width: 20%;
-    border-radius: 10px;
+  background-color: darkgrey;
+  width: 20%;
+  border-radius: 10px;
 }
 
 nav ul {
-    text-align: center;
-    list-style: none;
+  text-align: center;
+  list-style: none;
 }
 
 nav ul li {
-    color: red;
-    margin-top: 25px;
-    width: 20%;
-    display: inline-block;
-
+  color: red;
+  margin-top: 25px;
+  width: 20%;
+  display: inline-block;
 }
 
 nav ul li:hover {
-    background-color: aliceblue;
-    color: black;
-    border-radius: 50px;
-
+  background-color: aliceblue;
+  color: black;
+  border-radius: 50px;
 }

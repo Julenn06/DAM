@@ -1,97 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>1 HTML Formularioak</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <fieldset>
-        <legend>Erabiltzailearen Datuak</legend>
-        <form name="datuak" action="#" method="get" class="form-egitura">
-            <label for="eposta">e-posta:</label>
-            <input type="email" id="eposta" name="eposta" placeholder="e-posta" required maxlength="40">
+      <legend>Erabiltzailearen Datuak</legend>
+      <form name="datuak" action="#" method="get" class="form-egitura">
+        <label for="eposta">e-posta:</label>
+        <input
+          type="email"
+          id="eposta"
+          name="eposta"
+          placeholder="e-posta"
+          required
+          maxlength="40"
+        />
 
-            <label for="reposta">Errepikatu e-posta:</label>
-            <input type="email" id="reposta" autocomplete="off" name="reposta" placeholder="e-posta" required
-                maxlength="40"><br><br>
+        <label for="reposta">Errepikatu e-posta:</label>
+        <input
+          type="email"
+          id="reposta"
+          autocomplete="off"
+          name="reposta"
+          placeholder="e-posta"
+          required
+          maxlength="40"
+        /><br /><br />
 
-            <label for="pasahitza">Pasahitza:</label>
-            <input type="password" id="pasahitza" name="pasahitza" placeholder="pasahitza" required maxlength="40">
+        <label for="pasahitza">Pasahitza:</label>
+        <input
+          type="password"
+          id="pasahitza"
+          name="pasahitza"
+          placeholder="pasahitza"
+          required
+          maxlength="40"
+        />
 
-            <label for="rpasahitza">Errepikatu pasahitza:</label>
-            <input type="password" id="rpasahitza" name="rpasahitza" placeholder="pasahitza" required
-                maxlength="40"><br>
+        <label for="rpasahitza">Errepikatu pasahitza:</label>
+        <input
+          type="password"
+          id="rpasahitza"
+          name="rpasahitza"
+          placeholder="pasahitza"
+          required
+          maxlength="40"
+        /><br />
 
-            <button>bidali</button>
-        </form>
+        <button>bidali</button>
+      </form>
     </fieldset>
 
-    <br>
+    <br />
 
     <fieldset>
-        <legend>Datu Pertsonalak</legend>
-        <form name="datu_pertsonalak" action="#" method="get" class="form-egitura">
-            <label for="izena">izena:</label>
-            <input type="text" id="izena" name="izena" required maxlength="40"><br><br>
+      <legend>Datu Pertsonalak</legend>
+      <form
+        name="datu_pertsonalak"
+        action="#"
+        method="get"
+        class="form-egitura"
+      >
+        <label for="izena">izena:</label>
+        <input
+          type="text"
+          id="izena"
+          name="izena"
+          required
+          maxlength="40"
+        /><br /><br />
 
-            <label for="data">Jaiotze Data:</label>
-            <input type="date" id="data" name="data" required value="dd-mm-aaaa" min="1900-01-01"
-                max="2200-12-31"><br><br>
+        <label for="data">Jaiotze Data:</label>
+        <input
+          type="date"
+          id="data"
+          name="data"
+          required
+          value="dd-mm-aaaa"
+          min="1900-01-01"
+          max="2200-12-31"
+        /><br /><br />
 
-            <label for="generoa">Generoa:</label>
-            <input type="radio" id="gizona" name="generoa" value="gizona" required>
-            <label for="gizona">Gizonezkoa</label>
-            <input type="radio" id="emakumea" name="generoa" value="emakumea" required>
-            <label for="emakumea">Emakumezkoa</label>
-            <input type="radio" id="ez_binarioa" name="generoa" value="ez_binarioa" required>
-            <label for="ez_binarioa">Ez bitarra</label><br><br>
+        <label for="generoa">Generoa:</label>
+        <input
+          type="radio"
+          id="gizona"
+          name="generoa"
+          value="gizona"
+          required
+        />
+        <label for="gizona">Gizonezkoa</label>
+        <input
+          type="radio"
+          id="emakumea"
+          name="generoa"
+          value="emakumea"
+          required
+        />
+        <label for="emakumea">Emakumezkoa</label>
+        <input
+          type="radio"
+          id="ez_binarioa"
+          name="generoa"
+          value="ez_binarioa"
+          required
+        />
+        <label for="ez_binarioa">Ez bitarra</label><br /><br />
 
-
-            <label for="telefonoa">Telefonoa:</label>
-            <input type="text" id="telefonoa" name="telefonoa" required maxlength="9">
-            <button>fdfsf</button>
-        </form>
+        <label for="telefonoa">Telefonoa:</label>
+        <input
+          type="text"
+          id="telefonoa"
+          name="telefonoa"
+          required
+          maxlength="9"
+        />
+        <button>fdfsf</button>
+      </form>
     </fieldset>
 
-    <br>
-
-
+    <br />
 
     <fieldset>
-        <legend>Ikasketak / Lana</legend>
-        <form name="datu_pertsonalak" action="#" method="get" class="form-egitura">
-            <label for="ikasketak">Ikasketak:</label>
-            <select name="ikasketak" id="ikasketak" required>
-                <option value=""></option>
-                <option value="DAM">DAM</option>
-                <option value="DAW">DAW</option>
-                <option value="ASIR">ASIR</option>
-            </select><br><br>
+      <legend>Ikasketak / Lana</legend>
+      <form
+        name="datu_pertsonalak"
+        action="#"
+        method="get"
+        class="form-egitura"
+      >
+        <label for="ikasketak">Ikasketak:</label>
+        <select name="ikasketak" id="ikasketak" required>
+          <option value=""></option>
+          <option value="DAM">DAM</option>
+          <option value="DAW">DAW</option>
+          <option value="ASIR">ASIR</option></select
+        ><br /><br />
 
+        <label for="hizkuntzak">Hizkuntza:</label>
+        <select multiple required>
+          <option>Euskara</option>
+          <option>Ingelesa</option>
+          <option>Gaztelania</option>
+        </select>
 
+        <br />
+        <br />
 
-            <label for="hizkuntzak">Hizkuntza:</label>
-            <select multiple required>
-                <option>Euskara</option>
-                <option>Ingelesa</option>
-                <option>Gaztelania</option>
-            </select>
-
-            <br>
-            <br>
-
-
-            <label for="cv">CV atxikitu:</label><br>
-            <input type="file" id="cv" name="cv" required><br>
-            <button>bidali</button>
-        </form>
+        <label for="cv">CV atxikitu:</label><br />
+        <input type="file" id="cv" name="cv" required /><br />
+        <button>bidali</button>
+      </form>
     </fieldset>
-
-
-
-</body>
-
+  </body>
 </html>

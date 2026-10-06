@@ -7,14 +7,24 @@ function bataz_bestekoa(a: number, b: number): number {
 const bataz_bestekoaGezia = (a: number, b: number): number => (a + b) / 2;
 
 // Ariketa 3
-function sarrera_prezioa(oinarrizkoa: number, deskontua ? : number, BEZ: number = 1.21): number {
+function sarrera_prezioa(
+  oinarrizkoa: number,
+  deskontua?: number,
+  BEZ: number = 1.21,
+): number {
   const azpiprezioa = deskontua ? oinarrizkoa - deskontua : oinarrizkoa;
 
   return azpiprezioa * BEZ;
 }
 console.log("1. Oinarrizko prezioa bakarrik (100€):", sarrera_prezioa(100));
-console.log("2. Oinarrizkoa eta deskontua (100€ - 20€):", sarrera_prezioa(100, 20));
-console.log("3. Hiru parametroak (100€ - 20€, %10eko BEZa):", sarrera_prezioa(100, 20, 1.10));
+console.log(
+  "2. Oinarrizkoa eta deskontua (100€ - 20€):",
+  sarrera_prezioa(100, 20),
+);
+console.log(
+  "3. Hiru parametroak (100€ - 20€, %10eko BEZa):",
+  sarrera_prezioa(100, 20, 1.1),
+);
 
 // Ariketa 4
 interface Produktua {
@@ -28,8 +38,11 @@ const nireProduktua: Produktua = {
   stock: 0,
   agortuta: function (): boolean {
     return this.stock === 0;
-  }
+  },
 };
 
 // Ariketa 5
-console.log(`Produktua (${nireProduktua.izena}) agortuta dago?`, nireProduktua.agortuta());
+console.log(
+  `Produktua (${nireProduktua.izena}) agortuta dago?`,
+  nireProduktua.agortuta(),
+);

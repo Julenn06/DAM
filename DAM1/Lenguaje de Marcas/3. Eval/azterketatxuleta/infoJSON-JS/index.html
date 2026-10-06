@@ -1,98 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ejemplo de JSON</title>
     <style>
-        .persona {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
+      .persona {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
 
-        .persona h2 {
-            margin: 0;
-            font-size: 1.5em;
-        }
+      .persona h2 {
+        margin: 0;
+        font-size: 1.5em;
+      }
 
-        .persona p {
-            margin: 5px 0;
-        }
+      .persona p {
+        margin: 5px 0;
+      }
 
-        .persona .correo {
-            color: #0066cc;
-            text-decoration: none;
-        }
+      .persona .correo {
+        color: #0066cc;
+        text-decoration: none;
+      }
 
-        .persona .correo:hover {
-            text-decoration: underline;
-        }
+      .persona .correo:hover {
+        text-decoration: underline;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div id="kontenedorea"></div>
 
     <script>
-        // Cargar el JSON desde el archivo externo
-        fetch('personas.json')
-            .then(response => response.json()) // Parseamos el JSON
-            .then(data => {
-                // Llamamos a la función para mostrar los datos cargados
-                mostrarPersonas(data);
-            })
-            .catch(error => console.error('Error cargando el JSON:', error));
+      // Cargar el JSON desde el archivo externo
+      fetch("personas.json")
+        .then((response) => response.json()) // Parseamos el JSON
+        .then((data) => {
+          // Llamamos a la función para mostrar los datos cargados
+          mostrarPersonas(data);
+        })
+        .catch((error) => console.error("Error cargando el JSON:", error));
 
-        // Función para mostrar las personas en el contenedor
-        function mostrarPersonas(personas) {
-            const contenedor = document.getElementById('kontenedorea');
+      // Función para mostrar las personas en el contenedor
+      function mostrarPersonas(personas) {
+        const contenedor = document.getElementById("kontenedorea");
 
+        //Mantenerlo: Si quieres asegurarte de que el contenedor siempre esté limpio antes de agregar datos nuevos.
+        //Eliminarlo: Si solo cargarás los datos una vez y no hay necesidad de limpiar el contenedor cada vez.
 
-            //Mantenerlo: Si quieres asegurarte de que el contenedor siempre esté limpio antes de agregar datos nuevos.
-            //Eliminarlo: Si solo cargarás los datos una vez y no hay necesidad de limpiar el contenedor cada vez.
+        //Ejemplo de uso: tienes un buscador y buscas un nombre, y al buscar otro se duplican los datos,
+        //para eso se utilian esas lineas, para borrar los datos anteriores y mostrarlos otra ve.
 
-            //Ejemplo de uso: tienes un buscador y buscas un nombre, y al buscar otro se duplican los datos,
-            //para eso se utilian esas lineas, para borrar los datos anteriores y mostrarlos otra ve.
-
-            // Limpiar el contenedor antes de agregar los nuevos datos
-            while (contenedor.firstChild) {
-                contenedor.removeChild(contenedor.firstChild);
-            }
-
-            // Recorrer el array de personas y crear los elementos para cada una
-            personas.forEach(persona => {
-                const tarjeta = document.createElement('div');
-                tarjeta.className = 'persona';
-
-                const nombre = document.createElement('h2');
-                nombre.textContent = persona.nombre;
-
-                const edad = document.createElement('p');
-                edad.textContent = `Edad: ${persona.edad}`;
-
-                const profesion = document.createElement('p');
-                profesion.textContent = `Profesión: ${persona.profesion}`;
-
-                const correo = document.createElement('a');
-                correo.href = `mailto:${persona.correo}`;
-                correo.className = 'correo';
-                correo.textContent = persona.correo;
-
-                tarjeta.appendChild(nombre);
-                tarjeta.appendChild(edad);
-                tarjeta.appendChild(profesion);
-                tarjeta.appendChild(correo);
-
-                contenedor.appendChild(tarjeta);
-            });
+        // Limpiar el contenedor antes de agregar los nuevos datos
+        while (contenedor.firstChild) {
+          contenedor.removeChild(contenedor.firstChild);
         }
+
+        // Recorrer el array de personas y crear los elementos para cada una
+        personas.forEach((persona) => {
+          const tarjeta = document.createElement("div");
+          tarjeta.className = "persona";
+
+          const nombre = document.createElement("h2");
+          nombre.textContent = persona.nombre;
+
+          const edad = document.createElement("p");
+          edad.textContent = `Edad: ${persona.edad}`;
+
+          const profesion = document.createElement("p");
+          profesion.textContent = `Profesión: ${persona.profesion}`;
+
+          const correo = document.createElement("a");
+          correo.href = `mailto:${persona.correo}`;
+          correo.className = "correo";
+          correo.textContent = persona.correo;
+
+          tarjeta.appendChild(nombre);
+          tarjeta.appendChild(edad);
+          tarjeta.appendChild(profesion);
+          tarjeta.appendChild(correo);
+
+          contenedor.appendChild(tarjeta);
+        });
+      }
     </script>
-
-</body>
-
+  </body>
 </html>

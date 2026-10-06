@@ -9,11 +9,11 @@ import { Usuario } from '../../models/usuario';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
   private firebaseService = inject(FirebaseService);
-  
+
   usuarios: Usuario[] = [];
   nuevoUsuario: Usuario = { id: '', nombre: '', email: '' };
 
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
       },
       error: (error) => {
         console.error('Errorea erabiltzaileak kargatzean:', error);
-      }
+      },
     });
   }
 
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
         },
         error: (error) => {
           console.error('Errorea erabiltzailea sortzean:', error);
-        }
+        },
       });
     }
   }
@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
       },
       error: (error) => {
         console.error('Errorea erabiltzailea eguneratzean:', error);
-      }
+      },
     });
   }
 
@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit {
       },
       error: (error) => {
         console.error('Errorea erabiltzailea ezabatzean:', error);
-      }
+      },
     });
   }
 }

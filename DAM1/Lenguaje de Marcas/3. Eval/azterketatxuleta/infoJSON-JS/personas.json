@@ -1,29 +1,30 @@
-[{
-        "id": 1,
-        "nombre": "Laura Martínez",
-        "edad": 29,
-        "profesion": "Desarrolladora",
-        "correo": "laura.martinez@email.com"
-    },
-    {
-        "id": 2,
-        "nombre": "Carlos Gómez",
-        "edad": 34,
-        "profesion": "Diseñador Gráfico",
-        "correo": "carlos.gomez@email.com"
-    },
-    {
-        "id": 3,
-        "nombre": "Marta Fernández",
-        "edad": 24,
-        "profesion": "Marketing Digital",
-        "correo": "marta.fernandez@email.com"
-    },
-    {
-        "id": 4,
-        "nombre": "Pedro Sánchez",
-        "edad": 40,
-        "profesion": "Abogado",
-        "correo": "pedro.sanchez@email.com"
-    }
+[
+  {
+    "id": 1,
+    "nombre": "Laura Martínez",
+    "edad": 29,
+    "profesion": "Desarrolladora",
+    "correo": "laura.martinez@email.com"
+  },
+  {
+    "id": 2,
+    "nombre": "Carlos Gómez",
+    "edad": 34,
+    "profesion": "Diseñador Gráfico",
+    "correo": "carlos.gomez@email.com"
+  },
+  {
+    "id": 3,
+    "nombre": "Marta Fernández",
+    "edad": 24,
+    "profesion": "Marketing Digital",
+    "correo": "marta.fernandez@email.com"
+  },
+  {
+    "id": 4,
+    "nombre": "Pedro Sánchez",
+    "edad": 40,
+    "profesion": "Abogado",
+    "correo": "pedro.sanchez@email.com"
+  }
 ]

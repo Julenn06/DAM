@@ -83,7 +83,7 @@ Nabigatu `http://localhost:4200/` helbidera
 
 ```typescript
 interface Usuario {
-  id: string;      // Firebase IDa (nodoaren gakoa)
+  id: string; // Firebase IDa (nodoaren gakoa)
   nombre: string;
   email: string;
 }

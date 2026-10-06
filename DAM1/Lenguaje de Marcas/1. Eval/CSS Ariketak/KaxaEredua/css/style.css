@@ -1,13 +1,13 @@
 body {
-    margin-left: 10px;
-    margin-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 h1 {
-    border: 2px solid blue;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding: 10px;
+  border: 2px solid blue;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 10px;
 }
 
 /* BERDINA DA 
@@ -18,22 +18,20 @@ h1{
 }*/
 
 h2 {
-    border: 2px solid darkgray;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding: 5px;
-
+  border: 2px solid darkgray;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 5px;
 }
 
 ul {
-    border: 2px solid greenyellow;
-
+  border: 2px solid greenyellow;
 }
 
 li {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
-li+li {
-    margin-top: 15px;
+li + li {
+  margin-top: 15px;
 }

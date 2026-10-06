@@ -1,16 +1,16 @@
-{  
+{
   "users": [
-      {
-        "id": "1",
-        "usuario": "admin",
-        "contra": "admin"
-      },
-      {
-        "id": "2",
-        "usuario": "user",
-        "contra": "user"
-      }
-    ],
+    {
+      "id": "1",
+      "usuario": "admin",
+      "contra": "admin"
+    },
+    {
+      "id": "2",
+      "usuario": "user",
+      "contra": "user"
+    }
+  ],
   "personas": [
     {
       "id": "1",

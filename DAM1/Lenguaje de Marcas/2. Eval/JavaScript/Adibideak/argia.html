@@ -1,20 +1,25 @@
-<!DOCTYPE html> 
-<html lang="eu"> 
-<head>  
-	<title>Argiak</title>   
-</head>   
-<body>
+<!doctype html>
+<html lang="eu">
+  <head>
+    <title>Argiak</title>
+  </head>
+  <body>
+    <h2>Zer egin ahal dugu Javascriptekin?</h2>
 
-	<h2>Zer egin ahal dugu Javascriptekin?</h2>
+    <p>
+      HTML-ren atributuen balioak aldatu ahal ditugu<br /><br />
+      Adibide honetan JavaScriptek HTML-ko img elementuaren src atributuaren
+      balioa aldatuko du.
+    </p>
 
-	<p>HTML-ren atributuen balioak aldatu ahal ditugu<br/><br/>
-	Adibide honetan JavaScriptek HTML-ko img elementuaren src atributuaren balioa aldatuko du.</p>
+    <button onclick="document.getElementById('myImage').src = 'on.jpg'">
+      Piztu argia
+    </button>
 
-	<button onclick="document.getElementById('myImage').src='on.jpg'">Piztu argia</button>
+    <img id="myImage" src="off.jpg" style="width: 100px" />
 
-	<img id="myImage" src="off.jpg" style="width:100px">
-
-	<button onclick="document.getElementById('myImage').src='off.jpg'">Itzali argia</button>
-
-</body>
+    <button onclick="document.getElementById('myImage').src = 'off.jpg'">
+      Itzali argia
+    </button>
+  </body>
 </html>

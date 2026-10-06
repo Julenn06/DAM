@@ -1,122 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <table id="taula">
-        <thead>
-            <tr>
-                <th>Hiria</th>
-                <th>Tenperatura</th>
-                <th>Egoera</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
+      <thead>
+        <tr>
+          <th>Hiria</th>
+          <th>Tenperatura</th>
+          <th>Egoera</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
     </table>
 
-    <br><br>
+    <br /><br />
 
     <table id="taula2">
-        <thead>
-            <tr>
-                <th>Hiria</th>
-                <th>Tenperatura</th>
-                <th>Egoera</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
+      <thead>
+        <tr>
+          <th>Hiria</th>
+          <th>Tenperatura</th>
+          <th>Egoera</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
     </table>
 
-    <br><br>
+    <br /><br />
 
     <table id="taula3">
-        <thead>
-            <tr>
-                <th>Hiria</th>
-                <th>Tenperatura</th>
-                <th>Egoera</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
+      <thead>
+        <tr>
+          <th>Hiria</th>
+          <th>Tenperatura</th>
+          <th>Egoera</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
     </table>
 
-
     <script>
-        const datuak = [{
-                hiria: "Donostia",
-                tenperatura: "18ºC",
-                egoera: "Eguzkia"
-            },
-            {
-                hiria: "Bilbo",
-                tenperatura: "17ºC",
-                egoera: "Eguzkia"
-            },
-            {
-                hiria: "Gasteiz",
-                tenperatura: "13ºC",
-                egoera: "Lainoa"
-            },
-            {
-                hiria: "Iruña",
-                tenperatura: "15ºC",
-                egoera: "Euria"
-            }
-        ];
+      const datuak = [
+        {
+          hiria: "Donostia",
+          tenperatura: "18ºC",
+          egoera: "Eguzkia",
+        },
+        {
+          hiria: "Bilbo",
+          tenperatura: "17ºC",
+          egoera: "Eguzkia",
+        },
+        {
+          hiria: "Gasteiz",
+          tenperatura: "13ºC",
+          egoera: "Lainoa",
+        },
+        {
+          hiria: "Iruña",
+          tenperatura: "15ºC",
+          egoera: "Euria",
+        },
+      ];
 
-        const taula = document.getElementById("taula");
+      const taula = document.getElementById("taula");
 
-        for (let i = 0; i < datuak.length; i++) {
-            let lerroa = taula.insertRow();
-            let hiria = lerroa.insertCell();
-            let tenperatura = lerroa.insertCell();
-            let egoera = lerroa.insertCell();
+      for (let i = 0; i < datuak.length; i++) {
+        let lerroa = taula.insertRow();
+        let hiria = lerroa.insertCell();
+        let tenperatura = lerroa.insertCell();
+        let egoera = lerroa.insertCell();
 
-            hiria.textContent = datuak[i].hiria;
-            tenperatura.textContent = datuak[i].tenperatura;
-            egoera.textContent = datuak[i].egoera;
-        }
+        hiria.textContent = datuak[i].hiria;
+        tenperatura.textContent = datuak[i].tenperatura;
+        egoera.textContent = datuak[i].egoera;
+      }
 
-        // Otro tipo de bucle
-        const taula2 = document.getElementById("taula2");
+      // Otro tipo de bucle
+      const taula2 = document.getElementById("taula2");
 
-        for (let hiriak of datuak) {
-            let lerroa = taula2.insertRow();
-            let hiriaCell = lerroa.insertCell();
-            let tenperaturaCell = lerroa.insertCell();
-            let egoeraCell = lerroa.insertCell();
+      for (let hiriak of datuak) {
+        let lerroa = taula2.insertRow();
+        let hiriaCell = lerroa.insertCell();
+        let tenperaturaCell = lerroa.insertCell();
+        let egoeraCell = lerroa.insertCell();
 
-            hiriaCell.textContent = hiriak.hiria;
-            tenperaturaCell.textContent = hiriak.tenperatura;
-            egoeraCell.textContent = hiriak.egoera;
-        }
+        hiriaCell.textContent = hiriak.hiria;
+        tenperaturaCell.textContent = hiriak.tenperatura;
+        egoeraCell.textContent = hiriak.egoera;
+      }
 
-        // Bucle forEach
-        const taula3 = document.getElementById("taula3");
-        datuak.forEach(function (hiriak) {
-            let lerroa = taula3.insertRow();
-            let hiriaCell = lerroa.insertCell();
-            let tenperaturaCell = lerroa.insertCell();
-            let egoeraCell = lerroa.insertCell();
+      // Bucle forEach
+      const taula3 = document.getElementById("taula3");
+      datuak.forEach(function (hiriak) {
+        let lerroa = taula3.insertRow();
+        let hiriaCell = lerroa.insertCell();
+        let tenperaturaCell = lerroa.insertCell();
+        let egoeraCell = lerroa.insertCell();
 
-            hiriaCell.textContent = hiriak.hiria;
-            tenperaturaCell.textContent = hiriak.tenperatura;
-            egoeraCell.textContent = hiriak.egoera;
-        });
+        hiriaCell.textContent = hiriak.hiria;
+        tenperaturaCell.textContent = hiriak.tenperatura;
+        egoeraCell.textContent = hiriak.egoera;
+      });
     </script>
-
-</body>
-
+  </body>
 </html>

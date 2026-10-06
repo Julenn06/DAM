@@ -5,22 +5,27 @@
     <button (click)="login()" class="btn btn-success">Login</button>
     <button (click)="logout()" class="btn btn-danger">Logout</button>
   </div>
-  
+
   <p class="status">
-    Egoera: <strong [class.logged-in]="authService.isAuthenticated()" 
-                     [class.logged-out]="!authService.isAuthenticated()">
+    Egoera:
+    <strong
+      [class.logged-in]="authService.isAuthenticated()"
+      [class.logged-out]="!authService.isAuthenticated()"
+    >
       {{ authService.isAuthenticated() ? 'Logeatuta' : 'Ez dago logeatuta' }}
     </strong>
   </p>
 
-  <hr>
+  <hr />
 
   <nav class="navigation">
     <a routerLink="/home" class="nav-link">Joan Home-ra (Publikoa)</a>
-    <a routerLink="/private" class="nav-link">Joan orri pribatura (Babestuta)</a>
+    <a routerLink="/private" class="nav-link"
+      >Joan orri pribatura (Babestuta)</a
+    >
   </nav>
 
-  <hr>
+  <hr />
 
   <div class="content">
     <router-outlet></router-outlet>

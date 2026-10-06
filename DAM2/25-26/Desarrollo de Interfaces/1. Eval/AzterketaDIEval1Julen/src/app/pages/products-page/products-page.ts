@@ -10,14 +10,18 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './products-page.css',
 })
 export class ProductsPage {
-[x: string]: any;
+  [x: string]: any;
 
-  produktuGuztiak: Product[] = []
+  produktuGuztiak: Product[] = [];
 
-constructor(private cdr: ChangeDetectorRef, private remote: ProductService, private router: Router) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private remote: ProductService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
-    this.produktuakIkusi()
+    this.produktuakIkusi();
   }
 
   produktuakIkusi() {
@@ -28,7 +32,7 @@ constructor(private cdr: ChangeDetectorRef, private remote: ProductService, priv
       },
       error: (err) => {
         console.error('Error produktuak kargatzean', err);
-      }
+      },
     });
   }
 

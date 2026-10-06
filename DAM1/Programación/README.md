@@ -5,6 +5,7 @@ Esta carpeta contiene el módulo de **Programación** del primer curso de DAM, e
 ## 📂 Contenido Principal
 
 ### 1.Eval/
+
 - 📝 **Ariketa_1.Gaia/** a **Ariketa_5.Gaia/**: Ejercicios por temas.
 - 🐛 **DebugAriketak/**: Ejercicios de depuración.
 - 🚀 **ERRONKA_1/**: Proyecto desafío 1.
@@ -17,6 +18,7 @@ Esta carpeta contiene el módulo de **Programación** del primer curso de DAM, e
 - 🖼️ **WindowBuilder/**: Desarrollo de GUIs con WindowBuilder.
 
 ### 2.Eval/
+
 - 📊 **Array_Ariketak/**: Ejercicios con arrays.
 - 📊 **Array_Bidimentsionalak/**: Arrays bidimensionales.
 - 🔄 **azterketaErrepasoa/** y **azterketaErrepasoa2/**: Repaso de exámenes.
@@ -27,6 +29,7 @@ Esta carpeta contiene el módulo de **Programación** del primer curso de DAM, e
 - 🖼️ **WindowBuilder/**: Más GUIs.
 
 ### 3.Eval/
+
 - 📝 **ariketaEnuntziatua/**: Ejercicio enunciado.
 - 🔄 **ariketaErrepasoa/**: Repaso.
 - ⚠️ **ariketaExcepciones/**: Manejo de excepciones.
@@ -40,6 +43,7 @@ Esta carpeta contiene el módulo de **Programación** del primer curso de DAM, e
 - 🔄 **RepasoExamen/**: Repaso.
 
 ## 🛠️ Tecnologías
+
 - ☕ **Java**: Fundamentos, OOP, colecciones, excepciones, I/O.
 - 📊 **Estructuras de Datos**: Listas, árboles, pilas, colas, algoritmos de ordenación.
 - 🖼️ **GUIs**: WindowBuilder, Swing.
@@ -47,6 +51,7 @@ Esta carpeta contiene el módulo de **Programación** del primer curso de DAM, e
 - 🏗️ **Patrones**: Singleton, Factory, MVC.
 
 ## 🎯 Objetivos
+
 - ☕ Dominar la programación en Java.
 - 📊 Aplicar conceptos de OOP y estructuras de datos.
 - 🖼️ Desarrollar interfaces gráficas.

@@ -1,14 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <h1>XML fitxategi bat irakurri</h1>
     <h5>XML fitxategi bat irakurri eta bere edukia pantailan erakutsi.</h5>
 
@@ -17,9 +15,8 @@
     <p id="autorea"></p>
     <p id="urtea"></p>
 
-
     <script>
-        const xmlString = `
+      const xmlString = `
             <liburua>
                 <isbn>978-84-376-0494-7</isbn>
                 <izenburua>El Señor de los Anillos</izenburua>
@@ -27,24 +24,23 @@
                 <urtea>1954</urtea>
             </liburua>`;
 
-        let parser = new DOMParser();
-        let xmlDoc = parser.parseFromString(xmlString, "text/xml");
+      let parser = new DOMParser();
+      let xmlDoc = parser.parseFromString(xmlString, "text/xml");
 
-        let isbn = xmlDoc.getElementsByTagName("isbn")[0].textContent;
-        let izenburua = xmlDoc.getElementsByTagName("izenburua")[0].textContent;
-        let autorea = xmlDoc.getElementsByTagName("autorea")[0].textContent;
-        let urtea = xmlDoc.getElementsByTagName("urtea")[0].textContent;
+      let isbn = xmlDoc.getElementsByTagName("isbn")[0].textContent;
+      let izenburua = xmlDoc.getElementsByTagName("izenburua")[0].textContent;
+      let autorea = xmlDoc.getElementsByTagName("autorea")[0].textContent;
+      let urtea = xmlDoc.getElementsByTagName("urtea")[0].textContent;
 
-        document.getElementById("isbn").innerHTML = isbn;
-        document.getElementById("izenburua").innerHTML = izenburua;
-        document.getElementById("autorea").innerHTML = autorea;
-        document.getElementById("urtea").innerHTML = urtea;
+      document.getElementById("isbn").innerHTML = isbn;
+      document.getElementById("izenburua").innerHTML = izenburua;
+      document.getElementById("autorea").innerHTML = autorea;
+      document.getElementById("urtea").innerHTML = urtea;
 
-        console.log("ISBN:", isbn);
-        console.log("Izenburua:", izenburua);
-        console.log("Autorea:", autorea);
-        console.log("Urtea:", urtea);
+      console.log("ISBN:", isbn);
+      console.log("Izenburua:", izenburua);
+      console.log("Autorea:", autorea);
+      console.log("Urtea:", urtea);
     </script>
-</body>
-
+  </body>
 </html>

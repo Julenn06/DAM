@@ -1,295 +1,288 @@
 * {
-    margin: 0;
-    /* Elimina el margen por defecto de todos los elementos */
-    padding: 0;
-    /* Elimina el relleno por defecto de todos los elementos */
-    box-sizing: border-box;
-    /* Establece el modelo de caja para incluir borde y relleno en el tamaño total del elemento */
-    /* Resetea márgenes, rellenos y establece el modelo de caja para todos los elementos */
+  margin: 0;
+  /* Elimina el margen por defecto de todos los elementos */
+  padding: 0;
+  /* Elimina el relleno por defecto de todos los elementos */
+  box-sizing: border-box;
+  /* Establece el modelo de caja para incluir borde y relleno en el tamaño total del elemento */
+  /* Resetea márgenes, rellenos y establece el modelo de caja para todos los elementos */
 }
-
-
 
 body {
-    background-color: aqua;
-    /* Asigna un color de fondo 'aqua' al cuerpo de la página */
-    display: flex;
-    /* Aplica Flexbox al body para organizar el contenido */
-    flex-direction: column;
-    /* Organiza los elementos en columna (de arriba a abajo) */
-    /* Establece el diseño en columna con Flexbox para el cuerpo */
+  background-color: aqua;
+  /* Asigna un color de fondo 'aqua' al cuerpo de la página */
+  display: flex;
+  /* Aplica Flexbox al body para organizar el contenido */
+  flex-direction: column;
+  /* Organiza los elementos en columna (de arriba a abajo) */
+  /* Establece el diseño en columna con Flexbox para el cuerpo */
 }
 
-
-
 header {
-    background-color: bisque;
-    /* Establece un fondo de color bisque para el encabezado */
-    text-align: center;
-    /* Centra el texto dentro del encabezado */
-    padding: 15px;
-    /* Añade 15px de espacio interno en todos los lados del encabezado */
-    /* Aplica un fondo y un padding al encabezado, centrándolo */
+  background-color: bisque;
+  /* Establece un fondo de color bisque para el encabezado */
+  text-align: center;
+  /* Centra el texto dentro del encabezado */
+  padding: 15px;
+  /* Añade 15px de espacio interno en todos los lados del encabezado */
+  /* Aplica un fondo y un padding al encabezado, centrándolo */
 }
 
 main {
-    display: flex;
-    /* Aplica Flexbox al main para organizar los elementos hijos */
-    text-align: center;
-    /* Centra el texto dentro de los elementos dentro de main */
-    /* Usa Flexbox para el contenido principal y lo centra */
+  display: flex;
+  /* Aplica Flexbox al main para organizar los elementos hijos */
+  text-align: center;
+  /* Centra el texto dentro de los elementos dentro de main */
+  /* Usa Flexbox para el contenido principal y lo centra */
 }
 
 nav {
-    display: flex;
-    /* Aplica Flexbox a nav para organizar sus elementos de manera flexible */
-    /* Define que los elementos de nav usen Flexbox */
+  display: flex;
+  /* Aplica Flexbox a nav para organizar sus elementos de manera flexible */
+  /* Define que los elementos de nav usen Flexbox */
 }
 
 .sencillo {
-    display: inline-block;
-    /* Muestra el elemento como bloque en línea, permitiendo que otros elementos se alineen junto a él */
-    background-color: aquamarine;
-    /* Asigna un fondo color aquamarine al contenedor */
-    padding: 20px 20px;
-    /* Añade 20px de relleno en todos los lados del contenedor */
-    width: 20%;
-    /* Establece que el ancho del contenedor sea del 20% del contenedor padre */
-    line-height: 50px;
-    /* Establece la altura de las líneas en 50px para alinear el contenido de manera vertical */
-    /* Crea un contenedor con un fondo aquamarine, y ajusta el tamaño y espaciado */
+  display: inline-block;
+  /* Muestra el elemento como bloque en línea, permitiendo que otros elementos se alineen junto a él */
+  background-color: aquamarine;
+  /* Asigna un fondo color aquamarine al contenedor */
+  padding: 20px 20px;
+  /* Añade 20px de relleno en todos los lados del contenedor */
+  width: 20%;
+  /* Establece que el ancho del contenedor sea del 20% del contenedor padre */
+  line-height: 50px;
+  /* Establece la altura de las líneas en 50px para alinear el contenido de manera vertical */
+  /* Crea un contenedor con un fondo aquamarine, y ajusta el tamaño y espaciado */
 }
 
 section {
-    background-color: violet;
-    /* Establece un fondo color violeta al contenedor de la sección */
-    display: flex;
-    /* Aplica Flexbox a la sección para organizar el contenido */
-    /* Activa Flexbox */
-    flex-direction: column;
-    /* Organiza los elementos de la sección en columna */
-    justify-content: center;
-    /* Centra los elementos horizontalmente dentro de la sección */
-    align-items: center;
-    /* Centra los elementos verticalmente dentro de la sección */
-    flex: 1;
-    /* Hace que el contenedor de la sección ocupe todo el espacio disponible en su contenedor padre */
-    /* Hace que ocupe el espacio disponible */
+  background-color: violet;
+  /* Establece un fondo color violeta al contenedor de la sección */
+  display: flex;
+  /* Aplica Flexbox a la sección para organizar el contenido */
+  /* Activa Flexbox */
+  flex-direction: column;
+  /* Organiza los elementos de la sección en columna */
+  justify-content: center;
+  /* Centra los elementos horizontalmente dentro de la sección */
+  align-items: center;
+  /* Centra los elementos verticalmente dentro de la sección */
+  flex: 1;
+  /* Hace que el contenedor de la sección ocupe todo el espacio disponible en su contenedor padre */
+  /* Hace que ocupe el espacio disponible */
 }
 
 section img {
-    height: auto;
-    /* Mantiene la relación de aspecto original de las imágenes */
-    max-width: 250px;
-    /* Limita el tamaño máximo de la imagen a 250px de ancho */
-    border-radius: 10px;
-    /* Redondea los bordes de la imagen con un radio de 10px */
-    margin-top: 15px;
-    /* Añade un margen superior de 15px para separar la imagen de otros elementos */
-    /* Agrega un margen superior a la imagen */
+  height: auto;
+  /* Mantiene la relación de aspecto original de las imágenes */
+  max-width: 250px;
+  /* Limita el tamaño máximo de la imagen a 250px de ancho */
+  border-radius: 10px;
+  /* Redondea los bordes de la imagen con un radio de 10px */
+  margin-top: 15px;
+  /* Añade un margen superior de 15px para separar la imagen de otros elementos */
+  /* Agrega un margen superior a la imagen */
 }
 
-
 .botones {
-    border-radius: 10px;
-    /* Redondea los bordes del contenedor de botones con un radio de 10px */
-    border-style: solid;
-    /* Aplica un borde sólido alrededor del contenedor */
-    border-width: 1px;
-    /* Establece el grosor del borde en 1px */
-    display: inline-block;
-    /* Hace que el contenedor sea un bloque en línea */
-    background-color: aquamarine;
-    /* Asigna un color de fondo aquamarine al contenedor */
-    padding: 20px 20px;
-    /* Añade 20px de espacio interno en todos los lados */
-    width: 20%;
-    /* Establece el ancho del contenedor en el 20% del contenedor padre */
-    line-height: 50px;
-    /* Establece la altura de las líneas en 50px para centrar el contenido verticalmente */
-    /* Define un contenedor para los botones con estilos específicos */
+  border-radius: 10px;
+  /* Redondea los bordes del contenedor de botones con un radio de 10px */
+  border-style: solid;
+  /* Aplica un borde sólido alrededor del contenedor */
+  border-width: 1px;
+  /* Establece el grosor del borde en 1px */
+  display: inline-block;
+  /* Hace que el contenedor sea un bloque en línea */
+  background-color: aquamarine;
+  /* Asigna un color de fondo aquamarine al contenedor */
+  padding: 20px 20px;
+  /* Añade 20px de espacio interno en todos los lados */
+  width: 20%;
+  /* Establece el ancho del contenedor en el 20% del contenedor padre */
+  line-height: 50px;
+  /* Establece la altura de las líneas en 50px para centrar el contenido verticalmente */
+  /* Define un contenedor para los botones con estilos específicos */
 }
 
 .botones p {
-    background-color: chocolate;
-    /* Establece un fondo de color chocolate para los botones */
-    border-radius: 10px;
-    /* Redondea los bordes de los botones con un radio de 10px */
-    border-style: solid;
-    /* Aplica un borde sólido alrededor de los botones */
-    border-width: 1px;
-    /* Establece el grosor del borde en 1px */
-    padding: 10px 20px;
-    /* Añade espacio interno de 10px arriba y abajo, y 20px a los lados */
-    /* Espacio interno para los botones */
-    margin-bottom: 10px;
-    /* Añade un margen de 10px debajo de cada botón */
-    /* Espacio entre los botones verticalmente */
+  background-color: chocolate;
+  /* Establece un fondo de color chocolate para los botones */
+  border-radius: 10px;
+  /* Redondea los bordes de los botones con un radio de 10px */
+  border-style: solid;
+  /* Aplica un borde sólido alrededor de los botones */
+  border-width: 1px;
+  /* Establece el grosor del borde en 1px */
+  padding: 10px 20px;
+  /* Añade espacio interno de 10px arriba y abajo, y 20px a los lados */
+  /* Espacio interno para los botones */
+  margin-bottom: 10px;
+  /* Añade un margen de 10px debajo de cada botón */
+  /* Espacio entre los botones verticalmente */
 }
 
 .botones p:hover {
-    border-radius: 50px;
-    /* Redondea aún más los bordes del botón al pasar el ratón */
-    background-color: black;
-    /* Cambia el fondo del botón a negro al hacer hover */
-    color: red;
-    /* Cambia el color del texto a rojo al hacer hover */
-    border-style: none;
-    /* Elimina el borde cuando el ratón pasa por encima */
-    /* Estilos para el hover de los botones */
+  border-radius: 50px;
+  /* Redondea aún más los bordes del botón al pasar el ratón */
+  background-color: black;
+  /* Cambia el fondo del botón a negro al hacer hover */
+  color: red;
+  /* Cambia el color del texto a rojo al hacer hover */
+  border-style: none;
+  /* Elimina el borde cuando el ratón pasa por encima */
+  /* Estilos para el hover de los botones */
 }
 
 .partes {
-    display: flex;
-    /* Aplica Flexbox a la clase partes */
-    justify-content: space-between;
-    /* Espacia los contenedores entre sí de manera uniforme */
-    /* Espacia los contenedores entre sí horizontalmente */
-    width: 100%;
-    /* Asegura que ocupe todo el ancho disponible */
-    /* Asegúrate de que ocupe todo el ancho disponible */
-    text-align: center;
-    /* Centra el texto dentro de los contenedores */
-    /* Centra el texto dentro de los contenedores */
+  display: flex;
+  /* Aplica Flexbox a la clase partes */
+  justify-content: space-between;
+  /* Espacia los contenedores entre sí de manera uniforme */
+  /* Espacia los contenedores entre sí horizontalmente */
+  width: 100%;
+  /* Asegura que ocupe todo el ancho disponible */
+  /* Asegúrate de que ocupe todo el ancho disponible */
+  text-align: center;
+  /* Centra el texto dentro de los contenedores */
+  /* Centra el texto dentro de los contenedores */
 }
 
 .partes p {
-    display: inline-block;
-    /* Muestra los párrafos como bloques en línea */
-    /* Asegura que los párrafos se alineen horizontalmente */
-    margin: 0 10px;
-    /* Añade un margen de 10px a ambos lados del párrafo */
-    /* Espacio entre los párrafos */
+  display: inline-block;
+  /* Muestra los párrafos como bloques en línea */
+  /* Asegura que los párrafos se alineen horizontalmente */
+  margin: 0 10px;
+  /* Añade un margen de 10px a ambos lados del párrafo */
+  /* Espacio entre los párrafos */
 }
 
 .partes .parte1,
 .partes .parte2,
 .partes .parte3 {
-    background-color: beige;
-    /* Establece un fondo beige para cada parte */
-    /* Cambia el color de fondo de cada contenedor */
-    border-radius: 50px;
-    /* Redondea los bordes de cada contenedor */
-    padding: 20px;
-    /* Añade 20px de espacio interno dentro de cada parte */
-    width: 20%;
-    /* Establece el ancho de cada parte en el 20% del contenedor padre */
-    /* Establece el tamaño de cada parte */
-    line-height: 50px;
-    /* Establece la altura de las líneas en 50px para centrar el contenido verticalmente */
-    display: flex;
-    /* Activa Flexbox en cada contenedor */
-    /* Activa Flexbox en cada contenedor */
-    justify-content: space-between;
-    /* Espacia los elementos dentro de cada parte de manera uniforme */
-    /* Alinea los elementos dentro de cada parte horizontalmente */
-    align-items: center;
-    /* Centra los elementos dentro de cada contenedor verticalmente */
-    /* Centra los elementos dentro del contenedor verticalmente */
-    margin: 0 10px;
-    /* Añade un margen de 10px a la izquierda y a la derecha de cada parte */
-    /* Agrega espacio entre los contenedores (de izquierda a derecha) */
+  background-color: beige;
+  /* Establece un fondo beige para cada parte */
+  /* Cambia el color de fondo de cada contenedor */
+  border-radius: 50px;
+  /* Redondea los bordes de cada contenedor */
+  padding: 20px;
+  /* Añade 20px de espacio interno dentro de cada parte */
+  width: 20%;
+  /* Establece el ancho de cada parte en el 20% del contenedor padre */
+  /* Establece el tamaño de cada parte */
+  line-height: 50px;
+  /* Establece la altura de las líneas en 50px para centrar el contenido verticalmente */
+  display: flex;
+  /* Activa Flexbox en cada contenedor */
+  /* Activa Flexbox en cada contenedor */
+  justify-content: space-between;
+  /* Espacia los elementos dentro de cada parte de manera uniforme */
+  /* Alinea los elementos dentro de cada parte horizontalmente */
+  align-items: center;
+  /* Centra los elementos dentro de cada contenedor verticalmente */
+  /* Centra los elementos dentro del contenedor verticalmente */
+  margin: 0 10px;
+  /* Añade un margen de 10px a la izquierda y a la derecha de cada parte */
+  /* Agrega espacio entre los contenedores (de izquierda a derecha) */
 }
 
 /* Estilos para parte2 y parte3 (puedes personalizarlos) */
 .partes .parte2 {
-    background-color: springgreen;
-    /* Establece un fondo de color verde primavera para la parte2 */
-    /* Establece un color de fondo diferente para la parte2 */
+  background-color: springgreen;
+  /* Establece un fondo de color verde primavera para la parte2 */
+  /* Establece un color de fondo diferente para la parte2 */
 }
 
 .partes .parte3 {
-    background-color: crimson;
-    /* Establece un fondo de color carmesí para la parte3 */
-    /* Establece un color de fondo diferente para la parte3 */
+  background-color: crimson;
+  /* Establece un fondo de color carmesí para la parte3 */
+  /* Establece un color de fondo diferente para la parte3 */
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
-    /* Posiciona el footer de forma fija en la parte inferior de la página */
-    background-color: green;
-    /* Asigna un color de fondo verde al footer */
-    width: 100%;
-    /* Asegura que el footer ocupe todo el ancho de la pantalla */
-    margin: 0;
-    /* Elimina cualquier margen externo del footer */
-    padding: 20px;
-    /* Agrega un relleno interno para separar el contenido de los bordes */
-    display: flex;
-    /* Activa Flexbox para organizar el contenido dentro del footer */
-    justify-content: space-between;
-    /* Distribuye los elementos internos con espacio uniforme entre ellos */
-    align-items: center;
-    /* Centra los elementos internos verticalmente */
+  position: absolute;
+  bottom: 0;
+  /* Posiciona el footer de forma fija en la parte inferior de la página */
+  background-color: green;
+  /* Asigna un color de fondo verde al footer */
+  width: 100%;
+  /* Asegura que el footer ocupe todo el ancho de la pantalla */
+  margin: 0;
+  /* Elimina cualquier margen externo del footer */
+  padding: 20px;
+  /* Agrega un relleno interno para separar el contenido de los bordes */
+  display: flex;
+  /* Activa Flexbox para organizar el contenido dentro del footer */
+  justify-content: space-between;
+  /* Distribuye los elementos internos con espacio uniforme entre ellos */
+  align-items: center;
+  /* Centra los elementos internos verticalmente */
 }
 
 .futer {
-    display: flex;
-    /* Activa Flexbox para organizar los elementos dentro del contenedor */
-    width: 100%;
-    /* Asegura que el contenedor `.futer` ocupe todo el ancho del footer */
+  display: flex;
+  /* Activa Flexbox para organizar los elementos dentro del contenedor */
+  width: 100%;
+  /* Asegura que el contenedor `.futer` ocupe todo el ancho del footer */
 }
 
 .futer ul {
-    display: flex;
-    /* Usa Flexbox para alinear los elementos de la lista horizontalmente */
-    width: 100%;
-    /* Asegura que la lista ocupe todo el ancho disponible */
-    justify-content: space-between;
-    /* Distribuye los elementos de la lista con espacio uniforme (izquierda, centro, derecha) */
-    margin: 0;
-    /* Elimina márgenes externos de la lista */
-    padding: 0;
-    /* Elimina rellenos internos de la lista */
+  display: flex;
+  /* Usa Flexbox para alinear los elementos de la lista horizontalmente */
+  width: 100%;
+  /* Asegura que la lista ocupe todo el ancho disponible */
+  justify-content: space-between;
+  /* Distribuye los elementos de la lista con espacio uniforme (izquierda, centro, derecha) */
+  margin: 0;
+  /* Elimina márgenes externos de la lista */
+  padding: 0;
+  /* Elimina rellenos internos de la lista */
 }
 
 .futer ul li {
-    color: white;
-    /* Define el color del texto como blanco para contraste con el fondo verde */
-    font-size: 16px;
-    /* Ajusta el tamaño de la fuente de los elementos de la lista */
+  color: white;
+  /* Define el color del texto como blanco para contraste con el fondo verde */
+  font-size: 16px;
+  /* Ajusta el tamaño de la fuente de los elementos de la lista */
 }
 
 .futer ul li:hover {
-    color: black;
-    text-decoration: underline red;
+  color: black;
+  text-decoration: underline red;
 }
-
 
 /* Media query para pantallas pequeñas */
 @media (max-width: 768px) {
-    .partes {
-        flex-direction: column;
-        /* Cambia el diseño de Flexbox a columna (vertical) en pantallas pequeñas */
-        align-items: center;
-        /* Centra los elementos de las partes en el eje transversal */
-        justify-content: center;
-        /* Centra los elementos dentro del contenedor de partes */
-    }
+  .partes {
+    flex-direction: column;
+    /* Cambia el diseño de Flexbox a columna (vertical) en pantallas pequeñas */
+    align-items: center;
+    /* Centra los elementos de las partes en el eje transversal */
+    justify-content: center;
+    /* Centra los elementos dentro del contenedor de partes */
+  }
 
-    /* Cambia el diseño de las partes a columna en pantallas pequeñas */
+  /* Cambia el diseño de las partes a columna en pantallas pequeñas */
 
-    .partes .parte1,
-    .partes .parte2,
-    .partes .parte3 {
-        width: 80%;
-        /* Hace que los contenedores ocupen el 80% del ancho disponible en pantallas pequeñas */
-        /* Los contenedores ocupan más espacio en pantallas pequeñas */
-        margin-bottom: 20px;
-        /* Añade un margen inferior de 20px entre los contenedores */
-        /* Espacio entre los contenedores en una columna */
-    }
+  .partes .parte1,
+  .partes .parte2,
+  .partes .parte3 {
+    width: 80%;
+    /* Hace que los contenedores ocupen el 80% del ancho disponible en pantallas pequeñas */
+    /* Los contenedores ocupan más espacio en pantallas pequeñas */
+    margin-bottom: 20px;
+    /* Añade un margen inferior de 20px entre los contenedores */
+    /* Espacio entre los contenedores en una columna */
+  }
 }
 
 /* Media query para pantallas muy pequeñas */
 @media (max-width: 480px) {
-
-    .partes .parte1,
-    .partes .parte2,
-    .partes .parte3 {
-        width: 100%;
-        /* Los contenedores ocupan todo el ancho disponible en pantallas muy pequeñas */
-        /* Los contenedores ocupan todo el ancho en pantallas muy pequeñas */
-    }
+  .partes .parte1,
+  .partes .parte2,
+  .partes .parte3 {
+    width: 100%;
+    /* Los contenedores ocupan todo el ancho disponible en pantallas muy pequeñas */
+    /* Los contenedores ocupan todo el ancho en pantallas muy pequeñas */
+  }
 }

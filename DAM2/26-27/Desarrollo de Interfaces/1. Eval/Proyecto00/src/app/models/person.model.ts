@@ -1,4 +1,4 @@
 export interface Person {
-  name: string,
-  password: string | number
+  name: string;
+  password: string | number;
 }

@@ -3,7 +3,12 @@
 <div class="filters">
   <mat-form-field>
     <mat-label>Buscar</mat-label>
-    <input matInput [(ngModel)]="searchQuery" (input)="onSearchChange()" placeholder="Título o director">
+    <input
+      matInput
+      [(ngModel)]="searchQuery"
+      (input)="onSearchChange()"
+      placeholder="Título o director"
+    />
   </mat-form-field>
 
   <mat-form-field>
@@ -24,12 +29,16 @@
 </div>
 
 <div class="peliculas-grid">
-  <mat-card *ngFor="let pelicula of getPaginatedPeliculas()" class="pelicula-card" (click)="viewPelicula(pelicula.id)">
+  <mat-card
+    *ngFor="let pelicula of getPaginatedPeliculas()"
+    class="pelicula-card"
+    (click)="viewPelicula(pelicula.id)"
+  >
     <mat-card-header>
       <mat-card-title>{{ pelicula.titulo }}</mat-card-title>
       <mat-card-subtitle>{{ pelicula.director }} ({{ pelicula.ano }})</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="pelicula.poster" [alt]="pelicula.titulo" class="pelicula-poster">
+    <img mat-card-image [src]="pelicula.poster" [alt]="pelicula.titulo" class="pelicula-poster" />
     <mat-card-content>
       <p><strong>Género:</strong> {{ pelicula.genero }}</p>
       <p><strong>Rating:</strong> {{ pelicula.rating }}/10</p>
@@ -37,8 +46,20 @@
       <p><strong>Recaudación:</strong> ${{ pelicula.recaudacion }}M</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button color="primary" (click)="viewPelicula(pelicula.id); $event.stopPropagation()">Ver Detalles</button>
-      <button mat-button color="warn" (click)="deletePelicula(pelicula.id); $event.stopPropagation()">Eliminar</button>
+      <button
+        mat-button
+        color="primary"
+        (click)="viewPelicula(pelicula.id); $event.stopPropagation()"
+      >
+        Ver Detalles
+      </button>
+      <button
+        mat-button
+        color="warn"
+        (click)="deletePelicula(pelicula.id); $event.stopPropagation()"
+      >
+        Eliminar
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>
@@ -48,5 +69,6 @@
   [pageSize]="pageSize"
   [pageSizeOptions]="[6, 12, 18]"
   (page)="onPageChange($event)"
-  showFirstLastButtons>
+  showFirstLastButtons
+>
 </mat-paginator>

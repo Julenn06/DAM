@@ -5,6 +5,7 @@ Esta carpeta incluye el módulo de **Desarrollo de Interfaces** del segundo curs
 ## 📂 Contenido Principal
 
 ### 1. Eval/
+
 - 📝 **AzterketaDIEval1Julen/**: Examen evaluación 1.
 - 🚀 **first-project/**: Primer proyecto en Angular.
 - 🦸‍♂️ **heroes_julen/**: Aplicación de héroes (basada en tutorial de Angular).
@@ -12,6 +13,7 @@ Esta carpeta incluye el módulo de **Desarrollo de Interfaces** del segundo curs
 - 🚀 **second_project/**: Segundo proyecto.
 
 ## 🛠️ Tecnologías
+
 - 🅰️ **Angular Avanzado**: Componentes, servicios, routing, NgRx, interceptores.
 - 🦸‍♂️ **Heroes App**: CRUD, autenticación, lazy loading.
 - 🎨 **UI/UX**: Material Design, CSS Grid/Flexbox, responsive, accesibilidad.
@@ -19,6 +21,7 @@ Esta carpeta incluye el módulo de **Desarrollo de Interfaces** del segundo curs
 - 🔧 **Herramientas**: Angular CLI, DevTools.
 
 ## 🎯 Objetivos
+
 - 🅰️ Desarrollar aplicaciones web con Angular.
 - 🎨 Implementar interfaces modernas y accesibles.
 - 🔄 Gestionar estado y testing en frontend.

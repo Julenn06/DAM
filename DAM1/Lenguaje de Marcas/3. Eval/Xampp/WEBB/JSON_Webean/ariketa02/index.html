@@ -1,137 +1,132 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
     <style>
-        h1 {
-            text-align: center;
-        }
+      h1 {
+        text-align: center;
+      }
 
-        body {
-            background-color: bisque;
-        }
+      body {
+        background-color: bisque;
+      }
 
-        #kontenedorea {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+      #kontenedorea {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
 
-        .txartela {
-            border: solid 1px rgb(51, 51, 51);
-            border-radius: 10px;
-            width: 200px;
-            text-align: center;
-            margin: 10px;
-            background-color: white;
-            padding: 10px;
-        }
+      .txartela {
+        border: solid 1px rgb(51, 51, 51);
+        border-radius: 10px;
+        width: 200px;
+        text-align: center;
+        margin: 10px;
+        background-color: white;
+        padding: 10px;
+      }
 
-        .txartela img {
-            width: 90%;
-            border-radius: 10px;
-            height: 250px;
-            object-fit: cover;
-            display: inline-block;
-            margin-top: 5px;
-        }
+      .txartela img {
+        width: 90%;
+        border-radius: 10px;
+        height: 250px;
+        object-fit: cover;
+        display: inline-block;
+        margin-top: 5px;
+      }
 
-        .txartela a {
-            background-color: rgb(56, 115, 223);
-            color: white;
-            padding: 4px, 8px;
-            display: inline-block;
-            text-decoration: none;
-            padding: 5px;
-            border-radius: 5px;
-        }
+      .txartela a {
+        background-color: rgb(56, 115, 223);
+        color: white;
+        padding: 4px, 8px;
+        display: inline-block;
+        text-decoration: none;
+        padding: 5px;
+        border-radius: 5px;
+      }
 
-        .txartela a:hover {
-            background-color: rgb(23, 70, 145);
-        }
+      .txartela a:hover {
+        background-color: rgb(23, 70, 145);
+      }
 
-        select {
-            margin: 20px auto;
-            display: block;
-            padding: 10px;
-            font-size: 16px;
-        }
+      select {
+        margin: 20px auto;
+        display: block;
+        padding: 10px;
+        font-size: 16px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>BideoJokoak</h1>
     <label for="jolasak"></label>
     <select name="jolasak" id="jolasak">
-        <option value="0">Jolasa Guztiak</option>
+      <option value="0">Jolasa Guztiak</option>
     </select>
     <div id="kontenedorea"></div>
 
     <script>
-        let jolasak = [];
+      let jolasak = [];
 
-        fetch('jolasak.json') // JSON fitxategia irakurri
-            .then(response => response.json())
-            .then(data => {
-                jolasak = data; // JSON datuak aldagaian gorde
-                const selectAukera = document.getElementById('jolasak');
-                jolasak.forEach(jolasa => {
-                    const option = document.createElement('option');
-                    option.value = jolasa.izena;
-                    option.textContent = jolasa.izena;
-                    selectAukera.appendChild(option);
-                });
-                erakutsiJolasak(jolasak); // Hasieran denak erakutsi
-            })
-            .catch(error => console.error('Error fetching JSON:', error));
+      fetch("jolasak.json") // JSON fitxategia irakurri
+        .then((response) => response.json())
+        .then((data) => {
+          jolasak = data; // JSON datuak aldagaian gorde
+          const selectAukera = document.getElementById("jolasak");
+          jolasak.forEach((jolasa) => {
+            const option = document.createElement("option");
+            option.value = jolasa.izena;
+            option.textContent = jolasa.izena;
+            selectAukera.appendChild(option);
+          });
+          erakutsiJolasak(jolasak); // Hasieran denak erakutsi
+        })
+        .catch((error) => console.error("Error fetching JSON:", error));
 
-        function erakutsiJolasak(jolasak) {
-            const kontenedorea = document.getElementById('kontenedorea');
-            while (kontenedorea.firstChild) {
-                kontenedorea.removeChild(kontenedorea.firstChild);
-            }
-            jolasak.forEach(jolasa => {
-                const txartela = document.createElement('div');
-                txartela.className = 'txartela';
-
-                const irudia = document.createElement('img');
-                irudia.src = jolasa.irudia;
-                irudia.alt = jolasa.izena;
-                irudia.addEventListener('click', () => {
-                    alert(
-                        `Jolasaren Izena: ${jolasa.izena} --- Generoa: ${jolasa.generoa} --- Plataforma: ${jolasa.plataforma_original}`
-                    );
-                });
-
-
-                const titulua = document.createElement('h2');
-                titulua.textContent = jolasa.izena;
-
-                txartela.appendChild(irudia);
-                txartela.appendChild(titulua);
-
-                kontenedorea.appendChild(txartela);
-            });
-
+      function erakutsiJolasak(jolasak) {
+        const kontenedorea = document.getElementById("kontenedorea");
+        while (kontenedorea.firstChild) {
+          kontenedorea.removeChild(kontenedorea.firstChild);
         }
+        jolasak.forEach((jolasa) => {
+          const txartela = document.createElement("div");
+          txartela.className = "txartela";
 
-        document.getElementById('jolasak').addEventListener('change', (e) => {
-            const hautatutakoJolasa = e.target.value;
-            if (hautatutakoJolasa === '0') {
-                erakutsiJolasak(jolasak); // Guztiak erakutsi
-            } else {
-                const filtratutakoJolasa = jolasak.filter(jolasa =>
-                    jolasa.izena === hautatutakoJolasa
-                );
-                erakutsiJolasak(filtratutakoJolasa); // Hautatutakoa bakarrik erakutsi
-            }
+          const irudia = document.createElement("img");
+          irudia.src = jolasa.irudia;
+          irudia.alt = jolasa.izena;
+          irudia.addEventListener("click", () => {
+            alert(
+              `Jolasaren Izena: ${jolasa.izena} --- Generoa: ${jolasa.generoa} --- Plataforma: ${jolasa.plataforma_original}`,
+            );
+          });
+
+          const titulua = document.createElement("h2");
+          titulua.textContent = jolasa.izena;
+
+          txartela.appendChild(irudia);
+          txartela.appendChild(titulua);
+
+          kontenedorea.appendChild(txartela);
         });
+      }
+
+      document.getElementById("jolasak").addEventListener("change", (e) => {
+        const hautatutakoJolasa = e.target.value;
+        if (hautatutakoJolasa === "0") {
+          erakutsiJolasak(jolasak); // Guztiak erakutsi
+        } else {
+          const filtratutakoJolasa = jolasak.filter(
+            (jolasa) => jolasa.izena === hautatutakoJolasa,
+          );
+          erakutsiJolasak(filtratutakoJolasa); // Hautatutakoa bakarrik erakutsi
+        }
+      });
     </script>
-
-</body>
-
+  </body>
 </html>

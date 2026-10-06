@@ -4,12 +4,12 @@ import { Observable } from 'rxjs';
 import { Artista } from '../models/artista.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ArtistaService {
   private apiUrl = 'http://localhost:3000/artistas';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // 1. Obtener todos los artistas
   getArtistas(): Observable<Artista[]> {
@@ -93,9 +93,7 @@ export class ArtistaService {
 
   // 15. Obtener artistas con paginación
   getArtistasPaginados(page: number, limit: number): Observable<Artista[]> {
-    const params = new HttpParams()
-      .set('_page', page.toString())
-      .set('_limit', limit.toString());
+    const params = new HttpParams().set('_page', page.toString()).set('_limit', limit.toString());
     return this.http.get<Artista[]>(this.apiUrl, { params });
   }
 }

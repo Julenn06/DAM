@@ -7,16 +7,15 @@ let handiena = zenbakiak[0];
 let txikiena = zenbakiak[0];
 
 for (let i = 0; i < zenbakiak.length; i++) {
+  totala = totala + zenbakiak[i];
 
-    totala = totala + zenbakiak[i];
+  if (handiena < zenbakiak[i]) {
+    handiena = zenbakiak[i];
+  }
 
-    if (handiena < zenbakiak[i]) {
-        handiena = zenbakiak[i];
-    }
-
-    if (txikiena < txikiena[i]) {
-        txikiena = txikiena[i];
-    }
+  if (txikiena < txikiena[i]) {
+    txikiena = txikiena[i];
+  }
 }
 
 console.log(totala);

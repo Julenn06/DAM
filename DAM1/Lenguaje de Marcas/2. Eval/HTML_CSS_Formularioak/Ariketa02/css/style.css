@@ -1,27 +1,27 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 form {
-    width: 40%;
-    margin: auto;
-    padding: 10px;
-    border-radius: 15px;
-    text-align: center;
-    background-color: #ccc;
+  width: 40%;
+  margin: auto;
+  padding: 10px;
+  border-radius: 15px;
+  text-align: center;
+  background-color: #ccc;
 }
 
 #form-egitura input [type="text"],
 #form-egitura input [type="email"] {
-    width: 180px;
+  width: 180px;
 }
 
 #form-egitura label {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 button {
-    background-color: black;
+  background-color: black;
 }

@@ -12,6 +12,7 @@ google-service.json
 # NODE.JS & HERRAMIENTAS DE CONSTRUCCIÓN (Angular, Bazel, etc.)
 # =========================================================================
 node_modules/
+package-lock.json
 /dist/
 /tmp/
 /out-tsc/

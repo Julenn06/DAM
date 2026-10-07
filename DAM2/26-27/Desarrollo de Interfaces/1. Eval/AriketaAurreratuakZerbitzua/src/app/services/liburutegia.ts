@@ -42,4 +42,8 @@ export class Liburutegia {
   ezabatu(id: number) {
     this._liburuak.update((lista) => lista.filter((libro) => libro.id !== id));
   }
+
+  zenbatLiburu() {
+    return this._liburuak().length;
+  }
 }

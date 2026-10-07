@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core'; // 👈 Asegúrate de importar 'inject'
 import { FormsModule } from '@angular/forms';
 import { Liburutegia } from '../../services/liburutegia';
 
@@ -8,29 +8,22 @@ import { Liburutegia } from '../../services/liburutegia';
   templateUrl: './gehitu.html',
 })
 export class Gehitu {
-  private liburutegia = [];
+  private liburutegia = inject(Liburutegia);
+
   izenburua = '';
   egilea = '';
   urtea = new Date().getFullYear();
 
   gorde() {
-    // 1. Izenburua edo egilea hutsik badaude, ez egin ezer
-    // 2. Zerbitzuaren gehitu() metodoari deitu
-    // 3. Formularioa garbitu
-
-    if (
-      this.izenburua == null ||
-      this.izenburua == '' ||
-      this.egilea == null ||
-      this.egilea == ''
-    ) {
+    if (!this.izenburua?.trim() || !this.egilea?.trim()) {
       alert('gehitu izenburua edo egilea');
       return;
-    } else {
-      //gorde
-      this.izenburua = '';
-      this.egilea = '';
-      this.urtea = new Date().getFullYear();
     }
+
+    this.liburutegia.gehitu(this.izenburua, this.egilea, this.urtea);
+
+    this.izenburua = '';
+    this.egilea = '';
+    this.urtea = new Date().getFullYear();
   }
 }

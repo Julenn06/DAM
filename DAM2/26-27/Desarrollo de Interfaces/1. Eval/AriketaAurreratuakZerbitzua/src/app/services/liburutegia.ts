@@ -1,7 +1,9 @@
-import { Service, signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Liburua } from '../interface/liburua';
 
-@Service()
+@Injectable({
+  providedIn: 'root',
+})
 export class Liburutegia {
   private _liburuak = signal<Liburua[]>([
     { id: 1, izenburua: 'Obabakoak', egilea: 'Bernardo Atxaga', urtea: 1988, mailegatuta: false },
@@ -15,16 +17,29 @@ export class Liburutegia {
     { id: 3, izenburua: 'Twist', egilea: 'Harkaitz Cano', urtea: 2011, mailegatuta: false },
   ]);
 
-  liburuak = this._liburuak.asReadonly(); // osagaiek irakurri bai, aldatu ez
+  liburuak = this._liburuak.asReadonly();
 
   gehitu(izenburua: string, egilea: string, urtea: number) {
     const berria: Liburua = {
       id: Date.now(),
-      izenburua,
-      egilea,
-      urtea,
+      izenburua: String(izenburua),
+      egilea: String(egilea),
+      urtea: Number(urtea),
       mailegatuta: false,
     };
-    this._liburuak.update((lista) => [...lista, berria]); // array BERRIA
+    this._liburuak.update((lista) => [...lista, berria]);
+    console.log('Array actualizado:', this._liburuak());
+  }
+
+  mailegatuAldatu(id: number) {
+    this._liburuak.update((lista) =>
+      lista.map((libro) =>
+        libro.id === id ? { ...libro, mailegatuta: !libro.mailegatuta } : libro,
+      ),
+    );
+  }
+
+  ezabatu(id: number) {
+    this._liburuak.update((lista) => lista.filter((libro) => libro.id !== id));
   }
 }

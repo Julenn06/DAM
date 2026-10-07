@@ -1,3 +1,4 @@
+import { Liburua } from './../../interface/liburua';
 import { Component, inject } from '@angular/core';
 import { Liburutegia } from '../../services/liburutegia';
 
@@ -7,5 +8,5 @@ import { Liburutegia } from '../../services/liburutegia';
 })
 export class Zerrenda {
   private liburutegia = inject(Liburutegia);
-  liburuak = this.liburutegia.liburuak; // signal bat da
+  liburuak = this.liburutegia.liburuak;
 }

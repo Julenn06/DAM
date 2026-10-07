@@ -1,0 +1,9 @@
+<form (ngSubmit)="gorde()">
+  <input name="izenburua" placeholder="Izenburua" [(ngModel)]="izenburua" />
+  <input name="egilea" placeholder="Egilea" [(ngModel)]="egilea" />
+  <input name="urtea" type="number" [(ngModel)]="urtea" />
+  <button type="submit">Gehitu</button>
+  @if (izenburua == null || egilea == null) {
+    
+  }
+</form>

@@ -1,0 +1,8 @@
+<h2>Liburuak</h2>
+<ul>
+  @for (liburua of liburuak(); track liburua.id) {
+    <li>{{ liburua.izenburua }} — {{ liburua.egilea }} ({{ liburua.urtea }})</li>
+  } @empty {
+    <li>Ez dago libururik</li>
+  }
+</ul>

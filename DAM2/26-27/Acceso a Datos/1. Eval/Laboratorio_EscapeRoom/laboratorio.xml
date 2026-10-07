@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<laboratorio>
+    <muestra id="M01">
+        <nombre>AURORA</nombre>
+        <tipo>virus</tipo>
+        <temperatura>4</temperatura>
+    </muestra>
+    <muestra id="M02">
+        <nombre>BASILISCO</nombre>
+        <tipo>bacteria</tipo>
+        <temperatura>-20</temperatura>
+    </muestra>
+    <muestra id="M03">
+        <nombre>CIERZO</nombre>
+        <tipo>hongo</tipo>
+        <temperatura>18</temperatura>
+    </muestra>
+    <muestra id="M04">
+        <nombre>DRAGO</nombre>
+        <tipo>virus</tipo>
+        <temperatura>-80</temperatura>
+    </muestra>
+    <muestra id="M05">
+        <nombre>ESPORA</nombre>
+        <tipo>hongo</tipo>
+        <temperatura>22</temperatura>
+    </muestra>
+    <muestra id="M06">
+        <nombre>FENRIR</nombre>
+        <tipo>bacteria</tipo>
+        <temperatura>37</temperatura>
+    </muestra>
+    <muestra id="M07">
+        <nombre>GORGONA</nombre>
+        <tipo>virus</tipo>
+        <temperatura>-80</temperatura>
+    </muestra>
+    <muestra id="M08">
+        <nombre>HIDRA</nombre>
+        <tipo>bacteria</tipo>
+        <temperatura>5</temperatura>
+    </muestra>
+    <muestra id="M09">
+        <nombre>IRIS</nombre>
+        <tipo>virus</tipo>
+        <temperatura>20</temperatura>
+    </muestra>
+    <muestra id="M10">
+        <nombre>KRAKEN</nombre>
+        <tipo>hongo</tipo>
+        <temperatura>-20</temperatura>
+    </muestra>
+</laboratorio>

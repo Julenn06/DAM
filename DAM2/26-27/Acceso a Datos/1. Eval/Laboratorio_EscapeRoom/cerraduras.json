@@ -1,0 +1,50 @@
+[
+  {
+    "codigo": "3-DRAGO-1",
+    "mensaje": "Codigo incorrecto. La puerta sigue cerrada."
+  },
+  {
+    "codigo": "10-GORGONA-4",
+    "mensaje": "ALARMA: has metido TODAS las muestras en el XML. Vuelve a la sala 4 y mete SOLO las peligrosas."
+  },
+  {
+    "codigo": "7-HIDRA-2",
+    "mensaje": "Codigo incorrecto. La puerta sigue cerrada."
+  },
+  {
+    "codigo": "5.0-GORGONA-4.0",
+    "mensaje": "Casi! Los numeros llevan .0 -> usa intValue() en los resultados de count()."
+  },
+  {
+    "codigo": "4-KRAKEN-3",
+    "mensaje": "Codigo incorrecto. La puerta sigue cerrada."
+  },
+  {
+    "codigo": "5-GORGONA-4",
+    "mensaje": "PUERTA ABIERTA. El antidoto es la formula AD-2026. Enhorabuena, habeis escapado del laboratorio!"
+  },
+  {
+    "codigo": "5--4",
+    "mensaje": "La consulta 2 no devuelve nada. Revisa el atributo id y la etiqueta <nombre> de tu XML."
+  },
+  {
+    "codigo": "5-GORGONA-0",
+    "mensaje": "La consulta 3 da 0. Revisa que cada muestra tenga la etiqueta <temperatura>."
+  },
+  {
+    "codigo": "0--0",
+    "mensaje": "Tu XML parece vacio. Revisa que las etiquetas se llamen <laboratorio> y <muestra>."
+  },
+  {
+    "codigo": "10.0-GORGONA-4.0",
+    "mensaje": "ALARMA: muestras de mas y numeros con .0. Revisa la sala 4 y usa intValue()."
+  },
+  {
+    "codigo": "6-FENRIR-5",
+    "mensaje": "Codigo incorrecto. La puerta sigue cerrada."
+  },
+  {
+    "codigo": "2-BASILISCO-2",
+    "mensaje": "Codigo incorrecto. La puerta sigue cerrada."
+  }
+]

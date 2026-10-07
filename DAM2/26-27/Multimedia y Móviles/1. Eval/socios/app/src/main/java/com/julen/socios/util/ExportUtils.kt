@@ -88,7 +88,7 @@ object ExportUtils {
                     bonosRegalo = backupData.bonosRegalo
                 )
             }
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             // Ignorar y probar formato antiguo de lista
         }
 
@@ -119,19 +119,19 @@ object ExportUtils {
             // Sección 1: Socios
             out.write("# SOCIOS\n")
             out.write("ID,Colaboracion,Hecho,DiaSemanaId,SemanaKey,NombreSocio,Notas,Timestamp\n")
-            for (s in socios) {
-                val nombreEscaped = escapeCsvField(s.nombreSocio)
-                val notasEscaped = escapeCsvField(s.notas)
-                out.write("${s.id},${s.colaboracion},${s.hecho},${s.diaSemanaId},${s.semanaKey},$nombreEscaped,$notasEscaped,${s.timestamp}\n")
+            for ((id, colaboracion, hecho, diaSemanaId, semanaKey, nombreSocio, notas, timestamp) in socios) {
+                val nombreEscaped = escapeCsvField(nombreSocio)
+                val notasEscaped = escapeCsvField(notas)
+                out.write("$id,$colaboracion,$hecho,$diaSemanaId,$semanaKey,$nombreEscaped,$notasEscaped,$timestamp\n")
             }
 
             // Sección 2: Bonos Regalo / Ajustes Manuales
             if (bonosRegalo.isNotEmpty()) {
                 out.write("# BONOS_REGALO\n")
                 out.write("SemanaKey,Activo,EsMontoFijo,Monto,Nota\n")
-                for (b in bonosRegalo) {
-                    val notaEscaped = escapeCsvField(b.nota)
-                    out.write("${b.semanaKey},${b.activo},${b.esMontoFijo},${b.monto},$notaEscaped\n")
+                for ((semanaKey, activo, esMontoFijo, monto, nota) in bonosRegalo) {
+                    val notaEscaped = escapeCsvField(nota)
+                    out.write("$semanaKey,$activo,$esMontoFijo,$monto,$notaEscaped\n")
                 }
             }
         }

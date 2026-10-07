@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:background="@color/bg_light"
     android:forceDarkAllowed="false"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:targetApi="q">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

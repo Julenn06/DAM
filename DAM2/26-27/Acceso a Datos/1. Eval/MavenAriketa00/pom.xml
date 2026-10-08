@@ -18,7 +18,7 @@
 			<artifactId>slf4j-simple</artifactId>
 			<version>2.0.20</version>
 		</dependency>
-
+	
 	</dependencies>
 
 	<build>
@@ -28,7 +28,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.13.0</version>
 				<configuration>
-					<release>25</release>
+					<release>17</release>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -19,6 +19,10 @@ public class DBConnection {
 		}
 
 		try {
+			
+			System.setProperty("javax.net.ssl.trustStore", "NONE");
+			System.setProperty("javax.net.ssl.trustStoreType", "WINDOWS-ROOT");
+			
 			if (FirebaseApp.getApps().isEmpty()) {
 				FileInputStream serviceAccount = new FileInputStream("serviceAccountKey.json");
 

@@ -1,8 +1,10 @@
-package ariketa01;
+package main;
 
 import java.util.Scanner;
 
-public class HiloContador {
+import controller.Contador;
+
+public class Main {
 
 	public static void main(String[] args) {
 

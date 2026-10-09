@@ -1,6 +1,6 @@
-package ariketa01;
+package controller;
 
-class Contador extends Thread {
+public class Contador extends Thread {
 
 	private String izena = "";
 	private int noraArte = 0;

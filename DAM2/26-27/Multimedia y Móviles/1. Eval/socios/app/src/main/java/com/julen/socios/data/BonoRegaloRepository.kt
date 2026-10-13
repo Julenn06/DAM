@@ -22,7 +22,6 @@ class BonoRegaloRepository(context: Context) {
         if (entity != null) {
             return@withContext entity.toBonoRegaloInfo()
         }
-        // Fallback check SharedPreferences for legacy data migration
         val json = prefs.getString("bono_$semanaKey", null)
         if (json != null) {
             try {
@@ -57,7 +56,6 @@ class BonoRegaloRepository(context: Context) {
         val entities = bonoDao.getAllBonosRegalo()
         val map = entities.associateBy({ it.semanaKey }, { it.toBonoRegaloInfo() }).toMutableMap()
 
-        // Check legacy SharedPreferences
         for ((key, value) in prefs.all) {
             if (key.startsWith("bono_") && value is String) {
                 val semanaKey = key.removePrefix("bono_")

@@ -1,0 +1,7 @@
+<app-saio-bilaketa></app-saio-bilaketa>
+<main class="main-layout">
+  <aside class="sidebar" role="tablist" aria-label="Entrenamendu saioak">
+    <app-saio-zerrenda [aktiboa]="aukeratua()" (saioAukeratua)="aukeratua.set($event)"></app-saio-zerrenda>
+  </aside>
+  <app-saio-xehetasuna [saioa]="aukeratua()" [tabId]="aukeratutakoTabId()"></app-saio-xehetasuna>
+</main>

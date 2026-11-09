@@ -1,0 +1,18 @@
+<header class="top-bar">
+  <h1 class="brand">ElorGym</h1>
+  <div class="controls">
+    <div class="search-group search">
+      <label for="search">Bilatu:</label>
+      <input type="text" id="search" placeholder="Bilatu…" class="focus" [(ngModel)]="bilaketa" />
+    </div>
+    <div class="filter-group">
+      <label for="level">Maila:</label>
+      <select id="level" class="focus" [(ngModel)]="maila">
+        @for (item of mailak; track $index) {
+        <option [value]="item">{{ item }}</option>
+        }
+      </select>
+      <span class="workout-count">{{ iragazitakoak().length }} workout</span>
+    </div>
+  </div>
+</header>

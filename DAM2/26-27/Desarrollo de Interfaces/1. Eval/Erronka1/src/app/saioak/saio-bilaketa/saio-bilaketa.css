@@ -1,0 +1,51 @@
+.focus {
+  box-sizing: border-box;
+}
+
+.focus:focus {
+  border: 1px var(--active-border) solid;
+}
+
+.brand {
+  color: var(--primary-color);
+  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 1 1 auto;
+  gap: clamp(12px, 2vw, 24px);
+}
+
+.search-group,
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.search-group input,
+.filter-group select {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background: #fff;
+  outline: none;
+}
+
+.search-group input {
+  width: 100%;
+  min-width: 0;
+}
+
+.workout-count {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-left: 8px;
+}

@@ -1,0 +1,1016 @@
+{
+  "workoutak": [
+    {
+      "izena": "Goizeko mugikortasuna",
+      "deskribapena": "Errutina leuna giltzadurak egunaren hasieran aktibatzeko.",
+      "maila": 0,
+      "bideoa": "https://www.youtube.com/watch?v=IUyCSQ-s3ys",
+      "ariketak": [
+        {
+          "izena": "Aldakako zirkuluak",
+          "deskribapena": "Biratu aldaka zirkulu zabaletan.",
+          "atsedena": 15,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/aldakako-zirkuluak.jpg",
+              "errepikapenak": 10,
+              "iraupena": 30
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/aldakako-zirkuluak.jpg",
+              "errepikapenak": 10,
+              "iraupena": 30
+            }
+          ]
+        },
+        {
+          "izena": "Sorbalden biraketa",
+          "deskribapena": "Sorbaldak atzera, besoa luzatuta.",
+          "atsedena": 15,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/sorbalden-biraketa.jpg",
+              "errepikapenak": 12,
+              "iraupena": 25
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/sorbalden-biraketa.jpg",
+              "errepikapenak": 12,
+              "iraupena": 25
+            }
+          ]
+        },
+        {
+          "izena": "Katu-behia",
+          "deskribapena": "Txandakatu bizkarra kurbatuta eta biribilduta.",
+          "atsedena": 20,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/katu-behia.jpg",
+              "errepikapenak": 8,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/katu-behia.jpg",
+              "errepikapenak": 8,
+              "iraupena": 40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "izena": "Luzaketa leunak",
+      "deskribapena": "Luzaketa orokorrak eguna amaitzeko.",
+      "maila": 0,
+      "bideoa": "https://www.youtube.com/watch?v=c7Gr8Rv0iMs",
+      "ariketak": [
+        {
+          "izena": "Izterrondoko luzaketa",
+          "deskribapena": "Eserita, makurtu oinetarantz.",
+          "atsedena": 15,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/izterrondoko-luzaketa.jpg",
+              "errepikapenak": 1,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/izterrondoko-luzaketa.jpg",
+              "errepikapenak": 1,
+              "iraupena": 40
+            }
+          ]
+        },
+        {
+          "izena": "Bularreko luzaketa",
+          "deskribapena": "Besoak atzean, eskuak elkarri helduta.",
+          "atsedena": 10,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/bularreko-luzaketa.jpg",
+              "errepikapenak": 1,
+              "iraupena": 30
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/bularreko-luzaketa.jpg",
+              "errepikapenak": 1,
+              "iraupena": 30
+            }
+          ]
+        },
+        {
+          "izena": "Haurraren jarrera",
+          "deskribapena": "Orpoen gainean eserita, besoak aurrean.",
+          "atsedena": 10,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/haurraren-jarrera.jpg",
+              "errepikapenak": 1,
+              "iraupena": 45
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/haurraren-jarrera.jpg",
+              "errepikapenak": 1,
+              "iraupena": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "izena": "Ibilaldi aktiboa",
+      "deskribapena": "Tokian ibilera erritmo-aldaketekin.",
+      "maila": 0,
+      "bideoa": "https://www.youtube.com/watch?v=zfgEwSvatqY",
+      "ariketak": [
+        {
+          "izena": "Tokian ibilera",
+          "deskribapena": "Altxatu belaunak erritmo moderatuan.",
+          "atsedena": 20,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/tokian-ibilera.jpg",
+              "errepikapenak": 60,
+              "iraupena": 60
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/tokian-ibilera.jpg",
+              "errepikapenak": 60,
+              "iraupena": 60
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/tokian-ibilera.jpg",
+              "errepikapenak": 60,
+              "iraupena": 60
+            }
+          ]
+        },
+        {
+          "izena": "Besoekin ibilera",
+          "deskribapena": "Ibilera besoak gora koordinatuz.",
+          "atsedena": 20,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/besoekin-ibilera.jpg",
+              "errepikapenak": 40,
+              "iraupena": 45
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/besoekin-ibilera.jpg",
+              "errepikapenak": 40,
+              "iraupena": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "izena": "Pilates Core saioa",
+      "deskribapena": "Gorputz-enborraren lana, arnasa kontrolatuz.",
+      "maila": 1,
+      "bideoa": "https://www.youtube.com/watch?v=0CQ7riVMNJc",
+      "ariketak": [
+        {
+          "izena": "Plank abdominala",
+          "deskribapena": "Mantendu gorputza zuzen, beso-azpietan bermatuta.",
+          "atsedena": 30,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/plank-abdominala.jpg",
+              "errepikapenak": 1,
+              "iraupena": 52
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/plank-abdominala.jpg",
+              "errepikapenak": 1,
+              "iraupena": 45
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/plank-abdominala.jpg",
+              "errepikapenak": 1,
+              "iraupena": 40
+            }
+          ]
+        },
+        {
+          "izena": "Gluteo-zubia",
+          "deskribapena": "Altxatu aldaka bizkarra lerrokatuta mantenduz.",
+          "atsedena": 20,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/gluteo-zubia.jpg",
+              "errepikapenak": 12,
+              "iraupena": 30
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/gluteo-zubia.jpg",
+              "errepikapenak": 12,
+              "iraupena": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "izena": "Kardio leuna",
+      "deskribapena": "Eragin txikiko kardioa erresistentzia irabazteko.",
+      "maila": 1,
+      "bideoa": "https://www.youtube.com/watch?v=bSZj19AUU5I",
+      "ariketak": [
+        {
+          "izena": "Alboko urratsa",
+          "deskribapena": "Mugitu alde batetik bestera belaunak tolestuta.",
+          "atsedena": 20,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/alboko-urratsa.jpg",
+              "errepikapenak": 30,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/alboko-urratsa.jpg",
+              "errepikapenak": 30,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/alboko-urratsa.jpg",
+              "errepikapenak": 30,
+              "iraupena": 40
+            }
+          ]
+        },
+        {
+          "izena": "Orpoak ipurdira",
+          "deskribapena": "Eraman orpoak atzera txandakatuz.",
+          "atsedena": 20,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/orpoak-ipurdira.jpg",
+              "errepikapenak": 30,
+              "iraupena": 35
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/orpoak-ipurdira.jpg",
+              "errepikapenak": 30,
+              "iraupena": 35
+            }
+          ]
+        },
+        {
+          "izena": "Eskalatzaile motelak",
+          "deskribapena": "Belaunak bularrera plank posizioan.",
+          "atsedena": 25,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/eskalatzaile-motelak.jpg",
+              "errepikapenak": 20,
+              "iraupena": 30
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/eskalatzaile-motelak.jpg",
+              "errepikapenak": 20,
+              "iraupena": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "izena": "Yoga jarioa",
+      "deskribapena": "Oinarrizko jarreren sekuentzia jarioa.",
+      "maila": 1,
+      "bideoa": "https://www.youtube.com/watch?v=hTDLUpBsXGw",
+      "ariketak": [
+        {
+          "izena": "Eguzki-agurra",
+          "deskribapena": "Sekuentzia osoa, loturik.",
+          "atsedena": 20,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/eguzki-agurra.jpg",
+              "errepikapenak": 5,
+              "iraupena": 60
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/eguzki-agurra.jpg",
+              "errepikapenak": 5,
+              "iraupena": 60
+            }
+          ]
+        },
+        {
+          "izena": "Gerlaria II",
+          "deskribapena": "Mantendu jarrera belaun sendoekin.",
+          "atsedena": 15,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/gerlaria-ii.jpg",
+              "errepikapenak": 1,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/gerlaria-ii.jpg",
+              "errepikapenak": 1,
+              "iraupena": 40
+            }
+          ]
+        },
+        {
+          "izena": "Txakurra behera begira",
+          "deskribapena": "Bultzatu lurra eskuekin.",
+          "atsedena": 15,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/txakurra-behera-begira.jpg",
+              "errepikapenak": 1,
+              "iraupena": 35
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/txakurra-behera-begira.jpg",
+              "errepikapenak": 1,
+              "iraupena": 35
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/txakurra-behera-begira.jpg",
+              "errepikapenak": 1,
+              "iraupena": 35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "izena": "Hanken indarra",
+      "deskribapena": "Squatak eta sastakadak beheko gorputzerako.",
+      "maila": 2,
+      "bideoa": "https://www.youtube.com/watch?v=u08WVx3VAVk",
+      "ariketak": [
+        {
+          "izena": "Squat",
+          "deskribapena": "Jaitsi 90°-ra bizkarra zuzen.",
+          "atsedena": 40,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/squat.jpg",
+              "errepikapenak": 15,
+              "iraupena": 45
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/squat.jpg",
+              "errepikapenak": 15,
+              "iraupena": 45
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/squat.jpg",
+              "errepikapenak": 12,
+              "iraupena": 40
+            }
+          ]
+        },
+        {
+          "izena": "Txandakako sastakada",
+          "deskribapena": "Txandakatu hankak urrats luzea emanez.",
+          "atsedena": 30,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/txandakako-sastakada.jpg",
+              "errepikapenak": 10,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/txandakako-sastakada.jpg",
+              "errepikapenak": 10,
+              "iraupena": 40
+            }
+          ]
+        },
+        {
+          "izena": "Orpo-altxaldiak",
+          "deskribapena": "Zutik, igo eta jaitsi hanken puntetan.",
+          "atsedena": 25,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/orpo-altxaldiak.jpg",
+              "errepikapenak": 20,
+              "iraupena": 30
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/orpo-altxaldiak.jpg",
+              "errepikapenak": 20,
+              "iraupena": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "izena": "Goiko gorputza",
+      "deskribapena": "Flexioak eta arraunak bularrerako, bizkarrerako eta besoetarako.",
+      "maila": 2,
+      "bideoa": "https://www.youtube.com/watch?v=XmqiZOuVVgQ",
+      "ariketak": [
+        {
+          "izena": "Flexioak",
+          "deskribapena": "Gorputza zuzen, jaitsi bularra lurrera.",
+          "atsedena": 40,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/flexioak.jpg",
+              "errepikapenak": 10,
+              "iraupena": 35
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/flexioak.jpg",
+              "errepikapenak": 10,
+              "iraupena": 35
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/flexioak.jpg",
+              "errepikapenak": 8,
+              "iraupena": 30
+            }
+          ]
+        },
+        {
+          "izena": "Motxilarekin arraunean",
+          "deskribapena": "Tiratu motxila aldakarantz.",
+          "atsedena": 35,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/motxilarekin-arraunean.jpg",
+              "errepikapenak": 12,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/motxilarekin-arraunean.jpg",
+              "errepikapenak": 12,
+              "iraupena": 40
+            }
+          ]
+        },
+        {
+          "izena": "Triceps-hondoratzeak",
+          "deskribapena": "Aulki batean bermatuta, jaitsi eta igo.",
+          "atsedena": 30,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/triceps-hondoratzeak.jpg",
+              "errepikapenak": 10,
+              "iraupena": 30
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/triceps-hondoratzeak.jpg",
+              "errepikapenak": 10,
+              "iraupena": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "izena": "Core aurreratua",
+      "deskribapena": "Plank dinamikoa eta abdominalak kontrolpean.",
+      "maila": 2,
+      "bideoa": "https://www.youtube.com/watch?v=ay7P8OAblh8",
+      "ariketak": [
+        {
+          "izena": "Alboko plank",
+          "deskribapena": "Bermatu beso-azpi bat eta altxatu aldaka.",
+          "atsedena": 30,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/alboko-plank.jpg",
+              "errepikapenak": 1,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/alboko-plank.jpg",
+              "errepikapenak": 1,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/alboko-plank.jpg",
+              "errepikapenak": 1,
+              "iraupena": 35
+            }
+          ]
+        },
+        {
+          "izena": "Bizikleta abdominala",
+          "deskribapena": "Ukondoa kontrako belaunera.",
+          "atsedena": 25,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/bizikleta-abdominala.jpg",
+              "errepikapenak": 20,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/bizikleta-abdominala.jpg",
+              "errepikapenak": 20,
+              "iraupena": 40
+            }
+          ]
+        },
+        {
+          "izena": "Superman",
+          "deskribapena": "Altxatu besoak eta hankak, aurpegi behera etzanda.",
+          "atsedena": 20,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/superman.jpg",
+              "errepikapenak": 12,
+              "iraupena": 30
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/superman.jpg",
+              "errepikapenak": 12,
+              "iraupena": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "izena": "HIIT azkarra",
+      "deskribapena": "Intentsitate handiko tarteak denbora gutxian.",
+      "maila": 3,
+      "bideoa": "https://www.youtube.com/watch?v=SPXYfGV0i-Y",
+      "ariketak": [
+        {
+          "izena": "Burpeeak",
+          "deskribapena": "Jauzia, flexioa eta hasierako posizioara itzultzea.",
+          "atsedena": 30,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/burpeeak.jpg",
+              "errepikapenak": 10,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/burpeeak.jpg",
+              "errepikapenak": 10,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/burpeeak.jpg",
+              "errepikapenak": 8,
+              "iraupena": 35
+            }
+          ]
+        },
+        {
+          "izena": "Mendi-igotzaileak",
+          "deskribapena": "Eraman belaunak bularrera txandakatuz.",
+          "atsedena": 20,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/mendi-igotzaileak.jpg",
+              "errepikapenak": 30,
+              "iraupena": 30
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/mendi-igotzaileak.jpg",
+              "errepikapenak": 30,
+              "iraupena": 30
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/mendi-igotzaileak.jpg",
+              "errepikapenak": 30,
+              "iraupena": 30
+            }
+          ]
+        },
+        {
+          "izena": "Guraize-jauziak",
+          "deskribapena": "Egin jauzi hankak eta besoak irekiz eta itxiz.",
+          "atsedena": 20,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/guraize-jauziak.jpg",
+              "errepikapenak": 40,
+              "iraupena": 30
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/guraize-jauziak.jpg",
+              "errepikapenak": 40,
+              "iraupena": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "izena": "Kardio intentsiboa",
+      "deskribapena": "Kardio-serie luzeak intentsitate handian.",
+      "maila": 3,
+      "bideoa": "https://www.youtube.com/watch?v=IzrxQPcPqr8",
+      "ariketak": [
+        {
+          "izena": "Soka-jauziak",
+          "deskribapena": "Egin jauzi soka imaginario batekin.",
+          "atsedena": 30,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/soka-jauziak.jpg",
+              "errepikapenak": 80,
+              "iraupena": 60
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/soka-jauziak.jpg",
+              "errepikapenak": 80,
+              "iraupena": 60
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/soka-jauziak.jpg",
+              "errepikapenak": 80,
+              "iraupena": 60
+            }
+          ]
+        },
+        {
+          "izena": "Tokiko sprinta",
+          "deskribapena": "Korrika tokian, abiadura maximoan.",
+          "atsedena": 30,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/tokiko-sprinta.jpg",
+              "errepikapenak": 1,
+              "iraupena": 30
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/tokiko-sprinta.jpg",
+              "errepikapenak": 1,
+              "iraupena": 30
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/tokiko-sprinta.jpg",
+              "errepikapenak": 1,
+              "iraupena": 30
+            },
+            {
+              "izena": "Serie 4",
+              "argazkia": "irudiak/tokiko-sprinta.jpg",
+              "errepikapenak": 1,
+              "iraupena": 30
+            }
+          ]
+        },
+        {
+          "izena": "Belaun altuak",
+          "deskribapena": "Altxatu belaunak aldakaren altuerara.",
+          "atsedena": 25,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/belaun-altuak.jpg",
+              "errepikapenak": 50,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/belaun-altuak.jpg",
+              "errepikapenak": 50,
+              "iraupena": 40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "izena": "Indar osoa",
+      "deskribapena": "Gorputz osoko zirkuitua gorputz-pisuarekin.",
+      "maila": 3,
+      "bideoa": "https://www.youtube.com/watch?v=A4y4FDoUz70",
+      "ariketak": [
+        {
+          "izena": "Squat jauziarekin",
+          "deskribapena": "Squat leherkorra jauziarekin.",
+          "atsedena": 40,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/squat-jauziarekin.jpg",
+              "errepikapenak": 12,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/squat-jauziarekin.jpg",
+              "errepikapenak": 12,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/squat-jauziarekin.jpg",
+              "errepikapenak": 10,
+              "iraupena": 40
+            }
+          ]
+        },
+        {
+          "izena": "Diamante flexioak",
+          "deskribapena": "Eskuak elkarrekin bularraren azpian.",
+          "atsedena": 40,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/diamante-flexioak.jpg",
+              "errepikapenak": 8,
+              "iraupena": 35
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/diamante-flexioak.jpg",
+              "errepikapenak": 8,
+              "iraupena": 35
+            }
+          ]
+        },
+        {
+          "izena": "Sastakada jauziarekin",
+          "deskribapena": "Hanka-aldaketa airean.",
+          "atsedena": 35,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/sastakada-jauziarekin.jpg",
+              "errepikapenak": 10,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/sastakada-jauziarekin.jpg",
+              "errepikapenak": 10,
+              "iraupena": 40
+            }
+          ]
+        },
+        {
+          "izena": "Plank sorbaldaren ukituarekin",
+          "deskribapena": "Plank sorbaldak txandaka ukituz.",
+          "atsedena": 30,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/plank-sorbaldaren-ukituarekin.jpg",
+              "errepikapenak": 20,
+              "iraupena": 45
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/plank-sorbaldaren-ukituarekin.jpg",
+              "errepikapenak": 20,
+              "iraupena": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "izena": "Spartan erronka",
+      "deskribapena": "Indar eta erresistentziako zirkuitu zorrotza.",
+      "maila": 4,
+      "bideoa": "https://www.youtube.com/watch?v=40cpTm90U7E",
+      "ariketak": [
+        {
+          "izena": "Burpeeak flexioarekin",
+          "deskribapena": "Burpee osoa flexio sakonarekin.",
+          "atsedena": 40,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/burpeeak-flexioarekin.jpg",
+              "errepikapenak": 12,
+              "iraupena": 50
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/burpeeak-flexioarekin.jpg",
+              "errepikapenak": 12,
+              "iraupena": 50
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/burpeeak-flexioarekin.jpg",
+              "errepikapenak": 10,
+              "iraupena": 45
+            }
+          ]
+        },
+        {
+          "izena": "Squat bulgariarra",
+          "deskribapena": "Atzeko oina altxatuta, jaitsi kontrolpean.",
+          "atsedena": 40,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/squat-bulgariarra.jpg",
+              "errepikapenak": 10,
+              "iraupena": 45
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/squat-bulgariarra.jpg",
+              "errepikapenak": 10,
+              "iraupena": 45
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/squat-bulgariarra.jpg",
+              "errepikapenak": 10,
+              "iraupena": 45
+            }
+          ]
+        },
+        {
+          "izena": "Dominada australiarrak",
+          "deskribapena": "Tiratu gorputza barra baxu baten azpian.",
+          "atsedena": 40,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/dominada-australiarrak.jpg",
+              "errepikapenak": 10,
+              "iraupena": 40
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/dominada-australiarrak.jpg",
+              "errepikapenak": 10,
+              "iraupena": 40
+            }
+          ]
+        },
+        {
+          "izena": "Plank pisuarekin",
+          "deskribapena": "Plank motxila bizkarrean duela.",
+          "atsedena": 35,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/plank-pisuarekin.jpg",
+              "errepikapenak": 1,
+              "iraupena": 60
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/plank-pisuarekin.jpg",
+              "errepikapenak": 1,
+              "iraupena": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "izena": "Erresistentzia osoa",
+      "deskribapena": "Saio luzea erresistentzia lantzeko.",
+      "maila": 4,
+      "bideoa": "https://www.youtube.com/watch?v=El1mNyu37hE",
+      "ariketak": [
+        {
+          "izena": "Tokiko lasterketa",
+          "deskribapena": "Lasterketa-erritmo jarraitua.",
+          "atsedena": 30,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/tokiko-lasterketa.jpg",
+              "errepikapenak": 1,
+              "iraupena": 120
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/tokiko-lasterketa.jpg",
+              "errepikapenak": 1,
+              "iraupena": 120
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/tokiko-lasterketa.jpg",
+              "errepikapenak": 1,
+              "iraupena": 120
+            }
+          ]
+        },
+        {
+          "izena": "Hanken zirkuitua",
+          "deskribapena": "Squat, sastakada eta jauzia kateatuta.",
+          "atsedena": 40,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/hanken-zirkuitua.jpg",
+              "errepikapenak": 5,
+              "iraupena": 90
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/hanken-zirkuitua.jpg",
+              "errepikapenak": 5,
+              "iraupena": 90
+            },
+            {
+              "izena": "Serie 3",
+              "argazkia": "irudiak/hanken-zirkuitua.jpg",
+              "errepikapenak": 5,
+              "iraupena": 90
+            }
+          ]
+        },
+        {
+          "izena": "Core zirkuitua",
+          "deskribapena": "Plank, bizikleta eta superman kateatuta.",
+          "atsedena": 35,
+          "serieak": [
+            {
+              "izena": "Serie 1",
+              "argazkia": "irudiak/core-zirkuitua.jpg",
+              "errepikapenak": 5,
+              "iraupena": 80
+            },
+            {
+              "izena": "Serie 2",
+              "argazkia": "irudiak/core-zirkuitua.jpg",
+              "errepikapenak": 5,
+              "iraupena": 80
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

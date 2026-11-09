@@ -1,0 +1,20 @@
+<section
+  class="content-detail"
+  id="saio-panela"
+  role="tabpanel"
+  tabindex="0"
+  aria-label="Saioaren xehetasunak"
+  [attr.aria-labelledby]="tabId()"
+>
+  @if (saioa()) {
+    @let saioa = this.saioa()!;
+    <div class="detail-header">
+      <h2>{{ saioa.izena }}</h2>
+      <p class="subtitle">{{ saioa.deskribapena }}</p>
+      <span class="total-badge">Iraupena guztira: {{ iraupena() | denbora }}</span>
+    </div>
+    <app-ariketa-zerrenda [ariketak]="saioa.ariketak"></app-ariketa-zerrenda>
+  } @else {
+    <p>Aukeratu ariketa saio bat eta hemen agertuko dira haren xehetasunak!</p>
+  }
+</section>

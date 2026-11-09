@@ -1,0 +1,11 @@
+<div class="exercise-list">
+  @if (kargatzen()) {
+    <p>Kargatzen...</p>
+  } @else {
+    @for (ariketa of ariketak(); track $index) {
+      <app-ariketa-karta [ariketa]="ariketa"></app-ariketa-karta>
+    } @empty {
+      <p>Ariketarik ez</p>
+    }
+  }
+</div>

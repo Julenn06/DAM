@@ -1,0 +1,33 @@
+@if (saioa()) {
+  <article class="workout-card" role="presentation" [class.active]="aukeratuta()">
+    <button
+      type="button"
+      class="workout-tab"
+      role="tab"
+      [id]="tabId()"
+      aria-controls="saio-panela"
+      [attr.aria-selected]="aukeratuta()"
+      [attr.tabindex]="tabIndex()"
+      (click)="saioaAukeratu.emit()"
+    >
+      <span class="card-header">
+        <span class="workout-title">{{ saioa().izena }}</span>
+        @let mailaString = saioa().maila | maila;
+        <span class="badge" [class]="mailaString | lowercase">
+          {{ mailaString | uppercase }} ({{ saioa().maila }})
+        </span>
+      </span>
+      <span class="duration">Iraupena: {{ iraupena() | denbora }}</span>
+    </button>
+    <a
+      [href]="saioa().bideoa"
+      [attr.tabindex]="tabIndex()"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="video"
+      [attr.aria-label]="'Video ikusi: ' + saioa().izena + ' (leiho berria)'"
+    >
+      Video ikusi
+    </a>
+  </article>
+}

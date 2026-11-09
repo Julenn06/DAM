@@ -1,0 +1,14 @@
+@if (kargatzen()) {
+<div class="workout-card" role="status">
+  <p>Kargatzen...</p>
+</div>
+} @else {
+@for (saioa of iragazitakoak(); track $index; let i = $index) {
+<app-saio-karta [saioa]="saioa" [aukeratuta]="saioa === aktiboa()" [tabId]="'saio-tab-' + i"
+  [tabIndex]="tabIndexIndizetik(i)" (saioaAukeratu)="aukeratu(saioa)"></app-saio-karta>
+} @empty {
+<div class="workout-card" role="status">
+  <p>Ez da saiorik aurkitu!</p>
+</div>
+}
+}

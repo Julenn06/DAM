@@ -21,7 +21,6 @@ public class Controlador {
 		refrescarPantalla();
 	}
 
-	@SuppressWarnings("unused")
 	private void initListeners() {
 		PanelFormulario form = vista.getPanelFormulario();
 

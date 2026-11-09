@@ -1,0 +1,12 @@
+/bin/
+/target/
+/.metadata/
+
+/.mvn/
+
+*.dat
+historikoa.xml
+
+gimnasio.json
+
+serviceAccountKey.json

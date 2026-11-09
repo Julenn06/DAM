@@ -40,8 +40,11 @@ public class Piloto extends Thread {
 				System.out.println(i + ". itzulia - " + nombre + " (" + equipo + ")");
 
 			} catch (InterruptedException e) {
-				System.out.println(nombre + " araso bat izan du bueltan.");
+				// Eten badute, lasterketa utzi. interrupt() berriz jarri eta begiztan
+				// jarraituz gero, hurrengo sleep()-ek berehala jaurtiko luke berriz.
+				System.out.println(nombre + " arazo bat izan du bueltan eta lasterketa utzi du.");
 				Thread.currentThread().interrupt();
+				return;
 			}
 		}
 

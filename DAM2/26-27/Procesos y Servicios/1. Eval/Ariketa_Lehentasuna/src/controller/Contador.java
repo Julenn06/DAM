@@ -7,6 +7,7 @@ public class Contador extends Thread {
 	private volatile boolean terminar = false;
 
 	public Contador(String izena, int noraArte) {
+		super(izena); // Thread-ari izena eman: getName()-ek "Hilo 1" itzuliko du, ez "Thread-0"
 		this.izena = izena;
 		this.noraArte = noraArte;
 	}

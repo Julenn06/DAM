@@ -4,13 +4,12 @@ public class Buffer {
 	private char edukia;
 	private boolean bufferBeteta = false;
 
-	public synchronized void jarri(char c) {
+	// InterruptedException gorantz bidaltzen da: haria eteten badute, wait()-etik
+	// irten eta deitzaileak (run()) erabakitzen du zer egin. Catch-ean berriz
+	// interrupt() egin eta begiztan jarraitzeak begizta infinitu bat sortzen zuen.
+	public synchronized void jarri(char c) throws InterruptedException {
 		while (bufferBeteta) {
-			try {
-				wait();
-			} catch (InterruptedException e) {
-				Thread.currentThread().interrupt();
-			}
+			wait();
 		}
 
 		this.edukia = c;
@@ -20,17 +19,14 @@ public class Buffer {
 		notifyAll();
 	}
 
-	public synchronized char recoger() {
+	public synchronized char recoger() throws InterruptedException {
 		while (!bufferBeteta) {
-			try {
-				wait();
-			} catch (InterruptedException e) {
-				Thread.currentThread().interrupt();
-			}
+			wait();
 		}
 
 		this.bufferBeteta = false;
 		char lagunartekoa = edukia;
+		System.out.println("Kontsumitzaileak jaso du: '" + lagunartekoa + "'");
 
 		notifyAll();
 

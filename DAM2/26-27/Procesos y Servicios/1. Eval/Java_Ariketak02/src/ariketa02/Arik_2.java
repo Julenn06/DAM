@@ -7,13 +7,15 @@ import java.io.InputStreamReader;
 public class Arik_2 {
 	public static void main(String[] args) {
 		try {
+			// "date" cmd-ren barneko komandoa da -> cmd.exe /c behar da
 			Process p = new ProcessBuilder("cmd.exe", "/c", "date /t").start();
 			BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			String line;
 			while ((line = r.readLine()) != null) {
 				System.out.println(line);
 			}
-		} catch (IOException e) {
+			p.waitFor();
+		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
 		}
 	}

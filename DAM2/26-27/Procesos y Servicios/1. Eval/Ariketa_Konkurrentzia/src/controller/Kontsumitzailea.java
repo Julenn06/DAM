@@ -9,15 +9,13 @@ public class Kontsumitzailea extends Thread {
 
 	@Override
 	public void run() {
-		for (int i = 0; i < 10; i++) {
-			char letra = buffer.recoger();
-			System.out.println("Kontsumitzaileak jaso du: '" + letra + "'");
-
-			try {
+		try {
+			for (int i = 0; i < 10; i++) {
+				buffer.recoger(); // mezua Buffer-ak inprimatzen du
 				Thread.sleep(250);
-			} catch (InterruptedException e) {
-				System.out.println(e.getMessage());
 			}
+		} catch (InterruptedException e) {
+			System.out.println("Kontsumitzailea eten egin da.");
 		}
 	}
 }

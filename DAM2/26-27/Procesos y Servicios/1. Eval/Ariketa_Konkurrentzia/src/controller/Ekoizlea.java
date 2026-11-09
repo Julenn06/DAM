@@ -12,16 +12,14 @@ public class Ekoizlea extends Thread {
 	@Override
 	public void run() {
 		Random random = new Random();
-		for (int i = 0; i < 10; i++) {
-			char letra = (char) (random.nextInt(26) + 'A');
-			buffer.jarri(letra);
-			System.out.println("Ekoizleak jarri du: " + letra);
-
-			try {
+		try {
+			for (int i = 0; i < 10; i++) {
+				char letra = (char) (random.nextInt(26) + 'A');
+				buffer.jarri(letra); // mezua Buffer-ak inprimatzen du (synchronized barruan, ordena zuzena)
 				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				System.out.println(e.getMessage());
 			}
+		} catch (InterruptedException e) {
+			System.out.println("Ekoizlea eten egin da.");
 		}
 	}
 }

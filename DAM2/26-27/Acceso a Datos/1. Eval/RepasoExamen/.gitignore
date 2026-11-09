@@ -1,0 +1,5 @@
+target/
+datos-generados/
+datos-firebase/
+serviceAccountKey.json
+*.class

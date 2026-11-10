@@ -1,0 +1,23 @@
+<main class="page">
+  <a routerLink="/">← Volver</a>
+  <h1>Final de jabalina</h1>
+  <p>Tres rondas, cinco atletas y lanzamientos de 40 a 90 metros.</p>
+  <section>
+    <p>Ronda {{ round() }} / 3</p>
+    <div class="athletes">
+      @for (athlete of athletes(); track athlete.name) {
+        <div>
+          {{ athlete.name }}<strong>{{ athlete.best || '—' }} m</strong>
+        </div>
+      }
+    </div>
+    <button (click)="nextRound()" [disabled]="round() >= 3">Lanzar ronda</button
+    ><button (click)="reset()">Reiniciar</button>
+  </section>
+  <h2>Clasificación</h2>
+  @for (athlete of ranking(); track athlete.name) {
+    <p>
+      {{ athlete.name }} <strong>{{ athlete.best }} m</strong>
+    </p>
+  }
+</main>

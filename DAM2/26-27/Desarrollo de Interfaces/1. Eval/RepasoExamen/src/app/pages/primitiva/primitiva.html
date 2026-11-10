@@ -1,0 +1,17 @@
+<main class="page">
+  <a routerLink="/">← Volver</a>
+  <h1>Primitiva</h1>
+  <p>Elige seis números distintos entre 1 y 49.</p>
+  <section class="numbers">
+    @for (number of numbers; track number) {
+      <button [class.selected]="selected().includes(number)" (click)="toggle(number)">
+        {{ number }}
+      </button>
+    }
+  </section>
+  <button (click)="draw()" [disabled]="selected().length !== 6">Sortear</button
+  ><button (click)="randomPick()">Combinación aleatoria</button>
+  <p>{{ message() }}</p>
+  <h2>Historial: {{ played() }} partidas · Media: {{ average() }} aciertos</h2>
+  <button (click)="simulate()">Simular 1000 sorteos</button>
+</main>

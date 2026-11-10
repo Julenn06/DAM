@@ -1,0 +1,19 @@
+<main class="page">
+  <a routerLink="/">← Volver</a>
+  <h1>Máquina tragaperras</h1>
+  <p>Empiezas con 100 créditos. Cada partida cuesta 10.</p>
+  <section>
+    <p>
+      Créditos <strong>{{ credits() }}</strong>
+    </p>
+    <div class="reels">
+      @for (symbol of symbols(); track $index) {
+        <span [class.win]="won()">{{ symbol }}</span>
+      }
+    </div>
+    <p>{{ result() }}</p>
+    <button (click)="spin()" [disabled]="credits() < 10">Jugar · 10 créditos</button
+    ><button (click)="reset()">Recargar 100</button>
+  </section>
+  <p>Premios: tres 7 = 200 · tres iguales = 50 · dos iguales = 15</p>
+</main>

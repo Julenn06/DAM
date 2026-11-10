@@ -1,0 +1,18 @@
+<main class="page">
+  <a routerLink="/">← Volver</a>
+  <h1>Saltos del tampón</h1>
+  <p>Simula saltos entre 1 y 100 000.</p>
+  <section>
+    <label for="j">Número de saltos</label><input id="j" type="number" [(ngModel)]="jumps" /><button
+      (click)="run()"
+    >
+      Botar
+    </button>
+    <p>Media: {{ average() }} · Mayor: {{ highest() }} · Muestras: {{ results().length }}</p>
+  </section>
+  <div class="bars">
+    @for (value of results(); track $index) {
+      <i [style.height.%]="height(value)"></i>
+    }
+  </div>
+</main>

@@ -1,0 +1,55 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #111c27;
+  color: #e9f2f1;
+}
+.page {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem 1.25rem;
+}
+.page > a {
+  color: #8cc4cd;
+  font-weight: 700;
+}
+h1 {
+  font:
+    clamp(2.4rem, 7vw, 5rem)/0.95 Georgia,
+    serif;
+}
+.page > p {
+  color: #b8c9ca;
+}
+section {
+  padding: 2rem;
+  background: #203442;
+  text-align: center;
+}
+.reels {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  margin: 2rem;
+}
+.reels span {
+  display: grid;
+  place-items: center;
+  width: 6rem;
+  aspect-ratio: 1;
+  background: #172531;
+  border: 2px solid #65818a;
+  font-size: 4rem;
+}
+.reels span.win {
+  background: #e76f51;
+  border-color: #ffd166;
+}
+button {
+  padding: 0.8rem;
+  margin: 0.3rem;
+  background: #e76f51;
+  color: white;
+  border: 0;
+  font-weight: 800;
+}

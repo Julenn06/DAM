@@ -1,0 +1,46 @@
+.page {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem 1.25rem;
+}
+.page > a {
+  color: #147d92;
+  font-weight: 700;
+}
+h1 {
+  color: #123047;
+  font:
+    clamp(2.4rem, 7vw, 5rem)/0.95 Georgia,
+    serif;
+}
+section {
+  padding: 2rem;
+  background: white;
+}
+.athletes {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+.athletes div {
+  padding: 1rem;
+  background: #eef3f1;
+  text-align: center;
+}
+.athletes strong {
+  display: block;
+  margin-top: 0.4rem;
+}
+button {
+  padding: 0.8rem;
+  margin: 0.4rem 0;
+  background: #147d92;
+  color: white;
+  border: 0;
+  font-weight: 800;
+}
+@media (max-width: 600px) {
+  .athletes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

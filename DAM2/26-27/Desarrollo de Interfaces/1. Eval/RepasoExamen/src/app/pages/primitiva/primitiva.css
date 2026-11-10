@@ -1,0 +1,45 @@
+.page {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem 1.25rem;
+}
+.page > a {
+  color: #147d92;
+  font-weight: 700;
+}
+h1 {
+  color: #123047;
+  font:
+    clamp(2.4rem, 7vw, 5rem)/0.95 Georgia,
+    serif;
+}
+.numbers {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 0.4rem;
+  padding: 2rem;
+  background: white;
+}
+.numbers button {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid #b9c9cd;
+  background: white;
+}
+.numbers button.selected {
+  background: #147d92;
+  color: white;
+}
+button:not(.numbers button) {
+  padding: 0.8rem;
+  margin: 0.4rem;
+  background: #e76f51;
+  color: white;
+  border: 0;
+  font-weight: 800;
+}
+@media (max-width: 600px) {
+  .numbers {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}

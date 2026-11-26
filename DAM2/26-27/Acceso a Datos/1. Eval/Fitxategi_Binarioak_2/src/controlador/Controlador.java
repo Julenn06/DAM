@@ -24,9 +24,9 @@ public class Controlador {
 	private void initListeners() {
 		PanelFormulario form = vista.getPanelFormulario();
 
-		form.getBtnAñadir().addActionListener((e) -> accionAñadir());
-		form.getBtnCargar().addActionListener(e -> accionCargar());
-		form.getBtnGuardar().addActionListener(e -> accionGuardar());
+		form.getBtnAñadir().addActionListener((_) -> accionAñadir());
+		form.getBtnCargar().addActionListener(_ -> accionCargar());
+		form.getBtnGuardar().addActionListener(_ -> accionGuardar());
 	}
 
 	private void accionAñadir() {
